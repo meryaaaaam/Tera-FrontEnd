@@ -1,0 +1,195 @@
+<app-dashboard-sidemenu></app-dashboard-sidemenu>
+
+<!-- Start Main Content Wrapper Area -->
+<div class="main-content d-flex flex-column">
+
+    <app-dashboard-navbar></app-dashboard-navbar>
+
+    <!-- Breadcrumb Area -->
+    <div class="breadcrumb-area" *ngFor="let Content of breadcrumb;">
+        <h1>{{Content.title}}</h1>
+        <ol class="breadcrumb">
+            <li class="item"><a routerLink="/">Home</a></li>
+            <li class="item"><a routerLink="dashboard">{{Content.subTitle}}</a></li>
+            <li class="item">{{Content.title}}</li>
+        </ol>
+    </div>
+    <!-- End Breadcrumb Area -->
+
+    <!-- Start -->
+    <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="stats-card-box">
+                <div class="icon-box">
+                    <i class='bx bxs-badge-dollar'></i>
+                </div>
+                <span class="sub-title">Withdrawable Balance <strong class="wallet-currency">USD</strong></span>
+                <h3>100.88</h3>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-6">
+            <div class="stats-card-box">
+                <div class="icon-box">
+                    <i class='bx bx-dollar'></i>
+                </div>
+                <span class="sub-title">Total Earnings <strong class="wallet-currency">USD</strong></span>
+                <h3>542.64</h3>
+            </div>
+        </div>
+
+        <div class="col-lg-4 col-md-6 col-sm-6 offset-lg-0 offset-md-3 offset-sm-3">
+            <div class="stats-card-box">
+                <div class="icon-box">
+                    <i class='bx bx-cart'></i>
+                </div>
+                <span class="sub-title">Total Orders</span>
+                <h3>08</h3>
+            </div>
+        </div>
+    </div>
+    <!-- End -->
+
+    <!-- Start -->
+    <div class="row">
+        <div class="col-lg-6 col-md-12">
+            <div class="earnings-box">
+                <h3>Earnings <span class="comission-taken">Fee: 10%</span></h3>
+
+                <ul>
+                    <li>
+                        <div class="icon">
+                            <i class='bx bx-cart'></i>
+                        </div>
+                        <ul>
+                            <li>Date: 17/08/2020</li>
+                            <li>Order: #181812</li>
+                            <li class="price">$200.00</li>
+                            <li class="fee-price">Fee: $20.00</li>
+                            <li class="price">Net Earning: <strong>$180.00</strong></li>
+                        </ul>
+                        <span>Farmis Restaurant</span>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <i class='bx bx-shopping-bag'></i>
+                        </div>
+                        <ul>
+                            <li>Date: 16/08/2020</li>
+                            <li>Order: #181811</li>
+                            <li class="price">$76.00</li>
+                            <li class="fee-price">Fee: $6.00</li>
+                            <li class="price">Net Earning: <strong>$70.00</strong></li>
+                        </ul>
+                        <span>Shopping Complex Center</span>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <i class='bx bx-cart'></i>
+                        </div>
+                        <ul>
+                            <li>Date: 15/08/2020</li>
+                            <li>Order: #181810</li>
+                            <li class="price">$80.00</li>
+                            <li class="fee-price">Fee: $5.00</li>
+                            <li class="price">Net Earning: <strong>$75.00</strong></li>
+                        </ul>
+                        <span>Gym Training Center</span>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <i class='bx bx-shopping-bag'></i>
+                        </div>
+                        <ul>
+                            <li>Date: 14/08/2020</li>
+                            <li>Order: #181809</li>
+                            <li class="price">$150.00</li>
+                            <li class="fee-price">Fee: $25.00</li>
+                            <li class="price">Net Earning: <strong>$125.00</strong></li>
+                        </ul>
+                        <span>The Magician Restaurant</span>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <i class='bx bx-cart'></i>
+                        </div>
+                        <ul>
+                            <li>Date: 13/08/2020</li>
+                            <li>Order: #181808</li>
+                            <li class="price">$100.00</li>
+                            <li class="fee-price">Fee: $10.00</li>
+                            <li class="price">Net Earning: <strong>$90.00</strong></li>
+                        </ul>
+                        <span>Oriental Shopping Center</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-12">
+            <div class="earnings-box">
+                <h3>Payout History</h3>
+
+                <ul>
+                    <li>
+                        <div class="icon">
+                            <i class='bx bx-wallet'></i>
+                        </div>
+                        <ul>
+                            <li class="unpaid">Unpaid</li>
+                            <li>Period: 08/2020</li>
+                        </ul>
+                        <span>$100.00</span>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <i class='bx bx-wallet'></i>
+                        </div>
+                        <ul>
+                            <li class="paid">Paid</li>
+                            <li>Period: 07/2020</li>
+                        </ul>
+                        <span>$70.00</span>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <i class='bx bx-wallet'></i>
+                        </div>
+                        <ul>
+                            <li class="unpaid">Unpaid</li>
+                            <li>Period: 06/2020</li>
+                        </ul>
+                        <span>$75.00</span>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <i class='bx bx-wallet'></i>
+                        </div>
+                        <ul>
+                            <li class="unpaid">Unpaid</li>
+                            <li>Period: 05/2020</li>
+                        </ul>
+                        <span>$125.00</span>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <i class='bx bx-wallet'></i>
+                        </div>
+                        <ul>
+                            <li class="paid">Paid</li>
+                            <li>Period: 04/2020</li>
+                        </ul>
+                        <span>$90.00</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- End -->
+
+    <div class="flex-grow-1"></div>
+    
+    <app-copyrights></app-copyrights>
+
+</div>
+<!-- End Main Content Wrapper Area -->

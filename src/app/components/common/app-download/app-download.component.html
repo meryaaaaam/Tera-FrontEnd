@@ -1,0 +1,27 @@
+<!-- Start App Download Area -->
+<section class="app-download-area bg-main-color">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-5 col-md-12">
+                <div class="app-download-content" *ngFor="let Content of appDownloadContent;">
+                    <h2>{{Content.title}}</h2>
+                    <p>{{Content.paragraph}}</p>
+                    <div class="btn-box">
+                        <a href="{{Button.link}}" class="playstore-btn" target="_blank" *ngFor="let Button of Content.btnBox">
+                            <img [src]="Button.img" alt="image">
+                            {{Button.text}}
+                            <span>{{Button.subText}}</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-7 col-md-12">
+                <div class="app-download-image" *ngFor="let Image of appDownloadImage;">
+                    <img [src]="Image.img" alt="image">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End App Download Area -->

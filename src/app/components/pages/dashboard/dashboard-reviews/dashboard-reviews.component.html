@@ -1,0 +1,80 @@
+<app-dashboard-sidemenu></app-dashboard-sidemenu>
+
+<!-- Start Main Content Wrapper Area -->
+<div class="main-content d-flex flex-column">
+
+    <app-dashboard-navbar></app-dashboard-navbar>
+
+    <!-- Breadcrumb Area -->
+    <div class="breadcrumb-area" *ngFor="let Content of breadcrumb;">
+        <h1>{{Content.title}}</h1>
+        <ol class="breadcrumb">
+            <li class="item"><a routerLink="/">Home</a></li>
+            <li class="item"><a routerLink="dashboard">{{Content.subTitle}}</a></li>
+            <li class="item">{{Content.title}}</li>
+        </ol>
+    </div>
+    <!-- End Breadcrumb Area -->
+
+    <!-- Start -->
+    <div class="row">
+        <div class="col-lg-6 col-md-12">
+            <div class="visitor-reviews-box">
+                <h3>Visitor Reviews</h3>
+            
+                <div class="user-review" *ngFor="let userReview of visitorReviews;">
+                    <img [src]="userReview.userImage" class="user" alt="image">
+                    <div class="review-rating">
+                        <div class="review-stars">
+                            <i class='{{Star.icon}}' *ngFor="let Star of userReview.rating"></i>
+                        </div>
+                        <span class="d-inline-block">{{userReview.userName}} <span>on <a routerLink="/{{userReview.detailsLink}}">{{userReview.listingsName}}</a></span></span>
+                    </div>
+                    <span class="date"><i class='bx bx-calendar'></i> {{userReview.date}}</span>
+                    <p>{{userReview.text}}</p>
+                    <div class="review-image">
+                        <div class="row">
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-6" *ngFor="let Image of userReview.reviewImage">
+                                <a class="popup-btn" href="{{Image.img}}">
+                                    <img [src]="Image.img" alt="image">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn-box">
+                        <a routerLink="/dashboard-reviews" class="default-btn"><i class='bx bx-reply'></i> Reply</a>
+                        <a routerLink="/dashboard-reviews" class="default-btn danger"><i class='bx bx-trash'></i> Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-lg-6 col-md-12">
+            <div class="visitor-reviews-box">
+                <h3>Your Reviews</h3>
+                
+                <div class="user-review" *ngFor="let userReview of YourReviews;">
+                    <img [src]="userReview.userImage" class="user" alt="image">
+                    <div class="review-rating">
+                        <div class="review-stars">
+                            <i class='{{Star.icon}}' *ngFor="let Star of userReview.rating"></i>
+                        </div>
+                        <span class="d-inline-block">{{userReview.userName}} <span>on <a routerLink="/{{userReview.detailsLink}}">{{userReview.listingsName}}</a></span></span>
+                    </div>
+                    <span class="date"><i class='bx bx-calendar'></i> {{userReview.date}}</span>
+                    <p>{{userReview.text}}</p>
+                    <div class="btn-box">
+                        <a href="#" class="default-btn"><i class='bx bx-edit'></i> Edit</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End -->
+
+    <div class="flex-grow-1"></div>
+    
+    <app-copyrights></app-copyrights>
+
+</div>
+<!-- End Main Content Wrapper Area -->

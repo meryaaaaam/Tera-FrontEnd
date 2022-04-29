@@ -1,0 +1,27 @@
+<!-- Start Team Area -->
+<div class="container">
+    <div class="section-title" *ngFor="let Title of sectionTitle;">
+        <h2>{{Title.title}}</h2>
+        <p>{{Title.paragraph}}</p>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-3 col-md-6 col-sm-6" *ngFor="let Content of singleTeamMember;">
+            <div class="single-team-member">
+                <div class="member-image">
+                    <img [src]="Content.img" alt="image">
+
+                    <ul class="social">
+                        <li *ngFor="let socialItem of Content.social"><a href="{{socialItem.link}}" target="_blank"><i class='{{socialItem.icon}}'></i></a></li>
+                    </ul>
+                </div>
+
+                <div class="member-content">
+                    <h3>{{Content.title}}</h3>
+                    <span>{{Content.designation}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Team Area -->

@@ -1,0 +1,150 @@
+<app-navbar-style-one></app-navbar-style-one>
+
+<!-- Start Page Title Area -->
+<div class="page-title-area" *ngFor="let Content of pageTitleContent;" style="background-image: url({{Content.backgroundImage}});">
+    <div class="container">
+        <div class="page-title-content">
+            <h2>{{Content.title}}</h2>
+            <ul>
+                <li><a routerLink="/">Home</a></li>
+                <li>{{Content.title}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- End Page Title Area -->
+
+<!-- Start Author Area -->
+<section class="author-area ptb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-12">
+                <div class="author-sidebar">
+                    <div class="user-profile">
+                        <div class="d-flex align-items-center">
+                            <img src="assets/img/user3.jpg" alt="image">
+
+                            <div class="title">
+                                <h4>James Andy</h4>
+                                <span class="sub-title">Own Company</span>
+                                <div class="rating d-flex align-items-center">
+                                    <span class="bx bxs-star checked"></span>
+                                    <span class="bx bxs-star checked"></span>
+                                    <span class="bx bxs-star checked"></span>
+                                    <span class="bx bxs-star checked"></span>
+                                    <span class="bx bxs-star checked"></span>
+                                    <span class="rating-count">(5 reviews)</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="user-contact-info">
+                        <h3>Contact</h3>
+
+                        <ul class="user-contact">
+                            <li><a href="#"><i class='bx bx-phone-call'></i> (+44) - 45789 - 5789</a></li>
+                            <li><a href="#"><i class='bx bx-envelope'></i> hello@jamesandy.com</a></li>
+                        </ul>
+
+                        <ul class="social-profiles">
+                            <li><a href="#" class="facebook"><i class='bx bxl-facebook'></i> Facebook</a></li>
+                            <li><a href="#" class="twitter"><i class='bx bxl-twitter'></i> Twitter</a></li>
+                        </ul>
+
+                        <form>
+                            <div class="row">
+                                <div class="col-lg-12 col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" name="name" class="form-control" id="name" required placeholder="Your name">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 col-md-6">
+                                    <div class="form-group">
+                                        <input type="email" name="email" class="form-control" id="email" required placeholder="Your email address">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="form-group">
+                                        <input type="text" name="phone_number" class="form-control" id="phone_number" required placeholder="Your phone number">
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 col-md-12">
+                                    <div class="form-group">
+                                        <textarea name="message" id="message" class="form-control" cols="30" rows="6" required placeholder="Write your message..."></textarea>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-12 col-md-12">
+                                    <button type="submit" class="default-btn">Send Message</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-8 col-md-12">
+                <div class="author-all-listings">
+                    <h2>James's Listings</h2>
+
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6" *ngFor="let Content of singleListingsBox | paginate: { itemsPerPage: 4, currentPage: blogGrid }">
+                            <div class="single-listings-box">
+                                <div class="listings-image">
+                                    <div class="listings-image-slides">
+                                        <owl-carousel-o [options]="customOptions">
+                                            <ng-template carouselSlide *ngFor="let Image of Content.mainImg;">
+                                                <div class="single-image">
+                                                    <img [src]="Image.img" alt="image">
+                                                    <a routerLink="/{{Content.detailsLink}}" class="link-btn"></a>
+                                                </div>
+                                            </ng-template>
+                                        </owl-carousel-o>
+                                    </div>
+                                    <a routerLink="/{{Content.bookmarkLink}}" class="bookmark-save"><i class="flaticon-heart"></i></a>
+                                    <a routerLink="/{{Content.categoryLink}}" class="category"><i class="flaticon-cooking"></i></a>
+                                </div>
+                                <div class="listings-content">
+                                    <div class="author">
+                                        <div class="d-flex align-items-center">
+                                            <img [src]="Content.authorImg" alt="image">
+                                            <span>{{Content.authorName}}</span>
+                                        </div>
+                                    </div>
+                                    <ul class="listings-meta">
+                                        <li><a routerLink="/{{Content.categoryLink}}"><i class="flaticon-furniture-and-household"></i> Restaurant</a></li>
+                                        <li><i class="flaticon-pin"></i> {{Content.location}}</li>
+                                    </ul>
+                                    <h3><a routerLink="/{{Content.detailsLink}}">{{Content.title}}</a></h3>
+                                    <span class="status {{Content.extraClass}}"><i class="flaticon-save"></i> {{Content.openORclose}}</span>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="rating">
+                                            <i class='{{Star.icon}}' *ngFor="let Star of Content.rating;"></i>
+                                            <span class="count">({{Content.ratingCount}})</span>
+                                        </div>
+                                        <div class="price">
+                                            {{Content.price}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-12 col-lg-12 col-md-12">
+                            <div class="pagination-area text-center">
+                                <pagination-controls (pageChange)="blogGrid = $event"></pagination-controls>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Author Area -->
+
+<app-footer-style-one></app-footer-style-one>

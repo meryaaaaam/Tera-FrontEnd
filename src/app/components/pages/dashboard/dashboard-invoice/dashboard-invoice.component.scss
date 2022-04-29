@@ -1,0 +1,212 @@
+@import "../dashboard.component.scss";
+
+.invoice-area {
+    background-color: var(--whiteColor);
+    box-shadow: 1px 5px 24px 0 rgba(68, 102, 242, .05);
+    border-radius: 5px;
+    padding: 25px;
+    margin-bottom: 30px;
+}
+.invoice-header {
+    margin-bottom: 25px;
+
+    h3 {
+        font-size: 22px;
+        margin-bottom: 18px;
+    }
+    p {
+        font-weight: 500;
+    }
+}
+.invoice-middle {
+    margin-bottom: 25px;
+
+    h4 {
+        font-size: 17px;
+        margin-bottom: 20px;
+    }
+    h5 {
+        margin-bottom: 12px;
+        font: {
+            size: var(--fontSize);
+            weight: 500;
+        };
+        sub {
+            margin-left: 50px;
+            bottom: 0;
+            width: 90px;
+            display: inline-block;
+            color: #6084a4;
+            font: {
+                weight: 500;
+                size: var(--fontSize);
+            };
+        }
+    }
+    span {
+        font-weight: 500;
+    }
+}
+.invoice-table {
+    table {
+        margin-bottom: 0;
+
+        thead {
+            th {
+                text-align: center;
+                vertical-align: middle;
+                border-bottom: 1px solid #dee2e6;
+                font: {
+                    size: var(--fontSize);
+                    weight: 600;
+                };
+                padding: {
+                    top: 10px;
+                    bottom: 10px;
+                    left: 15px;
+                    right: 15px;
+                };
+            }
+        }
+        tbody {
+            td {
+                vertical-align: middle;
+                color: #6084a4;
+                border-width: 1px;
+                font-size: 14.5px;
+                padding: {
+                    top: 10px;
+                    bottom: 10px;
+                    left: 15px;
+                    right: 15px;
+                };
+                &.total, &.total-price {
+                    color: var(--blackColor);
+                    font-size: 17px;
+                }
+                strong {
+                    font-weight: 600;
+                    color: var(--blackColor);
+                }
+            }
+        }
+    }
+}
+.invoice-btn-box {
+    margin-top: 25px;
+
+    .default-btn {
+        transition: var(--transition);
+        text-decoration: none;
+        padding: 13px 35px 12px;
+        border-radius: 30px;
+        text-transform: uppercase;
+        border: none;
+        display: inline-block;
+        transition: var(--transition);
+        background-color: var(--mainColor);
+        color: var(--whiteColor);
+        box-shadow: unset;
+        font: {
+            size: 14px;
+            weight: 600;
+        };
+        &:hover, &:focus {
+            background-color: var(--blackColor);
+            color: var(--whiteColor);
+        }
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width: 767px) {
+    
+    .invoice-area {
+        padding: 20px;
+    }
+    .invoice-header {
+        h3 {
+            font-size: 17px;
+        }
+        p {
+            font-size: 14px;
+        }
+    }
+    .invoice-middle {
+        margin-bottom: 0;
+
+        .text {
+            margin-bottom: 20px;
+
+            &.text-right {
+                text-align: left !important;
+            }
+            h5 {
+                font-size: 14px;
+
+                sub {
+                    margin-left: 0;
+                    width: auto;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+    .invoice-table {
+        margin-bottom: 20px;
+
+        table {
+            thead {
+                th {
+                    font-size: 14px;
+                    white-space: nowrap;
+                }
+            }
+            tbody {
+                td {
+                    font-size: 14px;
+                    white-space: nowrap;
+                }
+            }
+        }
+    }
+    .invoice-btn-box {
+        margin-top: 20px;
+
+        .default-btn {
+            padding: 13px 30px 12px;
+            font-size: 13px;
+        }
+    }
+
+}
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+
+
+
+}
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+
+
+}
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+    
+
+}
+/* Min width 1200px to Max width 1355px */
+@media only screen and (min-width: 1200px) and (max-width: 1355px) {
+
+
+
+}
+/* Min width 1550px */
+@media only screen and (min-width: 1550px) {
+
+    
+
+}

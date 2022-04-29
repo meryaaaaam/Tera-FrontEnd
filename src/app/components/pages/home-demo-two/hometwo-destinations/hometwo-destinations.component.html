@@ -1,0 +1,36 @@
+<!-- Start Destinations Area Area -->
+<section class="destinations-area pt-100 pb-70">
+    <div class="container">
+        <div class="section-title" *ngFor="let Title of sectionTitle;">
+            <h2>{{Title.title}}</h2>
+            <p>{{Title.paragraph}}</p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-3 col-sm-6 col-md-6" *ngFor="let Content of singleDestinationsBox;">
+                <div class="single-destinations-box color-box-shadow">
+                    <img [src]="Content.img" alt="image">
+                    <div class="country">{{Content.subTitle}}</div>
+                    <div class="content">
+                        <h3>{{Content.title}}</h3>
+                        <span>{{Content.number}}</span>
+                    </div>
+                    <a routerLink="/{{Content.link}}" class="link-btn"></a>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-sm-12 col-md-12" *ngFor="let Content of singleDestinationsBigBox;">
+                <div class="single-destinations-box color-box-shadow">
+                    <img [src]="Content.img" alt="image">
+                    <div class="country">{{Content.subTitle}}</div>
+                    <div class="content">
+                        <h3>{{Content.title}}</h3>
+                        <span>{{Content.number}}</span>
+                    </div>
+                    <a routerLink="/{{Content.link}}" class="link-btn"></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Destinations Area Area -->

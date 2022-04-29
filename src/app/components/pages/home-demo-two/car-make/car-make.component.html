@@ -1,0 +1,27 @@
+ <!-- Start Feedback Area -->
+<div class="container">
+  <div class="car-body">
+  <div class="section-title" *ngFor="let Title of sectionTitle;">
+      <h2>{{Title.title}}</h2>
+      <p>{{Title.paragraph}}</p>
+  </div>
+
+
+  <div class="feedback-slides">
+      <owl-carousel-o [options]="customOptions">
+          <ng-template carouselSlide *ngFor="let Content of singleCarMakeBox;">
+            <div class="single-destinations-box color-box-shadow">
+              <img class="cropped" [src]="Content.img" alt="image">
+              <div class="country">{{Content.subTitle}}</div>
+              <div class="content">
+                  <h3>{{Content.title}}</h3>
+                  <span>{{Content.number}}</span>
+              </div>
+              <a routerLink="/{{Content.link}}" class="link-btn"></a>
+          </div>
+          </ng-template>
+      </owl-carousel-o>
+  </div>
+</div>
+</div>
+<!-- End Feedback Area -->

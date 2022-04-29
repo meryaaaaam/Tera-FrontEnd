@@ -1,0 +1,233 @@
+.app-download-area {
+    position: relative;
+    z-index: 1;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        background-color: var(--whiteColor);
+        z-index: -1;
+        height: 90px;
+    }
+    &::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: var(--whiteColor);
+        z-index: -1;
+        height: 70px;
+    }
+}
+.app-download-content {
+    h2 {
+        font-size: 30px;
+        margin-bottom: 12px;
+    }
+    p {
+        color: var(--blackColor);
+        line-height: initial;
+    }
+    .btn-box {
+        margin-top: 30px;
+
+        .playstore-btn {
+            position: relative;
+            background-color: #202020;
+            display: inline-block;
+            border-radius: 5px;
+            color: var(--whiteColor);
+            margin-right: 15px;
+            font: {
+                size: 14px;
+                weight: 400;
+            };
+            padding: {
+                top: 12px;
+                bottom: 12px;
+                left: 65px;
+                right: 25px;
+            };
+            span {
+                display: block;
+                margin-top: -3px;
+                font: {
+                    size: 18px;
+                    weight: 700;
+                };
+            }
+            img {
+                position: absolute;
+                left: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            &:hover {
+                background-color: var(--whiteColor);
+                color: var(--blackColor);
+                transform: translateY(-3px);
+            }
+        }
+    }
+}
+.app-download-image {
+    text-align: center;
+
+    img {
+        animation: moveleftbounce 5s linear infinite;
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width: 767px) {
+
+    .app-download-area {
+        padding: {
+            top: 60px;
+            bottom: 60px;
+        };
+        &::before, &::after {
+            display: none;
+        }
+    }
+    .app-download-content {
+        text-align: center;
+        margin-bottom: 35px;
+
+        h2 {
+            font-size: 23px;
+            margin-bottom: 10px;
+        }
+        p {
+            line-height: 1.8;
+        }
+        .btn-box {
+            margin-top: 20px;
+
+            .playstore-btn {
+                margin-right: 2px;
+                font-size: 12px;
+                text-align: left;
+                padding: {
+                    top: 10px;
+                    bottom: 10px;
+                    left: 40px;
+                    right: 10px;
+                };
+                img {
+                    left: 10px;
+                    width: 20px;
+                }
+                span {
+                    margin-top: 0;
+                    font-size: 14px;
+                }
+            }
+            .applestore-btn {
+                font-size: 12px;
+                text-align: left;
+                margin-left: 2px;
+                padding: {
+                    top: 10px;
+                    bottom: 10px;
+                    left: 40px;
+                    right: 10px;
+                };
+                img {
+                    left: 10px;
+                    width: 20px;
+                }
+                span {
+                    margin-top: 0;
+                    font-size: 14px;
+                }
+            }
+        }
+    }
+
+}
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+
+
+
+}
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+    .app-download-area {
+        padding: {
+            top: 80px;
+            bottom: 80px;
+        };
+        &::before, &::after {
+            display: none;
+        }
+    }
+    .app-download-content {
+        text-align: center;
+        margin-bottom: 35px;
+    }
+
+}
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+    .app-download-area {
+        padding: {
+            top: 100px;
+            bottom: 100px;
+        };
+        &::before, &::after {
+            display: none;
+        }
+    }
+    .app-download-content {
+        .btn-box {
+            .playstore-btn {
+                margin-right: 10px;
+                padding: {
+                    left: 50px;
+                    right: 20px;
+                };
+                img {
+                    left: 12px;
+                }
+                span {
+                    margin-top: -1px;
+                    font-size: 15px;
+                }
+            }
+            .applestore-btn {
+                padding: {
+                    left: 55px;
+                    right: 20px;
+                };
+                img {
+                    left: 12px;
+                }
+                span {
+                    margin-top: -1px;
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+
+}
+/* Min width 1200px to Max width 1355px */
+@media only screen and (min-width: 1200px) and (max-width: 1355px) {
+
+
+
+}
+/* Min width 1550px */
+@media only screen and (min-width: 1550px) {
+
+    
+
+}

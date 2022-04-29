@@ -1,0 +1,39 @@
+<!-- Start Feedback Area -->
+<div class="container">
+    <div class="section-title" *ngFor="let Title of sectionTitle;">
+        <h2>{{Title.title}}</h2>
+        <p>{{Title.paragraph}}</p>
+    </div>
+
+    <div class="feedback-slides">
+        <owl-carousel-o [options]="customOptions">
+            <ng-template carouselSlide *ngFor="let Content of singleFeedbackBox;">
+                <div class="single-feedback-box">
+                    <div class="rating">
+                      <div class="host-info">
+                        <div class="d-flex align-items-center">
+                            <img [src]="Content.HostImg" alt="image">
+                            <div class="title" style="padding-bottom: 3em;">
+                              <h3>{{Content.HostName}}</h3>
+                              <p>{{Content.HostInfo}}</p>
+                          </div>
+                        </div>
+                      </div>
+                        <i class='{{Star.icon}}' *ngFor="let Star of Content.rating" style="color:blueviolet" ></i>
+                    </div>
+                    <p>{{Content.paragraph}}.</p>
+                    <div class="client-info">
+                        <div class="d-flex align-items-center">
+                            <img [src]="Content.authorImg" alt="image">
+                            <div class="title">
+                                <h3>{{Content.authorName}}</h3>
+                                <p>{{Content.authorDesignation}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </owl-carousel-o>
+    </div>
+</div>
+<!-- End Feedback Area -->

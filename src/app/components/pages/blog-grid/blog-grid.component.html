@@ -1,0 +1,54 @@
+<app-navbar-style-two></app-navbar-style-two>
+
+<!-- Start Page Title Area -->
+<div class="page-title-area page-title-style-two" *ngFor="let Content of pageTitleContent;" style="background-image: url({{Content.backgroundImage}});">
+    <div class="container">
+        <div class="page-title-content">
+            <h2>{{Content.title}}</h2>
+            <ul>
+                <li><a routerLink="/">Home</a></li>
+                <li>{{Content.title}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- End Page Title Area -->
+
+<!-- Start Blog Area -->
+<section class="blog-area bg-f9f9f9 ptb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6" *ngFor="let Content of singleBlogPost | paginate: { itemsPerPage: 6, currentPage: blogGrid }">
+                <div class="single-blog-post">
+                    <div class="post-image">
+                        <a routerLink="/{{Content.link}}" class="d-block">
+                            <img [src]="Content.mainImg" alt="image">
+                        </a>
+                    </div>
+                    <div class="post-content">
+                        <ul class="post-meta d-flex align-items-center">
+                            <li>
+                                <div class="d-flex align-items-center">
+                                    <img [src]="Content.authorImg" alt="image">
+                                    <span>{{Content.authorName}}</span>
+                                </div>
+                            </li>
+                            <li><i class="flaticon-calendar"></i> {{Content.date}}</li>
+                        </ul>
+                        <h3><a routerLink="/{{Content.link}}">{{Content.title}}</a></h3>
+                        <a routerLink="/{{Content.link}}" class="link-btn"><i class="flaticon-right-arrow"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12">
+                <div class="pagination-area text-center">
+                    <pagination-controls (pageChange)="blogGrid = $event"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Blog Area -->
+
+<app-footer-style-one></app-footer-style-one>

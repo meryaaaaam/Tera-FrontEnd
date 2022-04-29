@@ -1,0 +1,30 @@
+<app-navbar-style-one></app-navbar-style-one>
+
+<!-- Start Page Title Area -->
+<div class="page-title-area" *ngFor="let Content of pageTitleContent;" style="background-image: url({{Content.backgroundImage}});">
+    <div class="container">
+        <div class="page-title-content">
+            <h2>{{Content.title}}</h2>
+            <ul>
+                <li><a routerLink="/">Home</a></li>
+                <li>{{Content.title}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- End Page Title Area -->
+
+<!-- Start 404 Error Area -->
+<section class="error-area bg-f9f9f9 ptb-100">
+    <div class="container">
+        <div class="error-content" *ngFor="let Content of errorContent;">
+            <img [src]="Content.img" alt="image">
+            <h3>{{Content.title}}</h3>
+            <p>{{Content.paragraph}}</p>
+            <a routerLink="/" class="default-btn">Back to Homepage</a>
+        </div>
+    </div>
+</section>
+<!-- End 404 Error Area -->
+
+<app-footer-style-one></app-footer-style-one>

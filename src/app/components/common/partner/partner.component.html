@@ -1,0 +1,18 @@
+<!-- Start Partner Area -->
+<div class="container">
+    <div class="section-title" *ngFor="let Title of sectionTitle;">
+        <h2>{{Title.title}}</h2>
+        <p>{{Title.paragraph}}</p>
+    </div>
+    
+    <div class="partner-slides">
+        <owl-carousel-o [options]="customOptions">
+            <ng-template carouselSlide *ngFor="let Item of partnerItem;">
+                <div class="partner-item">
+                    <a href="{{Item.link}}" target="_blank"><img [src]="Item.img" alt="image"></a>
+                </div>
+            </ng-template>
+        </owl-carousel-o>
+    </div>
+</div>
+<!-- End Partner Area -->

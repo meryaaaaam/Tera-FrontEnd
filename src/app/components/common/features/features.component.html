@@ -1,0 +1,25 @@
+<!-- Start Features Area -->
+<section class="features-area ptb-100">
+    <div class="container">
+        <div class="section-title" *ngFor="let Title of sectionTitle;">
+            <h2>{{Title.title}}</h2>
+            <p>{{Title.paragraph}}</p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6" *ngFor="let Content of singleFeaturesBox;">
+                <div class="single-features-box">
+                    <div class="icon">
+                        <i class="{{Content.icon}}"></i>
+                    </div>
+                    <h3>{{Content.title}}</h3>
+                    <p>{{Content.paragraph}}</p>
+                    <a routerLink="/{{Content.link}}" class="link-btn">{{Content.linkText}}</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="divider"></div>
+</section>
+<!-- End Features Area -->

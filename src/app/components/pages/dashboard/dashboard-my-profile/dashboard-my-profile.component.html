@@ -1,0 +1,161 @@
+<app-dashboard-sidemenu></app-dashboard-sidemenu>
+
+<!-- Start Main Content Wrapper Area -->
+<div class="main-content d-flex flex-column">
+
+    <app-dashboard-navbar></app-dashboard-navbar>
+
+    <!-- Breadcrumb Area -->
+    <div class="breadcrumb-area" *ngFor="let Content of breadcrumb;">
+        <h1>{{Content.title}}</h1>
+        <ol class="breadcrumb">
+            <li class="item"><a routerLink="/">Home</a></li>
+            <li class="item"><a routerLink="dashboard">{{Content.subTitle}}</a></li>
+            <li class="item">{{Content.title}}</li>
+        </ol>
+    </div>
+    <!-- End Breadcrumb Area -->
+
+    <!-- Start -->
+    <div class="row">
+        <div class="col-lg-6 col-md-12">
+            <div class="my-profile-box">
+                <h3>Profile Details</h3>
+    
+                <form>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="form-group profile-box">
+                                <img src="assets/img/user1.jpg" alt="image">
+                                <div class="file-upload">
+                                    <input type="file" name="file" id="file" class="inputfile" />
+                                    <label for="file"><i class='bx bx-upload'></i> Upload Photo</label>
+                                </div>
+                            </div>
+                        </div>
+    
+                        <div class="col-lg-12 col-md-12">
+                            <div class="form-group">
+                                <label>Your Name</label>
+                                <input type="text" class="form-control" value="Andy Smith">
+                            </div>
+                        </div>
+                        
+                        <div class="col-xl-6 col-lg-12 col-md-12">
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" class="form-control" value="hello@andysmith.com">
+                            </div>
+                        </div>
+                        
+                        <div class="col-xl-6 col-lg-12 col-md-12">
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="text" class="form-control" value="+88 (123) 123456">
+                            </div>
+                        </div>
+                        
+                        <div class="col-xl-6 col-lg-12 col-md-12">
+                            <div class="form-group">
+                                <label>Address</label>
+                                <input type="text" class="form-control" value="Wonder Street, USA, New York">
+                            </div>
+                        </div>
+                        
+                        <div class="col-xl-6 col-lg-12 col-md-12">
+                            <div class="form-group">
+                                <label>Website</label>
+                                <input type="text" class="form-control" value="EnvyTheme.com">
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-12 col-md-12">
+                            <div class="form-group">
+                                <label>Bio</label>
+                                <textarea cols="30" rows="6" placeholder="Short description about you..." class="form-control"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-6 col-lg-12 col-md-12">
+                            <div class="form-group">
+                                <label>Facebook URL</label>
+                                <input type="text" class="form-control" placeholder="https://www.facebook.com/">
+                            </div>
+                        </div>
+                        
+                        <div class="col-xl-6 col-lg-12 col-md-12">
+                            <div class="form-group">
+                                <label>Twitter URL</label>
+                                <input type="text" class="form-control" placeholder="https://twitter.com/">
+                            </div>
+                        </div>
+                        
+                        <div class="col-xl-6 col-lg-12 col-md-12">
+                            <div class="form-group">
+                                <label>Linkedin URL</label>
+                                <input type="text" class="form-control" placeholder="https://www.linkedin.com/">
+                            </div>
+                        </div>
+                        
+                        <div class="col-xl-6 col-lg-12 col-md-12">
+                            <div class="form-group">
+                                <label>Instagram URL</label>
+                                <input type="text" class="form-control" placeholder="https://instagram.com/">
+                            </div>
+                        </div>
+    
+                        <div class="col-lg-12 col-md-12">
+                            <div class="form-group">
+                                <button type="submit">Save Change</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    
+        <div class="col-lg-6 col-md-12">
+            <div class="my-profile-box">
+                <h3>Change Password</h3>
+    
+                <form>
+                    <div class="row">
+                        <div class="col-lg-12 col-md-12">
+                            <div class="form-group">
+                                <label>Current Password</label>
+                                <input type="password" class="form-control" value="123456">
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-12 col-md-12">
+                            <div class="form-group">
+                                <label>New Password</label>
+                                <input type="password" class="form-control">
+                            </div>
+                        </div>
+                        
+                        <div class="col-lg-12 col-md-12">
+                            <div class="form-group">
+                                <label>Confirm New Password</label>
+                                <input type="password" class="form-control">
+                            </div>
+                        </div>
+    
+                        <div class="col-lg-12 col-md-12">
+                            <div class="form-group">
+                                <button type="submit">Change Password</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- End -->
+
+    <div class="flex-grow-1"></div>
+    
+    <app-copyrights></app-copyrights>
+
+</div>
+<!-- End Main Content Wrapper Area -->

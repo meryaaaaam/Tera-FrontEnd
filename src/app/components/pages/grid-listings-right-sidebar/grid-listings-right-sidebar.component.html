@@ -1,0 +1,253 @@
+<app-navbar-style-two></app-navbar-style-two>
+
+<!-- Start Page Title Area -->
+<div class="page-title-bg" *ngFor="let Content of pageTitleContent;">
+    <div class="container">
+        <h2>{{Content.title}}</h2>
+        <form>
+            <div class="row m-0 align-items-center">
+                <div class="col-lg-4 col-md-12 p-0">
+                    <div class="form-group">
+                        <label><i class="flaticon-search"></i></label>
+                        <input type="text" class="form-control" placeholder="What are you looking for?">
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 p-0">
+                    <div class="form-group">
+                        <label><i class="flaticon-pin"></i></label>
+                        <input type="text" class="form-control" placeholder="Location">
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 p-0">
+                    <div class="form-group category-select">
+                        <label><i class="flaticon-category"></i></label>
+                        <ngx-select-dropdown (searchChange)="searchChange($event)" name="category-select" tabindex="0" [multiple]="false" [(ngModel)]="singleSelect" [config]="config" [options]="options"></ngx-select-dropdown>
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-12 p-0">
+                    <div class="submit-btn">
+                        <button type="submit">Search Now</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- End Page Title Area -->
+
+<!-- Start Listings Area -->
+<section class="listings-area ptb-100">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <div class="listings-grid-sorting row align-items-center">
+                    <div class="col-lg-5 col-md-6 result-count">
+                        <p>We found <span class="count">9</span> listings available for you</p>
+                    </div>
+
+                    <div class="col-lg-7 col-md-6 ordering">
+                        <div class="d-flex justify-content-end">
+                            <div class="select-box">
+                                <label>Sort By:</label>
+                                <ngx-select-dropdown (searchChange)="searchChange($event)" name="ordering-select" tabindex="0" [multiple]="false" [(ngModel)]="singleSelect" [config]="config" [options]="options2"></ngx-select-dropdown>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-xl-6 col-lg-6 col-md-6" *ngFor="let Content of singleListingsBox | paginate: { itemsPerPage: 6, currentPage: gridListings }">
+                        <div class="single-listings-box">
+                            <div class="listings-image">
+                                <div class="listings-image-slides">
+                                    <owl-carousel-o [options]="customOptions">
+                                        <ng-template carouselSlide *ngFor="let Image of Content.mainImg;">
+                                            <div class="single-image">
+                                                <img [src]="Image.img" alt="image">
+                                                <a routerLink="/{{Content.detailsLink}}" class="link-btn"></a>
+                                            </div>
+                                        </ng-template>
+                                    </owl-carousel-o>
+                                </div>
+                                <a routerLink="/{{Content.bookmarkLink}}" class="bookmark-save"><i class="flaticon-heart"></i></a>
+                                <a routerLink="/{{Content.categoryLink}}" class="category"><i class="flaticon-cooking"></i></a>
+                            </div>
+                            <div class="listings-content">
+                                <div class="author">
+                                    <div class="d-flex align-items-center">
+                                        <img [src]="Content.authorImg" alt="image">
+                                        <span>{{Content.authorName}}</span>
+                                    </div>
+                                </div>
+                                <ul class="listings-meta">
+                                    <li><a routerLink="/{{Content.categoryLink}}"><i class="flaticon-furniture-and-household"></i> Restaurant</a></li>
+                                    <li><i class="flaticon-pin"></i> {{Content.location}}</li>
+                                </ul>
+                                <h3><a routerLink="/{{Content.detailsLink}}">{{Content.title}}</a></h3>
+                                <span class="status {{Content.extraClass}}"><i class="flaticon-save"></i> {{Content.openORclose}}</span>
+                                <div class="d-flex align-items-center justify-content-between">
+                                    <div class="rating">
+                                        <i class='{{Star.icon}}' *ngFor="let Star of Content.rating;"></i>
+                                        <span class="count">({{Content.ratingCount}})</span>
+                                    </div>
+                                    <div class="price">
+                                        {{Content.price}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-12 col-md-12">
+                        <div class="pagination-area text-center">
+                            <pagination-controls (pageChange)="gridListings = $event"></pagination-controls>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-4 col-md-12">
+                <aside class="listings-widget-area widget-right-sidebar">
+                    <section class="widget widget_filters">
+                        <h3 class="widget-title">Filters</h3>
+
+                        <ul>
+                            <li><button type="button">$</button></li>
+                            <li><button type="button">$$</button></li>
+                            <li><button type="button">$$$</button></li>
+                            <li><button type="button">$$$$</button></li>
+                        </ul>
+                    </section>
+
+                    <section class="widget widget_categories">
+                        <h3 class="widget-title">Categories</h3>
+
+                        <ul>
+                            <li>
+                                <input id="categories1" type="checkbox">
+                                <label for="categories1">Restaurant</label>
+                            </li>
+                            <li>
+                                <input id="categories2" type="checkbox">
+                                <label for="categories2">Hotel</label>
+                            </li>
+                            <li>
+                                <input id="categories3" type="checkbox">
+                                <label for="categories3">Beauty & Spa</label>
+                            </li>
+                            <li>
+                                <input id="categories4" type="checkbox">
+                                <label for="categories4">Fitness</label>
+                            </li>
+                            <li>
+                                <input id="categories5" type="checkbox">
+                                <label for="categories5">Shopping</label>
+                            </li>
+                            <li class="hide">
+                                <input id="categories6" type="checkbox">
+                                <label for="categories6">Hospital</label>
+                            </li>
+                            <li class="hide">
+                                <input id="categories7" type="checkbox">
+                                <label for="categories7">Events</label>
+                            </li>
+                            <li class="hide">
+                                <input id="categories8" type="checkbox">
+                                <label for="categories8">Clothing</label>
+                            </li>
+                            <li class="see-all-btn">
+                                <span>See All</span>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section class="widget widget_features">
+                        <h3 class="widget-title">Features</h3>
+
+                        <ul>
+                            <li>
+                                <input id="features1" type="checkbox">
+                                <label for="features1">Restaurant</label>
+                            </li>
+                            <li>
+                                <input id="features2" type="checkbox">
+                                <label for="features2">Hotel</label>
+                            </li>
+                            <li>
+                                <input id="features3" type="checkbox">
+                                <label for="features3">Beauty & Spa</label>
+                            </li>
+                            <li>
+                                <input id="features4" type="checkbox">
+                                <label for="features4">Fitness</label>
+                            </li>
+                            <li>
+                                <input id="features5" type="checkbox">
+                                <label for="features5">Shopping</label>
+                            </li>
+                            <li class="hide">
+                                <input id="features6" type="checkbox">
+                                <label for="features6">Hospital</label>
+                            </li>
+                            <li class="hide">
+                                <input id="features7" type="checkbox">
+                                <label for="features7">Events</label>
+                            </li>
+                            <li class="hide">
+                                <input id="features8" type="checkbox">
+                                <label for="features8">Clothing</label>
+                            </li>
+                            <li class="see-all-btn">
+                                <span>See All</span>
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section class="widget widget_distance">
+                        <h3 class="widget-title">Distance</h3>
+
+                        <ul>
+                            <li>
+                                <input id="distance1" type="checkbox">
+                                <label for="distance1">Driving (5 mi.)</label>
+                            </li>
+                            <li>
+                                <input id="distance2" type="checkbox">
+                                <label for="distance2">Walking (1 mi.)</label>
+                            </li>
+                            <li>
+                                <input id="distance3" type="checkbox">
+                                <label for="distance3">Biking (2 mi.)</label>
+                            </li>
+                            <li>
+                                <input id="distance4" type="checkbox">
+                                <label for="distance4">Within 4 blocks</label>
+                            </li>
+                            <li>
+                                <input id="distance5" type="checkbox">
+                                <label for="distance5">Bicycle (6 mi.)</label>
+                            </li>
+                            <li class="hide">
+                                <input id="distance6" type="checkbox">
+                                <label for="distance6">Driving (10 mi.)</label>
+                            </li>
+                            <li class="hide">
+                                <input id="distance7" type="checkbox">
+                                <label for="distance7">Walking (11 mi.)</label>
+                            </li>
+                            <li class="see-all-btn">
+                                <span>See All</span>
+                            </li>
+                        </ul>
+                    </section>
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Listings Area -->
+
+<app-footer-style-two></app-footer-style-two>

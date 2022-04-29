@@ -1,0 +1,84 @@
+<app-dashboard-sidemenu></app-dashboard-sidemenu>
+
+<!-- Start Main Content Wrapper Area -->
+<div class="main-content d-flex flex-column">
+
+    <app-dashboard-navbar></app-dashboard-navbar>
+
+    <!-- Breadcrumb Area -->
+    <div class="breadcrumb-area" *ngFor="let Content of breadcrumb;">
+        <h1>{{Content.title}}</h1>
+        <ol class="breadcrumb">
+            <li class="item"><a routerLink="/">Home</a></li>
+            <li class="item"><a routerLink="dashboard">{{Content.subTitle}}</a></li>
+            <li class="item">{{Content.title}}</li>
+        </ol>
+    </div>
+    <!-- End Breadcrumb Area -->
+
+    <!-- Start -->
+    <section class="listing-area">
+        <div class="row">
+            <div class="col-xl-4 col-lg-6 col-md-6" *ngFor="let Content of singleListingsBox | paginate: { itemsPerPage: 6, currentPage: gridListings }">
+                <div class="single-listings-box">
+                    <div class="listings-image">
+                        <div class="listings-image-slides">
+                            <owl-carousel-o [options]="customOptions">
+                                <ng-template carouselSlide *ngFor="let Image of Content.mainImg;">
+                                    <div class="single-image">
+                                        <img [src]="Image.img" alt="image">
+                                        <a routerLink="/{{Content.detailsLink}}" class="link-btn"></a>
+                                    </div>
+                                </ng-template>
+                            </owl-carousel-o>
+                        </div>
+                        <a routerLink="/{{Content.bookmarkLink}}" class="bookmark-save"><i class="flaticon-heart"></i></a>
+                        <a routerLink="/{{Content.categoryLink}}" class="category"><i class="flaticon-cooking"></i></a>
+                    </div>
+                    <div class="listings-content">
+                        <div class="author">
+                            <div class="d-flex align-items-center">
+                                <img [src]="Content.authorImg" alt="image">
+                                <span>{{Content.authorName}}</span>
+                            </div>
+                        </div>
+                        <ul class="listings-meta">
+                            <li><a routerLink="/{{Content.categoryLink}}"><i class="flaticon-furniture-and-household"></i> Restaurant</a></li>
+                            <li><i class="flaticon-pin"></i> {{Content.location}}</li>
+                        </ul>
+                        <h3><a routerLink="/{{Content.detailsLink}}">{{Content.title}}</a></h3>
+                        <span class="status {{Content.extraClass}}"><i class="flaticon-save"></i> {{Content.openORclose}}</span>
+                        <div class="d-flex align-items-center justify-content-between">
+                            <div class="rating">
+                                <i class='{{Star.icon}}' *ngFor="let Star of Content.rating;"></i>
+                                <span class="count">({{Content.ratingCount}})</span>
+                            </div>
+                            <div class="price">
+                                {{Content.price}}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="listings-footer">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <a routerLink="/" class="default-btn">Edit</a>
+                            <a routerLink="/" class="default-btn">Delete</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-12 col-lg-12 col-md-12">
+                <div class="pagination-area text-center">
+                    <pagination-controls (pageChange)="gridListings = $event"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End -->
+
+    <div class="flex-grow-1"></div>
+    
+    <app-copyrights></app-copyrights>
+
+</div>
+<!-- End Main Content Wrapper Area -->

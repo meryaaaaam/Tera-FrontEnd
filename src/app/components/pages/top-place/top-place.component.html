@@ -1,0 +1,19 @@
+<app-navbar-style-one></app-navbar-style-one>
+
+<!-- Start Page Title Area -->
+<div class="page-title-area" *ngFor="let Content of pageTitleContent;" style="background-image: url({{Content.backgroundImage}});">
+    <div class="container">
+        <div class="page-title-content">
+            <h2>{{Content.title}}</h2>
+            <ul>
+                <li><a routerLink="/">Home</a></li>
+                <li>{{Content.title}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- End Page Title Area -->
+
+<app-hometwo-destinations></app-hometwo-destinations>
+
+<app-footer-style-two></app-footer-style-two>

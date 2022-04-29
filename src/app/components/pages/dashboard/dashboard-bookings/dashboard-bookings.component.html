@@ -1,0 +1,74 @@
+<app-dashboard-sidemenu></app-dashboard-sidemenu>
+
+<!-- Start Main Content Wrapper Area -->
+<div class="main-content d-flex flex-column">
+
+    <app-dashboard-navbar></app-dashboard-navbar>
+
+    <!-- Breadcrumb Area -->
+    <div class="breadcrumb-area" *ngFor="let Content of breadcrumb;">
+        <h1>{{Content.title}}</h1>
+        <ol class="breadcrumb">
+            <li class="item"><a routerLink="/">Home</a></li>
+            <li class="item"><a routerLink="dashboard">{{Content.subTitle}}</a></li>
+            <li class="item">{{Content.title}}</li>
+        </ol>
+    </div>
+    <!-- End Breadcrumb Area -->
+
+    <!-- Start -->
+    <div class="bookings-listings-box">
+        <h3>Booking Requests</h3>
+    
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Customer</th>
+                        <th>Details</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let Content of bookingsListingsBox;">
+                        <td class="name">
+                            <img [src]="Content.customerImg" alt="image">
+                            <div class="info">
+                                <span>{{Content.customerName}}</span>
+                                <ul>
+                                    <li><a href="tel:{{Content.customerNumber}}">{{Content.customerNumber}}</a></li>
+                                    <li><a href="mailto:{{Content.customerEmail}}">{{Content.customerEmail}}</a></li>
+                                </ul>
+                                <a href="mailto:{{Content.customerEmail}}" class="default-btn"><i class='bx bx-envelope'></i> Send Message</a>
+                            </div>
+                        </td>
+
+                        <td class="details">
+                            <h4>{{Content.title}} <span class="bookings-status {{Content.pendingApprovedCanceled}}">{{Content.bookingsStatus}}</span></h4>
+
+                            <ul>
+                                <li *ngFor="let Info of Content.bookingsInfo">
+                                    <i class='{{Info.icon}}'></i> 
+                                    <span>{{Info.title}}:</span>
+                                    {{Info.text}}
+                                </li>
+                            </ul>
+                        </td>
+
+                        <td class="action">
+                            <a href="#" class="default-btn"><i class='bx bx-check-circle'></i> Approve</a>
+                            <a href="#" class="default-btn danger"><i class='bx bx-x-circle'></i> Reject</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- End -->
+
+    <div class="flex-grow-1"></div>
+    
+    <app-copyrights></app-copyrights>
+
+</div>
+<!-- End Main Content Wrapper Area -->

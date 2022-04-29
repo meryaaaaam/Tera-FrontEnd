@@ -1,0 +1,111 @@
+<app-dashboard-sidemenu></app-dashboard-sidemenu>
+
+<!-- Start Main Content Wrapper Area -->
+<div class="main-content d-flex flex-column">
+
+    <app-dashboard-navbar></app-dashboard-navbar>
+
+    <!-- Breadcrumb Area -->
+    <div class="breadcrumb-area" *ngFor="let Content of breadcrumb;">
+        <h1>{{Content.title}}</h1>
+        <ol class="breadcrumb">
+            <li class="item"><a routerLink="/dashboard">Home</a></li>
+            <li class="item">{{Content.subTitle}}</li>
+        </ol>
+    </div>
+    <!-- End Breadcrumb Area -->
+
+    <!-- Start -->
+    <div class="notification-alert alert alert-success alert-dismissible fade show" role="alert">
+        Your listing <strong>Hills Hotel</strong> has been approved!
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <!-- End -->
+
+    <!-- Start -->
+    <app-stats></app-stats>
+    <!-- End -->
+    
+    <!-- Start -->
+    <div class="row">
+        <div class="col-lg-6 col-md-12">
+            <app-recent-activities></app-recent-activities>
+        </div>
+
+        <div class="col-lg-6 col-md-12">
+            <div class="invoices-box">
+                <h3>Invoices</h3>
+
+                <ul>
+                    <li>
+                        <div class="icon">
+                            <i class='bx bx-file-blank'></i>
+                        </div>
+                        <ul>
+                            <li class="paid">Paid</li>
+                            <li>Order: #181815</li>
+                            <li>Date: 14/08/2020</li>
+                        </ul>
+                        <span>Premium Plan</span>
+                        <a href="dashboard-invoice.html" class="default-btn">View Invoice</a>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <i class='bx bx-file-blank'></i>
+                        </div>
+                        <ul>
+                            <li class="unpaid">Unpaid</li>
+                            <li>Order: #181814</li>
+                            <li>Date: 13/08/2020</li>
+                        </ul>
+                        <span>Advance Plan</span>
+                        <a href="dashboard-invoice.html" class="default-btn">View Invoice</a>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <i class='bx bx-file-blank'></i>
+                        </div>
+                        <ul>
+                            <li class="paid">Paid</li>
+                            <li>Order: #181813</li>
+                            <li>Date: 12/08/2020</li>
+                        </ul>
+                        <span>Starter Plan</span>
+                        <a href="#" class="default-btn">View Invoice</a>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <i class='bx bx-file-blank'></i>
+                        </div>
+                        <ul>
+                            <li class="unpaid">Unpaid</li>
+                            <li>Order: #181812</li>
+                            <li>Date: 11/08/2020</li>
+                        </ul>
+                        <span>Basic Plan</span>
+                        <a href="dashboard-invoice.html" class="default-btn">View Invoice</a>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <i class='bx bx-file-blank'></i>
+                        </div>
+                        <ul>
+                            <li class="paid">Paid</li>
+                            <li>Order: #181815</li>
+                            <li>Date: 14/08/2020</li>
+                        </ul>
+                        <span>Premium Plan</span>
+                        <a href="dashboard-invoice.html" class="default-btn">View Invoice</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <!-- End -->
+
+    <div class="flex-grow-1"></div>
+    
+    <app-copyrights></app-copyrights>
+
+</div>
+<!-- End Main Content Wrapper Area -->

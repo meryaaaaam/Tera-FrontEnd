@@ -1,0 +1,35 @@
+<!-- Start Blog Area -->
+<section class="blog-area pt-100 pb-70">
+    <div class="container">
+        <div class="section-title" *ngFor="let Title of sectionTitle;">
+            <h2>{{Title.title}}</h2>
+            <p>{{Title.paragraph}}</p>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4 col-md-6" *ngFor="let Content of singleBlogPost;">
+                <div class="single-blog-post">
+                    <div class="post-image">
+                        <a routerLink="/{{Content.link}}" class="d-block">
+                            <img [src]="Content.mainImg" alt="image">
+                        </a>
+                    </div>
+                    <div class="post-content">
+                        <ul class="post-meta d-flex align-items-center">
+                            <li>
+                                <div class="d-flex align-items-center">
+                                    <img [src]="Content.authorImg" alt="image">
+                                    <span>{{Content.authorName}}</span>
+                                </div>
+                            </li>
+                            <li><i class="flaticon-calendar"></i> {{Content.date}}</li>
+                        </ul>
+                        <h3><a routerLink="/{{Content.link}}">{{Content.title}}</a></h3>
+                        <a routerLink="/{{Content.link}}" class="link-btn"><i class="flaticon-right-arrow"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Blog Area -->

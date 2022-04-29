@@ -1,0 +1,173 @@
+.recent-activities-box {
+    margin-bottom: 30px;
+    background-color: var(--whiteColor);
+    box-shadow: 1px 5px 24px 0 rgba(68, 102, 242, .05);
+    border-radius: 5px;
+
+    h3 {
+        margin-bottom: 0;
+        padding: 20px 25px 19px;
+        border-bottom: 1px dashed #eeeeee;
+        font: {
+            size: 17px;
+            weight: 600;
+        };
+    }
+    ul {
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style-type: none;
+
+        li {
+            border: none;
+            margin-bottom: 0;
+            border-bottom: 1px dashed #eeeeee;
+            border-radius: 0;
+            transition: var(--transition);
+            color: var(--optionalColor);
+            position: relative;
+            padding: {
+                left: 75px;
+                right: 45px;
+                top: 25px;
+                bottom: 25px;
+            };
+            .icon {
+                height: 40px;
+                width: 40px;
+                color: #777777;
+                text-align: center;
+                line-height: 44px;
+                border-radius: 50%;
+                transition: var(--transition);
+                background-color: #eeeeee;
+                position: absolute;
+                font-size: 20px;
+                top: 50%;
+                transform: translateY(-50%);
+                left: 25px;
+            }
+            strong {
+                font-weight: 600;
+                color: var(--blackColor);
+            }
+            &:last-child {
+                border-bottom: none;
+            }
+            .close {
+                padding: 0;
+                top: 50%;
+                right: 20px;
+                transform: translateY(-50%);
+                color: red;
+                transition: var(--transition);
+                opacity: 0;
+                visibility: hidden;
+            }
+            .rating {
+                color: var(--whiteColor);
+                background-color: var(--mainColor);
+                text-align: center;
+                line-height: 25px;
+                height: 25px;
+                width: 45px;
+                display: inline-block;
+                margin: 0;
+                position: relative;
+                border-radius: 30px;
+                font: {
+                    size: 14px;
+                    weight: 600;
+                };
+                &:before {
+                    content: attr(data-rating);
+                }
+                &.high {
+                    background-color: #64bc36;
+                }
+                &.mid {
+                    background-color: var(--mainColor);
+                }
+                &.low {
+                    background-color: red;
+                }
+            }
+            &:hover {
+                background-color: #f9f9f9;
+
+                .icon {
+                    background-color: var(--mainColor);
+                    color: var(--whiteColor);
+                }
+                .close {
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+        }
+    }
+}
+
+/* Max width 767px */
+@media only screen and (max-width: 767px) {
+
+    .recent-activities-box {
+        h3 {
+            padding: 15px 20px;
+        }
+        ul {
+            li {
+                padding: {
+                    top: 20px;
+                    bottom: 20px;
+                    left: 65px;
+                    right: 40px;
+                };
+                .icon {
+                    left: 20px;
+                    line-height: 36px;
+                    width: 35px;
+                    font-size: 16px;
+                    height: 35px;
+                }
+                .close {
+                    right: 15px;
+                    opacity: 1;
+                    visibility: visible;
+                    font-size: 15px;
+                }
+            }
+        }
+    }
+
+}
+/* Min width 576px to Max width 767px */
+@media only screen and (min-width: 576px) and (max-width: 767px) {
+
+
+
+}
+/* Min width 768px to Max width 991px */
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+
+
+
+}
+/* Min width 992px to Max width 1199px */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+
+    
+
+}
+/* Min width 1200px to Max width 1355px */
+@media only screen and (min-width: 1200px) and (max-width: 1355px) {
+
+
+
+}
+/* Min width 1550px */
+@media only screen and (min-width: 1550px) {
+
+    
+
+}

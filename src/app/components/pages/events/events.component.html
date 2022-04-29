@@ -1,0 +1,58 @@
+<app-navbar-style-one></app-navbar-style-one>
+
+<!-- Start Page Title Area -->
+<div class="page-title-area" *ngFor="let Content of pageTitleContent;" style="background-image: url({{Content.backgroundImage}});">
+    <div class="container">
+        <div class="page-title-content">
+            <h2>{{Content.title}}</h2>
+            <ul>
+                <li><a routerLink="/">Home</a></li>
+                <li>{{Content.title}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- End Page Title Area -->
+
+<!-- Start Events Area -->
+<section class="events-area bg-f9f9f9 pt-100 pb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <div class="events-box" *ngFor="let Content of eventsBox;">
+                    <img [src]="Content.img" alt="image">
+                    <div class="content">
+                        <h3>{{Content.title}}</h3>
+                        <span class="meta"><i class="flaticon-calendar"></i> {{Content.date}}</span>
+                    </div>
+                    <a routerLink="/{{Content.link}}" class="link-btn"></a>
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-12">
+                <div class="events-item-list">
+                    <div class="single-events-box" *ngFor="let Content of singleEventsBox;">
+                        <div class="row m-0">
+                            <div class="col-lg-4 col-md-4 p-0">
+                                <div class="image" style="background-image: url({{Content.img}});">
+                                    <img [src]="Content.img" alt="image">
+                                    <a routerLink="/{{Content.link}}" class="link-btn"></a>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-8 col-md-8 p-0">
+                                <div class="content">
+                                    <span class="meta"><i class="flaticon-calendar"></i> {{Content.date}}</span>
+                                    <h3><a routerLink="/{{Content.link}}">{{Content.title}}</a></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Events Area -->
+
+<app-footer-style-one></app-footer-style-one>

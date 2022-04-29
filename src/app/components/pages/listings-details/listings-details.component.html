@@ -1,0 +1,537 @@
+<app-navbar-style-two></app-navbar-style-two>
+
+<!-- Start Listings Details Area -->
+<section class="listings-details-area pb-70">
+    <div class="listings-details-image">
+        <img src="assets/img/listings-details.jpg" alt="image">
+        <div class="container">
+            <div class="container">
+                <div class="listings-details-content">
+                    <span class="meta"><i class="flaticon-furniture-and-household"></i> Restaurant</span>
+                    <h3>Chipotle Mexican Grill</h3>
+                    <div class="rating d-flex align-items-center">
+                        <span class="bx bxs-star checked"></span>
+                        <span class="bx bxs-star checked"></span>
+                        <span class="bx bxs-star checked"></span>
+                        <span class="bx bxs-star checked"></span>
+                        <span class="bx bxs-star checked"></span>
+                        <span class="rating-count">(45)</span>
+                    </div>
+                    <ul class="d-flex align-items-center">
+                        <li class="phone-number">
+                            <a href="#"><i class='bx bx-phone-call'></i> (+212) 279-1456</a>
+                        </li>
+                        <li class="time">
+                            <i class='bx bx-time-five'></i>
+                            <span>Currently Open</span>
+                            08:00 AM - 10:00 PM
+                        </li>
+                        <li class="location">
+                            <i class='bx bx-map'></i>
+                            <span>Location</span>
+                            New York, USA
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <ul class="share-save">
+                <li>
+                    <div class="share">
+                        <i class='bx bx-share-alt'></i> Share
+                    </div>
+                    <div class="social">
+                        <a href="#" target="_blank"><i class='bx bxl-facebook'></i></a>
+                        <a href="#" target="_blank"><i class='bx bxl-pinterest'></i></a>
+                        <a href="#" target="_blank"><i class='bx bxl-twitter'></i></a>
+                        <a href="#" target="_blank"><i class='bx bxl-linkedin'></i></a>
+                        <a href="#" target="_blank"><i class='bx bxl-whatsapp'></i></a>
+                    </div>
+                </li>
+                <li><a routerLink="/single-listings"><i class='bx bx-heart'></i> Save</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="listings-details-nav">
+        <div class="container">
+            <ul class="nav nav-tabs">
+                <li class="nav-item"><a class="nav-link active" href="#overview">Overview</a></li>
+                <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+                <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
+                <li class="nav-item"><a class="nav-link" href="#review">Review</a></li>
+                <li class="nav-item"><a class="nav-link" href="#add-review">Add Review</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-md-12">
+                <div class="listings-details-desc">
+                    <h3>Details</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet, consectetur.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida.</p>
+                    <h3>Amenities</h3>
+                    <ul class="amenities-list">
+                        <li><span><i class='bx bx-check'></i> Parking Street</span></li>
+                        <li><span><i class='bx bx-check'></i> Vegan Options</span></li>
+                        <li><span><i class='bx bx-check'></i> Kids Activities Nearby</span></li>
+                        <li><span><i class='bx bx-check'></i> Accepts Apple Pay</span></li>
+                        <li><span><i class='bx bx-check'></i> Accepts Google Pay</span></li>
+                        <li><span><i class='bx bx-check'></i> Wheelchair Accessible</span></li>
+                        <li><span><i class='bx bx-check'></i> Takes Reservations</span></li>
+                        <li><span><i class='bx bx-check'></i> Offers Takeout</span></li>
+                        <li><span><i class='bx bx-check'></i> Bike Parking</span></li>
+                        <li><span><i class='bx bx-check'></i> Good for Kids</span></li>
+                        <li><span><i class='bx bx-check'></i> Accepts Cryptocurrency</span></li>
+                        <li><span><i class='bx bx-check'></i> Accepts Credit Cards</span></li>
+                    </ul>
+                    <h3>Gallery</h3>
+                    <div id="gallery">
+                        <div class="gallery-slides">
+                            <owl-carousel-o [options]="galleryOptions">
+                                <ng-template carouselSlide *ngFor="let Image of singleImageBox;">
+                                    <div class="single-image-box">
+                                        <img [src]="Image.img" alt="image">
+                                    </div>
+                                </ng-template>
+                            </owl-carousel-o>
+                        </div>
+                    </div>
+                    <h3>Pricing</h3>
+                    <div id="pricing">
+                        <ul class="pricing-list">
+                            <li>Pizza <span>$15</span></li>
+                            <li>Burger <span>$10</span></li>
+                            <li>Cool Drink <span>$12</span></li>
+                            <li>Fried Rice <span>$08</span></li>
+                            <li>Orange Juice <span>$05</span></li>
+                        </ul>
+                    </div>
+                    <h3>Review</h3>
+                    <div class="listings-review">
+                        <div class="rating d-flex align-items-center">
+                            <span class="bx bxs-star checked"></span>
+                            <span class="bx bxs-star checked"></span>
+                            <span class="bx bxs-star checked"></span>
+                            <span class="bx bxs-star checked"></span>
+                            <span class="bx bxs-star checked"></span>
+
+                            <span class="overall-rating">5.0</span>
+                            <span class="rating-count">(5 reviews)</span>
+                        </div>
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="row m-0">
+                                    <div class="side">
+                                        <div>Cleanliness</div>
+                                    </div>
+                                    <div class="middle">
+                                        <div class="bar-container">
+                                            <div class="bar-4"></div>
+                                        </div>
+                                    </div>
+                                    <div class="side right">
+                                        <div>4.0</div>
+                                    </div>
+
+                                    <div class="side">
+                                        <div>Accuracy</div>
+                                    </div>
+                                    <div class="middle">
+                                        <div class="bar-container">
+                                            <div class="bar-5"></div>
+                                        </div>
+                                    </div>
+                                    <div class="side right">
+                                        <div>5.0</div>
+                                    </div>
+
+                                    <div class="side">
+                                        <div>Location</div>
+                                    </div>
+                                    <div class="middle">
+                                        <div class="bar-container">
+                                            <div class="bar-5"></div>
+                                        </div>
+                                    </div>
+                                    <div class="side right">
+                                        <div>5.0</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <div class="row m-0">
+                                    <div class="side">
+                                        <div>Check-in</div>
+                                    </div>
+                                    <div class="middle">
+                                        <div class="bar-container">
+                                            <div class="bar-4"></div>
+                                        </div>
+                                    </div>
+                                    <div class="side right">
+                                        <div>4.0</div>
+                                    </div>
+
+                                    <div class="side">
+                                        <div>Communication</div>
+                                    </div>
+                                    <div class="middle">
+                                        <div class="bar-container">
+                                            <div class="bar-5"></div>
+                                        </div>
+                                    </div>
+                                    <div class="side right">
+                                        <div>5.0</div>
+                                    </div>
+
+                                    <div class="side">
+                                        <div>Value</div>
+                                    </div>
+                                    <div class="middle">
+                                        <div class="bar-container">
+                                            <div class="bar-5"></div>
+                                        </div>
+                                    </div>
+                                    <div class="side right">
+                                        <div>5.0</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="write-a-review">
+                        <h4>Tell people what you think.</h4>
+                        <p>Help others by sharing your experience with this business.</p>
+                        <a routerLink="/single-listings" class="default-btn">Write A Review</a>
+                    </div>
+                    <div id="review">
+                        <div class="listings-review-comments">
+                            <div class="user-review">
+                                <div class="row m-0">
+                                    <div class="col-lg-4 col-md-4 p-0">
+                                        <div class="user">
+                                            <div class="d-flex">
+                                                <img src="assets/img/user1.jpg" alt="image">
+                                                <div class="title">
+                                                    <h4>James Andy</h4>
+                                                    <span>New York, USA</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 p-0">
+                                        <div class="comments">
+                                            <div class="rating">
+                                                <span class="bx bxs-star checked"></span>
+                                                <span class="bx bxs-star checked"></span>
+                                                <span class="bx bxs-star checked"></span>
+                                                <span class="bx bxs-star checked"></span>
+                                                <span class="bx bxs-star checked"></span>
+                                            </div>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo maecenas accumsan lacus vel facilisis.</p>
+                                            <div class="row m-0">
+                                                <div class="col-lg-8 col-md-8 col-8 col-sm-8 p-0">
+                                                    <ul class="like-unlike">
+                                                        <li><a routerLink="/single-listings">Like</a></li>
+                                                        <li><a routerLink="/single-listings">Unlike</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-4 col-sm-4 p-0 text-right">
+                                                    <a routerLink="/single-listings">Comment</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="user-review">
+                                <div class="row m-0">
+                                    <div class="col-lg-4 col-md-4 p-0">
+                                        <div class="user">
+                                            <div class="d-flex">
+                                                <img src="assets/img/user2.jpg" alt="image">
+                                                <div class="title">
+                                                    <h4>Sarah Taylor</h4>
+                                                    <span>New York, USA</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 p-0">
+                                        <div class="comments">
+                                            <div class="rating">
+                                                <span class="bx bxs-star checked"></span>
+                                                <span class="bx bxs-star checked"></span>
+                                                <span class="bx bxs-star checked"></span>
+                                                <span class="bx bxs-star checked"></span>
+                                                <span class="bx bxs-star checked"></span>
+                                            </div>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo maecenas accumsan lacus vel facilisis.</p>
+                                            <div class="row m-0">
+                                                <div class="col-lg-8 col-md-8 col-8 col-sm-8 p-0">
+                                                    <ul class="like-unlike">
+                                                        <li><a routerLink="/single-listings">Like</a></li>
+                                                        <li><a routerLink="/single-listings">Unlike</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-4 col-sm-4 p-0 text-right">
+                                                    <a routerLink="/single-listings">Comment</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="user-review">
+                                <div class="row m-0">
+                                    <div class="col-lg-4 col-md-4 p-0">
+                                        <div class="user">
+                                            <div class="d-flex">
+                                                <img src="assets/img/user3.jpg" alt="image">
+                                                <div class="title">
+                                                    <h4>Jason Smith</h4>
+                                                    <span>New York, USA</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-8 col-md-8 p-0">
+                                        <div class="comments">
+                                            <div class="rating">
+                                                <span class="bx bxs-star checked"></span>
+                                                <span class="bx bxs-star checked"></span>
+                                                <span class="bx bxs-star checked"></span>
+                                                <span class="bx bxs-star checked"></span>
+                                                <span class="bx bxs-star checked"></span>
+                                            </div>
+                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo maecenas accumsan lacus vel facilisis.</p>
+                                            <div class="row m-0">
+                                                <div class="col-lg-8 col-md-8 col-8 col-sm-8 p-0">
+                                                    <ul class="like-unlike">
+                                                        <li><a routerLink="/single-listings">Like</a></li>
+                                                        <li><a routerLink="/single-listings">Unlike</a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-4 col-sm-4 p-0 text-right">
+                                                    <a routerLink="/single-listings">Comment</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="add-review">
+                        <div class="review-form-wrapper">
+                            <h3>Add A Review</h3>
+                            <p class="comment-notes">Your email address will not be published. Required fields are marked <span>*</span></p>
+                            <form>
+                                <div class="row">
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="sub-ratings">
+                                            <div class="row">
+                                                <div class="col-lg-4 col-md-4 col-6 col-sm-6">
+                                                    <div class="add-sub-rating">
+                                                        <h4>Cleanliness</h4>
+                                                        <div class="cleanliness-rating">
+                                                            <input type="radio" id="cleanlinessStar5" name="cleanliness-rating" value="5" /><label for="cleanlinessStar5"></label>
+                                                            <input type="radio" id="cleanlinessStar4" name="cleanliness-rating" value="4" /><label for="cleanlinessStar4"></label>
+                                                            <input type="radio" id="cleanlinessStar3" name="cleanliness-rating" value="3" /><label for="cleanlinessStar3"></label>
+                                                            <input type="radio" id="cleanlinessStar2" name="cleanliness-rating" value="2" /><label for="cleanlinessStar2"></label>
+                                                            <input type="radio" id="cleanlinessStar1" name="cleanliness-rating" value="1" /><label for="cleanlinessStar1"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-6 col-sm-6">
+                                                    <div class="add-sub-rating">
+                                                        <h4>Accuracy</h4>
+                                                        <div class="accuracy-rating">
+                                                            <input type="radio" id="accuracyStar5" name="accuracy-rating" value="5" /><label for="accuracyStar5"></label>
+                                                            <input type="radio" id="accuracyStar4" name="accuracy-rating" value="4" /><label for="accuracyStar4"></label>
+                                                            <input type="radio" id="accuracyStar3" name="accuracy-rating" value="3" /><label for="accuracyStar3"></label>
+                                                            <input type="radio" id="accuracyStar2" name="accuracy-rating" value="2" /><label for="accuracyStar2"></label>
+                                                            <input type="radio" id="accuracyStar1" name="accuracy-rating" value="1" /><label for="accuracyStar1"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-6 col-sm-6">
+                                                    <div class="add-sub-rating">
+                                                        <h4>Location</h4>
+                                                        <div class="location-rating">
+                                                            <input type="radio" id="locationStar5" name="location-rating" value="5" /><label for="locationStar5"></label>
+                                                            <input type="radio" id="locationStar4" name="location-rating" value="4" /><label for="locationStar4"></label>
+                                                            <input type="radio" id="locationStar3" name="location-rating" value="3" /><label for="locationStar3"></label>
+                                                            <input type="radio" id="locationStar2" name="location-rating" value="2" /><label for="locationStar2"></label>
+                                                            <input type="radio" id="locationStar1" name="location-rating" value="1" /><label for="locationStar1"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-6 col-sm-6">
+                                                    <div class="add-sub-rating">
+                                                        <h4>Check-in</h4>
+                                                        <div class="checkin-rating">
+                                                            <input type="radio" id="checkInStar5" name="rating" value="5" /><label for="checkInStar5"></label>
+                                                            <input type="radio" id="checkInStar4" name="rating" value="4" /><label for="checkInStar4"></label>
+                                                            <input type="radio" id="checkInStar3" name="rating" value="3" /><label for="checkInStar3"></label>
+                                                            <input type="radio" id="checkInStar2" name="rating" value="2" /><label for="checkInStar2"></label>
+                                                            <input type="radio" id="checkInStar1" name="rating" value="1" /><label for="checkInStar1"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-6 col-sm-6">
+                                                    <div class="add-sub-rating">
+                                                        <h4>Communication</h4>
+                                                        <div class="communication-rating">
+                                                            <input type="radio" id="communicationStar5" name="communication-rating" value="5" /><label for="communicationStar5"></label>
+                                                            <input type="radio" id="communicationStar4" name="communication-rating" value="4" /><label for="communicationStar4"></label>
+                                                            <input type="radio" id="communicationStar3" name="communication-rating" value="3" /><label for="communicationStar3"></label>
+                                                            <input type="radio" id="communicationStar2" name="communication-rating" value="2" /><label for="communicationStar2"></label>
+                                                            <input type="radio" id="communicationStar1" name="communication-rating" value="1" /><label for="communicationStar1"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-lg-4 col-md-4 col-6 col-sm-6">
+                                                    <div class="add-sub-rating">
+                                                        <h4>Value</h4>
+                                                        <div class="value-rating">
+                                                            <input type="radio" id="valueStar5" name="value-rating" value="5" /><label for="valueStar5"></label>
+                                                            <input type="radio" id="valueStar4" name="value-rating" value="4" /><label for="valueStar4"></label>
+                                                            <input type="radio" id="valueStar3" name="value-rating" value="3" /><label for="valueStar3"></label>
+                                                            <input type="radio" id="valueStar2" name="value-rating" value="2" /><label for="valueStar2"></label>
+                                                            <input type="radio" id="valueStar1" name="value-rating" value="1" /><label for="valueStar1"></label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="text" class="form-control" placeholder="Name *">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="Email *">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <div class="form-group">
+                                            <textarea placeholder="Your review" class="form-control" cols="30" rows="6"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <p class="comment-form-cookies-consent">
+                                            <input type="checkbox" id="test1">
+                                            <label for="test1">Save my name, email, and website in this browser for the next time I comment.</label>
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12">
+                                        <button type="submit">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <h3>Other Nearby Services</h3>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6" *ngFor="let Content of singleListingsBox;">
+                            <div class="single-listings-box">
+                                <div class="listings-image">
+                                    <div class="listings-image-slides">
+                                        <owl-carousel-o [options]="customOptions">
+                                            <ng-template carouselSlide *ngFor="let Image of Content.mainImg;">
+                                                <div class="single-image">
+                                                    <img [src]="Image.img" alt="image">
+                                                    <a routerLink="/{{Content.detailsLink}}" class="link-btn"></a>
+                                                </div>
+                                            </ng-template>
+                                        </owl-carousel-o>
+                                    </div>
+                                    <a routerLink="/{{Content.bookmarkLink}}" class="bookmark-save"><i class="flaticon-heart"></i></a>
+                                    <a routerLink="/{{Content.categoryLink}}" class="category"><i class="flaticon-cooking"></i></a>
+                                </div>
+                                <div class="listings-content">
+                                    <div class="author">
+                                        <div class="d-flex align-items-center">
+                                            <img [src]="Content.authorImg" alt="image">
+                                            <span>{{Content.authorName}}</span>
+                                        </div>
+                                    </div>
+                                    <ul class="listings-meta">
+                                        <li><a routerLink="/{{Content.categoryLink}}"><i class="flaticon-furniture-and-household"></i> Restaurant</a></li>
+                                        <li><i class="flaticon-pin"></i> {{Content.location}}</li>
+                                    </ul>
+                                    <h3><a routerLink="/{{Content.detailsLink}}">{{Content.title}}</a></h3>
+                                    <span class="status {{Content.extraClass}}"><i class="flaticon-save"></i> {{Content.openORclose}}</span>
+                                    <div class="d-flex align-items-center justify-content-between">
+                                        <div class="rating">
+                                            <i class='{{Star.icon}}' *ngFor="let Star of Content.rating;"></i>
+                                            <span class="count">({{Content.ratingCount}})</span>
+                                        </div>
+                                        <div class="price">
+                                            {{Content.price}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12">
+                <div class="listings-sidebar">
+                    <div class="listings-widget book_listings">
+                        <h3>Booking Online</h3>
+                        <a routerLink="/" class="default-btn">Book Now</a>
+                        <span>By <a href="#" target="_blank">Booking.com</a></span>
+                    </div>
+                    <div class="listings-widget listings_contact_details">
+                        <h3>Contact Details</h3>
+                        <ul>
+                            <li><i class='bx bx-globe'></i> <a href="#" target="_blank">www.vesax.com</a></li>
+                            <li><i class='bx bx-phone-call'></i> <a href="tel:+2122791456">(+212) 279-1456</a></li>
+                            <li><i class='bx bx-directions'></i> <a href="#" target="_blank">Get Directions</a></li>
+                            <li><i class='bx bx-map'></i> New York, USA</li>
+                        </ul>
+                    </div>
+                    <div class="listings-widget listings_author">
+                        <h3>Hosted By</h3>
+                        <div class="author">
+                            <div class="d-flex align-items-center">
+                                <img src="assets/img/user1.jpg" alt="image">
+                                <div class="title">
+                                    <h4><a href="#">John Smith</a></h4>
+                                    <span>20 Places Hosted</span>
+                                </div>
+                            </div>
+                            <div class="author-profile">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-5 col-md-5">
+                                        <a href="#" class="view-profile">View Profile</a>
+                                    </div>
+
+                                    <div class="col-lg-7 col-md-7">
+                                        <ul class="social">
+                                            <li><a href="#" target="_blank"><i class='bx bxl-facebook'></i></a></li>
+                                            <li><a href="#" target="_blank"><i class='bx bxl-twitter'></i></a></li>
+                                            <li><a href="#" target="_blank"><i class='bx bxl-linkedin'></i></a></li>
+                                            <li><a href="#" target="_blank"><i class='bx bxl-instagram'></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Listings Details Area -->
+
+<app-footer-style-two></app-footer-style-two>

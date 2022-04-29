@@ -1,0 +1,62 @@
+<app-navbar-style-one></app-navbar-style-one>
+
+<!-- Start Page Title Area -->
+<div class="page-title-area" *ngFor="let Content of pageTitleContent;" style="background-image: url({{Content.backgroundImage}});">
+    <div class="container">
+        <div class="page-title-content">
+            <h2>{{Content.title}}</h2>
+            <ul>
+                <li><a routerLink="/">Home</a></li>
+                <li>{{Content.title}}</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- End Page Title Area -->
+
+<!-- Start Products Area -->
+<div class="products-area ptb-100">
+    <div class="container">
+        <div class="vesax-grid-sorting row align-items-center">
+            <div class="col-lg-6 col-md-6 result-count">
+                <p>We found <span class="count">6</span> products available for you</p>
+            </div>
+
+            <div class="col-lg-6 col-md-6 ordering">
+                <div class="select-box">
+                    <label>Sort By:</label>
+                    <ngx-select-dropdown (searchChange)="searchChange($event)" tabindex="0" [multiple]="false" [(ngModel)]="singleSelect" [config]="config" [options]="options"></ngx-select-dropdown>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-6" *ngFor="let Content of singleProductsBox | paginate: { itemsPerPage: 6, currentPage: productsList }">
+                <div class="single-products-box">
+                    <div class="products-image">
+                        <a routerLink="/{{Content.detailsLink}}">
+                            <img [src]="Content.img" class="main-image" alt="image">
+                        </a>
+                    </div>
+
+                    <div class="products-content">
+                        <h3><a routerLink="/{{Content.detailsLink}}">{{Content.title}}</a></h3>
+                        <div class="price">
+                            <span class="new-price">{{Content.price}}</span>
+                        </div>
+                        <a routerLink="/{{Content.addToCartLink}}" class="add-to-cart">Add to Cart</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <div class="pagination-area text-center">
+                    <pagination-controls (pageChange)="productsList = $event"></pagination-controls>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End Products Area -->
+
+<app-footer-style-two></app-footer-style-two>

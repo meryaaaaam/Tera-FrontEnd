@@ -1,0 +1,48 @@
+<!-- Start Main Banner Area -->
+<div class="main-banner-area">
+    <div class="container">
+        <div class="main-banner-content" *ngFor="let Content of mainBannerContent;">
+            <h1>{{Content.title}} 
+                <ngx-typed-js [strings]="['Hotels', 'Restaurants', 'Beauty', 'Fitness', 'Shopping']" [typeSpeed]="100" [loop]="true" [backSpeed]="100" [showCursor]="false">
+                    <span class="typing"></span>
+                </ngx-typed-js>
+            </h1>
+            <p>{{Content.paragraph}}</p>
+            <form>
+                <div class="row m-0 align-items-center">
+                    <div class="col-lg-4 col-md-12 p-0">
+                        <div class="form-group">
+                            <label><i class="flaticon-search"></i></label>
+                            <input type="text" class="form-control" placeholder="What are you looking for?">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 p-0">
+                        <div class="form-group">
+                            <label><i class="flaticon-pin"></i></label>
+                            <input type="text" class="form-control" placeholder="Location">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 p-0">
+                        <div class="form-group category-select">
+                            <label><i class="flaticon-category"></i></label>
+                            <ngx-select-dropdown (searchChange)="searchChange($event)" name="category-select" tabindex="0" [multiple]="false" [(ngModel)]="singleSelect" [config]="config" [options]="options"></ngx-select-dropdown>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-12 p-0">
+                        <div class="submit-btn">
+                            <button type="submit">Search Now</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <ul class="popular-search-list">
+                <li>Popular:</li>
+                <li *ngFor="let List of Content.popularSearchList;"><a routerLink="/{{List.link}}">{{List.title}}</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+<!-- End Main Banner Area -->
