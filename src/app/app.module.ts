@@ -89,11 +89,24 @@ import { AuthComponent } from './components/auth/auth.component';
 import { DetailComponent } from './components/Car/detail/detail.component';
 import { CarComponent } from './components/car/car.component';
 import { ListingComponent } from './components/Car/listing/listing.component';
+import { AddComponent } from './components/pages/host/car/add/add.component';
+import { NavbarComponent } from './components/common/espace-user/navbar/navbar.component';
+import { SidemenuComponent } from './components/common/espace-user/sidemenu/sidemenu.component';
+import { BookingComponent } from './components/pages/host/booking/booking.component';
+import { ReviewsComponent } from './components/pages/host/reviews/reviews.component';
+import { MyCarsComponent } from './components/pages/host/car/my-cars/my-cars.component';
+import { HostComponent } from './components/pages/host/host.component';
+import { UserDashboardComponent } from './components/pages/host/user-dashboard/user-dashboard.component';
+import { ProfileComponent } from './components/pages/host/profile/profile.component';
+import { MessageComponent } from './components/pages/host/message/message.component';
 
 //import {MaterialExampleModule} from '../material.module';
 //import {DateRangePickerComparisonExample} from './date-range-picker-comparison-example';
 //import {MatNativeDateModule} from '@angular/material/core';
 
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TimepickerModule } from 'ngx-bootstrap/timepicker';
+import { SearchFormsComponent } from './components/common/search-forms/search-forms.component';
 
 @NgModule({
   declarations: [
@@ -173,7 +186,18 @@ import { ListingComponent } from './components/Car/listing/listing.component';
     AuthComponent,
     DetailComponent,
     CarComponent,
-    ListingComponent
+    ListingComponent,
+    AddComponent,
+    NavbarComponent,
+    SidemenuComponent,
+    BookingComponent,
+    ReviewsComponent,
+    MyCarsComponent,
+    HostComponent,
+    UserDashboardComponent,
+    ProfileComponent,
+    MessageComponent,
+    SearchFormsComponent
 
   ],
   imports: [
@@ -186,7 +210,8 @@ import { ListingComponent } from './components/Car/listing/listing.component';
     FormsModule,
     NgxPaginationModule,
 
-
+    BsDatepickerModule,
+    TimepickerModule
 
 
   ],

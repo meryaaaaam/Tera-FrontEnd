@@ -35,6 +35,13 @@ import { GridListingsLeftSidebarComponent } from './components/pages/grid-listin
 import { GridListingsRightSidebarComponent } from './components/pages/grid-listings-right-sidebar/grid-listings-right-sidebar.component';
 import { HomeDemoOneComponent } from './components/pages/home-demo-one/home-demo-one.component';
 import { HomeDemoTwoComponent } from './components/pages/home-demo-two/home-demo-two.component';
+import { BookingComponent } from './components/pages/host/booking/booking.component';
+import { AddComponent } from './components/pages/host/car/add/add.component';
+import { MyCarsComponent } from './components/pages/host/car/my-cars/my-cars.component';
+import { HostComponent } from './components/pages/host/host.component';
+import { MessageComponent } from './components/pages/host/message/message.component';
+import { ProfileComponent } from './components/pages/host/profile/profile.component';
+import { ReviewsComponent } from './components/pages/host/reviews/reviews.component';
 import { HowItWorksPageComponent } from './components/pages/how-it-works-page/how-it-works-page.component';
 import { ListingsDetailsComponent } from './components/pages/listings-details/listings-details.component';
 import { NotFoundComponent } from './components/pages/not-found/not-found.component';
@@ -86,8 +93,24 @@ const routes: Routes = [
     {path: 'dashboard-bookmarks', component: DashboardBookmarksComponent},
     {path: 'dashboard-my-listings', component: DashboardMyListingsComponent},
     {path: 'dashboard-my-listings', component: DashboardMyListingsComponent},
+
+
     {path: 'car/detail', component: DetailComponent},
     {path: 'car/list', component: ListingComponent},
+
+    {path: 'user/add-car', component: AddComponent},
+    {path: 'user/list', component: MyCarsComponent},
+    {path: 'user/reviews', component: ReviewsComponent},
+    {path: 'user/booking', component: BookingComponent},
+    {path: 'user/profile', component: ProfileComponent},
+    {path: 'user/messages', component: MessageComponent},
+
+    {path: 'espace-user', component: HostComponent},
+
+    /*{path: 'espace-user', component: HostComponent},
+    {path: 'espace-user', component: HostComponent},
+    {path: 'espace-user', component: HostComponent},
+    {path: 'espace-user', component: HostComponent},*/
 
     // Here add new pages component
 

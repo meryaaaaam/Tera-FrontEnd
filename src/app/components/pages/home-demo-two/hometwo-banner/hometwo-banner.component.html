@@ -13,36 +13,7 @@
                         </ngx-typed-js>-->
                     </h1>
                     <p>{{Content.paragraph}}</p>
-                    <form>
-                        <div class="row m-0 align-items-center">
-                            <div class="col-lg-4 col-md-12 p-0">
-                                <div class="form-group">
-                                    <label><i class="flaticon-search"></i></label>
-                                    <input type="text" class="form-control" placeholder="What are you looking for?">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-md-6 p-0">
-                                <div class="form-group">
-                                    <label><i class="flaticon-pin"></i></label>
-                                    <input type="text" class="form-control" placeholder="Location">
-                                </div>
-                            </div>
-
-                            <div class="col-lg-3 col-md-6 p-0">
-                                <div class="form-group category-select">
-                                    <label><i class="flaticon-category"></i></label>
-                                    <ngx-select-dropdown (searchChange)="searchChange($event)" name="category-select" tabindex="0" [multiple]="false" [(ngModel)]="singleSelect" [config]="config" [options]="options"></ngx-select-dropdown>
-                                </div>
-                            </div>
-
-                            <div class="col-lg-2 col-md-12 p-0">
-                                <div class="submit-btn">
-                                    <button type="submit">Search Now</button>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
+                    <app-search-forms></app-search-forms>
                     <ul class="popular-search-list">
                         <li>Popular:</li>
                         <li *ngFor="let List of Content.popularSearchList;"><a routerLink="/{{List.link}}">{{List.title}}</a></li>
@@ -52,7 +23,10 @@
 
             <div class="col-lg-4 col-md-12">
                 <div class="banner-image" *ngFor="let Image of bannerImage;">
-                    <img [src]="Image.img" alt="image">
+                    <img [src]="Image.img">
+          <!--(mouseover)="imgSrc = Image.img"
+           (mouseout)="imgSrc = 'assets/img/cars/Mercedes-Benz-G63-AMG-Edition-55-2022-1.jpg'">-->
+
                 </div>
             </div>
         </div>

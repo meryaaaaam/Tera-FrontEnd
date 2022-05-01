@@ -7,12 +7,26 @@ import {FormGroup, FormControl} from '@angular/forms';
     styleUrls: ['./hometwo-banner.component.scss']
 })
 export class HometwoBannerComponent implements OnInit {
+  /*bsInlineValue = new Date();
+  bsInlineRangeValue: Date[];
 
   campaignOne: FormGroup;
   campaignTwo: FormGroup;
-
+*/
+  minDate: Date;
+  maxDate: Date;
+  mytime: Date = new Date();
   constructor() {
-    const today = new Date();
+   /* this.maxDate.setDate(this.maxDate.getDate() + 7);
+    this.bsInlineRangeValue = [this.bsInlineValue, this.maxDate];
+*/
+this.minDate = new Date();
+this.maxDate = new Date();
+this.minDate.setDate(this.minDate.getDate() - 0);
+this.maxDate.setMonth(this.maxDate.getMonth() + 7);
+
+
+   /* const today = new Date();
     const month = today.getMonth();
     const year = today.getFullYear();
 
@@ -24,7 +38,7 @@ export class HometwoBannerComponent implements OnInit {
     this.campaignTwo = new FormGroup({
       start: new FormControl(new Date(year, month, 15)),
       end: new FormControl(new Date(year, month, 19)),
-    });
+    });*/
   }
 
     ngOnInit(): void {

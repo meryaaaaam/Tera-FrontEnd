@@ -1,0 +1,70 @@
+<form>
+  <div class="row m-0 align-items-center">
+
+
+      <div class="col-lg-3 col-md-6 p-0">
+          <div class="form-group">
+              <label><i class="flaticon-pin"></i></label>
+              <input type="text" class="form-control" placeholder="Location">
+          </div>
+      </div>
+
+      <div class="col-lg-4 col-md-12 p-0">
+        <div class="form-group">
+
+              <label class="pr-3">   <i class="flaticon-calendar"></i>  </label>
+
+
+
+              <input
+              class="form-control"
+              placeholder="Début dd/MM/AAAA"
+              bsDatepicker
+
+              [minDate]="minDate"
+              [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-red' }">
+
+
+            <!--<input type="Date" bsDaterangepicker class="form-control"  >-->
+
+        </div>
+    </div>
+
+      <div class="col-lg-3 col-md-6 p-0">
+          <div class="form-group category-select">
+
+                  <label >
+
+                    <i class="flaticon-calendar"></i>
+                  </label>
+                  <input
+              id="calendar-input"
+              class="form-control"
+              placeholder="Fin dd/MM/AAAA"
+              [minDate]="minDate"
+              bsDatepicker
+              [bsConfig]="{ dateInputFormat: 'DD-MM-YYYY', containerClass: 'theme-red' }">
+                </div>
+
+               <!-- <div class="col-6"> <timepicker [(ngModel)]="mytime"></timepicker></div> -->
+
+
+            </div>
+
+<!--<bs-daterangepicker-inline [bsValue]="bsInlineRangeValue"></bs-daterangepicker-inline>-->
+<!---  <input class="form-control"
+placeholder="Daterangepicker"
+ngModel
+bsDaterangepicker
+[minDate]="minDate"
+[maxDate]="maxDate">  -->
+
+
+
+      <div class="col-lg-2 col-md-12 p-0">
+          <div class="submit-btn">
+              <button type="submit">Search Now</button>
+          </div>
+      </div>
+  </div>
+</form>

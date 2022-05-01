@@ -14,11 +14,16 @@ export class DetailComponent implements OnInit {
   ngOnInit(): void {
   }
   page_title = 'BMW iX 2022' ;
+  car_description ="Lorem ipsum dolor sit amet, consectetur adipiscing elit,sed do eiusmod tempor  incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet " ;
+
+
+
+
   singleListingsBox = [
     {
         mainImg: [
             {
-                img: 'assets/img/listings/listings7.jpg'
+                img: 'assets/img/cars/2022-bmw-ix1-19_800x0w.jpg'
             }
         ],
         categoryLink: 'single-listings',
@@ -120,19 +125,37 @@ responsive: {
 }
 singleImageBox = [
     {
-        img: 'assets/img/gallery/gallery1.jpg'
+        img: 'assets/img/cars/BMW iX/20201111073318_BMW-iX-2022-1600-01.jpg'
     },
     {
-        img: 'assets/img/gallery/gallery2.jpg'
+        img: 'assets/img/cars/BMW iX//2022-bmw-ix1-19_800x0w.jpg'
     },
     {
-        img: 'assets/img/gallery/gallery3.jpg'
+        img: 'assets/img/cars/BMW iX/BMW-MY23-iX-Gallery-Exterior-08.jpg'
     },
     {
-        img: 'assets/img/gallery/gallery4.jpg'
+        img: 'assets/img/cars/BMW iX/BMW-MY23-iX-Gallery-Exterior-07.jpg'
     },
     {
-        img: 'assets/img/gallery/gallery5.jpg'
+        img: 'assets/img/cars/BMW iX/BMW-MY23-iX-Gallery-Exterior-04.jpg'
+    },
+    {
+        img: 'assets/img/cars/BMW iX/BMW-MY23-iX-Gallery-Interior-15.jpg'
+    },
+    {
+        img: 'assets/img/cars/BMW iX/BMW-MY23-Gallery-iX-Exterior-09.jpg'
+    },
+    {
+        img: 'assets/img/cars/BMW iX/BMW-MY22-iX-Gallery-17.jpg'
+    },
+    {
+        img: 'assets/img/cars/BMW iX/BMW-MY22-iX-Gallery-21.jpg'
+    },
+    {
+        img: 'assets/img/cars/BMW iX/BMW-MY22-iX-Gallery-20.jpg'
+    },
+    {
+        img: 'assets/img/cars/BMW iX/BMW-MY22-iX-Gallery-19.jpg'
     }
 ]
 
