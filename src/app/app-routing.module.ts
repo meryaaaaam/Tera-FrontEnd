@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { AuthComponent } from './components/Auth/auth.component';
-import { LoginComponent } from './components/Auth/login/login.component';
-import { RegisterComponent } from './components/Auth/register/register.component';
+
 import { CarComponent } from './components/Car/car.component';
 import { DetailComponent } from './components/Car/detail/detail.component';
 import { ListingComponent } from './components/Car/listing/listing.component';
@@ -114,7 +112,7 @@ const routes: Routes = [
 
     // Here add new pages component
 
-    {
+   /* {
       path: "auth",
       component: AuthComponent,
       children: [
@@ -123,7 +121,7 @@ const routes: Routes = [
         { path: "", redirectTo: "login", pathMatch: "full" },
       ],
     },
-
+*/
 
     /*{
       path: "cars",
@@ -144,7 +142,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' })],
+    imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' } ,  )],
     exports: [RouterModule]
 })
 export class AppRoutingModule { }

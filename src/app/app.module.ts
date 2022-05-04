@@ -82,10 +82,9 @@ import { DashboardMyListingsComponent } from './components/pages/dashboard/dashb
 import { CarMakeComponent } from './components/pages/home-demo-two/car-make/car-make.component';
 import { SectionComponent } from './components/pages/home-demo-two/section/section.component';
 import { PlacesComponent } from './components/pages/home-demo-two/places/places.component';
-import { LoginComponent } from './components/Auth/login/login.component';
-import { RegisterComponent } from './components/Auth/register/register.component';
+
 import { SamllFooterComponent } from './components/common/samll-footer/samll-footer.component';
-import { AuthComponent } from './components/auth/auth.component';
+
 import { DetailComponent } from './components/Car/detail/detail.component';
 import { CarComponent } from './components/car/car.component';
 import { ListingComponent } from './components/Car/listing/listing.component';
@@ -107,6 +106,8 @@ import { MessageComponent } from './components/pages/host/message/message.compon
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 import { TimepickerModule } from 'ngx-bootstrap/timepicker';
 import { SearchFormsComponent } from './components/common/search-forms/search-forms.component';
+
+import { HashLocationStrategy , LocationStrategy} from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -180,10 +181,9 @@ import { SearchFormsComponent } from './components/common/search-forms/search-fo
     CarMakeComponent,
     SectionComponent,
     PlacesComponent,
-    LoginComponent,
-    RegisterComponent,
+
     SamllFooterComponent,
-    AuthComponent,
+
     DetailComponent,
     CarComponent,
     ListingComponent,
@@ -215,7 +215,7 @@ import { SearchFormsComponent } from './components/common/search-forms/search-fo
 
 
   ],
-  providers: [],
+  providers:  [Location, {provide: LocationStrategy, useClass: HashLocationStrategy}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
