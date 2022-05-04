@@ -214,17 +214,17 @@
             <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close"><i class='bx bx-x'></i></button>
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
-                    <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab" aria-controls="login" aria-selected="true">Login</button>
+                    <button class="nav-link active" id="login-tab" data-bs-toggle="tab" data-bs-target="#login" type="button" role="tab" aria-controls="login" aria-selected="true">Connexion</button>
                 </li>
                 <li class="nav-item">
-                    <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab" aria-controls="register" aria-selected="true">Register</button>
+                    <button class="nav-link" id="register-tab" data-bs-toggle="tab" data-bs-target="#register" type="button" role="tab" aria-controls="register" aria-selected="true">Inscription</button>
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="login" role="tabpanel">
                     <div class="vesax-login">
                         <div class="login-with-account">
-                            <span>Connexion</span>
+                            <span> </span>
 
                         </div>
 
@@ -235,7 +235,7 @@
                             <div class="form-group">
                                 <input type="password" placeholder="Password" class="form-control">
                             </div>
-                            <button type="submit">Bienvenue</button>
+                            <button type="submit"> Connexion </button>
                         </form>
                      <!--  <span class="dont-account">Don't have an account? <a href="#">Register Now</a></span>-->
                     </div>
@@ -243,14 +243,36 @@
                 <div class="tab-pane fade" id="register" role="tabpanel">
                     <div class="vesax-register">
                         <div class="register-with-account">
-                            <span>Inscription</span>
+                            <span> </span>
 
                         </div>
 
                         <form>
                             <div class="form-group">
-                                <input type="text" placeholder="Username" class="form-control">
+                                <input type="text" placeholder="Prénom" class="form-control">
                             </div>
+
+                            <div class="form-group">
+                              <input type="text" placeholder="Nom" class="form-control">
+                          </div>
+
+                          <div class="form-group">
+                            <input type="text" placeholder="N° Tél." class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                          <input type="text" placeholder="Adresse" class="form-control">
+                      </div>
+
+                      <div class="form-group">
+                        <input type="text" placeholder="Username" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                      <input type="date" placeholder="Date de naissance" class="form-control">
+                  </div>
+
+
                             <div class="form-group">
                                 <input type="email" placeholder="Email" class="form-control">
                             </div>
@@ -260,7 +282,7 @@
                             <div class="form-group">
                                 <input type="password" placeholder="Confirm Password" class="form-control">
                             </div>
-                            <button type="submit">Register Now</button>
+                            <button type="submit">Inscription</button>
                         </form>
                        <!-- <span class="already-account">Already have an account?
                           <a href="/auth/login">Login Now</a>
