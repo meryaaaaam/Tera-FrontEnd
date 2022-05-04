@@ -935,11 +935,11 @@
 }
 .listings-sidebar {
     margin-top: 60px;
-
+    margin-left: 20px;
     .listings-widget {
         margin-bottom: 30px;
-        background-color: #fbfbfb;
-        border: 1px solid #e0e0e0;
+       // background-color:  ;
+       // border: 1px solid #e0e0e0;
         border-radius: 5px;
         padding: 30px;
 
@@ -1028,6 +1028,40 @@
                 }
             }
         }
+
+        .btn-box {
+          text-align: center;
+          margin-top: 30px;
+
+          .default-btn {
+              display: block;
+              padding: {
+                  right: 30px;
+                  left: 30px;
+                  top: 12px;
+                  bottom: 12px;
+              };
+              i {
+                  position: relative;
+                  top: 2px;
+                  margin-right: 8px;
+                  line-height: 1;
+                  font-size: 20px;
+              }
+          }
+          p {
+              margin-top: 15px;
+              font-weight: 500;
+
+              a {
+                  color: var(--mainColor);
+
+                  &:hover {
+                      text-decoration: underline;
+                  }
+              }
+          }
+      }
     }
     .listings_author {
         .author {

@@ -9,6 +9,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 })
 export class DetailComponent implements OnInit {
 
+  date : Date ;
   constructor() { }
 
   ngOnInit(): void {

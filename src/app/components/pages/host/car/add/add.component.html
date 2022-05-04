@@ -784,16 +784,31 @@
     </div>  -->
 
     <div class="add-listings-box">
-        <h3>Pricing</h3>
+        <h3>Prix</h3>
 
         <div class="form-group">
-            <label><i class='bx bx-purchase-tag'></i> Pricing:</label>
-            <input type="text" class="form-control" placeholder="$542.00">
+           <!-- <label><i class='bx bx-purchase-tag'></i> Pricing:</label>-->
+            <div class="row">
+               <div class="col-6">
+                <label><i class='bx bx-purchase-tag'></i> Horaire: {{val}}</label>
+
+                <input type="text" class="form-control" placeholder="$42.00">
+               <!--  <p-slider [(ngModel)]="val"></p-slider>-->
+                </div>
+
+                <div class="col-6">
+                 <label><i class='bx bx-purchase-tag'></i> Journalié:</label>
+                 <input type="text" class="form-control" placeholder="$32.00"></div></div>
+
+
         </div>
     </div>
 
+
     <div class="add-listings-btn">
-        <button type="submit">Submit Listings</button>
+        <button type="submit">Submit Listings</button> <br>
+
+
     </div>
     <!-- End -->
 

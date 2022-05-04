@@ -32,6 +32,8 @@
     "ngx-select-dropdown": "^1.5.0",
     "ngx-typed-js": "^2.0.2",
     "popper.js": "^1.16.1",
+    "primeicons": "^5.0.0",
+    "primeng": "^13.3.3",
     "rxjs": "~6.5.5",
     "rxjs-compat": "^6.6.7",
     "tslib": "^2.0.0",

@@ -109,6 +109,9 @@ import { SearchFormsComponent } from './components/common/search-forms/search-fo
 
 import { HashLocationStrategy , LocationStrategy} from '@angular/common';
 
+import {SliderModule} from 'primeng/slider';
+import {ButtonModule} from 'primeng/button';
+import {CalendarModule} from 'primeng/calendar';
 @NgModule({
   declarations: [
     AppComponent,
@@ -211,11 +214,16 @@ import { HashLocationStrategy , LocationStrategy} from '@angular/common';
     NgxPaginationModule,
 
     BsDatepickerModule,
-    TimepickerModule
+    TimepickerModule,
+
+    SliderModule,
+    ButtonModule,
+    CalendarModule
+
 
 
   ],
-  providers:  [Location, {provide: LocationStrategy, useClass: HashLocationStrategy}],
+  providers:  [  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

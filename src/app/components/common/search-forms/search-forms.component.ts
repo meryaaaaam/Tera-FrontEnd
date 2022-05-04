@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./search-forms.component.scss']
 })
 export class SearchFormsComponent implements OnInit {
-
+  date :Date ;
   minDate: Date;
   maxDate: Date;
   mytime: Date = new Date();

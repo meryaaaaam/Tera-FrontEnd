@@ -477,6 +477,46 @@
             </div>
             <div class="col-lg-4 col-md-12">
               <div class="listings-sidebar">
+                <div class="listings-widget listings_contact_details ">
+                  <h3>670$ 641$  au total</h3>
+                  <div class="row pb-3">
+                     <label class="pb-2 " style="color:blueviolet">Début</label>
+                     <p-calendar [(ngModel)]="date" [showTime]="true" inputId="time" [showIcon]="false" placeholder ="04/05/2022 01:20"></p-calendar>
+
+                  </div>
+                  <div class="row pb-3">
+                    <label class="pb-2" style="color:blueviolet">Fin</label>
+                    <p-calendar [(ngModel)]="date" [showTime]="true" inputId="time" [showIcon]="false" placeholder ="04/05/2022 01:20"></p-calendar>
+
+                 </div>
+
+                 <div class="row  pb-3">
+
+                  <span class="pb-2 " style="color:blueviolet">Lieu de prise en charge et de retour</span>
+
+               </div>
+               <ul>
+               <li>
+                <div class="d-flex justify-content-between align-items-center">
+                    <span>Pay With</span>
+                    <div class="payment-method">
+                        <img src="assets/img/payment/img1.png" class="shadow" alt="image">
+                        <img src="assets/img/payment/img2.png" class="shadow" alt="image">
+                        <img src="assets/img/payment/img3.png" class="shadow" alt="image">
+                        <img src="assets/img/payment/img4.png" class="shadow" alt="image">
+                    </div>
+                </div>
+            </li>
+          </ul>
+               <div class="btn-box">
+                <a routerLink="/car/detail" class="default-btn"><i class="flaticon-user"></i>Continuer<span></span></a>
+                <p>You must <a href="#" data-bs-toggle="modal" data-bs-target="#loginRegisterModal">login</a> before register event.</p>
+            </div>
+
+
+              </div>
+                </div>
+              <div class="listings-sidebar">
 
                 <div class="listings-widget listings_contact_details">
                     <h3>Contact Details</h3>
@@ -516,25 +556,25 @@
                     </div>
                 </div>
             </div>
-              <div class="events-details-info">
+              <!--<div class="events-details-info">
                   <ul class="info">
                       <li class="price">
                         <div class="d-flex justify-content-between align-items-center">
-                          <!--<span>Total  </span>-->
+                          <!--<span>Total  </span>
                          Total
                           <div class="d-flex justify-content-between align-items-end">  171$</div>
                       </div>
                       </li>
                       <li>
                           <div class="d-flex justify-content-between align-items-center">
-                              <!--<span>Total  </span>-->
+                              <span>Total  </span>
                               53 $ US x 3 jours
                               <div class="d-flex justify-content-between align-items-end">  159$</div>
                           </div>
                       </li>
                       <li>
                           <div class="d-flex justify-content-between align-items-center">
-                              <!--<span>Promotion  </span>-->
+                             <span>Promotion  </span>
                               Frais de voyage
                               <div class="d-flex justify-content-between align-items-end">  25$</div>
 
@@ -543,7 +583,7 @@
 
                       <li>
                         <div class="d-flex justify-content-between align-items-center">
-                            <!--<span>Promotion  </span>-->
+                            <span>Promotion  </span>
                             Rabais pour 3 jours ou plus
                             <div class="d-flex justify-content-between align-items-end" style="color:purple">  -25$</div>
 
@@ -569,7 +609,12 @@
                   </div>
 
 
-              </div>
+              </div>-->
+
+
+
+
+
 
 
             </div>

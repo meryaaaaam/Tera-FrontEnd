@@ -6,7 +6,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./add.component.scss']
 })
 export class AddComponent implements OnInit {
-
+  val: number;
+  value : Date ;
   constructor() { }
 
   ngOnInit(): void {
@@ -17,6 +18,8 @@ export class AddComponent implements OnInit {
         title: 'Howdy, Andy!',
         subTitle: 'Dashboard'
     }
+
+
 ]
 
 }
