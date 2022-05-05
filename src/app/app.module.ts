@@ -112,6 +112,8 @@ import { HashLocationStrategy , LocationStrategy} from '@angular/common';
 import {SliderModule} from 'primeng/slider';
 import {ButtonModule} from 'primeng/button';
 import {CalendarModule} from 'primeng/calendar';
+
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -207,6 +209,10 @@ import {CalendarModule} from 'primeng/calendar';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+
+
+    HttpClientModule,
+
     CarouselModule,
     SelectDropDownModule,
     NgxTypedJsModule,
@@ -219,6 +225,8 @@ import {CalendarModule} from 'primeng/calendar';
     SliderModule,
     ButtonModule,
     CalendarModule
+
+
 
 
 
