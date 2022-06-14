@@ -22,7 +22,10 @@
             <div class="my-profile-box">
                 <h3>Profile Details</h3>
 
-                <form>
+
+                <p-toast></p-toast>
+
+                 <form>
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group profile-box">
@@ -37,7 +40,7 @@
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
                                 <label>Username</label>
-                                <input type="text" class="form-control" value="Andy_Smith">
+                                <input type="text" class="form-control"   name="name" [(ngModel)]="User.username">
                             </div>
 
                         </div>
@@ -45,14 +48,14 @@
                         <div class="col-xl-6 col-lg-12 col-md-12">
                           <div class="form-group">
                               <label>Nom</label>
-                              <input type="Text" class="form-control" value="Andy">
+                              <input type="Text" class="form-control"  name="lastname" [(ngModel)]="User.lastname">
                           </div>
                       </div>
 
                       <div class="col-xl-6 col-lg-12 col-md-12">
                         <div class="form-group">
                             <label>Prenom</label>
-                            <input type="Text" class="form-control" value="Smith">
+                            <input type="Text" class="form-control" name="firstname" [(ngModel)]="User.firstname">
                         </div>
                     </div>
 
@@ -60,44 +63,76 @@
                         <div class="col-xl-6 col-lg-12 col-md-12">
                             <div class="form-group">
                                 <label>Email</label>
-                                <input type="email" class="form-control" value="hello@andysmith.com">
+                                <input type="email" class="form-control" name="email" [(ngModel)]="User.email">
                             </div>
                         </div>
 
                         <div class="col-xl-6 col-lg-12 col-md-12">
                             <div class="form-group">
                                 <label>Num Téléphone</label>
-                                <input type="text" class="form-control" value="+88 (123) 123456">
+                                <input type="text" class="form-control"  name="phone" [(ngModel)]="User.phone">
                             </div>
                         </div>
 
-                        <div class="col-xl-6 col-lg-12 col-md-12">
+                        <div class="col-xl-6 col-lg-6 col-md-6">
                             <div class="form-group">
-                                <label>Addresse</label>
-                                <input type="text" class="form-control" value="Wonder Street, USA, New York">
+                                <label>Adresse *</label>
+                                <input type="text" class="form-control"  [(ngModel)]="User.address" name="address" >
 
-                            </div>
+                              </div>
+
+
                         </div>
+
+                        <div class="col-xl-6 col-lg-6 col-md-6">
+                          <div class="form-group">
+                              <label>Ville *</label>
+                              <input type="text" class="form-control" required   name="city" [(ngModel)]="User.city">
+
+
+                          </div>
+                      </div>
+
+                      <div class="col-xl-6 col-lg-6 col-md-6">
+                        <div class="form-group">
+                            <label>Code *</label>
+                            <input type="text" class="form-control"  required  name="code" [(ngModel)]="User.code"
+                            >
+
+
+
+                        </div>
+                    </div>
+
+                    <div class="col-xl-6 col-lg-6 col-md-6">
+                      <div class="form-group">
+                          <label>state *</label>
+                          <input type="text" class="form-control"  required  name="state" [(ngModel)]="User.state" >
+
+
+
+                      </div>
+                  </div>
 
                         <div class="col-xl-6 col-lg-12 col-md-12">
                           <div class="form-group">
-                              <label>Date de Naissance</label>
+                              <label>Date de Naissance *</label>
 
-                              <input type="date"  class="form-control" value="2020-11-30" />
+                              <input type="date"  class="form-control" required name="date_nais" [(ngModel)]="User.date_nais"/>
                           </div>
                       </div>
 
                         <div class="col-xl-6 col-lg-12 col-md-12">
                             <div class="form-group">
                                 <label>Website</label>
-                                <input type="text" class="form-control" value="smartegy.ca">
+                                <input type="text" class="form-control"    name="link" [(ngModel)]="User.link">
                             </div>
                         </div>
 
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
                                 <label>Bio</label>
-                                <textarea cols="30" rows="6" placeholder="Short description about you..." class="form-control"></textarea>
+                                <textarea cols="30" rows="6" placeholder="Short description about you..." class="form-control"  ></textarea>
                             </div>
                         </div>
 
@@ -131,7 +166,8 @@
 
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
-                                <button type="submit">Save Change</button>
+                                <button type="submit" (click)="saveChange()">Save Change</button>
+                                <p-toast></p-toast>
                             </div>
                         </div>
                     </div>

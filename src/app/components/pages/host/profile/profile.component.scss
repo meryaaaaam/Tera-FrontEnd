@@ -1,5 +1,25 @@
 @import "../../dashboard/dashboard.component.scss";
 
+input.ng-dirty.ng-invalid {
+  color: red
+}
+
+
+.form-group {
+  margin-bottom: 1rem;
+
+}
+
+label {
+  display: block;
+  margin-bottom: .5rem;
+}
+
+select {
+  width: 100%;
+  padding: .5rem;
+}
+
 .my-profile-box {
     margin-bottom: 30px;
     background-color: var(--whiteColor);
@@ -46,6 +66,20 @@
             .form-control {
                 color: #808080;
 
+                .ng-valid[required], .ng-valid.required  {
+                  border-left: 5px solid #42A948; /* green */
+                }
+
+                .ng-invalid:not(form)  {
+                 border-left: 5px solid #a94442; /* red */
+                }
+
+                .alert div {
+                 background-color: #fed3d3;
+                 color: #820000;
+                 padding: 1rem;
+                 margin-bottom: 1rem;
+                }
                 &::placeholder {
                     transition: var(--transition);
                     color: #808080;

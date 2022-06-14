@@ -1,0 +1,19 @@
+<p-toast></p-toast>
+
+<div class="card">
+    <h5>Advanced</h5>
+    <p-fileUpload name="galleries[]" url="http://127.0.0.1:8000/api/gallerie" (onUpload)="onUpload($event)"
+            multiple="multiple" accept="image/*" maxFileSize="1000000">
+            <ng-template pTemplate="content">
+                <ul *ngIf="Files.length">
+                    <li *ngFor="let file of Files">{{file.name}} - {{file.size}} bytes</li>
+                </ul>
+            </ng-template>
+    </p-fileUpload>
+
+    <!--<h5>Basic</h5>
+    <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*" maxFileSize="1000000" (onUpload)="onUpload($event)"></p-fileUpload>
+
+    <h5>Basic with Auto</h5>
+    <p-fileUpload #fubauto mode="basic" name="demo[]" url="./upload.php" accept="image/*" maxFileSize="1000000" (onUpload)="onUpload($event)" [auto]="true" chooseLabel="Browse"></p-fileUpload>-->
+</div>

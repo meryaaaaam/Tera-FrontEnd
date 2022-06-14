@@ -50,6 +50,7 @@ import { TopPlaceComponent } from './components/pages/top-place/top-place.compon
 import { VerticalListingsFullWidthComponent } from './components/pages/vertical-listings-full-width/vertical-listings-full-width.component';
 import { VerticalListingsLeftSidebarComponent } from './components/pages/vertical-listings-left-sidebar/vertical-listings-left-sidebar.component';
 import { VerticalListingsRightSidebarComponent } from './components/pages/vertical-listings-right-sidebar/vertical-listings-right-sidebar.component';
+import { TestComponent } from './test/test.component';
 
 const routes: Routes = [
     {path: 'index-1', component: HomeDemoOneComponent},
@@ -93,7 +94,7 @@ const routes: Routes = [
     {path: 'dashboard-my-listings', component: DashboardMyListingsComponent},
 
 
-    {path: 'car/detail', component: DetailComponent},
+    {path: 'car/detail/:id', component: DetailComponent},
     {path: 'car/list', component: ListingComponent},
 
     {path: 'user/add-car', component: AddComponent},
@@ -104,6 +105,9 @@ const routes: Routes = [
     {path: 'user/messages', component: MessageComponent},
 
     {path: 'espace-user', component: HostComponent},
+
+
+    {path: 'test', component: TestComponent},
 
     /*{path: 'espace-user', component: HostComponent},
     {path: 'espace-user', component: HostComponent},
@@ -142,7 +146,10 @@ const routes: Routes = [
 ];
 
 @NgModule({
-    imports: [RouterModule.forRoot(routes, { relativeLinkResolution: 'legacy' } ,  )],
+    imports: [RouterModule.forRoot(routes,
+      //{ relativeLinkResolution: 'legacy' } ,
+      { enableTracing: true } // <-- debugging purposes only
+      )],
     exports: [RouterModule]
 })
 export class AppRoutingModule { }

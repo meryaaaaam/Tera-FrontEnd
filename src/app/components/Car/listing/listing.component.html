@@ -44,18 +44,20 @@
         </div>
 
         <div class="row">
-            <div class="col-xl-4 col-lg-6 col-md-6" *ngFor="let Content of singleListingsBox | paginate: { itemsPerPage: 6, currentPage: gridListings }">
+            <div class="col-xl-4 col-lg-6 col-md-6" *ngFor="let Content of results | paginate: { itemsPerPage: 6, currentPage: gridListings }">
                 <div class="single-listings-box">
                     <div class="listings-image">
                         <div class="listings-image-slides">
-                            <owl-carousel-o [options]="customOptions">
+                          <img [src]="Content.image" alt="image">
+                          <a routerLink="/car/detail/{{Content.id}}" class="link-btn"></a>
+                            <!--<owl-carousel-o [options]="customOptions">
                                 <ng-template carouselSlide *ngFor="let Image of Content.mainImg;">
                                     <div class="single-image">
                                         <img [src]="Image.img" alt="image">
                                         <a routerLink="/{{Content.detailsLink}}" class="link-btn"></a>
                                     </div>
                                 </ng-template>
-                            </owl-carousel-o>
+                            </owl-carousel-o>-->
                         </div>
                         <a routerLink="/{{Content.bookmarkLink}}" class="bookmark-save"><i class="flaticon-heart"></i></a>
                         <!--<a routerLink="/{{Content.categoryLink}}" class="category"><i class="flaticon-cooking"></i></a>-->
@@ -63,8 +65,8 @@
                     <div class="listings-content">
                         <div class="author">
                             <div class="d-flex align-items-center">
-                                <img [src]="Content.authorImg" alt="image">
-                                <span>{{Content.authorName}}</span>
+                                <!--<img [src]="Content.authorImg" alt="image">-->
+                                <span>{{Content.user}}</span>
                             </div>
                         </div>
                         <ul class="listings-meta">
@@ -81,11 +83,11 @@
 
                         <div class="d-flex align-items-center justify-content-between">
                             <div class="rating">
-                                <i class='{{Star.icon}}' *ngFor="let Star of Content.rating;"></i>
-                                <span class="count">({{Content.ratingCount}})</span>
+                              <i class='bx bxs-star'  ></i> <i class='bx bxs-star'  ></i> <i class='bx bxs-star'  ></i> <i class='bx bxs-star'  ></i> <i class='bx bxs-star'  ></i>
+                              <span class="count">(5)</span>
                             </div>
                             <div class="price">
-                                {{Content.price}}
+                                {{Content.Price_D}}$/Jour - {{Content.Price_H}}$/ Heure
                             </div>
                         </div>
                     </div>

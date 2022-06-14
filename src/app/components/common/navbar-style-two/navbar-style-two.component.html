@@ -228,14 +228,17 @@
 
                         </div>
 
-                        <form>
+                        <form [formGroup]="loginForm" (ngSubmit)="login()">
                             <div class="form-group">
-                                <input type="text" placeholder="Username or Email" class="form-control">
+                                <input type="email" placeholder="Email" class="form-control" formControlName="email">
                             </div>
                             <div class="form-group">
-                                <input type="password" placeholder="Password" class="form-control">
+                                <input type="password" placeholder="Password" class="form-control" formControlName="password">
                             </div>
                             <button type="submit"> Connexion </button>
+
+
+
                         </form>
                      <!--  <span class="dont-account">Don't have an account? <a href="#">Register Now</a></span>-->
                     </div>
@@ -247,40 +250,38 @@
 
                         </div>
 
-                        <form>
+                        <form [formGroup]="registerForm" (ngSubmit)="signup()" >
                             <div class="form-group">
-                                <input type="text" placeholder="Prénom" class="form-control">
+                                <input type="text" placeholder="Prénom" class="form-control" formControlName="firstname">
                             </div>
 
                             <div class="form-group">
-                              <input type="text" placeholder="Nom" class="form-control">
+                              <input type="text" placeholder="Nom" class="form-control" formControlName="lastname">
                           </div>
 
                           <div class="form-group">
-                            <input type="text" placeholder="N° Tél." class="form-control">
+                            <input type="text" placeholder="N° Tél." class="form-control" formControlName="phone">
                         </div>
 
-                        <div class="form-group">
-                          <input type="text" placeholder="Adresse" class="form-control">
-                      </div>
+
 
                       <div class="form-group">
-                        <input type="text" placeholder="Username" class="form-control">
+                        <input type="text" placeholder="Username" class="form-control"formControlName="username">
                     </div>
 
                     <div class="form-group">
-                      <input type="date" placeholder="Date de naissance" class="form-control">
+                      <input type="date" placeholder="Date de naissance" class="form-control" formControlName="date_nais">
                   </div>
 
 
                             <div class="form-group">
-                                <input type="email" placeholder="Email" class="form-control">
+                                <input type="email" placeholder="Email" class="form-control" formControlName="email">
                             </div>
                             <div class="form-group">
-                                <input type="password" placeholder="Password" class="form-control">
+                                <input type="password" placeholder="Password" class="form-control" formControlName="password">
                             </div>
                             <div class="form-group">
-                                <input type="password" placeholder="Confirm Password" class="form-control">
+                                <input type="password" placeholder="Confirm Password" class="form-control" formControlName="password_confirmation">
                             </div>
                             <button type="submit">Inscription</button>
                         </form>

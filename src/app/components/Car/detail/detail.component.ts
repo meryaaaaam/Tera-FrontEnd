@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { VehiculeService } from 'src/app/shared/vehicules/vehicule.service';
 
 
 @Component({
@@ -9,10 +11,36 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 })
 export class DetailComponent implements OnInit {
 
-  date : Date ;
-  constructor() { }
+  date : Date = new Date();
+  id : any ;
+  res : any ;
+  start : Date = new Date() ; end : any ;
+  constructor(public vs : VehiculeService , private route: ActivatedRoute,
+    private router: Router ) { }
 
-  ngOnInit(): void {
+  ngOnInit() {
+
+   this.res =  this.get(this.route.snapshot.paramMap.get('id')) ;
+    console.log(this.start)
+  }
+
+onselectstart(date)
+{
+
+  console.log(this.date.toLocaleString('en-GB', { timeZone: 'UTC' }))
+}
+
+onselectend(date)
+{
+
+  console.log(this.date.toLocaleString('en-GB', { timeZone: 'UTC' }))
+}
+  get(id)
+  {let x ;
+    this.vs.get(id).subscribe(
+
+      (data)=>{x=data ; this.res= x;  console.log(x) ; }
+    )
   }
   page_title = 'BMW iX 2022' ;
   car_description ="Lorem ipsum dolor sit amet, consectetur adipiscing elit,sed do eiusmod tempor  incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet " ;

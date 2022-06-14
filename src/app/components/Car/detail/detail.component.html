@@ -4,22 +4,22 @@
 <section class="listings-details-area pb-70">
     <div class="listings-details-image">
       <!--<img src="assets/img/cars/BMW iX/BMW-MY23-iX-Gallery-Interior-15.jpg"   alt="image">-->
-      <img src="assets/img/cars/BMW iX/BMW-MY22-iX-Gallery-19.jpg"   alt="image">
+      <img src="{{res.gallerie}}"   alt="image">
         <div class="container">
             <div class="container">
                 <div class="listings-details-content">
-                     <h3>BMW IX 2022 </h3>
+                     <h3> {{res.model}} </h3>
                     <div class="rating d-flex align-items-center">
                         <span class="bx bxs-star checked"></span>
                         <span class="bx bxs-star checked"></span>
                         <span class="bx bxs-star checked"></span>
                         <span class="bx bxs-star checked"></span>
                         <span class="bx bxs-star checked"></span>
-                        <span class="rating-count">(45)</span>
+                        <span class="rating-count">({{res.nb}})</span>
                     </div>
                     <ul class="d-flex align-items-center">
                         <li class="phone-number">
-                            <a href="#"><i class='bx bx-phone-call'></i> (+212) 279-1456</a>
+                            <a href="#"><i class='bx bx-phone-call'></i> {{res.telephone}}</a>
                         </li>
                         <!--<li class="time">
                             <i class='bx bx-time-five'></i>
@@ -29,51 +29,26 @@
                         <li class="location">
                             <i class='bx bx-map'></i>
                             <span>Location</span>
-                            New York, USA
+                            {{res.location}}
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
         <div class="container-fluid">
-            <!--<ul class="share-save">
-                <li>
-                    <div class="share">
-                        <i class='bx bx-share-alt'></i> Share
-                    </div>
-                    <div class="social">
-                        <a href="#" target="_blank"><i class='bx bxl-facebook'></i></a>
-                        <a href="#" target="_blank"><i class='bx bxl-pinterest'></i></a>
-                        <a href="#" target="_blank"><i class='bx bxl-twitter'></i></a>
-                        <a href="#" target="_blank"><i class='bx bxl-linkedin'></i></a>
-                        <a href="#" target="_blank"><i class='bx bxl-whatsapp'></i></a>
-                    </div>
-                </li>
-                <li><a routerLink="/single-listings"><i class='bx bx-heart'></i> Save</a></li>
-            </ul>-->
         </div>
     </div>
-    <!--<div class="listings-details-nav">
-        <div class="container">
-            <ul class="nav nav-tabs">
-                <li class="nav-item"><a class="nav-link active" href="#overview">Overview</a></li>
-                <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
-                <li class="nav-item"><a class="nav-link" href="#pricing">Pricing</a></li>
-                <li class="nav-item"><a class="nav-link" href="#review">Review</a></li>
-                <li class="nav-item"><a class="nav-link" href="#add-review">Add Review</a></li>
-            </ul>
-        </div>
-    </div>-->
+
     <div class="container">
         <div class="row">
             <div class="col-lg-8 col-md-12">
                 <div class="listings-details-desc">
-                    <h3>{{page_title}}</h3>
+                    <h3>{{res.model}}</h3>
 
 
                     <div class="row">
                       <div class="col-4">
-                        5.0      <i class='bx bxs-star'></i>  (26 voyages)
+                        5.0      <i class='bx bxs-star'></i>  ({{res.nb}})
                       </div>
                       <div class="col-8">
                         <div class="row">
@@ -125,13 +100,14 @@
                     <h3>Gallery</h3>
                     <div id="gallery">
                         <div class="gallery-slides">
-                            <owl-carousel-o [options]="galleryOptions">
+                          <img [src]="res.gallerie" alt="image">
+                            <!--<owl-carousel-o [options]="galleryOptions">
                                 <ng-template carouselSlide *ngFor="let Image of singleImageBox;">
                                     <div class="single-image-box">
-                                        <img [src]="Image.img" alt="image">
+
                                     </div>
                                 </ng-template>
-                            </owl-carousel-o>
+                            </owl-carousel-o>-->
                         </div>
                     </div>
                     <!--<h3>Pricing</h3>-->
@@ -251,8 +227,8 @@
                                             <div class="d-flex">
                                                 <img src="assets/img/user1.jpg" alt="image">
                                                 <div class="title">
-                                                    <h4>James Andy</h4>
-                                                    <span>New York, USA</span>
+                                                    <h4>res.user</h4>
+                                                    <span>{{res.location}}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -478,15 +454,15 @@
             <div class="col-lg-4 col-md-12">
               <div class="listings-sidebar">
                 <div class="listings-widget listings_contact_details ">
-                  <h3>670$ 641$  au total</h3>
+                  <h3>{{res.Price_H}}$/Heur - {{res.Price_D}}$/Jour </h3>
                   <div class="row pb-3">
                      <label class="pb-2 " style="color:blueviolet">Début</label>
-                     <p-calendar [(ngModel)]="date" [showTime]="true" inputId="time" [showIcon]="false" placeholder ="04/05/2022 01:20"></p-calendar>
+                     <p-calendar [(ngModel)]="date" [showTime]="true" inputId="time" [showIcon]="false" placeholder ="04/05/2022 01:20" (onSelect)="onselectstart(start)" [(ngModel)]="start"></p-calendar>
 
                   </div>
                   <div class="row pb-3">
                     <label class="pb-2" style="color:blueviolet">Fin</label>
-                    <p-calendar [(ngModel)]="date" [showTime]="true" inputId="time" [showIcon]="false" placeholder ="04/05/2022 01:20"></p-calendar>
+                    <p-calendar [(ngModel)]="date" [showTime]="true" inputId="time" [showIcon]="false" placeholder ="04/05/2022 01:20" (onSelect)="onselectend(end)" [(ngModel)]="start" [(ngModel)]="end"></p-calendar>
 
                  </div>
 
@@ -521,10 +497,10 @@
                 <div class="listings-widget listings_contact_details">
                     <h3>Contact Details</h3>
                     <ul>
-                        <li><i class='bx bx-globe'></i> <a href="https:/smartegy.ca" target="_blank">smartegy.ca</a></li>
-                        <li><i class='bx bx-phone-call'></i> <a href="tel:+2122791456">(+212) 279-1456</a></li>
+                        <li><i class='bx bx-globe'></i> <a href="https:/smartegy.ca" target="_blank">{{res.user}}</a></li>
+                        <li><i class='bx bx-phone-call'></i> <a href="tel:+2122791456">{{res.telephone}}</a></li>
                         <li><i class='bx bx-directions'></i> <a href="#" target="_blank">Get Directions</a></li>
-                        <li><i class='bx bx-map'></i> New York, USA</li>
+                        <li><i class='bx bx-map'></i> {{res.address}}</li>
                     </ul>
                 </div>
                 <div class="listings-widget listings_author">
@@ -533,7 +509,7 @@
                         <div class="d-flex align-items-center">
                             <img src="assets/img/user1.jpg" alt="image">
                             <div class="title">
-                                <h4><a href="#">John Smith</a></h4>
+                                <h4><a href="#">{{res.user}}</a></h4>
                                 <span>42 voyages</span>
                             </div>
                         </div>
@@ -556,64 +532,6 @@
                     </div>
                 </div>
             </div>
-              <!--<div class="events-details-info">
-                  <ul class="info">
-                      <li class="price">
-                        <div class="d-flex justify-content-between align-items-center">
-                          <!--<span>Total  </span>
-                         Total
-                          <div class="d-flex justify-content-between align-items-end">  171$</div>
-                      </div>
-                      </li>
-                      <li>
-                          <div class="d-flex justify-content-between align-items-center">
-                              <span>Total  </span>
-                              53 $ US x 3 jours
-                              <div class="d-flex justify-content-between align-items-end">  159$</div>
-                          </div>
-                      </li>
-                      <li>
-                          <div class="d-flex justify-content-between align-items-center">
-                             <span>Promotion  </span>
-                              Frais de voyage
-                              <div class="d-flex justify-content-between align-items-end">  25$</div>
-
-                          </div>
-                      </li>
-
-                      <li>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <span>Promotion  </span>
-                            Rabais pour 3 jours ou plus
-                            <div class="d-flex justify-content-between align-items-end" style="color:purple">  -25$</div>
-
-                        </div>
-                    </li>
-
-                      <li>
-                          <div class="d-flex justify-content-between align-items-center">
-                              <span>Pay With</span>
-                              <div class="payment-method">
-                                  <img src="assets/img/payment/img1.png" class="shadow" alt="image">
-                                  <img src="assets/img/payment/img2.png" class="shadow" alt="image">
-                                  <img src="assets/img/payment/img3.png" class="shadow" alt="image">
-                                  <img src="assets/img/payment/img4.png" class="shadow" alt="image">
-                              </div>
-                          </div>
-                      </li>
-                  </ul>
-
-                  <div class="btn-box">
-                      <a routerLink="/single-events" class="default-btn"><i class="flaticon-user"></i>Continuer<span></span></a>
-                      <p>You must <a href="#" data-bs-toggle="modal" data-bs-target="#loginRegisterModal">login</a> before register event.</p>
-                  </div>
-
-
-              </div>-->
-
-
-
-
 
 
 

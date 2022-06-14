@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { VehiculeService } from 'src/app/shared/vehicules/vehicule.service';
 
 @Component({
   selector: 'app-listing',
@@ -7,9 +8,17 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
   styleUrls: ['./listing.component.scss']
 })
 export class ListingComponent implements OnInit {
-
-  constructor() { }
+  results ;
+  constructor(public vs : VehiculeService) { }
   ngOnInit(): void {
+    this.vs.getAll().subscribe(
+      (data) => {this.results = data ; console.log(this.results)}
+
+    )
+
+
+
+
     this.resetOption = [this.options[0]];
 }
 

@@ -17,37 +17,70 @@
     <!-- End Breadcrumb Area -->
 
     <!-- Start -->
+    <form [formGroup]="CarForm" (ngSubmit)="create()">
     <div class="add-listings-box">
+      <p-toast></p-toast>
         <h3>Basic Informations</h3>
 
         <div class="row">
-            <div class="col-lg-12 col-md-12">
+
+          <div class="col-lg-6 col-md-6">
+            <div class="form-group">
+                <label><i class='bx bx-briefcase-alt'></i> Matricule</label>
+                <input type="text" class="form-control" formControlName="matricule" placeholder="matricule">
+            </div>
+        </div>
+
+            <div class="col-lg-6 col-md-6">
                 <div class="form-group">
-                    <label><i class='bx bx-briefcase-alt'></i> Nom du voiture</label>
-                    <input type="text" class="form-control" placeholder="Name of your business">
+                    <label><i class='bx bx-briefcase-alt'></i> Kilométre</label>
+                    <input type="number" class="form-control" formControlName="km" placeholder="Km">
                 </div>
             </div>
 
             <div class="col-lg-6 col-md-6">
+              <div class="form-group">
+                  <label><i class='bx bx-duplicate'></i> Marque voiture </label>
+                  <select formControlName="model" (change)="selectMake($event)">
+                      <option>Select Marque</option>
+                      <option  *ngFor="let m of makes" value={{m.id}} name="Make" [(ngModel)]="selectedMake" > {{m.name}}</option>
+
+                  </select>
+
+
+              </div>
+          </div>
+
+            <div class="col-lg-6 col-md-6">
                 <div class="form-group">
-                    <label><i class='bx bx-duplicate'></i> Marque voiture </label>
-                    <select>
-                        <option>Select Category</option>
-                        <option>BMW</option>
-                        <option>Mercedes-Benz</option>
-                        <option>Tesla</option>
-                        <option>Jeep</option>
-                        <option>Audi</option>
+                    <label><i class='bx bx-duplicate'></i> Model de voiture </label>
+                    <select formControlName="model_id" (change)="select($event)">
+                        <option>Select Model</option>
+                        <option  *ngFor="let m of models" value={{m.id}} name="Model" [(ngModel)]="selectedModel" formControlName="model_id" > {{m.name}}</option>
+
                     </select>
+
+
                 </div>
             </div>
 
+
+
+
             <div class="col-lg-6 col-md-6">
                 <div class="form-group">
-                    <label><i class='bx bxs-key'></i> Keywords:</label>
-                    <input type="text" class="form-control" placeholder="Maximum 15 , should be separated by commas">
+                    <label><i class='bx bxs-key'></i> Type:</label>
+                    <input   disabled type="text" class="form-control" [(ngModel)]="Model.type" value= {{Model.type}}    >
                 </div>
             </div>
+
+
+            <div class="col-lg-6 col-md-6">
+              <div class="form-group">
+                  <label><i class='bx bxs-key'></i> Année:</label>
+                  <input disabled type="text" class="form-control" [(ngModel)]="Model.year" value= {{Model.year}} >
+              </div>
+          </div>
         </div>
     </div>
 
@@ -55,50 +88,70 @@
         <h3>Location</h3>
 
         <div class="row">
-            <div class="col-lg-6 col-md-6">
-                <div class="form-group">
-                    <label><i class='bx bx-menu-alt-left'></i> City:</label>
-                    <select>
-                        <option>Select City</option>
-                        <option>New York</option>
-                        <option>London</option>
-                        <option>Paris</option>
-                        <option>Moscow</option>
-                        <option>Rome</option>
-                    </select>
-                </div>
-            </div>
 
-            <div class="col-lg-6 col-md-6">
+
+            <div class="col-lg-12 col-md-12">
                 <div class="form-group">
                     <label><i class='bx bx-menu-alt-left'></i> Address:</label>
-                    <input type="text" class="form-control" placeholder="e.g. 55 County Laois">
+                    <input type="text" formControlName="location" class="form-control" placeholder="e.g. 55 County Laois">
                 </div>
             </div>
 
-            <div class="col-lg-6 col-md-6">
-                <div class="form-group">
-                    <label><i class='bx bx-menu-alt-left'></i> State:</label>
-                    <input type="text" class="form-control">
-                </div>
-            </div>
 
-            <div class="col-lg-6 col-md-6">
-                <div class="form-group">
-                    <label><i class='bx bx-menu-alt-left'></i> Zip-Code:</label>
-                    <input type="text" class="form-control">
-                </div>
-            </div>
         </div>
     </div>
 
-    <div class="add-listings-box">
+    <div class="add-listings-box pb-3">
         <h3>Gallery</h3>
 
-        <div class="file-upload-box">
-            <form action="/file-upload" class="dropzone"></form>
-        </div>
+        <p-toast></p-toast>
+
+     <p-fileUpload name="galleries[]" url="http://127.0.0.1:8000/api/gallerie" (onUpload)="onUpload($event)"
+            multiple="multiple" accept="image/*" maxFileSize="10000000">
+            <ng-template pTemplate="content">
+                <ul *ngIf="Files.length">
+                    <li *ngFor="let file of Files">{{file.name}} - {{file.size}} bytes</li>
+                </ul>
+            </ng-template>
+    </p-fileUpload>
+        <!--<div class="file-upload-box">
+          <form action="http://127.0.0.1:8000/api/gallerie"  class="dropzone">
+
+            <div class="previews"></div>
+
+
+
+          </form>
+      </div>-->
     </div>
+
+    <div class="add-listings-box pb-3">
+    <div class="file-upload-box">
+     <!-- <ngx-dropzone (change)="onSelect($event)">
+
+        <ngx-dropzone-label>Drop files here to upload</ngx-dropzone-label>
+
+        <ngx-dropzone-preview *ngFor="let f of files" [removable]="true" (removed)="onRemove(f)">
+
+          <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+
+        </ngx-dropzone-preview>
+
+      </ngx-dropzone>
+-->
+
+
+
+    <!--<h5>Basic</h5>
+    <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*" maxFileSize="1000000" (onUpload)="onUpload($event)"></p-fileUpload>
+
+    <h5>Basic with Auto</h5>
+    <p-fileUpload #fubauto mode="basic" name="demo[]" url="./upload.php" accept="image/*" maxFileSize="1000000" (onUpload)="onUpload($event)" [auto]="true" chooseLabel="Browse"></p-fileUpload>-->
+
+    </div>
+    </div>
+
+
 
     <div class="add-listings-box">
         <h3>Details</h3>
@@ -111,47 +164,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-4 col-md-6">
-                <div class="form-group">
-                    <label><i class='bx bx-envelope'></i> Email Address: <span>(optional)</span></label>
-                    <input type="email" class="form-control">
-                </div>
-            </div>
 
-            <div class="col-lg-4 col-md-6">
-                <div class="form-group">
-                    <label><i class='bx bx-globe'></i> Website: <span>(optional)</span></label>
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="form-group">
-                    <label><i class='bx bx-phone-call'></i> Phone: <span>(optional)</span></label>
-                    <input type="text" class="form-control">
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="form-group">
-                    <label><i class='bx bxl-facebook-square'></i> Facebook: <span>(optional)</span></label>
-                    <input type="text" class="form-control" placeholder="https://www.facebook.com/">
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="form-group">
-                    <label><i class='bx bxl-twitter'></i> Twitter: <span>(optional)</span></label>
-                    <input type="text" class="form-control" placeholder="https://www.twitter.com/">
-                </div>
-            </div>
-
-            <div class="col-lg-4 col-md-6">
-                <div class="form-group">
-                    <label><i class='bx bxl-linkedin'></i> Linkedin: <span>(optional)</span></label>
-                    <input type="text" class="form-control" placeholder="https://www.linkedin.com/">
-                </div>
-            </div>
         </div>
     </div>
 
@@ -162,84 +175,84 @@
             <ul class="facilities-list">
                 <li>
                     <label class="checkbox">
-                        <input type="checkbox" name="facilities-list" value="free-wifi" checked>
+                        <input type="checkbox" name="option" value="Transmission automatique" checked>
                         <span>Transmission automatique</span>
                     </label>
                 </li>
                 <li>
                     <label class="checkbox">
-                        <input type="checkbox" name="facilities-list" value="parking">
+                        <input type="checkbox" name="option" value="Android Auto">
                         <span>Android Auto</span>
                     </label>
                 </li>
                 <li>
                     <label class="checkbox">
-                        <input type="checkbox" name="facilities-list" value="fitness-center" checked>
+                        <input type="checkbox" name="option" value="Apple CarPlay" checked>
                         <span>Apple CarPlay</span>
                     </label>
                 </li>
                 <li>
                     <label class="checkbox">
-                        <input type="checkbox" name="facilities-list" value="non-smoking-rooms">
+                        <input type="checkbox" name="option" value="Caméra de recul">
                         <span>Caméra de recul</span>
                     </label>
                 </li>
                 <li>
                     <label class="checkbox">
-                        <input type="checkbox" name="facilities-list" value="airport-shuttle" checked>
+                        <input type="checkbox" name="options" value="Porte-vélos" formControlName="options" checked>
                         <span>Porte-vélos</span>
                     </label>
                 </li>
                 <li>
                     <label class="checkbox">
-                        <input type="checkbox" name="facilities-list" value="air-conditioning">
+                        <input type="checkbox" name="options" value="Bluetooth" formControlName="options">
                         <span>Bluetooth</span>
                     </label>
                 </li>
                 <li>
                     <label class="checkbox">
-                        <input type="checkbox" name="facilities-list" value="events">
+                        <input type="checkbox" name="options" value="Sièges pour enfants"formControlName="options">
                         <span> Sièges pour enfants</span>
                     </label>
                 </li>
                 <li>
                     <label class="checkbox">
-                        <input type="checkbox" name="facilities-list" value="friendly-workspace">
+                        <input type="checkbox" name="options" value="Décapotable"formControlName="options">
                         <span>Décapotable</span>
                     </label>
                 </li>
 
                 <li>
                   <label class="checkbox">
-                      <input type="checkbox" name="facilities-list" value="friendly-workspace">
+                      <input type="checkbox" name="options" value="Sièges chauffants"formControlName="options">
                       <span> Sièges chauffants</span>
                   </label>
               </li>
 
               <li>
                 <label class="checkbox">
-                    <input type="checkbox" name="facilities-list" value="friendly-workspace">
+                    <input type="checkbox" name="options" value="Longue durée"formControlName="options">
                     <span> Longue durée</span>
                 </label>
             </li>
 
             <li>
               <label class="checkbox">
-                  <input type="checkbox" name="facilities-list" value="friendly-workspace">
+                  <input type="checkbox" name="options" value="Toit ouvrant"formControlName="options">
                   <span> Toit ouvrant</span>
               </label>
           </li>
 
           <li>
             <label class="checkbox">
-                <input type="checkbox" name="facilities-list" value="friendly-workspace">
+                <input type="checkbox" name="options" value="Chargeur USB"formControlName="options">
                 <span> Chargeur USB</span>
             </label>
         </li>
 
         <li>
           <label class="checkbox">
-              <input type="checkbox" name="facilities-list" value="friendly-workspace">
+              <input type="checkbox" name="options" value="Port USB"formControlName="options">
               <span> Port USB</span>
           </label>
       </li>
@@ -247,7 +260,7 @@
 
       <li>
         <label class="checkbox">
-            <input type="checkbox" name="facilities-list" value="friendly-workspace">
+            <input type="checkbox" name="options" value="2WD to 4WD lever"formControlName="options">
             <span> 2WD to 4WD lever</span>
         </label>
     </li>
@@ -255,14 +268,14 @@
 
     <li>
       <label class="checkbox">
-          <input type="checkbox" name="facilities-list" value="friendly-workspace">
+          <input type="checkbox" name="options" value="Factory subwoofer" formControlName="options">
           <span> Factory subwoofer</span>
       </label>
   </li>
 
   <li>
     <label class="checkbox">
-        <input type="checkbox" name="facilities-list" value="friendly-workspace">
+        <input type="checkbox" name="options" value="Alloy wheels" formControlName="options">
         <span> Alloy wheels</span>
     </label>
 </li>
@@ -271,517 +284,7 @@
         </div>
     </div>
 
-     <!--  <div class="add-listings-box">
-        <h3>Sidebar Widgets</h3>
 
-        <div class="form-group">
-            <div class="sidebar-widgets">
-                <div class="box">
-                    <span class="title">Booking Form</span>
-                    <label class="switch">
-                        <input type="checkbox">
-                        <span></span>
-                    </label>
-                </div>
-
-                <div class="box">
-                    <span class="title">Price Range</span>
-                    <label class="switch">
-                        <input type="checkbox" checked>
-                        <span></span>
-                    </label>
-                </div>
-
-                <div class="box">
-                    <span class="title">Instagram</span>
-                    <label class="switch">
-                        <input type="checkbox">
-                        <span></span>
-                    </label>
-                </div>
-            </div>
-        </div>
-    </div> -->
-
-  <!--<div class="add-listings-box">
-        <h3>Opening Hours</h3>
-
-        <div class="row opening-day align-items-center">
-            <div class="col-lg-2 col-md-12">
-                <h5>Monday</h5>
-            </div>
-
-            <div class="col-lg-5 col-md-6">
-                <select>
-                    <option>Opening Time</option>
-                    <option>Closed</option>
-                    <option>1 AM</option>
-                    <option>2 AM</option>
-                    <option>3 AM</option>
-                    <option>4 AM</option>
-                    <option>5 AM</option>
-                    <option>6 AM</option>
-                    <option>7 AM</option>
-                    <option>8 AM</option>
-                    <option>9 AM</option>
-                    <option>10 AM</option>
-                    <option>11 AM</option>
-                    <option>12 AM</option>
-                    <option>1 PM</option>
-                    <option>2 PM</option>
-                    <option>3 PM</option>
-                    <option>4 PM</option>
-                    <option>5 PM</option>
-                    <option>6 PM</option>
-                    <option>7 PM</option>
-                    <option>8 PM</option>
-                    <option>9 PM</option>
-                    <option>10 PM</option>
-                    <option>11 PM</option>
-                    <option>12 PM</option>
-                </select>
-            </div>
-
-            <div class="col-lg-5 col-md-6">
-                <select>
-                    <option>Closing Time</option>
-                    <option>Closed</option>
-                    <option>1 AM</option>
-                    <option>2 AM</option>
-                    <option>3 AM</option>
-                    <option>4 AM</option>
-                    <option>5 AM</option>
-                    <option>6 AM</option>
-                    <option>7 AM</option>
-                    <option>8 AM</option>
-                    <option>9 AM</option>
-                    <option>10 AM</option>
-                    <option>11 AM</option>
-                    <option>12 AM</option>
-                    <option>1 PM</option>
-                    <option>2 PM</option>
-                    <option>3 PM</option>
-                    <option>4 PM</option>
-                    <option>5 PM</option>
-                    <option>6 PM</option>
-                    <option>7 PM</option>
-                    <option>8 PM</option>
-                    <option>9 PM</option>
-                    <option>10 PM</option>
-                    <option>11 PM</option>
-                    <option>12 PM</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="row opening-day align-items-center">
-            <div class="col-lg-2 col-md-12">
-                <h5>Tuesday</h5>
-            </div>
-
-            <div class="col-lg-5 col-md-6">
-                <select>
-                    <option>Opening Time</option>
-                    <option>Closed</option>
-                    <option>1 AM</option>
-                    <option>2 AM</option>
-                    <option>3 AM</option>
-                    <option>4 AM</option>
-                    <option>5 AM</option>
-                    <option>6 AM</option>
-                    <option>7 AM</option>
-                    <option>8 AM</option>
-                    <option>9 AM</option>
-                    <option>10 AM</option>
-                    <option>11 AM</option>
-                    <option>12 AM</option>
-                    <option>1 PM</option>
-                    <option>2 PM</option>
-                    <option>3 PM</option>
-                    <option>4 PM</option>
-                    <option>5 PM</option>
-                    <option>6 PM</option>
-                    <option>7 PM</option>
-                    <option>8 PM</option>
-                    <option>9 PM</option>
-                    <option>10 PM</option>
-                    <option>11 PM</option>
-                    <option>12 PM</option>
-                </select>
-            </div>
-
-            <div class="col-lg-5 col-md-6">
-                <select>
-                    <option>Closing Time</option>
-                    <option>Closed</option>
-                    <option>1 AM</option>
-                    <option>2 AM</option>
-                    <option>3 AM</option>
-                    <option>4 AM</option>
-                    <option>5 AM</option>
-                    <option>6 AM</option>
-                    <option>7 AM</option>
-                    <option>8 AM</option>
-                    <option>9 AM</option>
-                    <option>10 AM</option>
-                    <option>11 AM</option>
-                    <option>12 AM</option>
-                    <option>1 PM</option>
-                    <option>2 PM</option>
-                    <option>3 PM</option>
-                    <option>4 PM</option>
-                    <option>5 PM</option>
-                    <option>6 PM</option>
-                    <option>7 PM</option>
-                    <option>8 PM</option>
-                    <option>9 PM</option>
-                    <option>10 PM</option>
-                    <option>11 PM</option>
-                    <option>12 PM</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="row opening-day align-items-center">
-            <div class="col-lg-2 col-md-12">
-                <h5>Wednesday</h5>
-            </div>
-
-            <div class="col-lg-5 col-md-6">
-                <select>
-                    <option>Opening Time</option>
-                    <option>Closed</option>
-                    <option>1 AM</option>
-                    <option>2 AM</option>
-                    <option>3 AM</option>
-                    <option>4 AM</option>
-                    <option>5 AM</option>
-                    <option>6 AM</option>
-                    <option>7 AM</option>
-                    <option>8 AM</option>
-                    <option>9 AM</option>
-                    <option>10 AM</option>
-                    <option>11 AM</option>
-                    <option>12 AM</option>
-                    <option>1 PM</option>
-                    <option>2 PM</option>
-                    <option>3 PM</option>
-                    <option>4 PM</option>
-                    <option>5 PM</option>
-                    <option>6 PM</option>
-                    <option>7 PM</option>
-                    <option>8 PM</option>
-                    <option>9 PM</option>
-                    <option>10 PM</option>
-                    <option>11 PM</option>
-                    <option>12 PM</option>
-                </select>
-            </div>
-
-            <div class="col-lg-5 col-md-6">
-                <select>
-                    <option>Closing Time</option>
-                    <option>Closed</option>
-                    <option>1 AM</option>
-                    <option>2 AM</option>
-                    <option>3 AM</option>
-                    <option>4 AM</option>
-                    <option>5 AM</option>
-                    <option>6 AM</option>
-                    <option>7 AM</option>
-                    <option>8 AM</option>
-                    <option>9 AM</option>
-                    <option>10 AM</option>
-                    <option>11 AM</option>
-                    <option>12 AM</option>
-                    <option>1 PM</option>
-                    <option>2 PM</option>
-                    <option>3 PM</option>
-                    <option>4 PM</option>
-                    <option>5 PM</option>
-                    <option>6 PM</option>
-                    <option>7 PM</option>
-                    <option>8 PM</option>
-                    <option>9 PM</option>
-                    <option>10 PM</option>
-                    <option>11 PM</option>
-                    <option>12 PM</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="row opening-day align-items-center">
-            <div class="col-lg-2 col-md-12">
-                <h5>Thursday</h5>
-            </div>
-
-            <div class="col-lg-5 col-md-6">
-                <select>
-                    <option>Opening Time</option>
-                    <option>Closed</option>
-                    <option>1 AM</option>
-                    <option>2 AM</option>
-                    <option>3 AM</option>
-                    <option>4 AM</option>
-                    <option>5 AM</option>
-                    <option>6 AM</option>
-                    <option>7 AM</option>
-                    <option>8 AM</option>
-                    <option>9 AM</option>
-                    <option>10 AM</option>
-                    <option>11 AM</option>
-                    <option>12 AM</option>
-                    <option>1 PM</option>
-                    <option>2 PM</option>
-                    <option>3 PM</option>
-                    <option>4 PM</option>
-                    <option>5 PM</option>
-                    <option>6 PM</option>
-                    <option>7 PM</option>
-                    <option>8 PM</option>
-                    <option>9 PM</option>
-                    <option>10 PM</option>
-                    <option>11 PM</option>
-                    <option>12 PM</option>
-                </select>
-            </div>
-
-            <div class="col-lg-5 col-md-6">
-                <select>
-                    <option>Closing Time</option>
-                    <option>Closed</option>
-                    <option>1 AM</option>
-                    <option>2 AM</option>
-                    <option>3 AM</option>
-                    <option>4 AM</option>
-                    <option>5 AM</option>
-                    <option>6 AM</option>
-                    <option>7 AM</option>
-                    <option>8 AM</option>
-                    <option>9 AM</option>
-                    <option>10 AM</option>
-                    <option>11 AM</option>
-                    <option>12 AM</option>
-                    <option>1 PM</option>
-                    <option>2 PM</option>
-                    <option>3 PM</option>
-                    <option>4 PM</option>
-                    <option>5 PM</option>
-                    <option>6 PM</option>
-                    <option>7 PM</option>
-                    <option>8 PM</option>
-                    <option>9 PM</option>
-                    <option>10 PM</option>
-                    <option>11 PM</option>
-                    <option>12 PM</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="row opening-day align-items-center">
-            <div class="col-lg-2 col-md-12">
-                <h5>Friday</h5>
-            </div>
-
-            <div class="col-lg-5 col-md-6">
-                <select>
-                    <option>Opening Time</option>
-                    <option>Closed</option>
-                    <option>1 AM</option>
-                    <option>2 AM</option>
-                    <option>3 AM</option>
-                    <option>4 AM</option>
-                    <option>5 AM</option>
-                    <option>6 AM</option>
-                    <option>7 AM</option>
-                    <option>8 AM</option>
-                    <option>9 AM</option>
-                    <option>10 AM</option>
-                    <option>11 AM</option>
-                    <option>12 AM</option>
-                    <option>1 PM</option>
-                    <option>2 PM</option>
-                    <option>3 PM</option>
-                    <option>4 PM</option>
-                    <option>5 PM</option>
-                    <option>6 PM</option>
-                    <option>7 PM</option>
-                    <option>8 PM</option>
-                    <option>9 PM</option>
-                    <option>10 PM</option>
-                    <option>11 PM</option>
-                    <option>12 PM</option>
-                </select>
-            </div>
-
-            <div class="col-lg-5 col-md-6">
-                <select>
-                    <option>Closing Time</option>
-                    <option>Closed</option>
-                    <option>1 AM</option>
-                    <option>2 AM</option>
-                    <option>3 AM</option>
-                    <option>4 AM</option>
-                    <option>5 AM</option>
-                    <option>6 AM</option>
-                    <option>7 AM</option>
-                    <option>8 AM</option>
-                    <option>9 AM</option>
-                    <option>10 AM</option>
-                    <option>11 AM</option>
-                    <option>12 AM</option>
-                    <option>1 PM</option>
-                    <option>2 PM</option>
-                    <option>3 PM</option>
-                    <option>4 PM</option>
-                    <option>5 PM</option>
-                    <option>6 PM</option>
-                    <option>7 PM</option>
-                    <option>8 PM</option>
-                    <option>9 PM</option>
-                    <option>10 PM</option>
-                    <option>11 PM</option>
-                    <option>12 PM</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="row opening-day align-items-center">
-            <div class="col-lg-2 col-md-12">
-                <h5>Saturday</h5>
-            </div>
-
-            <div class="col-lg-5 col-md-6">
-                <select>
-                    <option>Opening Time</option>
-                    <option>Closed</option>
-                    <option>1 AM</option>
-                    <option>2 AM</option>
-                    <option>3 AM</option>
-                    <option>4 AM</option>
-                    <option>5 AM</option>
-                    <option>6 AM</option>
-                    <option>7 AM</option>
-                    <option>8 AM</option>
-                    <option>9 AM</option>
-                    <option>10 AM</option>
-                    <option>11 AM</option>
-                    <option>12 AM</option>
-                    <option>1 PM</option>
-                    <option>2 PM</option>
-                    <option>3 PM</option>
-                    <option>4 PM</option>
-                    <option>5 PM</option>
-                    <option>6 PM</option>
-                    <option>7 PM</option>
-                    <option>8 PM</option>
-                    <option>9 PM</option>
-                    <option>10 PM</option>
-                    <option>11 PM</option>
-                    <option>12 PM</option>
-                </select>
-            </div>
-
-            <div class="col-lg-5 col-md-6">
-                <select>
-                    <option>Closing Time</option>
-                    <option>Closed</option>
-                    <option>1 AM</option>
-                    <option>2 AM</option>
-                    <option>3 AM</option>
-                    <option>4 AM</option>
-                    <option>5 AM</option>
-                    <option>6 AM</option>
-                    <option>7 AM</option>
-                    <option>8 AM</option>
-                    <option>9 AM</option>
-                    <option>10 AM</option>
-                    <option>11 AM</option>
-                    <option>12 AM</option>
-                    <option>1 PM</option>
-                    <option>2 PM</option>
-                    <option>3 PM</option>
-                    <option>4 PM</option>
-                    <option>5 PM</option>
-                    <option>6 PM</option>
-                    <option>7 PM</option>
-                    <option>8 PM</option>
-                    <option>9 PM</option>
-                    <option>10 PM</option>
-                    <option>11 PM</option>
-                    <option>12 PM</option>
-                </select>
-            </div>
-        </div>
-
-        <div class="row opening-day align-items-center">
-            <div class="col-lg-2 col-md-12">
-                <h5>Sunday</h5>
-            </div>
-
-            <div class="col-lg-5 col-md-6">
-                <select>
-                    <option>Opening Time</option>
-                    <option>Closed</option>
-                    <option>1 AM</option>
-                    <option>2 AM</option>
-                    <option>3 AM</option>
-                    <option>4 AM</option>
-                    <option>5 AM</option>
-                    <option>6 AM</option>
-                    <option>7 AM</option>
-                    <option>8 AM</option>
-                    <option>9 AM</option>
-                    <option>10 AM</option>
-                    <option>11 AM</option>
-                    <option>12 AM</option>
-                    <option>1 PM</option>
-                    <option>2 PM</option>
-                    <option>3 PM</option>
-                    <option>4 PM</option>
-                    <option>5 PM</option>
-                    <option>6 PM</option>
-                    <option>7 PM</option>
-                    <option>8 PM</option>
-                    <option>9 PM</option>
-                    <option>10 PM</option>
-                    <option>11 PM</option>
-                    <option>12 PM</option>
-                </select>
-            </div>
-
-            <div class="col-lg-5 col-md-6">
-                <select>
-                    <option>Closing Time</option>
-                    <option>Closed</option>
-                    <option>1 AM</option>
-                    <option>2 AM</option>
-                    <option>3 AM</option>
-                    <option>4 AM</option>
-                    <option>5 AM</option>
-                    <option>6 AM</option>
-                    <option>7 AM</option>
-                    <option>8 AM</option>
-                    <option>9 AM</option>
-                    <option>10 AM</option>
-                    <option>11 AM</option>
-                    <option>12 AM</option>
-                    <option>1 PM</option>
-                    <option>2 PM</option>
-                    <option>3 PM</option>
-                    <option>4 PM</option>
-                    <option>5 PM</option>
-                    <option>6 PM</option>
-                    <option>7 PM</option>
-                    <option>8 PM</option>
-                    <option>9 PM</option>
-                    <option>10 PM</option>
-                    <option>11 PM</option>
-                    <option>12 PM</option>
-                </select>
-            </div>
-        </div>
-    </div>  -->
 
     <div class="add-listings-box">
         <h3>Prix</h3>
@@ -792,13 +295,16 @@
                <div class="col-6">
                 <label><i class='bx bx-purchase-tag'></i> Horaire: {{val}}</label>
 
-                <input type="text" class="form-control" placeholder="$42.00">
+                <input type="number" class="form-control" placeholder="$42.00" formControlName="Price_H">
                <!--  <p-slider [(ngModel)]="val"></p-slider>-->
+               <br>
                 </div>
 
                 <div class="col-6">
                  <label><i class='bx bx-purchase-tag'></i> Journalié:</label>
-                 <input type="text" class="form-control" placeholder="$32.00"></div></div>
+                 <input type="number" class="form-control" placeholder="$32.00" formControlName="Price_D" ></div>
+                <br>
+                </div>
 
 
         </div>
@@ -806,10 +312,11 @@
 
 
     <div class="add-listings-btn">
-        <button type="submit">Submit Listings</button> <br>
+        <button type="submit">Ajouter Vehicule</button> <br>
 
 
     </div>
+  </form>
     <!-- End -->
 
     <div class="flex-grow-1"></div>

@@ -112,9 +112,23 @@ import { HashLocationStrategy , LocationStrategy} from '@angular/common';
 import {SliderModule} from 'primeng/slider';
 import {ButtonModule} from 'primeng/button';
 import {CalendarModule} from 'primeng/calendar';
+import {ToastModule} from 'primeng/toast';
 
-import { HttpClientModule } from '@angular/common/http';
-@NgModule({
+
+
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './shared/auth/auth.interceptor';
+import {DropdownModule} from 'primeng/dropdown';
+import { TestComponent } from './test/test.component';
+
+// import { FileUploadModule } from 'primeng/fileupload';
+
+ import { FileUploadModule as PrimeNgFileUploadModule } from 'primeng/fileupload';
+
+import { NgxDropzoneModule } from 'ngx-dropzone';
+
+
+   @NgModule({
   declarations: [
     AppComponent,
     HomeDemoOneComponent,
@@ -202,7 +216,9 @@ import { HttpClientModule } from '@angular/common/http';
     UserDashboardComponent,
     ProfileComponent,
     MessageComponent,
-    SearchFormsComponent
+    SearchFormsComponent,
+    TestComponent,
+
 
   ],
   imports: [
@@ -217,6 +233,7 @@ import { HttpClientModule } from '@angular/common/http';
     SelectDropDownModule,
     NgxTypedJsModule,
     FormsModule,
+    ReactiveFormsModule,
     NgxPaginationModule,
 
     BsDatepickerModule,
@@ -224,14 +241,23 @@ import { HttpClientModule } from '@angular/common/http';
 
     SliderModule,
     ButtonModule,
-    CalendarModule
+    CalendarModule,
+    ToastModule,
+    DropdownModule,PrimeNgFileUploadModule
+
+
 
 
 
 
 
   ],
-  providers:  [  ],
+  providers:  [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
