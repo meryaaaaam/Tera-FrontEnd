@@ -4,7 +4,7 @@
 <section class="listings-details-area pb-70">
     <div class="listings-details-image">
       <!--<img src="assets/img/cars/BMW iX/BMW-MY23-iX-Gallery-Interior-15.jpg"   alt="image">-->
-      <img src="{{res.gallerie}}"   alt="image">
+      <img src="{{res.photo}}"   alt="image">
         <div class="container">
             <div class="container">
                 <div class="listings-details-content">
@@ -57,7 +57,7 @@
                           <div class="options col-6 ">
                             <div class="row">
                               <div class="col-4   "> <img src="assets/img/svg/siege.svg" width="37px" alt="icon"> </div>
-                              <div class="col-6">5 Siege</div>
+                              <div class="col-6"> {{res.siege}} Siege </div>
                             </div>
                           </div>
 
@@ -65,7 +65,7 @@
                             <div class="options col-6 pb-4 pr-2">
                               <div class="row">
                                    <div class="col-4  ">  <img src="assets/img/svg/porte-de-voiture.svg" width="37px" alt="image">  </div>
-                                   <div class="col-6">5 Portes</div>
+                                   <div class="col-6">{{res.portes}} Portes</div>
                               </div>
                             </div>
 
@@ -73,20 +73,42 @@
                             <div class="options col-6 pb-4 pr-4">
                                <div class="row">
                                   <div class="col-4   "> <img src="assets/img/svg/voiture-ecologique.svg" width="37px" alt="image">  </div>
-                                  <div class="col-6">Électrique</div>
+                                  <div class="col-6">{{res.carburant}}</div>
                                 </div>
                              </div>
+
+                             <div class="options col-6 pb-4 pr-4">
+                              <div class="row">
+                                 <div class="col-4   "> <img src="assets/img/svg/transmission.svg" width="37px" alt="image">  </div>
+                                 <div class="col-6">{{res.transmission}}</div>
+                               </div>
+                            </div>
+
+
                         </div>
-                      </div> </div>
+                      </div>
+
+
+                    </div>
+
+
+
+
+
 
                     <h3>Description</h3>
-                     {{car_description}}
+                     {{res.description}}
 
                     <h3>Caracteristique</h3>
-                    <ul class="amenities-list">
-                        <li><span><img src="assets/img/svg/camera.svg" width="32px" alt="icon">  2 écrans ACL à l'avant</span></li>
+                    <ul class="row amenities-list" >
+
+
+                        <li *ngFor="let op of res.options;"><span><img src="{{op.icon}}" width="32px" alt="icon">   {{op.label}}</span></li>
+
+
+                        <!--<li><span><img src="assets/img/svg/camera.svg" width="32px" alt="icon">  2 écrans ACL à l'avant</span></li>
                         <li><span><img src="assets/img/svg/camera.svg" width="32px" alt="icon">  Alerte de trafic routier en temps réel  </span></li>
-                        <!--<li><span>  <i class='bx bx-check'></i>  Amplificateur ordinaire 205W.  </span></li>-->
+                        <!--<li><span>  <i class='bx bx-check'></i>  Amplificateur ordinaire 205W.  </span></li>
                         <li><span> <img src="assets/img/svg/car-radio.svg" width="32px" alt="icon"> Radio : AM/FM stéréo </span></li>
                         <li><span> <img src="assets/img/svg/gps.svg" width="32px" alt="icon"> GPS </span></li>
                         <li><span><img src="assets/img/svg/car-key.svg" width="32px" alt="icon"> Accès sans clé</span></li>
@@ -94,32 +116,23 @@
                         <li><span> <img src="assets/img/svg/siege.svg" width="32px" alt="icon">  Sièges chauffants</span></li>
                         <li><span> <img src="assets/img/svg/bluetooth.svg" width="32px" alt="icon"> Bluetooth</span></li>
                         <li><span> <img src="assets/img/svg/camera.svg" width="32px" alt="icon">   Caméra de recul</span></li>
-                        <li><span><img src="assets/img/svg/transmission.svg" width="42px" alt="icon">Transmission automatique</span></li>
-                        <li><span> <img src="assets/img/svg/play.svg" width="22px" alt="icon"> Apple CarPlay</span></li>
+                       <!-- <li><span><img src="assets/img/svg/transmission.svg" width="42px" alt="icon">Transmission automatique</span></li>
+                      <li><span> <img src="assets/img/svg/play.svg" width="22px" alt="icon"> Apple CarPlay</span></li>-->
                     </ul>
                     <h3>Gallery</h3>
                     <div id="gallery">
                         <div class="gallery-slides">
-                          <img [src]="res.gallerie" alt="image">
-                            <!--<owl-carousel-o [options]="galleryOptions">
-                                <ng-template carouselSlide *ngFor="let Image of singleImageBox;">
+                         <!-- <img [src]="res.gallerie" alt="image">-->
+                            <owl-carousel-o [options]="res.galleries">
+                                <ng-template carouselSlide *ngFor="let Image of res.galleries;">
                                     <div class="single-image-box">
-
+                                      <img [src]="Image.path" alt="image">
                                     </div>
                                 </ng-template>
-                            </owl-carousel-o>-->
+                            </owl-carousel-o>
                         </div>
                     </div>
-                    <!--<h3>Pricing</h3>-->
-                    <!--<div id="pricing">
-                        <ul class="pricing-list">
-                            <li>Pizza <span>$15</span></li>
-                            <li>Burger <span>$10</span></li>
-                            <li>Cool Drink <span>$12</span></li>
-                            <li>Fried Rice <span>$08</span></li>
-                            <li>Orange Juice <span>$05</span></li>
-                        </ul>
-                    </div>-->
+
                     <h3>Review</h3>
                     <div class="listings-review">
                         <div class="rating d-flex align-items-center">
