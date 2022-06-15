@@ -159,12 +159,20 @@
                     </ul>
 
                     <div class="others-option d-flex align-items-center">
-                        <div class="option-item">
-                            <span data-bs-toggle="modal" data-bs-target="#loginRegisterModal"><i class="flaticon-user"></i> Login / Register</span>
+                        <div *ngIf="!user.id" class="option-item">
+
+
+                          <span data-bs-toggle="modal" data-bs-target="#loginRegisterModal"><i class="flaticon-user"></i> Login / Register</span>
                         </div>
 
-                        <div class="option-item">
-                            <a routerLink="/dashboard-add-listings" class="default-btn"><i class="flaticon-more"></i> Add Listing</a>
+                        <div *ngIf="user.id" class="option-item">
+
+
+                          <span routerLink="/user/profile" ><i class="flaticon-user"></i>  Profile</span>
+                        </div>
+
+                        <div *ngIf="user.id" class="option-item">
+                            <a routerLink="/user/add-car" class="default-btn"><i class="flaticon-more"></i> Ajouter vehicule</a>
                         </div>
                     </div>
                 </div>

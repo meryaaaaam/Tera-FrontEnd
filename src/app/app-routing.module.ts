@@ -50,6 +50,7 @@ import { TopPlaceComponent } from './components/pages/top-place/top-place.compon
 import { VerticalListingsFullWidthComponent } from './components/pages/vertical-listings-full-width/vertical-listings-full-width.component';
 import { VerticalListingsLeftSidebarComponent } from './components/pages/vertical-listings-left-sidebar/vertical-listings-left-sidebar.component';
 import { VerticalListingsRightSidebarComponent } from './components/pages/vertical-listings-right-sidebar/vertical-listings-right-sidebar.component';
+import { AuthGuard } from './services/guard/authguard.guard';
 import { TestComponent } from './test/test.component';
 
 const routes: Routes = [
@@ -97,14 +98,14 @@ const routes: Routes = [
     {path: 'car/detail/:id', component: DetailComponent},
     {path: 'car/list', component: ListingComponent},
 
-    {path: 'user/add-car', component: AddComponent},
-    {path: 'user/list', component: MyCarsComponent},
-    {path: 'user/reviews', component: ReviewsComponent},
-    {path: 'user/booking', component: BookingComponent},
-    {path: 'user/profile', component: ProfileComponent},
-    {path: 'user/messages', component: MessageComponent},
+    {path: 'user/add-car', component: AddComponent  , canActivate: [AuthGuard ] },
+    {path: 'user/list', component: MyCarsComponent  , canActivate: [AuthGuard ] },
+    {path: 'user/reviews', component: ReviewsComponent  , canActivate: [AuthGuard ] },
+    {path: 'user/booking', component: BookingComponent , canActivate: [AuthGuard ] },
+    {path: 'user/profile', component: ProfileComponent , canActivate: [AuthGuard ] },
+    {path: 'user/messages', component: MessageComponent , canActivate: [AuthGuard ] },
 
-    {path: 'espace-user', component: HostComponent},
+    {path: 'espace-user', component: HostComponent , canActivate: [AuthGuard ] },
 
 
     {path: 'test', component: TestComponent},

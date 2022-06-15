@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { User } from 'src/app/models/user';
 import { AuthStateService } from 'src/app/shared/auth/auth-state.service';
 import { AuthService } from 'src/app/shared/auth/auth.service';
 import { TokenService } from 'src/app/shared/auth/token.service';
@@ -13,7 +14,7 @@ import { TokenService } from 'src/app/shared/auth/token.service';
   providers: [MessageService]
 })
 export class NavbarStyleTwoComponent implements OnInit {
-
+  user : User = new User() ;
   loginForm: FormGroup;
   errors:any = null;
 
@@ -50,6 +51,8 @@ export class NavbarStyleTwoComponent implements OnInit {
     });
   }
   ngOnInit() {
+
+    this.user  =  this.tokenStorage.getUser().user ;
 
     if (this.tokenStorage.getTokens() ) {
       this.isLoggedIn = true;
