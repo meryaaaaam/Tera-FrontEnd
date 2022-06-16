@@ -40,11 +40,59 @@
 
             <div class="col-lg-6 col-md-6">
               <div class="form-group">
+                <label><i class='bx bx-briefcase-alt'></i> Portes</label>
+                  <select  formControlName="portes" >
+                    <option [ngValue]="null" disabled  > Selectionner portes </option>
+                    <option *ngFor="let m of portes" selected  value={{m.nombre}} >{{ m.nombre }}</option>
+                  </select>
+              </div>
+            </div>
+
+
+
+
+
+            <div class="col-lg-6 col-md-6">
+              <div class="form-group">
+                <label><i class='bx bx-briefcase-alt'></i> Siege</label>
+                  <select  formControlName="siege" >
+                    <option [ngValue]="null" disabled  > Selectionner siege </option>
+                    <option *ngFor="let m of siege" selected value={{m.nombre}} >{{ m.nombre }}</option>
+                  </select>
+              </div>
+            </div>
+
+
+
+            <div class="col-lg-6 col-md-6">
+              <div class="form-group">
+                <label><i class='bx bx-briefcase-alt'></i> Carburant</label>
+                  <select  formControlName="carburant" >
+                    <option [ngValue]="null" disabled  > Selectionner carburant </option>
+                    <option *ngFor="let m of carburant" selected    value={{m.label}}  >{{ m.label }}</option>
+                  </select>
+              </div>
+            </div>
+
+
+            <div class="col-lg-6 col-md-6">
+              <div class="form-group">
+                <label><i class='bx bx-briefcase-alt'></i> Transmission</label>
+                  <select formControlName="transmission"  >
+                    <option [ngValue]="null" disabled  > Selectionner transmission </option>
+                    <option *ngFor="let m of transmission" selected value={{m.label}}>{{ m.label }}</option>
+                  </select>
+              </div>
+            </div>
+
+            <!--<p-slider [(ngModel)]="val" [min]="0" [max]="100"></p-slider>-->
+
+            <div class="col-lg-6 col-md-6">
+              <div class="form-group">
                   <label><i class='bx bx-duplicate'></i> Marque voiture </label>
                   <select (change)="selectMake($event)">
-                      <option>Select Marque</option>
+                      <option>Selectionner Marque</option>
                       <option  *ngFor="let m of makes" value={{m.id}} name="Make"> {{m.name}}</option>
-
                   </select>
 
 
@@ -80,6 +128,9 @@
                   <input disabled type="text" class="form-control" [(ngModel)]="Model.year" value= {{Model.year}} >
               </div>
           </div>
+
+
+
         </div>
     </div>
 
@@ -155,11 +206,12 @@
     <div class="add-listings-box">
         <h3>Details</h3>
 
+
         <div class="row">
             <div class="col-lg-12 col-md-12">
                 <div class="form-group">
                     <label><i class='bx bx-text'></i> Description:</label>
-                    <textarea cols="30" rows="7" class="form-control" placeholder="Details..."></textarea>
+                    <textarea cols="30" rows="7" class="form-control" formControlName="description" placeholder="Details..."></textarea>
                 </div>
             </div>
 
@@ -174,7 +226,7 @@
             <ul class="facilities-list">
                 <li *ngFor="let opt of opts">
                     <label class="checkbox">
-                        <input type="checkbox" name="option" value="{{opt.id}}" (change)="onchange($event)">
+                        <input type="checkbox"  name="option" value="{{opt.id}}" (change)="onchange($event)">
                         <span>{{opt.label}}</span>
                     </label>
                 </li>

@@ -43,6 +43,7 @@ export class AddComponent implements OnInit {
   uploadedFiles: any[] = [];
   Files: any[] = [];
   Image: Image= new Image;
+  options : any[] ;
 
 
 
@@ -55,47 +56,86 @@ export class AddComponent implements OnInit {
     ) {
       this.CarForm = this.fb.group({
         km: [''],
-        options: [''],
+        options: this.options,
         matricule: [''],
         Price_H: [''],
         Price_D: [''],
         location: [''],
         model_id: [''],
-     //   galleries:this.uploadedFiles ,
+        portes: [''],
+        carburant: [''],
+        transmission: [''],
+        siege: [''],
+        description: [''],
+        photo: this.uploadedFiles[0] ,
+        galleries:this.uploadedFiles ,
         user_id: this.tokenStorage.getUser().user.id,
       });
   };
+
+
+
+
   ngOnInit(): void {
 
 
       this.user = this.tokenStorage.getUser().user;
-     //console.log(this.user) ;
-
-
       this.cars.getAllMakes().subscribe(
-        (res)=> {this.makes = res ; 
-          //console.log(this.makes);
-        },
+        (res)=> {this.makes = res ;},
         (error) => { console.log(error.error) ; },
-      )
-
-
+      );
       this.optionservice.getOptions().subscribe(
-        (res)=> {this.opts = res ; 
+        (res)=> {this.opts = res ;
           console.log(this.opts);},
         (error) => { console.log(error.error) ; },
-      )
-  
-  }
+      );
+
+
+
+                 }
+
+                 public portes = [
+                  {nombre:"2"},
+                  {nombre:"3"},
+                  {nombre:"4"},
+                  {nombre:"5"},
+                    ];
+
+                  public carburant = [
+                    {label:"Essence"},
+                    {label:"Diesel"},
+                    {label:"Hybride"},
+                    {label:"Électrique"},
+                   ];
+
+
+                  public siege = [
+                    {nombre:"2"},
+                    {nombre:"3"},
+                    {nombre:"4"},
+                    {nombre:"5"},
+                    {nombre:"6"},
+                    {nombre:"8"},
+                   ];
+
+
+
+                   public transmission = [
+                    {label:"Manuelle"},
+                    {label:"Automatique"},
+
+                   ];
+
+
   onchange(event){
 
-    console.log(event);
-    console.log(event.target.value);
+   // console.log(event);
+    //console.log(event.target.value);
     this.id=event.target.value;
     let j = 0;
     let i =0;
     for (let i = 0; i< this.selectedoptions.length; i++)
-      { 
+      {
         if (this.id==this.selectedoptions[i])
       { delete this.selectedoptions[i];
         this.selectedoptions = this.selectedoptions.filter(item => item);
@@ -110,9 +150,9 @@ export class AddComponent implements OnInit {
 
       }
       console.log(this.selectedoptions);
-
+      this.options = this.selectedoptions ;
     }
-  
+
   onSelect(event) {
     console.log(event);
     this.files.push(...event.addedFiles);
@@ -128,28 +168,24 @@ export class AddComponent implements OnInit {
 
 
 onUpload(event) {
-  console.log(event);
+//  console.log(event);
 
+  let image: any ;
+  let file
 
-  for(let file of event.files) {
+    for  (var i =  0; i <  event.files.length; i++)  {
+     file = event.files[i] ;
 
-  console.log(file);
-   //this.Image.name = file.name ;
-  // console.log(this.Image);
-   //this.Image.path = "assets/img/cars/"+this.Image.name ;
-  //this.Image.size = file.size ;
-  //console.log(this.Image);
-    this.uploadedFiles.push(file);
-
-
+    image = {"name":file.name , "path" :"assets/img/cars/"+file.name , "size" :file.size }
+    this.uploadedFiles.push(image);
      }
 
 
     console.log(this.uploadedFiles) ;
-   /* const formData =  new  FormData();
+  const formData =  new  FormData();
     for  (var i =  0; i <  this.uploadedFiles.length; i++)  {
-      formData.append("file[]",  this.uploadedFiles[i]);*/
-  //}
+      formData.append("file[]",  this.uploadedFiles[i]);
+  }
   this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
 }
 
@@ -198,14 +234,17 @@ showError(detail) {
 
 
     public create()
-    {  console.log(this.CarForm);
-      this.data = this.CarForm.value ;
+    {
+
+       this.data = this.CarForm.value ;
       let f = this.uploadedFiles ;
-
+      let o = this.options  ;
       this.data.galleries = f ;
-      console.log(this.data) ;
+      this.data.photo = f[0].path ;
+      this.data.options = o ;
+     console.log(this.data) ;
 
-        this.cars.create(this.data).subscribe(
+     this.cars.create(this.data).subscribe(
           (res)=>
           {console.log(res ) ;
           this.car = res ;
@@ -222,6 +261,5 @@ showError(detail) {
           () => {  window.location.reload();
           }
         );
-
     }
 }
