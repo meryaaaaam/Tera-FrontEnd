@@ -8,6 +8,7 @@ import { Model } from 'src/app/models/model';
 import { ApiService } from 'src/app/shared/api/api.service';
  import { TokenService } from 'src/app/shared/auth/token.service';
 import { VehiculeService } from 'src/app/shared/vehicules/vehicule.service';
+import { OptionsService } from 'src/app/shared/vehicules/options.service';
 
 
 @Component({
@@ -18,11 +19,13 @@ import { VehiculeService } from 'src/app/shared/vehicules/vehicule.service';
 })
 export class AddComponent implements OnInit {
   model_id : any ;
+  id :any;
   val: number;
   value : Date ;
   car!: any ;
   models!:any  ;
   makes!:any  ;
+  opts: any;
   CarForm: FormGroup;
   errors:any = null;
   data : any ;
@@ -31,13 +34,15 @@ export class AddComponent implements OnInit {
   selectedModel : any ;
   selectedMake : any ;
   m : any ;
+  ok: boolean = true;
   mk : any ;
   user : any;
-
+  choices:any = [];
+  selectedoptions:any =[];
   files: File[] = [];
   uploadedFiles: any[] = [];
   Files: any[] = [];
-  Image: Image = new Image;
+  Image: Image= new Image;
 
 
 
@@ -45,7 +50,7 @@ export class AddComponent implements OnInit {
               public cars: VehiculeService ,
               public fb: FormBuilder,
               private tokenStorage: TokenService ,
-
+              public optionservice: OptionsService,
               public messageService: MessageService,
     ) {
       this.CarForm = this.fb.group({
@@ -64,19 +69,50 @@ export class AddComponent implements OnInit {
 
 
       this.user = this.tokenStorage.getUser().user;
-    //  console.log(this.user) ;
+     //console.log(this.user) ;
 
 
       this.cars.getAllMakes().subscribe(
-        (res)=> {this.makes = res ; },
+        (res)=> {this.makes = res ; 
+          //console.log(this.makes);
+        },
         (error) => { console.log(error.error) ; },
-      );
+      )
 
 
-
-
+      this.optionservice.getOptions().subscribe(
+        (res)=> {this.opts = res ; 
+          console.log(this.opts);},
+        (error) => { console.log(error.error) ; },
+      )
+  
   }
+  onchange(event){
 
+    console.log(event);
+    console.log(event.target.value);
+    this.id=event.target.value;
+    let j = 0;
+    let i =0;
+    for (let i = 0; i< this.selectedoptions.length; i++)
+      { 
+        if (this.id==this.selectedoptions[i])
+      { delete this.selectedoptions[i];
+        this.selectedoptions = this.selectedoptions.filter(item => item);
+        j++;
+       }
+
+
+      }
+
+      if(j==0){
+        this.selectedoptions.push(this.id);
+
+      }
+      console.log(this.selectedoptions);
+
+    }
+  
   onSelect(event) {
     console.log(event);
     this.files.push(...event.addedFiles);
@@ -92,15 +128,19 @@ export class AddComponent implements OnInit {
 
 
 onUpload(event) {
+  console.log(event);
 
 
   for(let file of event.files) {
-    this.Image.name = file.name ;
-    this.Image.path = "assets/img/cars/"+file.name ;
-    this.Image.size = file.size ;
-    this.uploadedFiles.push(this.Image);
 
-    //console.log(file.name) ;
+  console.log(file);
+   //this.Image.name = file.name ;
+  // console.log(this.Image);
+   //this.Image.path = "assets/img/cars/"+this.Image.name ;
+  //this.Image.size = file.size ;
+  //console.log(this.Image);
+    this.uploadedFiles.push(file);
+
 
      }
 
@@ -134,22 +174,20 @@ showError(detail) {
 ];
 
     public select(event){
+      console.log(event);
       this.selectedModel = event.target.value; console.log(this.selectedModel);
       let id = this.selectedModel ;
-       this.cars.getModel(id).subscribe(data =>{ this.m = data ; this.Model=this.m ;  console.log(this.Model) ;});
+       this.cars.getModel(id).subscribe(data =>{this.m = data ;  this.Model=this.m ;  console.log(this.Model) ;});
 
     }
 
     public selectMake(event){
+      console.log(event);
       this.selectedMake = event.target.value; console.log(this.selectedMake);
       let id = this.selectedMake ;
-       this.cars.getMake(id).subscribe(data =>{ this.mk = data ;
-                                                this.Make=this.mk ;
+       this.cars.getMake(id).subscribe(data =>{ console.log(data);
+                                                this.mk = data ;
                                                 this.models = this.mk.model ;
-                                                console.log(this.mk) ;
-
-
-
                                               });
 
     }
@@ -160,7 +198,8 @@ showError(detail) {
 
 
     public create()
-    { this.data = this.CarForm.value ;
+    {  console.log(this.CarForm);
+      this.data = this.CarForm.value ;
       let f = this.uploadedFiles ;
 
       this.data.galleries = f ;

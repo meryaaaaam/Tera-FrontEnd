@@ -41,9 +41,9 @@
             <div class="col-lg-6 col-md-6">
               <div class="form-group">
                   <label><i class='bx bx-duplicate'></i> Marque voiture </label>
-                  <select formControlName="model" (change)="selectMake($event)">
+                  <select (change)="selectMake($event)">
                       <option>Select Marque</option>
-                      <option  *ngFor="let m of makes" value={{m.id}} name="Make" [(ngModel)]="selectedMake" > {{m.name}}</option>
+                      <option  *ngFor="let m of makes" value={{m.id}} name="Make"> {{m.name}}</option>
 
                   </select>
 
@@ -56,8 +56,7 @@
                     <label><i class='bx bx-duplicate'></i> Model de voiture </label>
                     <select formControlName="model_id" (change)="select($event)">
                         <option>Select Model</option>
-                        <option  *ngFor="let m of models" value={{m.id}} name="Model" [(ngModel)]="selectedModel" formControlName="model_id" > {{m.name}}</option>
-
+                        <option  *ngFor="let m of models" value={{m.id}} name="Model"> {{m.name}}</option>
                     </select>
 
 
@@ -171,115 +170,14 @@
     <div class="add-listings-box">
         <h3>Options</h3>
 
-        <div class="form-group">
+        <div class="form-group" >
             <ul class="facilities-list">
-                <li>
+                <li *ngFor="let opt of opts">
                     <label class="checkbox">
-                        <input type="checkbox" name="option" value="Transmission automatique" checked>
-                        <span>Transmission automatique</span>
+                        <input type="checkbox" name="option" value="{{opt.id}}" (change)="onchange($event)">
+                        <span>{{opt.label}}</span>
                     </label>
                 </li>
-                <li>
-                    <label class="checkbox">
-                        <input type="checkbox" name="option" value="Android Auto">
-                        <span>Android Auto</span>
-                    </label>
-                </li>
-                <li>
-                    <label class="checkbox">
-                        <input type="checkbox" name="option" value="Apple CarPlay" checked>
-                        <span>Apple CarPlay</span>
-                    </label>
-                </li>
-                <li>
-                    <label class="checkbox">
-                        <input type="checkbox" name="option" value="Caméra de recul">
-                        <span>Caméra de recul</span>
-                    </label>
-                </li>
-                <li>
-                    <label class="checkbox">
-                        <input type="checkbox" name="options" value="Porte-vélos" formControlName="options" checked>
-                        <span>Porte-vélos</span>
-                    </label>
-                </li>
-                <li>
-                    <label class="checkbox">
-                        <input type="checkbox" name="options" value="Bluetooth" formControlName="options">
-                        <span>Bluetooth</span>
-                    </label>
-                </li>
-                <li>
-                    <label class="checkbox">
-                        <input type="checkbox" name="options" value="Sièges pour enfants"formControlName="options">
-                        <span> Sièges pour enfants</span>
-                    </label>
-                </li>
-                <li>
-                    <label class="checkbox">
-                        <input type="checkbox" name="options" value="Décapotable"formControlName="options">
-                        <span>Décapotable</span>
-                    </label>
-                </li>
-
-                <li>
-                  <label class="checkbox">
-                      <input type="checkbox" name="options" value="Sièges chauffants"formControlName="options">
-                      <span> Sièges chauffants</span>
-                  </label>
-              </li>
-
-              <li>
-                <label class="checkbox">
-                    <input type="checkbox" name="options" value="Longue durée"formControlName="options">
-                    <span> Longue durée</span>
-                </label>
-            </li>
-
-            <li>
-              <label class="checkbox">
-                  <input type="checkbox" name="options" value="Toit ouvrant"formControlName="options">
-                  <span> Toit ouvrant</span>
-              </label>
-          </li>
-
-          <li>
-            <label class="checkbox">
-                <input type="checkbox" name="options" value="Chargeur USB"formControlName="options">
-                <span> Chargeur USB</span>
-            </label>
-        </li>
-
-        <li>
-          <label class="checkbox">
-              <input type="checkbox" name="options" value="Port USB"formControlName="options">
-              <span> Port USB</span>
-          </label>
-      </li>
-
-
-      <li>
-        <label class="checkbox">
-            <input type="checkbox" name="options" value="2WD to 4WD lever"formControlName="options">
-            <span> 2WD to 4WD lever</span>
-        </label>
-    </li>
-
-
-    <li>
-      <label class="checkbox">
-          <input type="checkbox" name="options" value="Factory subwoofer" formControlName="options">
-          <span> Factory subwoofer</span>
-      </label>
-  </li>
-
-  <li>
-    <label class="checkbox">
-        <input type="checkbox" name="options" value="Alloy wheels" formControlName="options">
-        <span> Alloy wheels</span>
-    </label>
-</li>
-
             </ul>
         </div>
     </div>
