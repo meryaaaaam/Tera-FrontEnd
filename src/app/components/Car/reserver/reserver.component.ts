@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from 'src/app/shared/user/user.service';
 import { TokenService } from 'src/app/shared/auth/token.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+
 
 @Component({
   selector: 'app-reserver',
@@ -10,8 +12,18 @@ import { TokenService } from 'src/app/shared/auth/token.service';
 export class ReserverComponent implements OnInit {
 
   constructor(private user : UserService,
-              private tokenStorage: TokenService ,) { }
-
+              private tokenStorage: TokenService ,
+              public fb: FormBuilder,
+              ) { 
+                this.VerificationForm = this.fb.group({
+                adresse: [''],
+                numéro: [''],
+               // photo: this.uploadedFiles[0] ,
+              //  galleries:this.uploadedFiles ,
+                user_id: this.tokenStorage.getUser().user.id,
+                });
+              }
+  VerificationForm: FormGroup;
   User : any  ;
   id : any ;
 
@@ -30,6 +42,10 @@ export class ReserverComponent implements OnInit {
   )
 
   console.log(this.User);
+  }
+
+  verifier(){
+
   }
 
 }

@@ -6,6 +6,7 @@
     <app-navbar></app-navbar>
 
     <!-- Start -->
+    <form [formGroup]="VerificationForm" (ngSubmit)="verifier()">
     <div class="add-listings-box">
         <h3>Adresse</h3>
     
@@ -13,7 +14,7 @@
             <div class="col-lg-12 col-md-12">
                 <div class="form-group">
                     <label><i class='bx bx-briefcase-alt'></i> verification de votre adresse</label>
-                    <input type="text" class="form-control" value= {{User.address}}>
+                    <input disabled type="text" class="form-control" formControlName="address" value= {{User.address}}>
                 </div>
             </div>
 
@@ -26,9 +27,9 @@
     <div class="add-listings-box">
         <h3>Photo</h3>
         <label>Please provide a clear photo of your face so your hosts can recognize you.</label>
-        <p-fileUpload name="galleries[]" url="http://127.0.0.1:8000/api/gallerie"
-        multiple="multiple" accept="image/*" maxFileSize="10000000">
-        <ng-template pTemplate="content">
+       <p-fileUpload name="galleries[]" url="http://127.0.0.1:8000/api/gallerie"
+       multiple="multiple" accept="image/*" maxFileSize="10000000">
+        <ng-template pTemplate="content1">
             <ul *ngIf="Files.length">
                 <li *ngFor="let file of Files">{{file.name}} - {{file.size}} bytes</li>
             </ul>
@@ -45,7 +46,7 @@
             <div class="col-lg-6 col-md-12">
                 <div class="form-group">
                     <label><i class='bx bx-menu-alt-left'></i>saisissez votre numéro de téléphone</label>
-                    <input type="text" class="form-control">
+                    <input disabled type="text" class="form-control" value= {{User.phone}}>
                 </div>
             </div>
         </div>
@@ -55,9 +56,14 @@
         <h3>Permis de conduite</h3>
     
         <label>Please provide a clear photo of your licence.</label>
-        <div class="file-upload-box">
-            <form action="/file-upload" class="dropzone"></form>
-        </div>
+        <p-fileUpload name="galleries[]" url="http://127.0.0.1:8000/api/gallerie"
+        multiple="multiple" accept="image/*" maxFileSize="10000000">
+        <ng-template pTemplate="content2">
+            <ul *ngIf="Files.length">
+                <li *ngFor="let file of Files">{{file.name}} - {{file.size}} bytes</li>
+            </ul>
+        </ng-template>
+</p-fileUpload>
     </div>
 
 
@@ -82,6 +88,7 @@
     <div class="add-listings-btn">
         <button type="submit">valider</button>
     </div>
+</form>
     <!-- End -->
 
     <div class="flex-grow-1"></div>
