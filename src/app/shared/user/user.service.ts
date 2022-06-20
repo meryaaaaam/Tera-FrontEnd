@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'Rxjs/Observable';
 
@@ -71,7 +71,10 @@ export class UserService {
 
   updateAdress(id,data)
   {
-    return this.http.put(`${adresse}/${id}`, data)
+    const headers = new HttpHeaders();
+    return this.http.put(`${adresse}/${id}`, data ,{
+      headers:headers
+    });
 
    // return this.http.put(`${baseUrl}/${id}`, data);
   }

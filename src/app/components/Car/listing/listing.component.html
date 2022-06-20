@@ -70,21 +70,21 @@
                             </div>
                         </div>
                         <ul class="listings-meta">
-                          <h3><a routerLink="/{{Content.detailsLink}}">{{Content.title}}</a></h3>
+                          <h3><a routerLink="//car/detail/{{Content.id}}"></a> {{Content.model}}</h3>
                             <!--<li><a routerLink="/{{Content.categoryLink}}"><i class="flaticon-furniture-and-household"></i> Restaurant</a></li>
                             <li><i class="flaticon-pin"></i> {{Content.location}}</li>-->
                         </ul>
 
-                        <!--<span class="status {{Content.extraClass}}">
+                         <!--<span class="status {{Content.extraClass}}">
                         <i class="flaticon-save"></i> {{Content.openORclose}}
 
-                        </span>-->
+                        </span> -->
 
 
                         <div class="d-flex align-items-center justify-content-between">
                             <div class="rating">
                               <i class='bx bxs-star'  ></i> <i class='bx bxs-star'  ></i> <i class='bx bxs-star'  ></i> <i class='bx bxs-star'  ></i> <i class='bx bxs-star'  ></i>
-                              <span class="count">(5)</span>
+                              <span class="count">({{Content.nb}})</span>
                             </div>
                             <div class="price">
                                 {{Content.Price_D}}$/Jour - {{Content.Price_H}}$/ Heure

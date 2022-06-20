@@ -24,10 +24,11 @@ export class ProfileComponent implements OnInit {
   //User : User = new User;
   User : any  ;
   Info: User = new User;
-   isSignedIn!: boolean;
+  isSignedIn!: boolean;
   roles : any ;
   id : any ;
   userForm : FormGroup ;
+  image: any;
 
   constructor(public authService: AuthService ,
               private tokenStorage: TokenService ,
@@ -77,16 +78,29 @@ photo(event)
 {
   console.log(event);
   this.imagename=event.target.files[0].name;
+  this.image=event.target.files[0];
 }
 
 saveChange()
-{ this.submitted = true;
+{
+  /*var formData :any =new FormData();
+  formData.append("img",this.image,this.imagename);
+  console.log(formData , this.image , this.imagename);
+*/
+
+
+
+
+
+
+ this.submitted = true;
   let r ;
   this.id = this.tokenStorage.getUser().user.id;
   let info = this.User ;
-  console.log(info);
+  //info.photo = formData ;
+   console.log(info);
   //info.date_nais = ''+info.date_nais+'' ;
- this.user.updateAdress(this.id , info).subscribe(
+   this.user.updateAdress(this.id , info).subscribe(
       res => {
         r = res ;
         this.User = r ; console.log(this.User) ;this.showSuccess() ;  window.location.reload(); },
@@ -113,4 +127,38 @@ saveChange()
 }
 
 
+
+
+
+
+
+
+
+
+
+updateprofile()
+{
+ // const data : any = {name: this.user.username , email:this.user.email}
+// this.currentuser = this.user ;
+
+ // this.userapi.updateAdress(this.user.id , this.currentuser) .subscribe(
+
+
+  //this.userapi.updateAdress(this.user.id , formData) .subscribe(
+  //  response => {
+       let c :any ;
+      // console.log(response);
+     //  c= response ;
+/*  showError(detail) {
+       {this.showError(c.message) ;}
+       else {
+        this.showSuccess(c.message) ;          }
+       this.data = response;
+        console.log(response);
+
+    },
+    error => {
+ }*/
+
+}
 }

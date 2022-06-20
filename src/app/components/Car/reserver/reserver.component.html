@@ -1,3 +1,4 @@
+
 <app-sidemenu></app-sidemenu>
 
 <!-- Start Main Content Wrapper Area -->
@@ -9,7 +10,7 @@
     <form [formGroup]="VerificationForm" (ngSubmit)="verifier()">
     <div class="add-listings-box">
         <h3>Adresse</h3>
-    
+
         <div class="row">
             <div class="col-lg-12 col-md-12">
                 <div class="form-group">
@@ -41,7 +42,7 @@
 
     <div class="add-listings-box">
         <h3>Numéro</h3>
-    
+
         <div class="row">
             <div class="col-lg-6 col-md-12">
                 <div class="form-group">
@@ -54,7 +55,7 @@
 
     <div class="add-listings-box">
         <h3>Permis de conduite</h3>
-    
+
         <label>Please provide a clear photo of your licence.</label>
         <p-fileUpload name="galleries[]" url="http://127.0.0.1:8000/api/gallerie"
         multiple="multiple" accept="image/*" maxFileSize="10000000">
@@ -69,7 +70,7 @@
 
     <div class="add-listings-box">
         <h3>Mode de paiement</h3>
-    
+
         <div class="row">
             <div class="col-lg-12 col-md-12">
                 <div class="form-group">
@@ -83,8 +84,8 @@
     </div>
 
 
-   
-            
+
+
     <div class="add-listings-btn">
         <button type="submit">valider</button>
     </div>
@@ -92,7 +93,7 @@
     <!-- End -->
 
     <div class="flex-grow-1"></div>
-    
+
     <app-copyrights></app-copyrights>
 
 </div>

@@ -126,7 +126,7 @@ import { TestComponent } from './test/test.component';
  import { FileUploadModule as PrimeNgFileUploadModule } from 'primeng/fileupload';
 
 import { NgxDropzoneModule } from 'ngx-dropzone';
-
+import { ReserverComponent } from './components/Car/reserver/reserver.component';
 
    @NgModule({
   declarations: [
@@ -218,7 +218,7 @@ import { NgxDropzoneModule } from 'ngx-dropzone';
     MessageComponent,
     SearchFormsComponent,
     TestComponent,
-
+    ReserverComponent,
 
   ],
   imports: [
