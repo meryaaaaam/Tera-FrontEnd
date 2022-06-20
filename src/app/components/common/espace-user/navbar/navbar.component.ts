@@ -10,7 +10,8 @@ import { TokenService } from 'src/app/shared/auth/token.service';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-    user : User = new User() ;
+    //user : User = new User() ;
+    user:any;
 
   constructor( private tokenStorage: TokenService ,  public router: Router ,     private auth: AuthStateService,
     ) { }
@@ -18,7 +19,7 @@ export class NavbarComponent implements OnInit {
   ngOnInit() {
     this.user  =  this.tokenStorage.getUser().user ;
 
-          console.log(this.user ) ;
+         //console.log(this.user ) ;
 
 
 

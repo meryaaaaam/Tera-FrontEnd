@@ -52,6 +52,8 @@ import { VerticalListingsLeftSidebarComponent } from './components/pages/vertica
 import { VerticalListingsRightSidebarComponent } from './components/pages/vertical-listings-right-sidebar/vertical-listings-right-sidebar.component';
 import { AuthGuard } from './services/guard/authguard.guard';
 import { TestComponent } from './test/test.component';
+import { ReserverComponent } from './components/Car/reserver/reserver.component';
+
 
 const routes: Routes = [
     {path: 'index-1', component: HomeDemoOneComponent},
@@ -97,6 +99,7 @@ const routes: Routes = [
 
     {path: 'car/detail/:id', component: DetailComponent},
     {path: 'car/list', component: ListingComponent},
+    {path: 'car/detail', component: ReserverComponent},
 
     {path: 'user/add-car', component: AddComponent  , canActivate: [AuthGuard ] },
     {path: 'user/list', component: MyCarsComponent  , canActivate: [AuthGuard ] },

@@ -6,6 +6,8 @@ import { TokenService } from 'src/app/shared/auth/token.service';
 import {MessageService} from 'primeng/api';
 import { UserService } from 'src/app/shared/user/user.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
+import { ImagesService } from 'src/app/shared/gallery/images.service';
 
 @Component({
   selector: 'app-profile',
@@ -14,10 +16,12 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
   providers: [MessageService]
 })
 export class ProfileComponent implements OnInit {
+  URL: string = "assets/img/";
+  imagename: string;
   submitted : boolean ;
   isLoggedIn = false;
   isLoginFailed = false;
- // User: User = new User;
+  //User : User = new User;
   User : any  ;
   Info: User = new User;
    isSignedIn!: boolean;
@@ -47,27 +51,20 @@ showError(detail) {
   ngOnInit(): void {
     if (this.tokenStorage.getTokens() ) {
       this.id = this.tokenStorage.getUser().user.id;
-
-       console.log(this.id) ;
       this.isLoggedIn = true;
       //this.roles = this.tokenStorage.getUser().roles;*/
-
        this.authService.GetUser(this.id).subscribe(res => {
         this.User = res;
-
+    this.imagename=this.User.photo;
        // this.Info = this.user.user ;
       //  this.showSuccess();
-        console.log(this.User) ;
       },
       (error) => {console.log(error.errors) ; this.isLoggedIn = false;}
       );
     } ;
 
 
-
-
   }
-
 
   breadcrumb = [
     {
@@ -75,19 +72,24 @@ showError(detail) {
         subTitle: 'Dashboard'
     }
 
-
 ]
+photo(event)
+{
+  console.log(event);
+  this.imagename=event.target.files[0].name;
+}
 
 saveChange()
 { this.submitted = true;
   let r ;
   this.id = this.tokenStorage.getUser().user.id;
   let info = this.User ;
+  console.log(info);
   //info.date_nais = ''+info.date_nais+'' ;
-  this.user.updateAdress(this.id , info).subscribe(
+ this.user.updateAdress(this.id , info).subscribe(
       res => {
         r = res ;
-        this.user = r ; console.log(this.user) ;this.showSuccess() ;  window.location.reload(); },
+        this.User = r ; console.log(this.User) ;this.showSuccess() ;  window.location.reload(); },
       error => {
         if(error.error.message.indexOf("'Column 'address' cannot be null'") )
         {this.showError("Address required ") ;}
@@ -95,6 +97,17 @@ saveChange()
       console.log(error.error.message)}
 
   )
+  this.User.photo=this.imagename;
+  this.user.update(this.id , info).subscribe(
+    res => {
+
+      r = res ;
+      this.User = r;
+    },
+    error => {
+    console.log(error.error.message)}
+
+)
  // this.showSuccess() ;
 
 }

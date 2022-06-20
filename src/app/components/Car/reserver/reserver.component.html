@@ -1,0 +1,92 @@
+<app-sidemenu></app-sidemenu>
+
+<!-- Start Main Content Wrapper Area -->
+<div class="main-content d-flex flex-column">
+
+    <app-navbar></app-navbar>
+
+    <!-- Start -->
+    <div class="add-listings-box">
+        <h3>Adresse</h3>
+    
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="form-group">
+                    <label><i class='bx bx-briefcase-alt'></i> verification de votre adresse</label>
+                    <input type="text" class="form-control" value= {{User.address}}>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+    <div class="add-listings-box">
+        <h3>Photo</h3>
+        <label>Please provide a clear photo of your face so your hosts can recognize you.</label>
+        <p-fileUpload name="galleries[]" url="http://127.0.0.1:8000/api/gallerie"
+        multiple="multiple" accept="image/*" maxFileSize="10000000">
+        <ng-template pTemplate="content">
+            <ul *ngIf="Files.length">
+                <li *ngFor="let file of Files">{{file.name}} - {{file.size}} bytes</li>
+            </ul>
+        </ng-template>
+</p-fileUpload>
+    </div>
+
+
+
+    <div class="add-listings-box">
+        <h3>Numéro</h3>
+    
+        <div class="row">
+            <div class="col-lg-6 col-md-12">
+                <div class="form-group">
+                    <label><i class='bx bx-menu-alt-left'></i>saisissez votre numéro de téléphone</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="add-listings-box">
+        <h3>Permis de conduite</h3>
+    
+        <label>Please provide a clear photo of your licence.</label>
+        <div class="file-upload-box">
+            <form action="/file-upload" class="dropzone"></form>
+        </div>
+    </div>
+
+
+    <div class="add-listings-box">
+        <h3>Mode de paiement</h3>
+    
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="form-group">
+                    <label><i class='bx bx-briefcase-alt'></i> choix du mode de paiement</label>
+                    <input type="text" class="form-control">
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+   
+            
+    <div class="add-listings-btn">
+        <button type="submit">valider</button>
+    </div>
+    <!-- End -->
+
+    <div class="flex-grow-1"></div>
+    
+    <app-copyrights></app-copyrights>
+
+</div>
+<!-- End Main Content Wrapper Area -->

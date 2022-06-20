@@ -25,13 +25,13 @@
 
                 <p-toast></p-toast>
 
-                 <form>
+                 <form (ngSubmit)="saveChange()">
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group profile-box">
-                                <img src="assets/img/user1.jpg" alt="image">
+                                <img src="{{URL}}{{imagename}}" alt="image">
                                 <div class="file-upload">
-                                    <input type="file" name="file" id="file" class="inputfile" />
+                                    <input type="file" name="file" id="file" class="inputfile" (change)="photo($event)"/>
                                     <label for="file"><i class='bx bx-upload'></i> Upload Photo</label>
                                 </div>
                             </div>
@@ -166,7 +166,7 @@
 
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
-                                <button type="submit" (click)="saveChange()">Save Change</button>
+                                <button type="submit">Save Change</button>
                                 <p-toast></p-toast>
                             </div>
                         </div>
