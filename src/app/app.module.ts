@@ -127,8 +127,19 @@ import { TestComponent } from './test/test.component';
 
 import { NgxDropzoneModule } from 'ngx-dropzone';
 import { ReserverComponent } from './components/Car/reserver/reserver.component';
+import {StepsModule} from 'primeng/steps';
+import {CardModule} from 'primeng/card';
+import { Steps1Component } from './components/Car/reserver/steps1/steps1.component';
+import { Steps2Component } from './components/Car/reserver/steps2/steps2.component';
+import {InputTextModule} from 'primeng/inputtext';
+import { Steps3Component } from './components/Car/reserver/steps3/steps3.component';
+import { BookComponent } from './components/Car/book/book.component';
+import { ChipModule } from 'primeng/chip';
+import {CheckboxModule} from 'primeng/checkbox';
+import {InputNumberModule} from 'primeng/inputnumber';
+import {RadioButtonModule} from 'primeng/radiobutton';
 
-   @NgModule({
+    @NgModule({
   declarations: [
     AppComponent,
     HomeDemoOneComponent,
@@ -219,6 +230,10 @@ import { ReserverComponent } from './components/Car/reserver/reserver.component'
     SearchFormsComponent,
     TestComponent,
     ReserverComponent,
+    Steps1Component,
+    Steps2Component,
+    Steps3Component,
+    BookComponent,
 
   ],
   imports: [
@@ -243,7 +258,11 @@ import { ReserverComponent } from './components/Car/reserver/reserver.component'
     ButtonModule,
     CalendarModule,
     ToastModule,
-    DropdownModule,PrimeNgFileUploadModule
+    DropdownModule,PrimeNgFileUploadModule,StepsModule,CardModule,
+    InputTextModule,
+    ChipModule,CheckboxModule,InputNumberModule,RadioButtonModule
+
+
 
 
 
