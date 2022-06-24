@@ -4,7 +4,7 @@ import { Observable } from 'Rxjs/Observable';
 
 
 
-const baseUrl = "http://127.0.0.1:8000/api/" ;
+const baseUrl = "https://tera3.dev.smartegy.ca/backend/public/api/" ;
 
 
 @Injectable({

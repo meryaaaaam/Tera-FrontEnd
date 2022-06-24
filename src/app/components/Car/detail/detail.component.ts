@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { TokenService } from 'src/app/shared/auth/token.service';
 import { VehiculeService } from 'src/app/shared/vehicules/vehicule.service';
 
 
@@ -14,14 +15,17 @@ export class DetailComponent implements OnInit {
   date : Date = new Date();
   id : any ;
   res : any ;
+  user : any ;
   start : Date = new Date() ; end : any ;
-  constructor(public vs : VehiculeService , private route: ActivatedRoute,
+  constructor(public vs : VehiculeService , private route: ActivatedRoute, public token : TokenService ,
     private router: Router ) { }
 
   ngOnInit() {
 
    this.res =  this.get(this.route.snapshot.paramMap.get('id')) ;
     console.log(this.start)
+
+    this.user = this.token.getUser().user.id ;
   }
 
 onselectstart(date)

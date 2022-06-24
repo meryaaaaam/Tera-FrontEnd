@@ -1,13 +1,63 @@
+.text{
+  background-color: #fafafa;
+
+  box-shadow: 1px 5px 24px 0 rgba(68, 102, 242, .05);
+
+  border-radius: 5px;
+
+
+
+
+}
+
+
+.stepsdemo-content{
+  background-color: none;
+  box-shadow: 1px 5px 24px 0 rgba(68, 102, 242, .05);
+
+  border-radius: 5px;
+
+  margin: {
+  right: 30px;
+  left: 80px;
+  top: 40px;
+}
+
+padding: {
+  right: 30px;
+  left: 80px;
+  top: 20px;
+  bottom: 20px ;
+}
+}
+
+.card{
+
+  background-color: var(--whiteColor);
+  box-shadow: 1px 5px 24px 0 rgba(68, 102, 242, .05);
+
+  border-radius: 5px;
+
+  margin: {
+  right: 30px;
+  left: 80px;
+  top: 40px;
+}
+
+padding: {
+  right: 30px;
+  left: 80px;
+  top: 20px;
+  bottom: 20px ;
+}
+}
+
 .main-content {
     transition: var(--transition);
     overflow: hidden;
     background-color: #fafafa;
     min-height: 100vh;
-    padding: {
-        right: 30px;
-        left: 280px;
-        top: 120px;
-    };
+
     .listing-area {
         background-color: var(--whiteColor);
         box-shadow: 1px 5px 24px 0 rgba(68, 102, 242, .05);
@@ -24,7 +74,7 @@
         .listings-footer {
             border-top: 1px solid #eeeeee;
             padding: 20px;
-            
+
             .default-btn {
                 padding: {
                     top: 11px;
@@ -632,7 +682,7 @@
 /* Min width 1550px */
 @media only screen and (min-width: 1550px) {
 
-    
+
 
 }
 
@@ -956,7 +1006,7 @@
 
 /* Max width 767px */
 @media only screen and (max-width: 767px) {
-    
+
     .add-listings-box {
         padding: 0 20px 0 20px;
 
@@ -1038,7 +1088,7 @@
 /* Min width 992px to Max width 1199px */
 @media only screen and (min-width: 992px) and (max-width: 1199px) {
 
-    
+
 
 }
 /* Min width 1200px to Max width 1355px */
@@ -1050,6 +1100,6 @@
 /* Min width 1550px */
 @media only screen and (min-width: 1550px) {
 
-    
+
 
 }

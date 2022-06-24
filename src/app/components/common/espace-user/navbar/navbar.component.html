@@ -43,14 +43,14 @@
                       <div class="dropdown profile-nav-item">
                           <a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                               <div class="menu-profile">
-                                  <img src="assets/img/user1.jpg" class="rounded-circle" alt="image">
+                                  <img [src]=image  class="rounded-circle" alt="image">
                                   <span class="name">My Account</span>
                               </div>
                           </a>
                           <div class="dropdown-menu">
                               <div class="dropdown-header d-flex flex-column align-items-center">
                                   <div class="figure mb-3">
-                                      <img src="assets/img/user1.jpg" class="rounded-circle" alt="image">
+                                      <img [src]=image  class="rounded-circle" alt="image">
                                   </div>
 
                                   <div class="info text-center">
@@ -99,18 +99,18 @@
                           <div class="dropdown profile-nav-item">
                               <a href="#" class="dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                   <div class="menu-profile">
-                                      <img src="assets/img/user1.jpg" class="rounded-circle" alt="image">
+                                      <img [src]=image class="rounded-circle" alt="image">
                                       <span class="name">My Account</span>
                                   </div>
                               </a>
                               <div class="dropdown-menu">
                                   <div class="dropdown-header d-flex flex-column align-items-center">
                                       <div class="figure mb-3">
-                                          <img src="assets/img/user1.jpg" class="rounded-circle" alt="image">
+                                          <img [src]=image  class="rounded-circle" alt="image">
                                       </div>
                                       <div class="info text-center">
-                                          <span class="name">Andy Smith</span>
-                                          <p class="mb-3 email">hello@androsmith.com</p>
+                                          <span class="name">{{user.firstname}}  {{user.lastname}}</span>
+                                          <p class="mb-3 email">{{user.email}}</p>
                                       </div>
                                   </div>
                                   <div class="dropdown-body">
@@ -130,7 +130,7 @@
                           </div>
                       </div>
                       <div class="option-item">
-                          <a routerLink="/dashboard-add-listings" class="default-btn"><i class="flaticon-more"></i> Add Listing</a>
+                          <a routerLink="/dashboard-add-listings" class="default-btn"><i class="flaticon-more"></i> Ajouter vehicule</a>
                       </div>
                   </div>
               </div>

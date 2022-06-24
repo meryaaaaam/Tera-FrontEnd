@@ -1,0 +1,6 @@
+{
+    "/api": {
+      "target": "https://tera3.dev.smartegy.ca/backend/public/",
+      "secure": false
+    }
+  }

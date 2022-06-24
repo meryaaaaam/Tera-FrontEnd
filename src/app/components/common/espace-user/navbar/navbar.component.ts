@@ -12,13 +12,13 @@ import { TokenService } from 'src/app/shared/auth/token.service';
 export class NavbarComponent implements OnInit {
     //user : User = new User() ;
     user:any;
-
+    image : any ;
   constructor( private tokenStorage: TokenService ,  public router: Router ,     private auth: AuthStateService,
     ) { }
 
   ngOnInit() {
     this.user  =  this.tokenStorage.getUser().user ;
-
+    this.image = "assets/img/"+this.user.photo ;
          //console.log(this.user ) ;
 
 

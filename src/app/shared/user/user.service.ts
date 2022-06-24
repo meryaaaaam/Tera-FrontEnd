@@ -4,12 +4,11 @@ import { Observable } from 'Rxjs/Observable';
 
 
 
-const baseUrl = "http://127.0.0.1:8000/api/users" ;
-const model = "http://127.0.0.1:8000/api/makes" ;
-const Active = "http://127.0.0.1:8000/api/users/isActive" ;
-const adresse = "http://127.0.0.1:8000/api/update" ;
-const state = "http://127.0.0.1:8000/api/provinces" ;
-
+const baseUrl = "https://tera3.dev.smartegy.ca/backend/public/api/users" ;
+const model = "https://tera3.dev.smartegy.ca/backend/public/api/makes" ;
+const Active = "https://tera3.dev.smartegy.ca/backend/public/api/users/isActive" ;
+const adresse = "https://tera3.dev.smartegy.ca/backend/public/api/update" ;
+const state = "https://tera3.dev.smartegy.ca/backend/public/api/provinces" ;
 
 
 
@@ -49,17 +48,17 @@ export class UserService {
   }
 
   getAllListUser()
-  {return this.http.get("http://127.0.0.1:8000/api/list/users") ; }
+  {return this.http.get("https://tera3.dev.smartegy.ca/backend/public/api/list/users") ; }
 
 
 
   getAllActifUsers()
-  {return this.http.get(" http://127.0.0.1:8000/api/list/users/actifs") ; }
+  {return this.http.get(" https://tera3.dev.smartegy.ca/backend/public/api/list/users/actifs") ; }
 
 
 
   getAllPredingUsers()
-  {return this.http.get(" http://127.0.0.1:8000/api/list/users/preding") ; }
+  {return this.http.get(" https://tera3.dev.smartegy.ca/backend/public/api/list/users/preding") ; }
 
   isActive(id,data)
   {

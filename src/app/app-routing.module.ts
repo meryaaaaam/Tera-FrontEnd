@@ -53,6 +53,10 @@ import { VerticalListingsRightSidebarComponent } from './components/pages/vertic
 import { AuthGuard } from './services/guard/authguard.guard';
 import { TestComponent } from './test/test.component';
 import { ReserverComponent } from './components/Car/reserver/reserver.component';
+import { Steps1Component } from './components/Car/reserver/steps1/steps1.component';
+import { Steps2Component } from './components/Car/reserver/steps2/steps2.component';
+import { Steps3Component } from './components/Car/reserver/steps3/steps3.component';
+import { BookComponent } from './components/Car/book/book.component';
 
 
 const routes: Routes = [
@@ -99,7 +103,7 @@ const routes: Routes = [
 
     {path: 'car/detail/:id', component: DetailComponent},
     {path: 'car/list', component: ListingComponent},
-    {path: 'car/detail', component: ReserverComponent},
+    {path: 'car/book', component: BookComponent},
 
     {path: 'user/add-car', component: AddComponent  , canActivate: [AuthGuard ] },
     {path: 'user/list', component: MyCarsComponent  , canActivate: [AuthGuard ] },
@@ -120,16 +124,19 @@ const routes: Routes = [
 
     // Here add new pages component
 
-   /* {
-      path: "auth",
-      component: AuthComponent,
+    {
+      path: "car/rent",
+      component: ReserverComponent,
+
       children: [
-        { path: "login", component: LoginComponent },
-        { path: "register", component: RegisterComponent },
-        { path: "", redirectTo: "login", pathMatch: "full" },
+        { path: "", redirectTo: "car/rent", pathMatch: "full" },
+        { path: "step1", component: Steps1Component },
+        { path: "step2", component: Steps2Component },
+        { path: "step3", component: Steps3Component },
+
       ],
     },
-*/
+
 
     /*{
       path: "cars",

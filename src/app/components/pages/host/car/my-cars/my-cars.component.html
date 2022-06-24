@@ -16,7 +16,8 @@
     <!-- End Breadcrumb Area -->
 
     <!-- Start -->
-    <section class="listing-area">
+
+    <section class="listing-area" *ngIf="cars">
         <div class="row">
             <div class="col-xl-4 col-lg-6 col-md-6" *ngFor="let Content of cars  | paginate: { itemsPerPage: 6, currentPage: gridListings }">
                 <div class="single-listings-box">
@@ -78,6 +79,17 @@
     </section>
     <!-- End -->
 
+
+    <section class="no-content-area" *ngIf="!cars">
+      <div class="row">
+        <img src="assets/img/No Content.png"></div>
+        <div class="row">
+        <div class="col-4"> </div>
+      <div class="col-4"> <button pButton type="button" label="Ajouter Vehicule" (click)="navigate()" class="p-button-outlined p-button-rounded button"></button></div>
+
+      <div class="col-4"> </div>
+        </div>
+    </section>
     <div class="flex-grow-1"></div>
 
     <app-copyrights></app-copyrights>

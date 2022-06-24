@@ -497,10 +497,14 @@
                 </div>
             </li>
           </ul>
-               <div class="btn-box">
-                <a routerLink="/car/detail" class="default-btn"><i class="flaticon-user"></i>Continuer<span></span></a>
+               <div class="btn-box" *ngIf="!user">
+                <a href="#" data-bs-toggle="modal" data-bs-target="#loginRegisterModal" class="default-btn"><i class="flaticon-user"></i>Continuer<span></span></a>
                 <p>You must <a href="#" data-bs-toggle="modal" data-bs-target="#loginRegisterModal">login</a> before register event.</p>
             </div>
+
+            <div class="btn-box" *ngIf="user">
+              <a href="/car/book"  class="default-btn"><i class="flaticon-user"></i>Continuer<span></span></a>
+           </div>
 
 
               </div>

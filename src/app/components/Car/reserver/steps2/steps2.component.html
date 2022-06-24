@@ -1,0 +1,34 @@
+<div class="stepsdemo-content">
+  <p-card class="justify-content-center">
+    <!--<ng-template pTemplate="title">
+        Personal Information
+    </ng-template>-->
+    <ng-template pTemplate="subtitle">
+       Upload image
+
+    </ng-template>
+    <ng-template pTemplate>
+        <div class="row">
+          <div class="p-fluid"  class="field col-8">
+
+
+            <div class="grid p-fluid"  >
+              <div class="col-12 md:col-4">
+                <h5>Basic</h5>
+                <p-fileUpload mode="basic" name="demo[]" url="./upload.php" accept="image/*" maxFileSize="1000000" (onUpload)="onBasicUpload($event)"></p-fileUpload>
+
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-nogutter justify-content-end col-4">
+            <p-button label="Next" (onClick)="nextPage()" icon="pi pi-angle-right" iconPos="right"></p-button>
+        </div>
+
+        </div>
+
+     </ng-template>
+    <ng-template pTemplate="footer">
+
+    </ng-template>
+</p-card>
+</div>

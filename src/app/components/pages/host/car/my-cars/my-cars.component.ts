@@ -66,4 +66,10 @@ export class MyCarsComponent implements OnInit {
         );*/
   }
 
+
+
+  navigate(): void
+  {
+    this.router.navigate(['/user/add-car']);
+  }
 }
