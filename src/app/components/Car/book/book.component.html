@@ -52,10 +52,10 @@
                         </div>-->
                         <div class="single-category-box">
                           <div class="row">
-                            <div class="col-6">  <h3   > Siege pour enfant </h3> <span> 75$</span> </div>
-                            <div class="col-6 justify-content-end" >
-
-                                  <button style=" width:30px ; height:30px;" pButton pRipple type="button" icon="pi pi-plus"class="p-button-outlined p-button-rounded"></button>
+                            <div class="col-10">  <h3> Siege pour enfant </h3> <span> 75$</span> </div>
+                            <div class="col-2" >
+                                
+                                  <button style=" width:30px ; height:30px;" pButton pRipple type="input" icon="pi pi-plus" class="p-button-outlined p-button-rounded" (click)="prix()"></button>
 
 
 
@@ -68,10 +68,10 @@
 
                         <div class="single-category-box">
                           <div class="row">
-                            <div class="col-6">  <h3   > Frais pour animuax domestiques </h3> <span> 75$</span> </div>
-                            <div class="col-6 justify-content-end" >
+                            <div class="col-10">  <h3   > Frais pour animuax domestiques </h3> <span> 75$</span> </div>
+                            <div class="col-2 justify-content-end" >
 
-                                  <button style=" width:30px ; height:30px;" pButton pRipple type="button" icon="pi pi-plus"class="p-button-outlined p-button-rounded"></button>
+                                  <button style=" width:30px ; height:30px;" pButton pRipple type="button" icon="pi pi-plus"class="p-button-outlined p-button-rounded" value="75" (click)="prix()"></button>
 
 
 
@@ -80,6 +80,24 @@
 
 
                         </div>
+
+
+
+                        <div class="single-category-box">
+                          <div class="row">
+                            <div class="col-10">  <h3   > plein d'essence prépayé </h3> <span> 75$</span> </div>
+                            <div class="col-2 justify-content-end" >
+
+                                  <button style=" width:30px ; height:30px;" pButton pRipple type="button" icon="pi pi-plus" class="p-button-outlined p-button-rounded" (click)="prix()"></button>
+
+
+
+                            </div>
+                          </div>
+
+
+                        </div>
+
                         </div>
 
 
@@ -163,22 +181,14 @@
 
                         </div>
 
-                        <div class="payment-box">
-                            <div class="payment-method">
-                                <p>
-                                    <input type="radio" id="direct-bank-transfer" name="radio-group" checked>
-                                    <label for="direct-bank-transfer">Direct Bank Transfer</label>
-                                    Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.
-                                </p>
-                                <p>
-                                    <input type="radio" id="paypal" name="radio-group">
-                                    <label for="paypal">PayPal</label>
-                                </p>
-                                <p>
-                                    <input type="radio" id="cash-on-delivery" name="radio-group">
-                                    <label for="cash-on-delivery">Cash on Delivery</label>
-                                </p>
+                        <div class="row pt-2">
+                            <div class="payment" class="col-8">
+                                
+                                    <h5>total price</h5><span> {{totalprice}}$</span>
+                                
                             </div>
+
+
                             <button type="submit" class="default-btn"><i class="flaticon-tick"></i>Place Order</button>
                         </div>
                     </div>
