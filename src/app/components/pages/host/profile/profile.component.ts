@@ -30,6 +30,7 @@ export class ProfileComponent implements OnInit {
   userForm : FormGroup ;
   image: any;
 
+
   constructor(public authService: AuthService ,
               private tokenStorage: TokenService ,
               private auth: AuthStateService,
@@ -53,9 +54,11 @@ showError(detail) {
     if (this.tokenStorage.getTokens() ) {
       this.id = this.tokenStorage.getUser().user.id;
       this.isLoggedIn = true;
-      //this.roles = this.tokenStorage.getUser().roles;*/
+      //this.roles = this.tokenStorage.getUser().roles;
        this.authService.GetUser(this.id).subscribe(res => {
         this.User = res;
+        console.log(this.User);
+        console.log(this.User.photo);
     this.imagename=this.User.photo;
        // this.Info = this.user.user ;
       //  this.showSuccess();
@@ -78,27 +81,27 @@ photo(event)
 {
   console.log(event);
   this.imagename=event.target.files[0].name;
+  console.log(this.imagename);
   this.image=event.target.files[0];
+  console.log(this.image);
+ 
 }
 
 saveChange()
 {
-  /*var formData :any =new FormData();
-  formData.append("img",this.image,this.imagename);
-  console.log(formData , this.image , this.imagename);
-*/
-
-
-
-
-
+  
 
  this.submitted = true;
   let r ;
   this.id = this.tokenStorage.getUser().user.id;
   let info = this.User ;
-  //info.photo = formData ;
-   console.log(info);
+  var formData =new FormData();
+  formData.append("photo",this.image,this.imagename);
+  console.log(formData);
+
+
+  info.photo = formData;
+  //console.log(info);
   //info.date_nais = ''+info.date_nais+'' ;
    this.user.updateAdress(this.id , info).subscribe(
       res => {
@@ -111,7 +114,7 @@ saveChange()
       console.log(error.error.message)}
 
   )
-  this.User.photo=this.imagename;
+  //this.User.photo=this.imagename;
   this.user.update(this.id , info).subscribe(
     res => {
 
