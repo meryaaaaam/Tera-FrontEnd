@@ -41,6 +41,7 @@ export class AddComponent implements OnInit {
   selectedoptions:any =[];
   files: File[] = [];
   uploadedFiles: any[] = [];
+  uploadedF: any[] = [];
   Files: any[] = [];
   Image: Image= new Image;
   options : any[] ;
@@ -165,7 +166,12 @@ export class AddComponent implements OnInit {
     this.files.splice(this.files.indexOf(event), 1);
 
 }
+filedata:any;
 
+fileEvent(e){
+  this.filedata = e.target.files[0];
+  console.log(this.filedata);
+}
 
 onUpload(event) {
 //  console.log(event);
@@ -175,17 +181,15 @@ onUpload(event) {
 
     for  (var i =  0; i <  event.files.length; i++)  {
      file = event.files[i] ;
-
+     this.uploadedF.push(file);
     image = {"name":file.name , "path" :"assets/img/cars/"+file.name , "size" :file.size }
     this.uploadedFiles.push(image);
      }
 
 
-    console.log(this.uploadedFiles) ;
-  const formData =  new  FormData();
-    for  (var i =  0; i <  this.uploadedFiles.length; i++)  {
-      formData.append("file[]",  this.uploadedFiles[i]);
-  }
+
+
+
   this.messageService.add({severity: 'info', summary: 'File Uploaded', detail: ''});
 }
 
@@ -235,18 +239,43 @@ showError(detail) {
 
     public create()
     {
+      console.log( this.uploadedF) ;
+      const photoprincipal =new FormData();
+      photoprincipal.append("img",this.filedata,this.filedata.name);
+
+      const images =  new  FormData();
+      for  (var i =  0; i <  this.uploadedF.length; i++)  {
+        images.append("gal[]",  this.uploadedF[i]);
+
+    }
+
 
        this.data = this.CarForm.value ;
       let f = this.uploadedFiles ;
       let o = this.options  ;
       this.data.galleries = f ;
-      this.data.photo = f[0].path ;
+      this.data.photo = this.filedata.name;
       this.data.options = o ;
-     console.log(this.data) ;
+      console.log(this.data) ;
 
-     this.cars.create(this.data).subscribe(
+
+
+      const formData = new FormData();
+
+    //  formData.append("img",this.filedata,this.filedata.name);
+
+
+   this.cars.create(this.data ).subscribe(
           (res)=>
-          {console.log(res ) ;
+          {
+            this.store(photoprincipal) ;
+            // this.storeImages(images) ;
+            for  (var i =  0; i <  this.uploadedF.length; i++)  {
+              formData.append("img",  this.uploadedF[i]);
+              this.store(formData) ; }
+
+
+            console.log(res ) ;
           this.car = res ;
           this.CarForm.reset();
           this.showSuccess('Vehicule a été ajouté avec success') ;
@@ -258,8 +287,22 @@ showError(detail) {
             console.log(this.errors) ;
             this.showError('Vérifier les champs obligatoires') ;
           },
-          () => {  window.location.reload();
-          }
+         // () => {  window.location.reload();}
         );
+    }
+
+
+
+    store(data)
+    {
+      this.cars.storeImage(data).subscribe(
+        (data)=> console.log("Done")) ;
+    }
+
+
+    storeImages(data)
+    {
+      this.cars.storeImages(data).subscribe(
+        (data)=> console.log("Done")) ;
     }
 }

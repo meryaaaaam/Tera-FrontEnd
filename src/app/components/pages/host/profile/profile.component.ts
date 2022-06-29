@@ -29,7 +29,8 @@ export class ProfileComponent implements OnInit {
   id : any ;
   userForm : FormGroup ;
   image: any;
-
+  filedata:any;
+  data : any ;
 
   constructor(public authService: AuthService ,
               private tokenStorage: TokenService ,
@@ -51,21 +52,30 @@ showError(detail) {
 }
 
   ngOnInit(): void {
+
+
     if (this.tokenStorage.getTokens() ) {
       this.id = this.tokenStorage.getUser().user.id;
       this.isLoggedIn = true;
       //this.roles = this.tokenStorage.getUser().roles;
-       this.authService.GetUser(this.id).subscribe(res => {
+       this.user.get(this.id).subscribe(res => {
         this.User = res;
-        console.log(this.User);
-        console.log(this.User.photo);
-    this.imagename=this.User.photo;
-       // this.Info = this.user.user ;
-      //  this.showSuccess();
+       console.log(this.User);
+        if (this.User.photo)
+        {this.image = "http://localhost:8000/storage/image/"+this.User.photo ;  }
+        else {this.image = 'assets/img/Logo_e.jpg'};
+
+       // console.log(this.User.photo);
+    //this.imagename=this.User.photo;
+
       },
       (error) => {console.log(error.errors) ; this.isLoggedIn = false;}
       );
-    } ;
+
+    }
+
+
+
 
 
   }
@@ -84,26 +94,63 @@ photo(event)
   console.log(this.imagename);
   this.image=event.target.files[0];
   console.log(this.image);
- 
+
 }
 
-saveChange()
+
+fileEvent(e){
+  this.filedata = e.target.files[0];
+  console.log(this.filedata);
+}
+
+
+
+updatephoto(id)
 {
-  
+
+
+   const formData =new FormData();
+   formData.append("img",this.filedata,this.filedata.name);
+   console.log(formData);
+
+    this.user.uploadphoto(id , formData) .subscribe(
+      response => {
+        let c :any ;
+        // console.log(response);
+         this.data= response ;
+         c=this.data.message ;
+         console.log(this.data);
+          if(!this.data)
+         {this.showError(c) ;}
+         else {
+          this.showSuccess() ;          }
+
+      },
+      error => {
+        console.log(error);
+
+      },
+      () => {  window.location.reload();}
+
+      );
+
+  }
+
+
+
+  saveChange()
+{
+
 
  this.submitted = true;
   let r ;
   this.id = this.tokenStorage.getUser().user.id;
   let info = this.User ;
-  var formData =new FormData();
-  formData.append("photo",this.image,this.imagename);
-  console.log(formData);
 
+  if (this.filedata)
+  { this.updatephoto(this.id) ;}
 
-  info.photo = formData;
-  //console.log(info);
-  //info.date_nais = ''+info.date_nais+'' ;
-   this.user.updateAdress(this.id , info).subscribe(
+  /* this.user.updateAdress(this.id , info).subscribe(
       res => {
         r = res ;
         this.User = r ; console.log(this.User) ;this.showSuccess() ;  window.location.reload(); },
@@ -111,18 +158,19 @@ saveChange()
         if(error.error.message.indexOf("'Column 'address' cannot be null'") )
         {this.showError("Address required ") ;}
 
-      console.log(error.error.message)}
+      console.log(error.error.message) }
 
-  )
+  )*/
   //this.User.photo=this.imagename;
   this.user.update(this.id , info).subscribe(
     res => {
-
       r = res ;
-      this.User = r;
+      this.User = r;  console.log(this.User) ; this.showSuccess()
     },
     error => {
-    console.log(error.error.message)}
+    console.log(error.errors) ; this.showError("Vérifier les champs Obligatoires")},
+    () => {  window.location.reload();}
+
 
 )
  // this.showSuccess() ;
@@ -130,38 +178,4 @@ saveChange()
 }
 
 
-
-
-
-
-
-
-
-
-
-updateprofile()
-{
- // const data : any = {name: this.user.username , email:this.user.email}
-// this.currentuser = this.user ;
-
- // this.userapi.updateAdress(this.user.id , this.currentuser) .subscribe(
-
-
-  //this.userapi.updateAdress(this.user.id , formData) .subscribe(
-  //  response => {
-       let c :any ;
-      // console.log(response);
-     //  c= response ;
-/*  showError(detail) {
-       {this.showError(c.message) ;}
-       else {
-        this.showSuccess(c.message) ;          }
-       this.data = response;
-        console.log(response);
-
-    },
-    error => {
- }*/
-
-}
 }

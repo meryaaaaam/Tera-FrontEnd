@@ -151,30 +151,41 @@
         </div>
     </div>
 
-    <div class="add-listings-box pb-3">
-        <h3>Gallery</h3>
+    <div class="row add-listings-box pb-3">
+        <div class="col-4">
+          <h3>Photo Principale</h3>
+          <form #f="ngForm" >
+            <div class="col-lg-12 col-md-12">
+                <div class="form-group profile-box">
 
-        <p-toast></p-toast>
-        1.Clicker sur choose pour choisir des images <br>
-        2.Clicker sur upload pour charger les images <br>
+                    <div class="file-upload">
 
-    <p-fileUpload name="galleries[]" url="http://127.0.0.1:8000/api/gallerie" (onUpload)="onUpload($event)"
-            multiple="multiple" accept="image/*" maxFileSize="10000000">
-            <ng-template pTemplate="content">
-                <ul *ngIf="Files.length">
-                    <li *ngFor="let file of Files">{{file.name}} - {{file.size}} bytes</li>
-                </ul>
-            </ng-template>
-    </p-fileUpload>
-       <!--<div class="file-upload-box">
-          <form action="http://127.0.0.1:8000/api/gallerie"  class="dropzone">
+                        <input type="file" name="img" id="file" class="form-control" (change)="fileEvent($event)" />
 
-            <div class="previews"></div>
+                    </div>
+
+                </div></div>
+                <!--<button type="submit" class="inputfile" (click)="updatephoto()">Save Change</button>-->
+              </form>
+        </div>
+        <div class="col-8">
+          <h3>Gallery</h3>
+
+          <p-toast></p-toast>
+        <!--  1.Clicker sur choose pour choisir des images <br>
+          2.Clicker sur upload pour charger les images <br>-->
+
+      <p-fileUpload name="galleries[]" url="http://127.0.0.1:8000/api/gallerie" (onUpload)="onUpload($event)"
+              multiple="multiple" accept="image/*" maxFileSize="10000000">
+              <ng-template pTemplate="content">
+                  <ul *ngIf="Files.length">
+                      <li *ngFor="let file of Files">{{file.name}} - {{file.size}} bytes</li>
+                  </ul>
+              </ng-template>
+      </p-fileUpload>
+        </div>
 
 
-
-          </form>
-      </div>-->
     </div>
 
     <div class="add-listings-box pb-3">

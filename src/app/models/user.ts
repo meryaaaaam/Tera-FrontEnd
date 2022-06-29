@@ -8,7 +8,7 @@ export class User {
   phone : string|any ;
   addresse : string|any ;
   link : string|any ;
-
+  bio : string|any ;
   address : string|any ;
   city : string|any ;
   state : string|any ;

@@ -1,10 +1,11 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'Rxjs/Observable';
 
 
 
-const baseUrl = "https://tera3.dev.smartegy.ca/backend/public/api/" ;
+//const baseUrl = "https://tera3.dev.smartegy.ca/backend/public/api/" ;
+const baseUrl = "http://127.0.0.1:8000/api/" ;
 
 
 @Injectable({
@@ -26,8 +27,21 @@ export class VehiculeService {
   }
 
 
-  create(data)  {
-    return this.http.post(baseUrl+"vehicules", data);
+  create(data )  {
+    const HttpUploadOptions = {
+      headers: new HttpHeaders({ "Content-Type": "multipart/form-data"})
+    }
+    return this.http.post(baseUrl+"vehicules", data  );
+  }
+
+  storeImages(data)
+  {
+    return this.http.post(baseUrl+"storeImages", data  );
+  }
+
+  storeImage(data)
+  {
+    return this.http.post(baseUrl+"storeImage", data  );
   }
 
 
