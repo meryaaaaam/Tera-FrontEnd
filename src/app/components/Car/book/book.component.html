@@ -55,7 +55,7 @@
                             <div class="col-10">  <h3> Siege pour enfant </h3> <span> 75$</span> </div>
                             <div class="col-2" >
                                 
-                                  <button style=" width:30px ; height:30px;" pButton pRipple type="input" icon="pi pi-plus" class="p-button-outlined p-button-rounded" (click)="prix()"></button>
+                              <input pButton pRipple type="checkbox" style=" width:30px ; height:30px;" icon="pi pi-plus" class="p-button-outlined p-button-rounded3" value="75" id="1" (change)="checkValue($event)" />
 
 
 
@@ -68,10 +68,10 @@
 
                         <div class="single-category-box">
                           <div class="row">
-                            <div class="col-10">  <h3   > Frais pour animuax domestiques </h3> <span> 75$</span> </div>
+                            <div class="col-10">  <h3> Frais pour animuax domestiques </h3> <span> 75$</span> </div>
                             <div class="col-2 justify-content-end" >
 
-                                  <button style=" width:30px ; height:30px;" pButton pRipple type="button" icon="pi pi-plus"class="p-button-outlined p-button-rounded" value="75" (click)="prix()"></button>
+                              <input pButton pRipple type="checkbox" style=" width:30px ; height:30px;" icon="pi pi-plus" class="p-button-outlined p-button-rounded3" value="75" id="2" (change)="checkValue($event)" />
 
 
 
@@ -88,8 +88,7 @@
                             <div class="col-10">  <h3   > plein d'essence prépayé </h3> <span> 75$</span> </div>
                             <div class="col-2 justify-content-end" >
 
-                                  <button style=" width:30px ; height:30px;" pButton pRipple type="button" icon="pi pi-plus" class="p-button-outlined p-button-rounded" (click)="prix()"></button>
-
+                                  <input pButton pRipple type="checkbox" style=" width:30px ; height:30px;" icon="pi pi-plus" class="p-button-outlined p-button-rounded3" value="75" id="3" (change)="checkValue($event)" />
 
 
                             </div>

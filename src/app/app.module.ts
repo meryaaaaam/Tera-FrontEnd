@@ -6,9 +6,10 @@ import { SelectDropDownModule } from 'ngx-select-dropdown';
 import { NgxTypedJsModule } from 'ngx-typed-js';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { InputMaskModule } from "primeng/inputmask";
 
 
-import { Observable } from 'Rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -86,7 +87,7 @@ import { PlacesComponent } from './components/pages/home-demo-two/places/places.
 import { SamllFooterComponent } from './components/common/samll-footer/samll-footer.component';
 
 import { DetailComponent } from './components/Car/detail/detail.component';
-import { CarComponent } from './components/car/car.component';
+//-import { CarComponent } from './components/car/car.component';
 import { ListingComponent } from './components/Car/listing/listing.component';
 import { AddComponent } from './components/pages/host/car/add/add.component';
 import { NavbarComponent } from './components/common/espace-user/navbar/navbar.component';
@@ -211,11 +212,10 @@ import {RadioButtonModule} from 'primeng/radiobutton';
     CarMakeComponent,
     SectionComponent,
     PlacesComponent,
-
     SamllFooterComponent,
 
     DetailComponent,
-    CarComponent,
+    //CarComponent,
     ListingComponent,
     AddComponent,
     NavbarComponent,
@@ -241,7 +241,7 @@ import {RadioButtonModule} from 'primeng/radiobutton';
     AppRoutingModule,
     BrowserAnimationsModule,
 
-
+    InputMaskModule,
     HttpClientModule,
 
     CarouselModule,
