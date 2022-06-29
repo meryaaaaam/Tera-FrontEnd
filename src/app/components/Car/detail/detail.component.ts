@@ -12,11 +12,13 @@ import { VehiculeService } from 'src/app/shared/vehicules/vehicule.service';
 })
 export class DetailComponent implements OnInit {
 
-  date : Date = new Date();
+  start : Date = new Date();
+  end : Date = new Date();
   id : any ;
   res : any ;
   user : any ;
-  start : Date = new Date() ; end : any ;
+  //start : any ; end : any ;
+  startdate : any ; enddate : any  ; dateend : any ;
   constructor(public vs : VehiculeService , private route: ActivatedRoute, public token : TokenService ,
     private router: Router ) { }
 
@@ -26,171 +28,54 @@ export class DetailComponent implements OnInit {
     console.log(this.start)
 
     this.user = this.token.getUser().user.id ;
+
+
+
+
   }
+
 
 onselectstart(date)
 {
+  this.startdate = this.start.toLocaleString('en-GB', { timeZone: 'UTC' }) ;
 
-  console.log(this.date.toLocaleString('en-GB', { timeZone: 'UTC' }))
+
+  console.log(this.start.toLocaleString('en-GB', { timeZone: 'UTC' })) ;
+  console.log(this.start ) ;
+   //this.start = this.date.toLocaleString('en-GB', { timeZone: 'UTC' }) ; this.start = ''+this.start ;
 }
 
 onselectend(date)
 {
+  this.enddate  = this.end.toLocaleString('en-GB', { timeZone: 'UTC' }) ;
 
-  console.log(this.date.toLocaleString('en-GB', { timeZone: 'UTC' }))
+  console.log(this.end.toLocaleString('en-GB', { timeZone: 'UTC' }))
+  //this.end = this.date.toLocaleString('en-GB', { timeZone: 'UTC' }) ; this.end = ''+this.end ;
+
 }
+
+
   get(id)
   {let x ;
     this.vs.get(id).subscribe(
 
-      (data)=>{x=data ; this.res= x;  console.log(x) ; }
+      (data)=>{
+                x=data ;
+                this.res= x;
+                console.log(x) ; }
     )
   }
-  page_title = 'BMW iX 2022' ;
-  car_description ="Lorem ipsum dolor sit amet, consectetur adipiscing elit,sed do eiusmod tempor  incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis. Lorem ipsum dolor sit amet " ;
 
-
-
-
-  singleListingsBox = [
-    {
-        mainImg: [
-            {
-                img: 'assets/img/cars/2022-bmw-ix1-19_800x0w.jpg'
-            }
-        ],
-        categoryLink: 'single-listings',
-        category: 'Restaurant',
-        bookmarkLink: 'single-listings',
-        location: 'Francisco, USA',
-        title: 'The Mad Made Grill',
-        price: 'Start From: $121',
-        detailsLink: 'single-listings',
-        authorImg: 'assets/img/user1.jpg',
-        openORclose: 'Open Now',
-        extraClass: 'status-open',
-        authorName: 'James',
-        rating: [
-            {
-                icon: 'bx bxs-star'
-            },
-            {
-                icon: 'bx bxs-star'
-            },
-            {
-                icon: 'bx bxs-star'
-            },
-            {
-                icon: 'bx bxs-star'
-            },
-            {
-                icon: 'bx bxs-star'
-            }
-        ],
-        ratingCount: '18'
-    },
-    {
-        mainImg: [
-            {
-                img: 'assets/img/listings/listings4.jpg'
-            },
-            {
-                img: 'assets/img/listings/listings2.jpg'
-            }
-        ],
-        categoryLink: 'single-listings',
-        category: 'Hotel',
-        bookmarkLink: 'single-listings',
-        location: 'Los Angeles, USA',
-        title: 'The Beverly Hills Hotel',
-        price: 'Start From: $200',
-        detailsLink: 'single-listings',
-        authorImg: 'assets/img/user2.jpg',
-        openORclose: 'Open Now',
-        extraClass: 'status-open',
-        authorName: 'Sarah',
-        rating: [
-            {
-                icon: 'bx bxs-star'
-            },
-            {
-                icon: 'bx bxs-star'
-            },
-            {
-                icon: 'bx bxs-star'
-            },
-            {
-                icon: 'bx bxs-star'
-            },
-            {
-                icon: 'bx bx-star'
-            }
-        ],
-        ratingCount: '10'
-    }
-]
-
-galleryOptions: OwlOptions = {
-loop: true,
-nav: true,
-dots: false,
-autoplayHoverPause: true,
-autoplay: true,
-margin: 30,
-    navText: [
-        "<i class='flaticon-left-chevron'></i>",
-        "<i class='flaticon-right-chevron'></i>"
-    ],
-responsive: {
-  0: {
-    items: 1,
-  },
-  576: {
-    items: 2,
-  },
-  768: {
-    items: 2,
-  },
-  992: {
-    items: 2,
+  reservation()
+  {
+    //this.router.navigate(['/car/book?st='+this.start +'se='+this.end+'searchid='+this.res.id]);
+    this.router.navigate(['/car/book'],{queryParams : {'st':this.startdate , 'se':this.enddate , 'searchid':this.res.id }});
   }
-}
-}
-singleImageBox = [
-    {
-        img: 'assets/img/cars/BMW iX/20201111073318_BMW-iX-2022-1600-01.jpg'
-    },
-    {
-        img: 'assets/img/cars/BMW iX//2022-bmw-ix1-19_800x0w.jpg'
-    },
-    {
-        img: 'assets/img/cars/BMW iX/BMW-MY23-iX-Gallery-Exterior-08.jpg'
-    },
-    {
-        img: 'assets/img/cars/BMW iX/BMW-MY23-iX-Gallery-Exterior-07.jpg'
-    },
-    {
-        img: 'assets/img/cars/BMW iX/BMW-MY23-iX-Gallery-Exterior-04.jpg'
-    },
-    {
-        img: 'assets/img/cars/BMW iX/BMW-MY23-iX-Gallery-Interior-15.jpg'
-    },
-    {
-        img: 'assets/img/cars/BMW iX/BMW-MY23-Gallery-iX-Exterior-09.jpg'
-    },
-    {
-        img: 'assets/img/cars/BMW iX/BMW-MY22-iX-Gallery-17.jpg'
-    },
-    {
-        img: 'assets/img/cars/BMW iX/BMW-MY22-iX-Gallery-21.jpg'
-    },
-    {
-        img: 'assets/img/cars/BMW iX/BMW-MY22-iX-Gallery-20.jpg'
-    },
-    {
-        img: 'assets/img/cars/BMW iX/BMW-MY22-iX-Gallery-19.jpg'
-    }
-]
+
+
+
+
+
 
 customOptions: OwlOptions = {
 loop: true,

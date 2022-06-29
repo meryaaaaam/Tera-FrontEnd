@@ -54,7 +54,7 @@
                           <div class="row">
                             <div class="col-10">  <h3> Siege pour enfant </h3> <span> 75$</span> </div>
                             <div class="col-2" >
-                                
+
                               <input pButton pRipple type="checkbox" style=" width:30px ; height:30px;" icon="pi pi-plus" class="p-button-outlined p-button-rounded3" value="75" id="1" (change)="checkValue($event)" />
 
 
@@ -130,34 +130,33 @@
                         <div class="row payment-box">
                           <div class="col-10 payment-method">
 
-                         <img src="assets/img/cars/BMW-MY23-iX-Gallery-Interior-15.jpg"   alt="image" >
+                         <img src="{{res.photo}}"   alt="image" >
                           </div>
                           <div class="col-4 user-profile">
                             <div class="d-flex align-items-center">
-                                <img src="assets/img/user3.jpg" alt="image">
-
-                              </div>
+                                <img src="{{image}}" alt="image">
+                               </div>
                               <!--<div class="title">
                                 <h6>James Andy</h6>
 
 
                             </div>-->
                         </div>
-                        <span class="row pt-2">De James Andy</span>
+                        <span class="row pt-2">De {{res.user}}</span>
                         <div class="row pt-2">
 
-                          <div class="col-8">  <h4>BMW XI 2020 </h4></div>
+                          <div class="col-8">  <h4>{{res.model}} </h4></div>
 
-                          <div class="rating d-flex  col-4">
+                          <!--<div class="rating d-flex  col-4">
                             <span class="rating-count">4.6 </span> <span class="bx bxs-star checked"></span> (45 voyage)
-                        </div>
+                        </div>-->
                         </div>
 
                         <div class="row pt-2">
 
-                          <div class="col-5" >   23 Juin 2022 10h</div>
+                          <div class="col-5" >   {{startdate}}</div>
                           <div class="col-2" ><i class='bx bxs-right-arrow'></i></div>
-                          <div class="col-5" > 24 Juin 2022 10h</div>
+                          <div class="col-5" > {{enddate}}</div>
                         </div>
 
 
@@ -182,9 +181,9 @@
 
                         <div class="row pt-2">
                             <div class="payment" class="col-8">
-                                
-                                    <h5>total price</h5><span> {{totalprice}}$</span>
-                                
+
+                                    <h5>prix totale</h5><span> {{totalprice}}$</span>
+
                             </div>
 
 

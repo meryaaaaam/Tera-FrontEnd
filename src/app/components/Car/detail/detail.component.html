@@ -470,12 +470,12 @@
                   <h3>{{res.Price_H}}$/Heur - {{res.Price_D}}$/Jour </h3>
                   <div class="row pb-3">
                      <label class="pb-2 " style="color:blueviolet">Début</label>
-                     <p-calendar [(ngModel)]="date" [showTime]="true" inputId="time" [showIcon]="false" placeholder ="04/05/2022 01:20" (onSelect)="onselectstart(start)" [(ngModel)]="start"></p-calendar>
+                     <p-calendar   [showTime]="true" inputId="time" [showIcon]="false" placeholder ="04/05/2022 01:20" (onSelect)="onselectstart(start)" [(ngModel)]="start"></p-calendar>
 
                   </div>
                   <div class="row pb-3">
                     <label class="pb-2" style="color:blueviolet">Fin</label>
-                    <p-calendar [(ngModel)]="date" [showTime]="true" inputId="time" [showIcon]="false" placeholder ="04/05/2022 01:20" (onSelect)="onselectend(end)" [(ngModel)]="start" [(ngModel)]="end"></p-calendar>
+                    <p-calendar   [showTime]="true" inputId="time" [showIcon]="false" placeholder ="04/05/2022 01:20" (onSelect)="onselectend(end)"  [(ngModel)]="end"></p-calendar>
 
                  </div>
 
@@ -503,8 +503,10 @@
             </div>
 
             <div class="btn-box" *ngIf="user">
-              <a href="/car/book"  class="default-btn"><i class="flaticon-user"></i>Continuer<span></span></a>
-           </div>
+
+              <button (click)="reservation()"type="button"  class="default-btn"><i class="flaticon-user"></i>Continuer<span></span></button>
+              <!--<a (onClick)="reservation();"  class="default-btn"><i class="flaticon-user"></i>Continuer<span></span></a>
+              --></div>
 
 
               </div>
