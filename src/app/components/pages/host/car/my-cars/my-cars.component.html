@@ -21,27 +21,28 @@
         <div class="row">
             <div class="col-xl-4 col-lg-6 col-md-6" *ngFor="let Content of cars  | paginate: { itemsPerPage: 6, currentPage: gridListings }">
                 <div class="single-listings-box">
-                  <img [src]="Content.image" alt="image">
-                    <!-- GAllerie dimage
 
-                      <div class="listings-image">
+                    <!-- GAllerie dimage-->
+
+                     <div class="listings-image">
                         <div class="listings-image-slides">
-                            <owl-carousel-o [options]="customOptions">
-                                <ng-template carouselSlide *ngFor="let Image of Content.mainImg;">
+                          <!--<img [src]="Content.image" alt="image">-->
+                             <owl-carousel-o [options]="customOptions">
+                                <ng-template carouselSlide *ngFor="let Image of Content.images;">
                                     <div class="single-image">
-                                        <img [src]="Image.img" alt="image">
-                                        <a routerLink="/{{Content.detailsLink}}" class="link-btn"></a>
+                                        <img src={{imgs}}{{Image.name}} alt="image">
+                                         <a routerLink="/{{Content.detailsLink}}" class="link-btn"></a>
                                     </div>
                                 </ng-template>
                             </owl-carousel-o>
                         </div>
-                        <a routerLink="/{{Content.bookmarkLink}}" class="bookmark-save"><i class="flaticon-heart"></i></a>
-                        <a routerLink="/{{Content.categoryLink}}" class="category"><i class="flaticon-cooking"></i></a>
-                    </div>-->
+                       <!-- <a routerLink="/{{Content.bookmarkLink}}" class="bookmark-save"><i class="flaticon-heart"></i></a>
+                        <a routerLink="/{{Content.categoryLink}}" class="category"><i class="flaticon-cooking"></i></a>-->
+                    </div>
                     <div class="listings-content">
                         <div class="author">
                             <div class="d-flex align-items-center">
-                               <!--<img [src]="Content.authorImg" alt="image">-->
+                               <img src= {{img}}{{Content.authorImg}}  alt="image">
                                 <span>{{Content.user}}</span>
                             </div>
                         </div>
@@ -52,10 +53,10 @@
                         <h3><a routerLink="/{{Content.id}}">{{Content.make}} {{Content.model}} {{Content.year}} </a></h3>
                         <!--<span class="status {{Content.extraClass}}"><i class="flaticon-save"></i> </span>-->
                         <div class="d-flex align-items-center justify-content-between">
-                            <div class="rating">
+                            <!--<div class="rating">
                                 <i class='bx bxs-star'  ></i> <i class='bx bxs-star'  ></i> <i class='bx bxs-star'  ></i> <i class='bx bxs-star'  ></i> <i class='bx bxs-star'  ></i>
                                 <span class="count">(5)</span>
-                            </div>
+                            </div>-->
                             <div class="price">
                                 {{Content.Price_H}}$/Heure {{Content.Price_D}}$/Jour
                             </div>

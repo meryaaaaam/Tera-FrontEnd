@@ -4,9 +4,4 @@ export class Image {
   name: string | any ;
   size: string | any ;
 
-
-
-
-
-
   }

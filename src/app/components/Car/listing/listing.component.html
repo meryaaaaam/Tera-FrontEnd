@@ -50,14 +50,14 @@
                         <div class="listings-image-slides">
                           <img [src]="Content.image" alt="image">
                           <a routerLink="/car/detail/{{Content.id}}" class="link-btn"></a>
-                            <!--<owl-carousel-o [options]="customOptions">
-                                <ng-template carouselSlide *ngFor="let Image of Content.mainImg;">
+                           <!--  <owl-carousel-o [options]="customOptions">
+                                <ng-template carouselSlide *ngFor="let Image of Content.images;">
                                     <div class="single-image">
-                                        <img [src]="Image.img" alt="image">
+                                        <img [src]="Image.name" alt="image">
                                         <a routerLink="/{{Content.detailsLink}}" class="link-btn"></a>
                                     </div>
                                 </ng-template>
-                            </owl-carousel-o>-->
+                            </owl-carousel-o> -->
                         </div>
                         <a routerLink="/{{Content.bookmarkLink}}" class="bookmark-save"><i class="flaticon-heart"></i></a>
                         <!--<a routerLink="/{{Content.categoryLink}}" class="category"><i class="flaticon-cooking"></i></a>-->
@@ -65,12 +65,12 @@
                     <div class="listings-content">
                         <div class="author">
                             <div class="d-flex align-items-center">
-                                <!--<img [src]="Content.authorImg" alt="image">-->
+                                <img [src]="Content.authorImg" alt="image">
                                 <span>{{Content.user}}</span>
                             </div>
                         </div>
                         <ul class="listings-meta">
-                          <h3><a routerLink="//car/detail/{{Content.id}}"></a> {{Content.model}}</h3>
+                          <h3><a routerLink="/car/detail/{{Content.id}}"></a> {{Content.model}}</h3>
                             <!--<li><a routerLink="/{{Content.categoryLink}}"><i class="flaticon-furniture-and-household"></i> Restaurant</a></li>
                             <li><i class="flaticon-pin"></i> {{Content.location}}</li>-->
                         </ul>

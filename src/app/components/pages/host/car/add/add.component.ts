@@ -183,8 +183,9 @@ onUpload(event) {
     for  (var i =  0; i <  event.files.length; i++)  {
      file = event.files[i] ;
      this.uploadedF.push(file);
-    image = {"name":file.name , "path" :"assets/img/cars/"+file.name , "size" :file.size }
+    image = {"name":file.name , "path" :file.name , "size" :file.size }
     this.uploadedFiles.push(image);
+    console.log(this.uploadedFiles) ;
      }
 
 
@@ -264,9 +265,7 @@ showError(detail) {
       const formData = new FormData();
 
     //  formData.append("img",this.filedata,this.filedata.name);
-
-
-   this.cars.create(this.data ).subscribe(
+    this.cars.create(this.data ).subscribe(
           (res)=>
           {
             this.store(photoprincipal) ;

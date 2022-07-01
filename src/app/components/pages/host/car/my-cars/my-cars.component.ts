@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/shared/api/api.service';
  import { TokenService } from 'src/app/shared/auth/token.service';
 import { VehiculeService } from 'src/app/shared/vehicules/vehicule.service';
+import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-my-cars',
@@ -17,6 +18,8 @@ export class MyCarsComponent implements OnInit {
   BMW : any ;
   gridListings: number = 1;
   id : any ;
+  img : any = "http://localhost:8000/storage/image/" ;
+  imgs : any = "http://localhost:8000/storage/image/vehicule/" ;
   breadcrumb = [
     {
         title: 'Mes Vehicule',
@@ -35,23 +38,6 @@ export class MyCarsComponent implements OnInit {
       data=>
       {this.cars = data ;
         console.log(this.cars) ;
-       // this.reult = [data] ;
-
-        // console.log(this.reult);
-
-
-
-        /*this.cars.forEach(element => {
-
-          this.reult.push(element) ;
-
-          console.log(this.reult) ;
-
-
-        });*/
-
-
-
       }
 
 
@@ -64,9 +50,24 @@ export class MyCarsComponent implements OnInit {
         this.BMW = cars ;
         }
         );*/
+       // this.img = "http://localhost:8000/storage/image/"+this.cars.image ;
   }
 
-
+  customOptions: OwlOptions = {
+    loop: true,
+    nav: true,
+    dots: false,
+    animateOut: 'fadeOut',
+    animateIn: 'fadeIn',
+    autoplayHoverPause: true,
+    autoplay: true,
+    mouseDrag: false,
+    items: 1,
+        navText: [
+            "<i class='flaticon-left-chevron'></i>",
+            "<i class='flaticon-right-chevron'></i>"
+        ]
+    }
 
   navigate(): void
   {

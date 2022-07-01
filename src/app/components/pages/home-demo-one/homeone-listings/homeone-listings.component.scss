@@ -13,6 +13,7 @@
     }
 }
 .single-listings-box {
+
     box-shadow: 5px 5px #b2eaea;
     transition: var(--transition);
     background-color: var(--whiteColor);
@@ -25,7 +26,7 @@
     .listings-image {
         border-radius: 5px 5px 0 0;
         position: relative;
-        height: 230px;
+        height: 260px;
         z-index: 1;
 
         img {
@@ -34,13 +35,13 @@
 
 
                 // position: relative;
-
+                height: 260px;
                    object-fit: cover;
                    background-size: 'cover';
                     background-repeat: 'no-repeat';
                    background-position: center;
                  //  width: 1920px;
-                 //   width: 100%;
+                   width: 100%;
                  //   height: 650px;
                   //  object-fit: cover;
 

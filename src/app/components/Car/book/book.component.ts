@@ -1,6 +1,8 @@
+import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { ReservationService } from 'src/app/shared/vehicules/reservation.service';
 import { VehiculeService } from 'src/app/shared/vehicules/vehicule.service';
 
 @Component({
@@ -23,10 +25,12 @@ export class BookComponent implements OnInit {
   enddate : any  ;
   searchid : any ;
   image : any ;
+  result : any ;
 
-  constructor( private route: ActivatedRoute,public vs : VehiculeService , ) { }
+  constructor( private route: ActivatedRoute,public vs : VehiculeService , public reservation :ReservationService) { }
 
   ngOnInit(): void {
+
 
     this.route.queryParams.subscribe(params => {
       this.startdate = params['st'];
@@ -34,9 +38,12 @@ export class BookComponent implements OnInit {
       this.searchid = params['searchid'];
 
 
-      console.log(this.enddate , this.startdate , this.searchid) ;
+      console.log( this.startdate , this.searchid);
+      /*let x= formatDate(this.enddate, 'dd-MM-yyyy H:m', 'en-US')  ;
+      console.log(x) ;*/
   });
     this.get(this.searchid) ;
+    this.Totalprice(this.searchid,this.startdate,this.enddate ) ;
 
 
   }
@@ -56,12 +63,21 @@ export class BookComponent implements OnInit {
                x=data ;
                this.res= x;
                console.log(x) ;
-               this.image = "http://127.0.0.1:8000/storage/image/"+this.res.user_photo ;
+               this.image = this.res.user_photo ;
                console.log(this.image) ;
               }
 
     )
   }
+
+  Totalprice(vehiculeid , start , end ){
+    let result ;
+this.reservation.totalprice(vehiculeid , start , end ).subscribe(
+  (data)=> {this.result = data   ;
+            console.log(this.result)} ),
+  (error:any) => console.log(error) ;
+  }
+
 
   checkValue(event: any)
   { console.log(event);

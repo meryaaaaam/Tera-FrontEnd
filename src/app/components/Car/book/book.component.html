@@ -7,10 +7,14 @@
 <!-- Start Checkout Area -->
 <section class="checkout-area ptb-100">
     <div class="container">
-        <div class="user-actions">
+      <br>
+        <!--<div class="user-actions">
+
             <i class='bx bx-log-in'></i>
-            <span>Returning customer? <a href="#" data-bs-toggle="modal" data-bs-target="#loginRegisterModal">Click here to login</a></span>
-        </div>
+            <span>Returning customer?
+              <a href="#" data-bs-toggle="modal" data-bs-target="#loginRegisterModal">Click here to login</a>
+            </span>
+        </div>-->
 
         <form>
             <div class="row  ">
@@ -182,7 +186,10 @@
                         <div class="row pt-2">
                             <div class="payment" class="col-8">
 
-                                    <h5>prix totale</h5><span> {{totalprice}}$</span>
+                                    <h5>Prix totale</h5>
+                                    <!--<span> {{totalprice}}$</span>-->
+                                    <span *ngIf="result.days!=0">    {{res.Price_D}}$ * {{result.days}}  = {{result.amount}} $</span>
+                                    <span *ngIf="result.days==0">    {{res.Price_H}}$ * {{result.hour}}  = {{result.amount}} $</span>
 
                             </div>
 

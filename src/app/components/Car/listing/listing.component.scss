@@ -28,10 +28,21 @@
       position: relative;
       z-index: 1;
 
+
+
+    .listings-image-slides
+
+     {   height: 260px; width: auto;
+
       img {
-          border-radius: 5px 5px 0 0;
-          height: 230px;
-      }
+        height: 260px;
+        width: 100%;
+
+        background-size: 'cover';
+        object-fit: cover;
+        background-repeat: 'no-repeat';
+        background-position: center;
+      }}
       &::before {
           content: '';
           position: absolute;
@@ -97,8 +108,14 @@
       .single-image {
           position: relative;
           z-index: 1;
+          height: 260px;
+
         //  width: 409;
         //  height: 273;
+        object-fit: cover;
+        background-size: 'cover';
+        background-repeat: 'no-repeat';
+        background-position: center;
 
           &::before {
               content: '';
@@ -118,6 +135,7 @@
       padding: 28px 20px 25px;
       position: relative;
       z-index: 2;
+
 
       .author {
           position: absolute;

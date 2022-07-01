@@ -76,7 +76,10 @@ const routes: Routes = [
     {path: 'cart', component: CartComponent},
     {path: 'checkout', component: CheckoutComponent},
     {path: 'single-products', component: ProductsDetailsComponent},
-    {path: 'user-profile', component: AuthorProfileComponent},
+
+    {path: 'user-profile/:id', component: AuthorProfileComponent},
+
+
     {path: 'categories', component: CategoriesComponent},
     {path: 'destinations', component: TopPlaceComponent},
     {path: 'vertical-listings-left-sidebar', component: VerticalListingsLeftSidebarComponent},

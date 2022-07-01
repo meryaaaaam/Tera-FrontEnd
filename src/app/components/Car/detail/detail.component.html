@@ -9,14 +9,14 @@
             <div class="container">
                 <div class="listings-details-content">
                      <h3> {{res.model}} </h3>
-                    <div class="rating d-flex align-items-center">
+                    <!--<div class="rating d-flex align-items-center">
                         <span class="bx bxs-star checked"></span>
                         <span class="bx bxs-star checked"></span>
                         <span class="bx bxs-star checked"></span>
                         <span class="bx bxs-star checked"></span>
                         <span class="bx bxs-star checked"></span>
                         <span class="rating-count">({{res.nb}})</span>
-                    </div>
+                    </div>-->
                     <ul class="d-flex align-items-center">
                         <li class="phone-number">
                             <a href="#"><i class='bx bx-phone-call'></i> {{res.telephone}}</a>
@@ -123,7 +123,7 @@
                     <div id="gallery">
                         <div class="gallery-slides">
                          <!-- <img [src]="res.gallerie" alt="image">-->
-                            <owl-carousel-o [options]="res.galleries">
+                            <owl-carousel-o [options]="customOptions">
                                 <ng-template carouselSlide *ngFor="let Image of res.galleries;">
                                     <div class="single-image-box">
                                       <img [src]="Image.path" alt="image">
@@ -131,9 +131,19 @@
                                 </ng-template>
                             </owl-carousel-o>
                         </div>
+                        <div class="gallery-slides">
+                          <!-- <img [src]="res.gallerie" alt="image">-->
+                             <owl-carousel-o [options]="res.gallerie">
+                                 <ng-template carouselSlide *ngFor="let Image of res.galleries;">
+                                     <div class="single-image-box">
+                                       <img [src]="Image.path" alt="image">
+                                     </div>
+                                 </ng-template>
+                             </owl-carousel-o>
+                         </div>
                     </div>
 
-                    <h3>Review</h3>
+                    <!--<h3>Review</h3>
                     <div class="listings-review">
                         <div class="rating d-flex align-items-center">
                             <span class="bx bxs-star checked"></span>
@@ -238,7 +248,7 @@
                                     <div class="col-lg-4 col-md-4 p-0">
                                         <div class="user">
                                             <div class="d-flex">
-                                                <img src="assets/img/user1.jpg" alt="image">
+                                                <img [src]="res.user_photo" alt="image">
                                                 <div class="title">
                                                     <h4>res.user</h4>
                                                     <span>{{res.location}}</span>
@@ -460,7 +470,7 @@
                                 </div>
                             </form>
                         </div>
-                    </div>
+                    </div>-->
 
                 </div>
             </div>
@@ -526,10 +536,10 @@
                     <h3>Hote</h3>
                     <div class="author">
                         <div class="d-flex align-items-center">
-                            <img src="assets/img/user1.jpg" alt="image">
+                            <img src={{res.user_photo}} alt="image">
                             <div class="title">
                                 <h4><a href="#">{{res.user}}</a></h4>
-                                <span>42 voyages</span>
+                                <span>{{res.nb}} voyages</span>
                             </div>
                         </div>
                         <div class="author-profile">
@@ -538,14 +548,15 @@
                                     <a href="#" class="view-profile">View Profile</a>
                                 </div>
 
-                                <div class="col-lg-7 col-md-7">
+                                <!-- social media
+                                  <div class="col-lg-7 col-md-7">
                                     <ul class="social">
                                         <li><a href="#" target="_blank"><i class='bx bxl-facebook'></i></a></li>
                                         <li><a href="#" target="_blank"><i class='bx bxl-twitter'></i></a></li>
                                         <li><a href="#" target="_blank"><i class='bx bxl-linkedin'></i></a></li>
                                         <li><a href="#" target="_blank"><i class='bx bxl-instagram'></i></a></li>
                                     </ul>
-                                </div>
+                                </div>-->
                             </div>
                         </div>
                     </div>
