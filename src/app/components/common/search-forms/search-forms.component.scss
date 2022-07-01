@@ -1,6 +1,14 @@
- .calendar{
-  border: 0px;
-}
+
+/*.ui-datepicker .ui-widget-content {
+  border: 0px 0px 0px 0px  ;
+ // background: #ffffff url(images/ui-bg_flat_75_ffffff_40x100.png) 50% 50% repeat-x;
+  font-weight: normal;
+ // color: #000000;
+}*/
+
+.p-calendar .ui-datepicker {
+  height : 200px;
+  }
 
 form {
   margin-top: 40px;
@@ -16,6 +24,11 @@ form {
       position: relative;
       border-right: 1px solid #eff0fa;
       margin-left: 12px;
+     /* .p-calendar {
+       // max-width: 81px;
+        border: 0px 0px 0px 0px  ;
+        border-radius: 5px;
+      }*/
 
       label {
 

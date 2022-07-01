@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { VehiculeService } from 'src/app/shared/vehicules/vehicule.service';
 
@@ -9,17 +10,27 @@ import { VehiculeService } from 'src/app/shared/vehicules/vehicule.service';
 })
 export class ListingComponent implements OnInit {
   results ;
-  constructor(public vs : VehiculeService) { }
+  startdate : any;
+  enddate :any  ;
+
+  constructor(public vs : VehiculeService , private route: ActivatedRoute) { }
   ngOnInit(): void {
     this.vs.getAll().subscribe(
       (data) => {this.results = data ; console.log(this.results)}
 
-    )
+    );
 
 
 
+    this.route.queryParams.subscribe(params => {
+      this.startdate = params['st'];
+       this.enddate = params['se'];
+      ;}) ;
 
+      console.log(this.startdate , this.enddate) ;
     this.resetOption = [this.options[0]];
+
+
 }
 
 pageTitleContent = [

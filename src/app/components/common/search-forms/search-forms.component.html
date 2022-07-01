@@ -15,7 +15,13 @@
 
 
 
-              <p-calendar  [(ngModel)]="date" [showTime]="true"  [touchUI]="false" placeholder ="04/05/2022 01:20"  >
+              <p-calendar [inputStyle]="{'border':'0px'}"
+               [(ngModel)]="start" [showTime]="true"
+                 [touchUI]="false"
+                 name="start"
+                 [minDate]="minDate"
+                 (onSelect)="onselect(start)"
+                 >
                 <!--<ng-template pTemplate="date" let-date>
                     <span [ngStyle]="{textDecoration: (date.day < 21 && date.day > 10) ? 'line-through' : 'inherit'}">{{date.day}}</span>
                 </ng-template>-->
@@ -28,29 +34,29 @@
         </div>
     </div>
 
-      <div class="col-lg-3 col-md-6 p-0">
+      <div class="col-lg-3 col-md-6 p-0"  >
           <div class="form-group  ">
-            <p-calendar [(ngModel)]="date" [showTime]="true" inputId="time" [showIcon]="false" placeholder ="04/05/2022 01:20"></p-calendar>
+            <p-calendar [inputStyle]="{'border':'0px'}"
+            [(ngModel)]="end" [showTime]="true" name="end"
+            inputId="time" [showIcon]="false"
+
+              [minDate]="minEndDate"
+             (onSelect)="onselectend(end)"
+            ></p-calendar>
                 </div>
+      </div>
 
-               <!-- <div class="col-6"> <timepicker [(ngModel)]="mytime"></timepicker></div> -->
 
 
-            </div>
 
-<!--<bs-daterangepicker-inline [bsValue]="bsInlineRangeValue"></bs-daterangepicker-inline>-->
-<!---  <input class="form-control"
-placeholder="Daterangepicker"
-ngModel
-bsDaterangepicker
-[minDate]="minDate"
-[maxDate]="maxDate">  -->
 
 
 
       <div class="col-lg-3 col-md-12 p-0">
           <div class="submit-btn">
-              <button type="submit">Search Now</button>
+
+              <button (click)="search()" type="button"  class="default-btn">Chercher</button>
+
           </div>
       </div>
   </div>

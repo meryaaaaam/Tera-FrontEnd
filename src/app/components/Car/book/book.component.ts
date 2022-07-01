@@ -70,6 +70,7 @@ export class BookComponent implements OnInit {
     )
   }
 
+
   Totalprice(vehiculeid , start , end ){
     let result ;
 this.reservation.totalprice(vehiculeid , start , end ).subscribe(
@@ -93,6 +94,12 @@ this.reservation.totalprice(vehiculeid , start , end ).subscribe(
       if(this.isChecked3){this.totalprice=this.totalprice+this.price;}
       else{this.totalprice=this.totalprice-this.price;}}
     console.log(this.totalprice);
+  }
+
+
+  Reservation()
+  {
+
   }
 
 }

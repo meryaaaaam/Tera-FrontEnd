@@ -12,36 +12,43 @@ import { VehiculeService } from 'src/app/shared/vehicules/vehicule.service';
 })
 export class DetailComponent implements OnInit {
 
+  rangeDates: Date[];
   start : Date = new Date();
   end : Date = new Date();
   id : any ;
   res : any ;
   user : any ;
   //start : any ; end : any ;
+  minDate : any ;
+  minendDate : any ;
   startdate : any ; enddate : any  ; dateend : any ;
   constructor(public vs : VehiculeService , private route: ActivatedRoute, public token : TokenService ,
     private router: Router ) { }
 
   ngOnInit() {
 
-   this.res =  this.get(this.route.snapshot.paramMap.get('id')) ;
+    this.res =  this.get(this.route.snapshot.paramMap.get('id')) ;
     console.log(this.start)
 
     this.user = this.token.getUser().user.id ;
-
-
-
+    this.minDate = new Date();
+  //  this.minDate =  this.minDate.toLocaleString('en-GB', { timeZone: 'UTC' }) ;
+    console.log(this.rangeDates) ;
+    this.minendDate =this.start ;
 
   }
 
 
 onselectstart(date)
 {
-  this.startdate = this.start.toLocaleString('en-GB', { timeZone: 'UTC' }) ;
+ // this.startdate = this.start.toLocaleString('en-GB', { timeZone: 'UTC' }) ;
 
 
-  console.log(this.start.toLocaleString('en-GB', { timeZone: 'UTC' })) ;
-  console.log(this.start ) ;
+ // console.log(this.start.toLocaleString('en-GB', { timeZone: 'UTC' })) ;
+ let start = date[0].toLocaleString('en-GB', { timeZone: 'UTC' }) ;
+ let end = date[1].toLocaleString('en-GB', { timeZone: 'UTC' }) ;
+  console.log(start  ) ;
+  console.log(end ) ;
    //this.start = this.date.toLocaleString('en-GB', { timeZone: 'UTC' }) ; this.start = ''+this.start ;
 }
 

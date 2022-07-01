@@ -478,16 +478,26 @@
               <div class="listings-sidebar">
                 <div class="listings-widget listings_contact_details ">
                   <h3>{{res.Price_H}}$/Heur - {{res.Price_D}}$/Jour </h3>
-                  <div class="row pb-3">
+                  <div class="row pb-3 pt-3">
+                    <div class="field col-12 md:col-4">
+                      <label for="range" style="color:blueviolet" >Date de Début - Date de Fin</label>
+                      <p-calendar [minDate]="minDate"   [inputStyle]="{'width':'400px'}"   [showTime]="true"  [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="false" inputId="range"(onSelect)="onselectstart(rangeDates)" ></p-calendar>
+                  </div>
+                  </div>
+                  <!--<div class="row pb-3">
                      <label class="pb-2 " style="color:blueviolet">Début</label>
-                     <p-calendar   [showTime]="true" inputId="time" [showIcon]="false" placeholder ="04/05/2022 01:20" (onSelect)="onselectstart(start)" [(ngModel)]="start"></p-calendar>
+                     <p-calendar [minDate]="minDate"  [showTime]="true" inputId="time" [showIcon]="false" (onSelect)="onselectstart(start)" [(ngModel)]="start"></p-calendar>
 
                   </div>
-                  <div class="row pb-3">
-                    <label class="pb-2" style="color:blueviolet">Fin</label>
-                    <p-calendar   [showTime]="true" inputId="time" [showIcon]="false" placeholder ="04/05/2022 01:20" (onSelect)="onselectend(end)"  [(ngModel)]="end"></p-calendar>
 
-                 </div>
+
+
+                  </div>
+                    <div class="row pb-3">
+                    <label class="pb-2" style="color:blueviolet">Fin</label>
+                    <p-calendar [minDate]="minendDate"   [showTime]="true" inputId="time" [showIcon]="false" placeholder ="04/05/2022 01:20" (onSelect)="onselectend(end)"  [(ngModel)]="end"></p-calendar>
+
+                 </div>-->
 
                  <div class="row  pb-3">
 
