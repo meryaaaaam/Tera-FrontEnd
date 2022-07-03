@@ -60,7 +60,7 @@ showError(detail) {
       //this.roles = this.tokenStorage.getUser().roles;
        this.user.get(this.id).subscribe(res => {
         this.User = res;
-       console.log(this.User);
+        console.log(this.User);
         if (this.User.photo)
         {this.image = "http://localhost:8000/storage/image/"+this.User.photo ;  }
         else {this.image = 'assets/img/Logo_e.jpg'};

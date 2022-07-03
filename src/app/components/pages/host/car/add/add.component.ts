@@ -68,7 +68,7 @@ export class AddComponent implements OnInit {
         transmission: [''],
         siege: [''],
         description: [''],
-        bail: [''],
+        bail: 500,
         photo: this.uploadedFiles[0] ,
         galleries:this.uploadedFiles ,
         user_id: this.tokenStorage.getUser().user.id,
