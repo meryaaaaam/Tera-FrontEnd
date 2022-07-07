@@ -1,6 +1,6 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-search-forms',
@@ -20,7 +20,9 @@ export class SearchFormsComponent implements OnInit {
   datePipe : DatePipe = new DatePipe('en-GB');
   from : any ;
   to : any ;
-  constructor(private router: Router ) {
+  s :any;
+  e : any ;
+  constructor(private router: Router , private route: ActivatedRoute) {
        //  this.min = this.minDate.toLocaleString('en-GB', { timeZone: 'UTC' });
       //this.min2 = this.minEndDate.toLocaleString('en-GB', { timeZone: 'UTC' });
       // this.min2 = this.datePipe.transform(this.minEndDate, 'dd/MM/yyyy H:m:s');
@@ -32,11 +34,30 @@ export class SearchFormsComponent implements OnInit {
 
 
 
-    this.minEndDate.setHours(this.start.getHours() + 3);
-    this.end = this.minEndDate ;
-    console.log(this.minEndDate) ;
+    this.route.queryParams.subscribe(params => {
+      this.s = params['st'];
+       this.e = params['se'];
 
 
+      if (this.s && this.e)
+      {
+        let start ;
+        let end ;
+                //let end = this.e.toLocaleString('en-GB', { timeZone: 'UTC' }) ;
+       // let start = this.s.toLocaleString('en-GB', { timeZone: 'UTC' }) ;
+
+         start = this.datePipe.transform(this.s, 'MM/dd/yyyy H:m:s');
+         end = this.datePipe.transform(this.e, 'MM/dd/yyyy H:m:s');
+         this.s = new Date (start) ;
+         this.e = new Date (end) ;
+        console.log(this.s , this.e) ;
+      }
+      else
+      {
+        this.minEndDate.setHours(this.start.getHours() + 3);
+        this.end = this.minEndDate ;
+        console.log(this.end) ;
+      };}) ;
 
   }
 
@@ -81,6 +102,7 @@ search()
    this.router.navigate(['/car/list'],{queryParams : {'st':from , 'se':to }});
   //console.log(this.start , this.end) ;
 }
+
 
 
 }

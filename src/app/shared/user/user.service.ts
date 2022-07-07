@@ -4,13 +4,15 @@ import { Observable } from 'rxjs/Observable';
 
 
 const baseUrl = "http://127.0.0.1:8000/api/" ;
-/*const baseUrl = "https://tera3.dev.smartegy.ca/backend/public/api/users" ;
+// const baseUrl = "https://tera3.dev.smartegy.ca/backend/public/api/" ;
 const model = "https://tera3.dev.smartegy.ca/backend/public/api/makes" ;
 const Active = "https://tera3.dev.smartegy.ca/backend/public/api/users/isActive" ;
 const adresse = "https://tera3.dev.smartegy.ca/backend/public/api/update" ;
-const state = "https://tera3.dev.smartegy.ca/backend/public/api/provinces" ;*/
+const state = "https://tera3.dev.smartegy.ca/backend/public/api/provinces" ;
+
 
 const url = "http://127.0.0.1:8000/api/users" ;
+// const url = "https://tera3.dev.smartegy.ca/backend/public/api/users" ;
 
 @Injectable({
   providedIn: 'root'
