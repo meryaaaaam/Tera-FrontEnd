@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { TokenService } from 'src/app/shared/auth/token.service';
+import { UserService } from 'src/app/shared/user/user.service';
+import { VehiculeService } from 'src/app/shared/vehicules/vehicule.service';
 
 @Component({
     selector: 'app-author-profile',
@@ -9,19 +13,35 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 export class AuthorProfileComponent implements OnInit {
 
     blogGrid: number = 1;
-
-    constructor() { }
+    id : any ;
+    User : any  ;
+    results: any;
+    image:any;
+    constructor( private route: ActivatedRoute, public token : TokenService , private user : UserService, public vs : VehiculeService,
+        private router: Router) { }
 
     ngOnInit(): void {
+        this.id=  this.route.snapshot.paramMap.get('id') ;
+        console.log(this.id);
+        this.user.get(this.id).subscribe(res => {
+            this.User = res;
+           console.log(this.User);
+          
+          },
+          (error) => {console.log(error.errors) ;}
+          );
+
+          this.vs.getVehiculesByUser(this.id).subscribe(
+            (data) => {this.results = data ; console.log(this.results)}
+      
+          )
+          if (this.User.photo)
+          {this.image = "http://localhost:8000/storage/image/"+this.User.photo ;  }
+          else {this.image = 'assets/img/Logo_e.jpg'};
     }
 
-    pageTitleContent = [
-        {
-            title: 'Author',
-            backgroundImage: 'assets/img/page-title/page-title1.jpg'
-        }
-    ]
-    singleListingsBox = [
+    
+   /* singleListingsBox = [
         {
             mainImg: [
                 {
@@ -244,7 +264,7 @@ export class AuthorProfileComponent implements OnInit {
             ],
             ratingCount: '15'
         }
-    ]
+    ]*/
 
     customOptions: OwlOptions = {
 		loop: true,

@@ -99,5 +99,8 @@ export class UserService {
 
    // return this.http.put(`${baseUrl}/${id}`, data);
   }
-
+  createcard(data)
+  {
+    return this.http.post(baseUrl+"cards",data) ;
+  }
  }

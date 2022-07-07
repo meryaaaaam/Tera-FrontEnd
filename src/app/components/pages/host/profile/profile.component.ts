@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
+import { Card } from 'src/app/models/card';
 import { AuthStateService } from 'src/app/shared/auth/auth-state.service';
 import { AuthService } from 'src/app/shared/auth/auth.service';
 import { TokenService } from 'src/app/shared/auth/token.service';
 import {MessageService} from 'primeng/api';
 import { UserService } from 'src/app/shared/user/user.service';
+import {VehiculeService} from 'src/app/shared/vehicules/vehicule.service';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { connectableObservableDescriptor } from 'rxjs/internal/observable/ConnectableObservable';
 import { ImagesService } from 'src/app/shared/gallery/images.service';
@@ -24,9 +26,12 @@ export class ProfileComponent implements OnInit {
   //User : User = new User;
   User : any  ;
   Info: User = new User;
+  card: Card= new Card;
   isSignedIn!: boolean;
   roles : any ;
   id : any ;
+  formData1 =new FormData();
+  formData2 =new FormData();
   userForm : FormGroup ;
   image: any;
   filedata:any;
@@ -36,6 +41,7 @@ export class ProfileComponent implements OnInit {
               private tokenStorage: TokenService ,
               private auth: AuthStateService,
               public messageService: MessageService,
+              public vehicule: VehiculeService,
               private user : UserService,
               public fb: FormBuilder,
               ) {
@@ -44,7 +50,7 @@ export class ProfileComponent implements OnInit {
   }
 
   showSuccess( ) {
-    this.messageService.add({severity:'success', summary: 'Success', detail: 'profile a été modifier avec succes'});
+    this.messageService.add({severity:'success', summary: 'Success', detail: 'profile a été modifié avec succes'});
 }
 
 showError(detail) {
@@ -74,6 +80,9 @@ showError(detail) {
 
     }
 
+    this.card.id=this.User.id;
+    console.log(this.card);
+
 
 
 
@@ -87,16 +96,27 @@ showError(detail) {
     }
 
 ]
-photo(event)
+photo1(event)
 {
   console.log(event);
-  this.imagename=event.target.files[0].name;
-  console.log(this.imagename);
   this.image=event.target.files[0];
   console.log(this.image);
-
+  this.formData1.append("img",this.image,this.image.name);
+  console.log(this.formData1);
+  this.card.Driving_licence_side1=this.image.name;
+  console.log(this.card);
 }
 
+photo2(event)
+{
+  console.log(event);
+  this.image=event.target.files[0];
+  console.log(this.image);
+  this.formData2.append("img",this.image,this.image.name);
+  console.log(this.formData2);
+  this.card.Driving_licence_side2=this.image.name;
+  console.log(this.card);
+}
 
 fileEvent(e){
   this.filedata = e.target.files[0];
@@ -135,6 +155,66 @@ updatephoto(id)
       );
 
   }
+  
+
+  cards(x){this.vehicule.storeImage(x) .subscribe(response=>{console.log(response);})}
+  
+
+
+  updatepermis()
+  {
+    this.user.createcard(this.card) .subscribe(
+      response => {
+       
+         this.data= response ;
+         console.log("ok");
+         console.log(this.data);
+       //   if(!this.data)
+         //{}
+        // else {
+         // this.showSuccess() ;          }
+
+      },
+      error => {
+        console.log(error);
+
+      },
+      () => {  window.location.reload();}
+
+      );
+    
+    console.log(this.card);
+
+    this.cards(this.formData1);
+    this.cards(this.formData2);
+    
+
+  
+
+
+
+
+      /*  this.vehicule.storeImage(this.formData2) .subscribe(
+          response => {
+             console.log(this.data);
+              if(!this.data)
+             {}
+             else {
+              this.showSuccess() ;          }
+    
+          },
+          error => {
+            console.log(error);
+    
+          },
+          () => {  window.location.reload();}
+    
+          );*/
+    
+  
+    }
+
+
 
 
 

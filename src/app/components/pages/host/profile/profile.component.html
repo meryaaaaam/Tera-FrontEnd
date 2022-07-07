@@ -199,35 +199,35 @@
             <div class="my-profile-box">
                 <h3>Verification des données</h3>
 
-                <form>
+                <form (ngSubmit)="updatepermis()">
                     <div class="row">
-                                <label>photo</label>
+                                <label>photo front</label>
                                 <div class="col-8">  
-                                    <p>ajouter une photo claire de vous pour qu'on puisse vous connaitre</p>  </div>
+                                    <p>ajouter une photo claire de vous avec votre permis </p>  </div>
                                     <div class="col-4">
                                         <br><br>
                                 <div class="form-group profile-box ">
                                     <div class="file-upload">
-                                        <input type="file" name="photo" id="file" class="inputfile" (change)="photo($event)"/>
+                                        <input type="file" name="photo" id="file" class="inputfile" (change)="photo1($event)"/>
                                         <label for="file">Upload Photo</label>
                                     </div>
                                 </div>
                                 </div>
 
-                                <label>permis de conduite</label>
+                                <label>photo back</label>
                                 <div class="col-8">
-                                    <p>ajouter une photo claire de votre permis</p></div>
+                                    <p>ajouter une photo claire de vous avec votre permis </p></div>
                                     <div class="col-4">
                                         <br><br>
                                     <div class="form-group profile-box">
                                         <div class="file-upload">
-                                            <input type="file" name="photo" id="file" class="inputfile" (change)="photo($event)"/>
+                                            <input type="file" name="photo" id="file" class="inputfile" (change)="photo2($event)"/>
                                             <label for="file"> Upload Photo</label>
                                         </div>
                                     </div>
                                     </div>
 
-<h3>methode de paiement</h3>
+                                  <!--     <h3>methode de paiement</h3>
                                         <div class="col-xl-6 col-lg-12 col-md-12">
                                         <div class="form-group">                                      
                                             <label for="class">Card Holder Name</label>
@@ -258,7 +258,7 @@
                                             <label for="cvv">CVV</label>
                                             <p-inputMask id="cvv" mask="999" ></p-inputMask>
                                         </div>
-                                        </div>
+                                        </div>  -->
 
 
                                       

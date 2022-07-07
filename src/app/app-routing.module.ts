@@ -97,11 +97,11 @@ const routes: Routes = [
     {path: 'dashboard-wallet', component: DashboardWalletComponent},
     {path: 'dashboard-reviews', component: DashboardReviewsComponent},
     {path: 'dashboard-invoice', component: DashboardInvoiceComponent},
-    {path: 'dashboard-my-profile', component: DashboardMyProfileComponent},
+   // {path: 'dashboard-my-profile', component: DashboardMyProfileComponent},
     {path: 'dashboard-add-listings', component: DashboardAddListingsComponent},
     {path: 'dashboard-bookmarks', component: DashboardBookmarksComponent},
-    {path: 'dashboard-my-listings', component: DashboardMyListingsComponent},
-    {path: 'dashboard-my-listings', component: DashboardMyListingsComponent},
+   // {path: 'dashboard-my-listings', component: DashboardMyListingsComponent},
+  //  {path: 'dashboard-my-listings', component: DashboardMyListingsComponent},
 
 
     {path: 'car/detail/:id', component: DetailComponent},
