@@ -104,7 +104,8 @@ const routes: Routes = [
   //  {path: 'dashboard-my-listings', component: DashboardMyListingsComponent},
 
 
-    {path: 'car/detail/:id', component: DetailComponent},
+    //{path: 'car/detail/:id', component: DetailComponent},
+    {path: 'car/detail', component: DetailComponent},
     {path: 'car/list', component: ListingComponent},
     {path: 'car/book', component: BookComponent},
 

@@ -50,6 +50,7 @@ export class DetailComponent implements OnInit {
          this.enddate = new Date (end) ;
     }
     }) ;
+    this.get(this.res);
     this.rangeDates = [ this.startdate, this.enddate];
 
 
