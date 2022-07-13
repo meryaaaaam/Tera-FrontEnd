@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DatePipe } from '@angular/common';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { TokenService } from 'src/app/shared/auth/token.service';
@@ -18,17 +19,39 @@ export class DetailComponent implements OnInit {
   id : any ;
   res : any ;
   user : any ;
+  s :any;
+  e : any
+  exist:boolean; ;
   //start : any ; end : any ;
   minDate : any ;
   minendDate : any ;
+  datePipe : DatePipe = new DatePipe('en-GB');
   startdate : any ; enddate : any  ; dateend : any ;
   constructor(public vs : VehiculeService , private route: ActivatedRoute, public token : TokenService ,
     private router: Router ) { }
 
   ngOnInit() {
+    this.route.queryParams.subscribe(params => {
+      this.res=params['id'];
+      console.log(this.res);
+      this.s= params['st'];
+      console.log(this.s);
+    console.log( typeof this.s);
+       this.e= params['se'];
+       console.log(this.e);
+       if (this.s && this.e)
+       {
+        this.exist=true;
+     let start:any ;
+    let end:any ;
+      start = this.datePipe.transform(this.s, 'MM/dd/yyyy h:m:s');
+      end = this.datePipe.transform(this.e, 'MM/dd/yyyy h:m:s');
+        this.startdate = new Date (start) ;
+         this.enddate = new Date (end) ;
+    }
+    }) ;
+    this.rangeDates = [ this.startdate, this.enddate];
 
-    this.res =  this.get(this.route.snapshot.paramMap.get('id')) ;
-    console.log(this.start)
 
     this.user = this.token.getUser().user.id ;
     this.minDate = new Date();

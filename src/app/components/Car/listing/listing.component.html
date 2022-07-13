@@ -49,7 +49,7 @@
                     <div class="listings-image">
                         <div class="listings-image-slides">
                           <img [src]="Content.image" alt="image">
-                          <a routerLink="/car/detail/{{Content.id}}" class="link-btn"></a>
+                          <a [routerLink]="['/car/detail/{{Content.id}}']" [queryParams]="{id: Content.id, st:start, se:end}" class="link-btn"></a>
                            <!--  <owl-carousel-o [options]="customOptions">
                                 <ng-template carouselSlide *ngFor="let Image of Content.images;">
                                     <div class="single-image">
@@ -70,7 +70,7 @@
                             </div>
                         </div>
                         <ul class="listings-meta">
-                          <h3><a routerLink="/car/detail/{{Content.id}}"></a> {{Content.model}}</h3>
+                          <h3><a [routerLink]="['/car/detail/{{Content.id}}']" [queryParams]="{id: Content.id, st:start, se:end}"></a> {{Content.model}}</h3>
                             <!--<li><a routerLink="/{{Content.categoryLink}}"><i class="flaticon-furniture-and-household"></i> Restaurant</a></li>
                             <li><i class="flaticon-pin"></i> {{Content.location}}</li>-->
                         </ul>

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { VehiculeService } from 'src/app/shared/vehicules/vehicule.service';
 
@@ -14,7 +14,7 @@ export class ListingComponent implements OnInit {
   enddate :any  ;
   start : any ; end : any;
 
-  constructor(public vs : VehiculeService , private route: ActivatedRoute) { }
+  constructor(public vs : VehiculeService , private router: Router , private route: ActivatedRoute) { }
   ngOnInit(): void {
     this.vs.getAll().subscribe(
       (data) => {this.results = data ; console.log(this.results)}
@@ -23,7 +23,7 @@ export class ListingComponent implements OnInit {
 
 
 
-    this.route.queryParams.subscribe(params => {
+   this.route.queryParams.subscribe(params => {
       this.start = params['st'];
        this.end = params['se'];
       ;}) ;
@@ -184,7 +184,10 @@ searchChange($event) {
 reset() {
     this.resetOption = [];
 }
-
+ok(id) {
+    console.log(id);
+    this.router.navigate(['/car/detail/id'],{queryParams : {'id':id, 'st':this.start , 'se':this.end }});
+}
 
 
 
