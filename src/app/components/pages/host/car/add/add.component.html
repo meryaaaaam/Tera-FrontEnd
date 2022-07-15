@@ -176,7 +176,9 @@
           2.Clicker sur upload pour charger les images <br>-->
 
       <p-fileUpload name="galleries[]" url="http://127.0.0.1:8000/api/gallerie" (onUpload)="onUpload($event)"
-              multiple="multiple" accept="image/*" maxFileSize="10000000">
+              multiple="multiple" accept="image/*" maxFileSize="10000000"
+
+              >
               <ng-template pTemplate="content">
                   <ul *ngIf="Files.length">
                       <li *ngFor="let file of Files">{{file.name}} - {{file.size}} bytes</li>

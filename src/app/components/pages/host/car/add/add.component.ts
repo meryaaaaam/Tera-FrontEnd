@@ -174,20 +174,26 @@ fileEvent(e){
   console.log(this.filedata);
 }
 
+OnUpload = false ;
 onUpload(event) {
 //  console.log(event);
-
+this.OnUpload = true ;
   let image: any ;
   let file
 
-    for  (var i =  0; i <  event.files.length; i++)  {
+  if (event.files.length == 0)
+  {
+    this.showError("L'upload des images est obligatoires !")
+  }
+  else
+   { for  (var i =  0; i <  event.files.length; i++)  {
      file = event.files[i] ;
      this.uploadedF.push(file);
     image = {"name":file.name , "path" :file.name , "size" :file.size }
     this.uploadedFiles.push(image);
     console.log(this.uploadedFiles) ;
      }
-
+}
 
 
 
@@ -264,8 +270,9 @@ showError(detail) {
 
       const formData = new FormData();
 
+      if(this.OnUpload)
     //  formData.append("img",this.filedata,this.filedata.name);
-    this.cars.create(this.data ).subscribe(
+    {this.cars.create(this.data ).subscribe(
           (res)=>
           {
             this.store(photoprincipal) ;
@@ -288,7 +295,9 @@ showError(detail) {
             this.showError('Vérifier les champs obligatoires') ;
           },
          // () => {  window.location.reload();}
-        );
+        );}
+      else
+      {this.showError('Veillez cliquez sur upload pour enregistrer les photos de vehicules ')}
     }
 
 
@@ -298,7 +307,7 @@ showError(detail) {
       this.cars.storeImage(data).subscribe(
         (data)=> console.log("Done")) ;
     }
-  
+
 
     storeImages(data)
     {

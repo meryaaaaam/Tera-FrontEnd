@@ -1,6 +1,8 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import { ReservationService } from 'src/app/shared/vehicules/reservation.service';
 import { VehiculeService } from 'src/app/shared/vehicules/vehicule.service';
 
 @Component({
@@ -13,13 +15,15 @@ export class ListingComponent implements OnInit {
   startdate : any;
   enddate :any  ;
   start : any ; end : any;
+  from ; to ;
+  datePipe : DatePipe = new DatePipe('en-GB');
 
-  constructor(public vs : VehiculeService , private router: Router , private route: ActivatedRoute) { }
+  constructor(public vs : VehiculeService , private router: Router , private route: ActivatedRoute , private res : ReservationService) { }
   ngOnInit(): void {
-    this.vs.getAll().subscribe(
+   /* this.vs.getAll().subscribe(
       (data) => {this.results = data ; console.log(this.results)}
 
-    );
+    );*/
 
 
 
@@ -28,14 +32,30 @@ export class ListingComponent implements OnInit {
        this.end = params['se'];
       ;}) ;
 
+   //   console.log( typeof this.start);
+      //console.log(this.start , this.end) ;
+      this.resetOption = [this.options[0]];
 
-      console.log(this.start , this.end) ;
-    this.resetOption = [this.options[0]];
+     this.from = this.datePipe.transform(this.start, 'dd/MM/yyyy H:m:s');
 
+     this.to = this.datePipe.transform(this.end, 'dd/MM/yyyy H:m:s');
+    console.log(this.from , this.to);
 
-
+    this.get(this.from , this.to) ;
 }
 
+  get(start , end )
+  {
+    this.res.GetAvailableReservation(start,end).subscribe(
+      data => {
+        this.results = data ;
+        console.log(this.results);
+
+      }
+
+
+    )
+  }
 pageTitleContent = [
     {
         title: 'Find Popular Places'
@@ -186,7 +206,7 @@ reset() {
 }
 ok(id) {
     console.log(id);
-    this.router.navigate(['/car/detail/id'],{queryParams : {'id':id, 'st':this.start , 'se':this.end }});
+    this.router.navigate(['/car/detail'],{queryParams : {'id':id, 'st':this.start , 'se':this.end }});
 }
 
 

@@ -21,6 +21,13 @@ export class ReservationService {
 
 
 
-    return this.http.get(baseUrl+"totalprice",  {params: {vehicule: vehiculeId , start: start, end: end }});}
+    return this.http.get(baseUrl+"totalprice",  {params: {vehicule: vehiculeId , start: start, end: end }});
+  }
+
+  GetAvailableReservation(start , end )
+  {
+    return this.http.get(baseUrl+"reservations",  {params: {start: start, end: end }});
+
+  }
 
 }

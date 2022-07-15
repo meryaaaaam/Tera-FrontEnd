@@ -74,40 +74,56 @@ export class NavbarStyleTwoComponent implements OnInit {
     this.authService.signin(this.loginForm.value).subscribe(
       (result) => {
         this.responseHandler(result);
-        this.showSuccess('youre loged in');
+        this.showSuccess('Bienvenue');
+        this.authState.setAuthState(true);
+        this.router.navigateByUrl('user/profile');
 
       },
       (error) => {
         this.errors = error.error; console.log(this.errors)
-        this.showError('Vérifier votre adresse email ou votre mots de passe');
+        this.showError('Vérifier les champs saisit - '+ this.errors.message);
       },
       () => {
-       // this.authState.setAuthState(true);
         this.loginForm.reset();
        // this.router.navigate(['user/profile']);
-        this.router.navigateByUrl('user/profile');
+
 
       }
     );
   }
   signup() {
-    this.loginForm.value.email = this.registerForm.value.email ;
-    this.loginForm.value.password = this.registerForm.value.password ;
+
+    console.log(this.registerForm);
     this.authService.register(this.registerForm.value).subscribe(
       (result) => {
         console.log(result);
-        this.showSuccess('yre signup');
-        this.login() ;
+        this.showSuccess('Votre Compte a été créer avec success');
         //this.router.navigate(['/']);
         this.registerForm.reset();
-
       },
       (error) => {
-        this.showError('Vérifier les champs saisit');
+
         this.errors = error.error; console.log(this.errors) ;
+        this.showError('Vérifier les champs saisit - '+ this.errors);
       },
 
+
     );
+
+    this.loginForm.value.email = this.registerForm.value.email ;
+        this.loginForm.value.password = this.registerForm.value.password ;
+        this.authService.signin(this.loginForm.value).subscribe(
+          (result) => {
+            this.responseHandler(result);
+            this.showSuccess('Bienvenue');
+            this.authState.setAuthState(true);
+            this.router.navigateByUrl('user/profile');
+
+          },
+          (error) => {
+            this.errors = error.error; console.log(this.errors)
+            this.showError('Vérifier les champs saisit - '+ this.errors.message);
+          })
   }
   // Handle response
   responseHandler(data:any) {

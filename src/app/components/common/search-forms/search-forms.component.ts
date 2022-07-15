@@ -32,12 +32,12 @@ export class SearchFormsComponent implements OnInit {
 
   ngOnInit(): void {
 
-  
+
 
 
     this.route.queryParams.subscribe(params => {
       this.s= params['st'];
-    console.log( typeof this.s);
+   // console.log( typeof this.s);
        this.e= params['se'];
   //   console.log(this.e);
 
@@ -52,13 +52,13 @@ export class SearchFormsComponent implements OnInit {
      end = this.datePipe.transform(this.e, 'MM/dd/yyyy h:m:s');
        this.start = new Date (start) ;
         this.end = new Date (end) ;
-         console.log(this.start, this.end);
+       //  console.log(this.start, this.end);
    }
    else
-  {     console.log(this.start);
+  {   //  console.log(this.start);
        this.minEndDate.setHours(this.start.getHours() + 3);
        this.end = this.minEndDate ;
-       console.log(this.end) ;
+      // console.log(this.end) ;
       };}) ;
   }
 
@@ -97,12 +97,12 @@ onselectend(date)
  this.end = date ;
  this.to = date ;
 
-console.log(this.end) ;
+//console.log(this.end) ;
 }
 
 search()
-{ console.log(typeof this.from);
-  console.log(this.from);
+{ //console.log(typeof this.from);
+  //console.log(this.from);
 
  // this.from = this.datePipe.transform(this.start, 'dd/MM/yyyy H:m:s');
 
