@@ -204,11 +204,6 @@ searchChange($event) {
 reset() {
     this.resetOption = [];
 }
-ok(id) {
-    console.log(id);
-    this.router.navigate(['/car/detail'],{queryParams : {'id':id, 'st':this.start , 'se':this.end }});
-}
-
 
 
 gridListings: number = 1;

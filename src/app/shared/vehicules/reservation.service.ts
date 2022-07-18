@@ -14,8 +14,7 @@ export class ReservationService {
   constructor(private http: HttpClient) { }
 
   totalprice(vehiculeId, start , end)
-  {
-    let params = new HttpParams().set('vehicule',vehiculeId );
+{   let params = new HttpParams().set('vehicule',vehiculeId );
    let params3 = new HttpParams().set('end',end );
    let  params2 = new HttpParams().set('start',start );
 
