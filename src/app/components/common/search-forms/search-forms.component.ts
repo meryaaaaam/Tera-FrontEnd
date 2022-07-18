@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -29,8 +29,7 @@ export class SearchFormsComponent implements OnInit {
 
 
  }
-
-  ngOnInit(): void {
+   ngOnInit(): void {
 
 
 
@@ -45,7 +44,7 @@ export class SearchFormsComponent implements OnInit {
      if (this.s && this.e)
       {
     let start:any ;
-   let end:any ;
+    let end:any ;
      // let end = this.e.toLocaleString('en-GB', { timeZone: 'UTC' }) ;
      //  let start = this.s.toLocaleString('en-GB', { timeZone: 'UTC' }) ;
      start = this.datePipe.transform(this.s, 'MM/dd/yyyy h:m:s');
@@ -60,7 +59,10 @@ export class SearchFormsComponent implements OnInit {
        this.end = this.minEndDate ;
       // console.log(this.end) ;
       };}) ;
+      this.search();
   }
+
+
 
   onselect(date)
 {
@@ -95,9 +97,8 @@ onselectend(date)
 {
   //console.log(this.start.toLocaleString('en-GB', { timeZone: 'UTC' })) ;
  this.end = date ;
- this.to = date ;
-
-//console.log(this.end) ;
+// this.to = date ;
+console.log(this.end) ;
 }
 
 search()
@@ -110,8 +111,10 @@ search()
   //console.log(this.to);
   //this.start= this.from;
   //this.end=this.to;
+   this.router.navigate(['/car/list'],{queryParams : {'st':this.start , 'se':this.end }});
+ //  console.log(this.to , this.from) ;
+ console.log(this.start , this.end) ;
 
-   this.router.navigate(['/car/list'],{queryParams : {'st':this.from , 'se':this.to }});
 }
 
 
