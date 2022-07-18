@@ -14,14 +14,13 @@ import { VehiculeService } from 'src/app/shared/vehicules/vehicule.service';
 export class DetailComponent implements OnInit {
 
   rangeDates: Date[];
-  start : Date = new Date();
-  end : Date = new Date();
+  start : any;
+  end : any;
   id : any ;
   res : any ;
   user : any ;
   s :any;
-  e : any
-  exist:boolean; ;
+  e : any;
   //start : any ; end : any ;
   minDate : any ;
   minendDate : any ;
@@ -36,15 +35,16 @@ export class DetailComponent implements OnInit {
       console.log(this.res);
       this.s= params['st'];
       console.log(this.s);
-    console.log( typeof this.s);
+    console.log(typeof this.s);
        this.e= params['se'];
        console.log(this.e);
        if (this.s && this.e)
        {
-        this.exist=true;
      let start:any ;
     let end:any ;
       start = this.datePipe.transform(this.s, 'MM/dd/yyyy h:m:s');
+      console.log(start);
+      console.log(typeof start);
       end = this.datePipe.transform(this.e, 'MM/dd/yyyy h:m:s');
         this.startdate = new Date (start) ;
          this.enddate = new Date (end) ;

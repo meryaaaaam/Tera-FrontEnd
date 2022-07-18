@@ -22,6 +22,7 @@ export class SearchFormsComponent implements OnInit {
   to : any ;
   s :any;
   e : any ;
+  today: any;
   constructor(private router: Router , private route: ActivatedRoute) {
        //  this.min = this.minDate.toLocaleString('en-GB', { timeZone: 'UTC' });
       //this.min2 = this.minEndDate.toLocaleString('en-GB', { timeZone: 'UTC' });
@@ -32,7 +33,9 @@ export class SearchFormsComponent implements OnInit {
    ngOnInit(): void {
 
 
-
+    let today = new Date();
+    this.today= new Date(today);
+   
 
     this.route.queryParams.subscribe(params => {
       this.s= params['st'];
@@ -55,8 +58,10 @@ export class SearchFormsComponent implements OnInit {
    }
    else
   {   //  console.log(this.start);
+      this.from=this.start;
        this.minEndDate.setHours(this.start.getHours() + 3);
        this.end = this.minEndDate ;
+       this.to=this.minEndDate;
       // console.log(this.end) ;
       };}) ;
       this.search();
@@ -73,6 +78,7 @@ export class SearchFormsComponent implements OnInit {
   console.log(date);
   console.log(typeof date);
   this.from = date ;
+  this.minEndDate=new Date(this.start);
   //console.log(this.from);
   // this.minEndDate = date.setHours(date.getHours() + 3);
 

@@ -19,7 +19,7 @@
                [(ngModel)]="start" [showTime]="true"
                  [touchUI]="false"
                  name="start"
-                 [minDate]="minDate"
+                 [minDate]="today"
                  (onSelect)="onselect(start)"
                  >
                 <!--<ng-template pTemplate="date" let-date>
@@ -39,9 +39,8 @@
             <p-calendar [inputStyle]="{'border':'0px'}"
             [(ngModel)]="end" [showTime]="true" name="end"
             inputId="time" [showIcon]="false"
-
-              [minDate]="minEndDate"
-             (onSelect)="onselectend(end)"
+            [minDate]="minEndDate"
+            (onSelect)="onselectend(end)"
             ></p-calendar>
                 </div>
       </div>
