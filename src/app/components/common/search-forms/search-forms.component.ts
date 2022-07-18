@@ -59,8 +59,10 @@ export class SearchFormsComponent implements OnInit {
    }
    else
   {   //  console.log(this.start);
+      this.from=this.start;
        this.minEndDate.setHours(this.start.getHours() + 3);
        this.end = this.minEndDate ;
+       this.to=this.minEndDate;
       // console.log(this.end) ;
       };}) ;
   }
