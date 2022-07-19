@@ -9,62 +9,39 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class SearchFormsComponent implements OnInit {
 
-  start : Date = new Date();
-  end : Date = new Date();
-  minDate: any;
-  minEndDate : Date = new Date();
-  min: any ;
-  min2 : any ;
-  maxDate: Date;
-  mytime: Date = new Date();
+  start : Date = new Date(); end : Date = new Date();
+  minDate: any; minEndDate : Date = new Date();
+  min: any ; min2 : any ;
+  maxDate: Date; mytime: Date = new Date();
   datePipe : DatePipe = new DatePipe('en-GB');
-  from : any ;
-  to : any ;
-  s :any;
-  e : any ;
-  today: any;
-  constructor(private router: Router , private route: ActivatedRoute) {
-       //  this.min = this.minDate.toLocaleString('en-GB', { timeZone: 'UTC' });
-      //this.min2 = this.minEndDate.toLocaleString('en-GB', { timeZone: 'UTC' });
-      // this.min2 = this.datePipe.transform(this.minEndDate, 'dd/MM/yyyy H:m:s');
+  from : any ; to : any ;
+  s :any; e : any ; today: any;
 
-
- }
+  constructor(private router: Router , private route: ActivatedRoute) { }
    ngOnInit(): void {
 
+    let today = new Date(); this.today= new Date(today);
 
-    let today = new Date();
-    this.today= new Date(today);
-   
 
-    this.route.queryParams.subscribe(params => {
-      this.s= params['st'];
-   // console.log( typeof this.s);
-       this.e= params['se'];
-  //   console.log(this.e);
-
+    this.route.queryParams.subscribe(params => {   this.s= params['st']; this.e= params['se'];
 
      if (this.s && this.e)
-      {
-    let start:any ;
-    let end:any ;
-     // let end = this.e.toLocaleString('en-GB', { timeZone: 'UTC' }) ;
-     //  let start = this.s.toLocaleString('en-GB', { timeZone: 'UTC' }) ;
-     start = this.datePipe.transform(this.s, 'MM/dd/yyyy h:m:s');
-     end = this.datePipe.transform(this.e, 'MM/dd/yyyy h:m:s');
-       this.start = new Date (start) ;
-        this.end = new Date (end) ;
-       //  console.log(this.start, this.end);
-   }
-   else
-  {   //  console.log(this.start);
-      this.from=this.start;
-       this.minEndDate.setHours(this.start.getHours() + 3);
-       this.end = this.minEndDate ;
-       this.to=this.minEndDate;
-      // console.log(this.end) ;
-      };}) ;
-      this.search();
+      { let start:any ; let end:any ;
+          start = this.datePipe.transform(this.s, 'MM/dd/yyyy h:m:s');
+          end = this.datePipe.transform(this.e, 'MM/dd/yyyy h:m:s');
+          this.start = new Date (start) ;
+          this.end = new Date (end) ;
+
+      }
+     else
+     {   //  console.log(this.start);
+          this.from=this.start;
+          this.minEndDate.setHours(this.start.getHours() + 3);
+          this.end = this.minEndDate ;
+          this.to=this.minEndDate;
+          // console.log(this.end) ;
+          };}) ;
+         // this.search();
   }
 
 
