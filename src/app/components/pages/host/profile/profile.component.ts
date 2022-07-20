@@ -119,6 +119,7 @@ photo2(event)
 }
 
 fileEvent(e){
+  console.log('ok');
   this.filedata = e.target.files[0];
   console.log(this.filedata);
 }
@@ -227,8 +228,6 @@ updatephoto(id)
   this.id = this.tokenStorage.getUser().user.id;
   let info = this.User ;
 
-  if (this.filedata)
-  { this.updatephoto(this.id) ;}
 
   /* this.user.updateAdress(this.id , info).subscribe(
       res => {
@@ -245,7 +244,9 @@ updatephoto(id)
   this.user.update(this.id , info).subscribe(
     res => {
       r = res ;
-      this.User = r;  console.log(this.User) ; this.showSuccess()
+      this.User = r;  console.log(this.User) ; this.showSuccess();
+      if (this.filedata)
+      { this.updatephoto(this.id) ;}    
     },
     error => {
     console.log(error.errors) ; this.showError("Vérifier les champs Obligatoires")},

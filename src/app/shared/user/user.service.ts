@@ -105,4 +105,8 @@ export class UserService {
   {
     return this.http.post(baseUrl+"cards",data) ;
   }
+  updatecard(data)
+  {
+    return this.http.put(baseUrl+"cards",data) ;
+  }
  }

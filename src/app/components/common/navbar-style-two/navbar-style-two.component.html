@@ -64,7 +64,11 @@
                                 <li class="nav-item"><a routerLink="/user-profile" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Author Profile</a></li>
                             </ul>
                         </li>-->
-
+                        <div *ngIf="!user.id" style="display:flex" >
+                            <li class="nav-item"><a routerLink="/about" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">A propos</a></li>
+                            <li class="nav-item"><a routerLink="/contact" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Contact</a></li>
+                        </div>
+                    <div *ngIf="user.id" >
                         <li class="nav-item"><a href="javascript:void(0)" class="dropdown-toggle nav-link">Espace User</a>
                           <ul class="dropdown-menu">
                               <li class="nav-item"><a routerLink="/espace-user" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Dashboard</a></li>
@@ -74,6 +78,7 @@
                                 <li class="nav-item"><a routerLink="/user/profile" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">My Profile</a></li>
                            </ul>
                       </li>
+                    </div>
                         <!--<li class="nav-item"><a href="javascript:void(0)" class="dropdown-toggle nav-link">User Panel</a>
                             <ul class="dropdown-menu">
                                 <li class="nav-item"><a routerLink="/dashboard" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Dashboard</a></li>

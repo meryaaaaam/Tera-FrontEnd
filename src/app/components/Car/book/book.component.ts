@@ -47,7 +47,7 @@ export class BookComponent implements OnInit {
      console.log(typeof start);
      let  end = this.datePipe.transform(this.e, 'MM/dd/yyyy h:m:s');
         this.startdate = start;
-         this.enddate = end;
+        this.enddate = end;
       /*let x= formatDate(this.enddate, 'dd-MM-yyyy H:m', 'en-US')  ;
       console.log(x) ;*/
   });
@@ -71,9 +71,9 @@ export class BookComponent implements OnInit {
       (data)=>{
                x=data ;
                this.res= x;
-               console.log(x) ;
-               this.image = this.res.user_photo ;
-               console.log(this.image) ;
+               console.log(x);
+               this.image = this.res.user_photo;
+               console.log(this.image);
               }
 
     )
@@ -84,7 +84,7 @@ export class BookComponent implements OnInit {
 this.reservation.totalprice(vehiculeid , start, end ).subscribe(
   (data)=> {this.result = data   ;
             console.log(this.result)} ),
-  (error:any) => console.log(error) ;
+  (error:any) => console.log(error);
   }
 
 
