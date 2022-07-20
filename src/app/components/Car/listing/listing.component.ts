@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { AfterContentInit, Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 import { ReservationService } from 'src/app/shared/vehicules/reservation.service';
@@ -10,7 +10,7 @@ import { VehiculeService } from 'src/app/shared/vehicules/vehicule.service';
   templateUrl: './listing.component.html',
   styleUrls: ['./listing.component.scss']
 })
-export class ListingComponent implements OnInit {
+export class ListingComponent implements OnInit , AfterContentInit{
   results ;
   startdate : any;
   enddate :any  ;
@@ -18,8 +18,10 @@ export class ListingComponent implements OnInit {
   from ; to ;
   datePipe : DatePipe = new DatePipe('en-GB');
 
-  constructor(public vs : VehiculeService , private router: Router , private route: ActivatedRoute , private res : ReservationService) { }
-  ngOnInit(): void {
+  constructor(public vs : VehiculeService , private router: Router , private route: ActivatedRoute , private res : ReservationService)
+  {
+  }
+  ngOnInit() {
    /* this.vs.getAll().subscribe(
       (data) => {this.results = data ; console.log(this.results)}
 
@@ -41,9 +43,30 @@ export class ListingComponent implements OnInit {
      this.to = this.datePipe.transform(this.end, 'dd/MM/yyyy H:m:s');
     console.log(this.from , this.to);
 
-    this.get(this.from , this.to) ;
+
+     this.get(this.from , this.to) ;
+
 }
 
+
+  ngAfterContentInit()
+  {  this.route.queryParams.subscribe(params => {
+    this.start = params['st'];
+     this.end = params['se'];
+    ;}) ;
+
+ //   console.log( typeof this.start);
+    //console.log(this.start , this.end) ;
+    this.resetOption = [this.options[0]];
+
+   this.from = this.datePipe.transform(this.start, 'dd/MM/yyyy H:m:s');
+
+   this.to = this.datePipe.transform(this.end, 'dd/MM/yyyy H:m:s');
+  console.log(this.from , this.to);
+
+
+   this.get(this.from , this.to) ;
+}
   get(start , end )
   {
     this.res.GetAvailableReservation(start,end).subscribe(
