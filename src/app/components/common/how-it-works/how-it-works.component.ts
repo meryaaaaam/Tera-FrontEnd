@@ -21,12 +21,12 @@ export class HowItWorksComponent implements OnInit {
     howItWorksBox = [
         {
             icon: 'flaticon-placeholder',
-            title: 'Selectionner un emplacement',
+            title: 'selectionner une date',
             paragraph: ' '
         },
         {
             icon: 'flaticon-support-1',
-            title: "Contacter l'hotes",
+            title: "choisir une voiture",
             paragraph: ' '
         },
         {

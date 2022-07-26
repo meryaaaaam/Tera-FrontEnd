@@ -88,6 +88,7 @@ import { SamllFooterComponent } from './components/common/samll-footer/samll-foo
 import { DetailComponent } from './components/Car/detail/detail.component';
 //-import { CarComponent } from './components/car/car.component';
 import { ListingComponent } from './components/Car/listing/listing.component';
+import { EditComponent } from './components/Car/edit/edit.component';
 import { AddComponent } from './components/pages/host/car/add/add.component';
 import { NavbarComponent } from './components/common/espace-user/navbar/navbar.component';
 import { SidemenuComponent } from './components/common/espace-user/sidemenu/sidemenu.component';
@@ -192,6 +193,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
     CategoriesComponent,
     TopPlaceComponent,
     ListingsDetailsComponent,
+    EditComponent,
     EventsDetailsComponent,
     EventsComponent,
     VerticalListingsLeftSidebarComponent,

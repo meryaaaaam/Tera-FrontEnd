@@ -47,7 +47,7 @@ export class VehiculeService {
 
 
   update(id, data) {
-    return this.http.put(`${baseUrl}/${id}`, data);
+    return this.http.put(baseUrl+"vehicules/"+id, data);
   }
 
   delete(id) {
@@ -78,5 +78,6 @@ export class VehiculeService {
     return this.http.get(baseUrl+"vehiculeByuser/"+id);
 
   }
+  
 
 }

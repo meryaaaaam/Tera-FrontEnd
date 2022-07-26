@@ -20,7 +20,7 @@ export class TeamComponent implements OnInit {
     ]
     singleTeamMember = [
         {
-            img: 'assets/img/team/team1.jpg',
+            img: 'assets/img/user1.jpg',
             title: 'James Anderson',
             designation: 'CEO & Founder',
             social: [
@@ -39,7 +39,7 @@ export class TeamComponent implements OnInit {
             ]
         },
         {
-            img: 'assets/img/team/team2.jpg',
+            img: 'assets/img/user2.jpg',
             title: 'Sarah Taylor',
             designation: 'Co-Founder',
             social: [
@@ -58,7 +58,7 @@ export class TeamComponent implements OnInit {
             ]
         },
         {
-            img: 'assets/img/team/team3.jpg',
+            img: 'assets/img/user3.jpg',
             title: 'Steven Smith',
             designation: 'Web Developer',
             social: [
@@ -77,7 +77,7 @@ export class TeamComponent implements OnInit {
             ]
         },
         {
-            img: 'assets/img/team/team4.jpg',
+            img: 'assets/img/user4.jpg',
             title: 'John Capabel',
             designation: 'Programer',
             social: [

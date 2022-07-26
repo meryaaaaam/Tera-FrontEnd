@@ -142,4 +142,9 @@ export class UserService {
   validateCashoutDemands(data){
     return this.http.post(baseUrl+"validate_cashout",data);
   }
+  storeImage(data)
+  {
+    return this.http.post(baseUrl+"storeImage1", data );
+  }
+
  }

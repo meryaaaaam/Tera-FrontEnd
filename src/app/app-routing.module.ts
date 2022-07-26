@@ -60,6 +60,7 @@ import { SercurityDepositComponent } from './components/pages/host/sercurity-dep
 import { DashboardBookingsComponent } from './components/pages/host/dashboard-bookings/dashboard-bookings.component';
 import { DisputesComponent } from './components/pages/host/disputes/disputes.component';
 import { CashoutComponent } from './components/pages/host/cashout/cashout.component';
+import { EditComponent } from './components/Car/edit/edit.component';
 
 
 const routes: Routes = [
@@ -113,6 +114,7 @@ const routes: Routes = [
 
     {path: 'user/add-car', component: AddComponent  , canActivate: [AuthGuard ] },
     {path: 'user/list', component: MyCarsComponent  , canActivate: [AuthGuard ] },
+    {path: 'user/update-car', component: EditComponent  , canActivate: [AuthGuard ] },
     {path: 'user/reviews', component: ReviewsComponent  , canActivate: [AuthGuard ] },
     {path: 'user/booking', component: BookingComponent , canActivate: [AuthGuard ] },
     {path: 'user/profile', component: ProfileComponent , canActivate: [AuthGuard ] },

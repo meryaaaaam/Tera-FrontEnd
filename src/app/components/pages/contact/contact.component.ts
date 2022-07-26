@@ -18,7 +18,7 @@ export class ContactComponent implements OnInit {
             title: 'Our Address',
             info: [
                 {
-                    text: '175 5th Ave, New York, NY 10010, United States'
+                    text: '1673 Saint Christophe Street, Montréal, Québec H2L 3W7 Canada'
                 }
             ]
         },
@@ -27,10 +27,10 @@ export class ContactComponent implements OnInit {
             title: 'Email Us',
             info: [
                 {
-                    text: '(+44) - 45789 - 5789'
+                    text: '+105144653858'
                 },
                 {
-                    text: 'hello@vesax.com'
+                    text: 'distributionsaflow@gmail.com'
                 }
             ]
         },

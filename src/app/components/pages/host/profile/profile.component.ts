@@ -80,7 +80,6 @@ showError(detail) {
 
     }
 
-    this.card.id=this.User.id;
     console.log(this.card);
 
 
@@ -104,6 +103,7 @@ photo1(event)
   this.formData1.append("img",this.image,this.image.name);
   console.log(this.formData1);
   this.card.Driving_licence_side1=this.image.name;
+  this.card.user_id=this.User.id;
   console.log(this.card);
 }
 
@@ -158,15 +158,21 @@ updatephoto(id)
   }
   
 
-  cards(x){this.vehicule.storeImage(x) .subscribe(response=>{console.log(response);})}
+  cards(x)
+  {
+    this.vehicule.storeImage(x) .subscribe(response=>{console.log(response);})
+  }
   
 
 
   updatepermis()
   {
+
+    
     this.user.createcard(this.card) .subscribe(
       response => {
-       
+        this.store(this.formData1);
+        this.store(this.formData2);
          this.data= response ;
          console.log("ok");
          console.log(this.data);
@@ -186,8 +192,6 @@ updatephoto(id)
     
     console.log(this.card);
 
-    this.cards(this.formData1);
-    this.cards(this.formData2);
     
 
   
@@ -256,6 +260,11 @@ updatephoto(id)
 )
  // this.showSuccess() ;
 
+}
+store(data)
+{
+  this.user.storeImage(data).subscribe(
+    (data)=> console.log("Done")) ;
 }
 
 

@@ -1,0 +1,265 @@
+<app-sidemenu></app-sidemenu>
+<!-- Start Main Content Wrapper Area -->
+<div class="main-content d-flex flex-column">
+
+    <app-navbar></app-navbar>
+<!-- Breadcrumb Area -->
+<div class="breadcrumb-area" *ngFor="let Content of breadcrumb;">
+    <h1>{{Content.title}}</h1>
+    <ol class="breadcrumb">
+        <li class="item"><a routerLink="/">Home</a></li>
+        <li class="item"><a routerLink="dashboard">{{Content.subTitle}}</a></li>
+        <li class="item">{{Content.title}}</li>
+    </ol>
+</div>
+<!-- End Breadcrumb Area -->
+ <!-- Start -->
+ <form [formGroup]="editForm" (ngSubmit)="update()">
+    <div class="add-listings-box">
+      <p-toast></p-toast>
+        <h3>Basic Informations</h3>
+
+        <div class="row">
+
+          <div class="col-lg-6 col-md-6">
+            <div class="form-group">
+                <label><i class='bx bx-briefcase-alt'></i> Matricule</label>
+                <input type="text" class="form-control" formControlName="matricule" placeholder="{{selectedcar.matricule}}">
+            </div>
+        </div>
+
+            <div class="col-lg-6 col-md-6">
+                <div class="form-group">
+                    <label><i class='bx bx-briefcase-alt'></i> Kilométre</label>
+                    <input type="number" class="form-control" formControlName="km" placeholder="{{selectedcar.km}}">
+                </div>
+            </div>
+
+            <div class="col-lg-6 col-md-6">
+              <div class="form-group">
+                <label><i class='bx bx-briefcase-alt'></i> Portes</label>
+                  <select  formControlName="portes" >
+                    <option [ngValue]="null" disabled  > Selectionner portes </option>
+                    <option *ngFor="let m of portes" selected  value={{m.nombre}} >{{ m.nombre }}</option>
+                  </select>
+              </div>
+            </div>
+
+
+
+
+
+            <div class="col-lg-6 col-md-6">
+              <div class="form-group">
+                <label><i class='bx bx-briefcase-alt'></i> Siege</label>
+                  <select  formControlName="siege" >
+                    <option [ngValue]="null" disabled  > Selectionner siege </option>
+                    <option *ngFor="let m of siege" selected value={{m.nombre}} >{{ m.nombre }}</option>
+                  </select>
+              </div>
+            </div>
+
+
+
+            <div class="col-lg-6 col-md-6">
+              <div class="form-group">
+                <label><i class='bx bx-briefcase-alt'></i> Carburant</label>
+                  <select  formControlName="carburant" >
+                    <option [ngValue]="null" disabled  > Selectionner carburant </option>
+                    <option *ngFor="let m of carburant" selected    value={{m.label}}  >{{ m.label }}</option>
+                  </select>
+              </div>
+            </div>
+
+
+            <div class="col-lg-6 col-md-6">
+              <div class="form-group">
+                <label><i class='bx bx-briefcase-alt'></i> Transmission</label>
+                  <select formControlName="transmission"  >
+                    <option [ngValue]="null" disabled  > Selectionner transmission </option>
+                    <option *ngFor="let m of transmission" selected value={{m.label}}>{{ m.label }}</option>
+                  </select>
+              </div>
+            </div>
+
+
+            <div class="col-lg-6 col-md-6">
+              <div class="form-group">
+                  <label><i class='bx bx-duplicate'></i> Marque voiture </label>
+                  <select (change)="selectMake($event)">
+                      <option selected="selected">{{selectedcar.model}}</option>
+                      <option  *ngFor="let m of makes" value={{m.id}} name="Make"> {{m.name}}</option>
+                  </select>
+
+
+              </div>
+          </div>
+
+            <div class="col-lg-6 col-md-6">
+                <div class="form-group">
+                    <label><i class='bx bx-duplicate'></i> Model de voiture </label>
+                    <select formControlName="model_id" (change)="select($event)">
+                        <option selected="selected">{{selectedcar.model}}</option>
+                        <option  *ngFor="let m of models" value={{m.id}} name="Model"> {{m.name}}</option>
+                    </select>
+
+
+                </div>
+            </div>
+
+
+
+
+            <div class="col-lg-6 col-md-6">
+                <div class="form-group">
+                    <label><i class='bx bxs-key'></i> Type:</label>
+                    <input   disabled type="text" class="form-control" [(ngModel)]="Model.type" value= {{Model.type}}>
+                </div>
+            </div>
+
+
+            <div class="col-lg-6 col-md-6">
+              <div class="form-group">
+                  <label><i class='bx bxs-key'></i> Année:</label>
+                  <input disabled type="text" class="form-control" [(ngModel)]="Model.year" value= {{Model.year}} >
+              </div>
+          </div>
+
+
+
+        </div>
+    </div>
+
+    <div class="add-listings-box">
+        <h3>Location</h3>
+
+        <div class="row">
+
+
+            <div class="col-lg-12 col-md-12">
+                <div class="form-group">
+                    <label><i class='bx bx-menu-alt-left'></i> Address:</label>
+                    <input type="text" formControlName="location" class="form-control" placeholder="{{selectedcar.address}}">
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="row add-listings-box pb-3">
+        <div class="col-4">
+          <h3>Photo Principale</h3>
+          <form #f="ngForm" >
+            <div class="col-lg-12 col-md-12">
+                <div class="form-group profile-box">
+
+                    <div class="file-upload">
+
+                        <input type="file" name="img" id="file" class="form-control" (change)="fileEvent($event)" />
+
+                    </div>
+
+                </div></div>
+
+              </form>
+        </div>
+        <div class="col-8">
+          <h3>Gallery</h3>
+
+          <p-toast></p-toast>
+
+
+      <p-fileUpload name="galleries[]" url="http://127.0.0.1:8000/api/gallerie" (onUpload)="onUpload($event)"
+              multiple="multiple" accept="image/*" maxFileSize="10000000"
+
+              >
+              <ng-template pTemplate="content">
+                  <ul *ngIf="Files.length">
+                      <li *ngFor="let file of Files">{{file.name}} - {{file.size}} bytes</li>
+                  </ul>
+              </ng-template>
+      </p-fileUpload>
+        </div>
+
+
+    </div>
+
+    <div class="add-listings-box pb-3">
+    <div class="file-upload-box">
+    </div>
+    </div>
+
+
+
+    <div class="add-listings-box">
+        <h3>Details</h3>
+
+
+        <div class="row">
+            <div class="col-lg-12 col-md-12">
+                <div class="form-group">
+                    <label><i class='bx bx-text'></i> Description:</label>
+                    <textarea cols="30" rows="7" class="form-control" formControlName="description" placeholder="Details..."></textarea>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    <div class="add-listings-box">
+        <h3>Options</h3>
+
+        <div class="form-group" >
+            <ul class="facilities-list">
+                <li *ngFor="let opt of opts">
+                    <label class="checkbox">
+                        <input type="checkbox"  name="option" value="{{opt.id}}" (change)="onchange($event)">
+                        <span>{{opt.label}}</span>
+                    </label>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+
+
+    <div class="add-listings-box">
+        <h3>Prix</h3>
+
+        <div class="form-group">
+           <!-- <label><i class='bx bx-purchase-tag'></i> Pricing:</label>-->
+            <div class="row">
+               <div class="col-4">
+                <label><i class='bx bx-purchase-tag'></i> Horaire: {{val}}</label>
+
+                <input type="number" class="form-control" placeholder="$42.00" formControlName="Price_H">
+               <!--  <p-slider [(ngModel)]="val"></p-slider>-->
+               <br>
+                </div>
+
+                <div class="col-4">
+                 <label><i class='bx bx-purchase-tag'></i> Journalié:</label>
+                 <input type="number" class="form-control" placeholder="$32.00" formControlName="Price_D" ></div>
+                <br>
+
+
+                <div class="col-4">
+                  <label><i class='bx bx-purchase-tag'></i> Caution:</label>
+                  <input disabled type="number" class="form-control" placeholder="$500.00" formControlName="bail" value="500"></div>
+                 <br>
+                 </div>
+
+
+        </div>
+    </div>
+
+
+    <div class="add-listings-btn">
+        <button type="submit">update Vehicule</button> <br>
+
+
+    </div>
+  </form>
+    <!-- End -->
