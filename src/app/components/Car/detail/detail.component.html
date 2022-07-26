@@ -481,7 +481,11 @@
                   <div class="row pb-3 pt-3">
                     <div class="field col-12 md:col-4">
                       <label for="range" style="color:blueviolet" >Date de Début - Date de Fin</label>
-                      <p-calendar [minDate]="minDate"   [inputStyle]="{'width':'400px'}"   [showTime]="true"  [(ngModel)]="rangeDates" selectionMode="range" [readonlyInput]="true" inputId="range"(onSelect)="onselectstart(rangeDates)" ></p-calendar>
+                      <p-calendar [minDate]="minDate" dateFormat="dd/mm/yy"  [inputStyle]="{'width':'400px'}"
+                       [showTime]="true"  [(ngModel)]="rangeDates" name="rangeDates"
+                       selectionMode="range" [readonlyInput]="true"
+                       inputId="range"(onSelect)="onselectstart(rangeDates)" >
+                      </p-calendar>
                   </div>
                   </div>
                   <!--<div class="row pb-3">

@@ -1,0 +1,68 @@
+<app-dashboard-sidemenu></app-dashboard-sidemenu>
+
+<!-- Start Main Content Wrapper Area -->
+<div class="main-content d-flex flex-column">
+
+    <app-dashboard-navbar></app-dashboard-navbar>
+
+    <!-- Breadcrumb Area -->
+    <div class="breadcrumb-area" *ngFor="let Content of breadcrumb;">
+        <h1>{{Content.title}}</h1>
+        <ol class="breadcrumb">
+            <li class="item"><a routerLink="/">Home</a></li>
+            <li class="item"><a routerLink="dashboard">{{Content.subTitle}}</a></li>
+            <li class="item">{{Content.title}}</li>
+        </ol>
+    </div>
+    <!-- End Breadcrumb Area -->
+
+    <!-- Start -->
+    <div class="bookings-listings-box">
+        <h3>All Disputes</h3>
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Customer</th>
+                        <th>Details</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="ready">
+                    <tr *ngFor="let dispute of disputes;">
+                        <td class="name">
+                            <img src="assets/img/user1.jpg" alt="image">
+                            <div class="info">
+                                <span>{{dispute.client_name? dispute.client_name : 'TEST TEST'}}</span>
+                            </div>
+                        </td>
+
+                        <td class="details">
+                            <h4>Host Name: {{dispute?.host_name}}</h4>
+
+                            <ul>
+                                <li>
+                                    <div>Desciption: <span>{{dispute?.description ? dispute?.description : '--'}}</span></div>
+                                    <div>Date: <span>{{dispute?.created_at | date:'medium'}}</span></div>
+                                </li>
+                            </ul>
+                        </td>
+
+                        <td class="action">
+                            <a href="javascript:;" (click)="giveBackDeposit()" class="default-btn"><i class='bx bx-check-circle'></i> Give Back Deposit</a>
+                            <a href="javascript:;" (click)="collectDeposit()" class="default-btn danger"><i class='bx bx-x-circle'></i> Collect Deposit</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- End -->
+
+    <div class="flex-grow-1"></div>
+
+    <app-copyrights></app-copyrights>
+
+</div>
+<!-- End Main Content Wrapper Area -->

@@ -1,0 +1,38 @@
+<div class="modal-header" style="z-index: 1012;">
+  <h4 class="modal-title">New Dispute</h4>
+  <button type="button" class="close" data-dismiss="modal" (click)="close()">&times;</button>
+</div>
+<div class="modal-body">
+  <form action="#" [formGroup]="createDisputeForm" autocomplete="off">
+
+      <div class="form-group row">
+          <div class="col-sm-6">
+                  <label class="form-label" for="host_name">Host Name:<span style="color: red;">*</span>
+                  </label>
+                  <input type="text" id="host_name" class="cfm form-control" placeholder="Host Name"
+                      formControlName="host_name">
+          </div>
+          <div class="col-sm-6">
+            <label class="form-label" for="client_name">Client Name:<span style="color: red;">*</span>
+            </label>
+            <input type="text" id="client_name" class="cfm form-control" placeholder="Client Name"
+                formControlName="client_name">
+         </div>
+
+         <div class="col-sm-12">
+          <label class="form-label" for="description">Description:
+          </label>
+          <input type="text" id="description" class="cfm form-control" placeholder="Enter Description"
+              formControlName="description">
+       </div>
+      </div>
+  </form>
+  <div class="row">
+      <div class="col text-right mt-3">
+          <div class="btn-group-sm" role="group">
+                  <button type="button" class="shadow-0 btn btn-success ml-2" [disabled]="!this.createDisputeForm.valid"
+                  (click)="save()"><i class="fal fa-spinner fa-spin"></i> Save</button>
+          </div>
+      </div>
+  </div>
+</div>

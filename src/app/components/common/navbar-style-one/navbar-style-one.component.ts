@@ -1,6 +1,7 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { User } from 'src/app/models/user';
 import { AuthStateService } from 'src/app/shared/auth/auth-state.service';
@@ -22,8 +23,10 @@ export class NavbarStyleOneComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   role : any ;
-
-
+  startdate : any ; enddate : any  ; dateend : any ;
+  res : any ;
+  s :any;
+  e : any;   datePipe : DatePipe = new DatePipe('en-GB');
   constructor(
     public router: Router,
     public fb: FormBuilder,
@@ -32,6 +35,8 @@ export class NavbarStyleOneComponent implements OnInit {
     private authState: AuthStateService,
     private tokenStorage: TokenService ,
     public messageService: MessageService,
+    private route: ActivatedRoute
+
   ) {
     this.loginForm = this.fb.group({
       email: [],
@@ -60,6 +65,28 @@ export class NavbarStyleOneComponent implements OnInit {
     else { this.router.navigate(['/']);}
 
 
+
+    this.route.queryParams.subscribe(params => {
+      this.res=params['id'];
+      console.log(this.res);
+      this.s= params['st'];
+      console.log(this.s);
+    console.log(typeof this.s);
+       this.e= params['se'];
+       console.log(this.e);
+       if (this.s && this.e)
+       {
+     let start:any ;
+    let end:any ;
+      start = this.datePipe.transform(this.s, 'MM/dd/yyyy h:m:s');
+      console.log(start);
+      console.log(typeof start);
+      end = this.datePipe.transform(this.e, 'MM/dd/yyyy h:m:s');
+        this.startdate = new Date (start) ;
+         this.enddate = new Date (end) ;
+    }
+    }) ;
+
     }
 
     showSuccess( detail) {
@@ -71,10 +98,20 @@ export class NavbarStyleOneComponent implements OnInit {
   }
 
   login() {
+    this.route.queryParams.subscribe(params => {
+      this.res=params['id'];
+      console.log(this.res);
+      this.s= params['st'];
+      console.log(this.s);
+    console.log(typeof this.s);
+       this.e= params['se'];});
     this.authService.signin(this.loginForm.value).subscribe(
       (result) => {
         this.responseHandler(result);
         this.showSuccess('youre loged in');
+        if(this.res)
+       { this.router.navigate(['/car/book'],{queryParams : {'st':this.s , 'se':this.e , 'searchid':this.res }});}
+        else {window.location.reload();}
 
       },
       (error) => {
@@ -85,7 +122,8 @@ export class NavbarStyleOneComponent implements OnInit {
        // this.authState.setAuthState(true);
         this.loginForm.reset();
        // this.router.navigate(['user/profile']);
-        this.router.navigateByUrl('car/book');
+       // this.router.navigateByUrl('car/book');
+
 
       }
     );

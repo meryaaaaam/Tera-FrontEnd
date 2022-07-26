@@ -3,7 +3,71 @@
 <!-- Start Page Title Area -->
 <div class="page-title-bg" *ngFor="let Content of pageTitleContent;">
     <div class="container">
-       <app-search-forms></app-search-forms>
+      <form>
+        <div class="row m-0 align-items-center">
+
+
+            <div class="col-lg-3 col-md-6 p-0">
+                <div class="form-group">
+                    <label><i class="flaticon-pin"></i></label>
+                    <input type="text" class="form-control" placeholder="Location">
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-12 p-0">
+              <div class="form-group">
+
+
+
+
+                    <p-calendar [inputStyle]="{'border':'0px'}"
+                     [(ngModel)]="start" [showTime]="true"
+                       [touchUI]="false"
+                       name="start"
+                       [minDate]="today"
+                       dateFormat="dd/mm/yy"
+                       (onSelect)="onselect(start)"
+                       >
+                      <!--<ng-template pTemplate="date" let-date>
+                          <span [ngStyle]="{textDecoration: (date.day < 21 && date.day > 10) ? 'line-through' : 'inherit'}">{{date.day}}</span>
+                      </ng-template>-->
+                  </p-calendar>
+
+
+
+                  <!--<input type="Date" bsDaterangepicker class="form-control"  >-->
+
+              </div>
+          </div>
+
+            <div class="col-lg-3 col-md-6 p-0"  >
+                <div class="form-group  ">
+                  <p-calendar [inputStyle]="{'border':'0px'}"
+                  [(ngModel)]="end" [showTime]="true" name="end"
+                  inputId="time" [showIcon]="false"
+                  [minDate]="minEndDate" [hourFormat]="24"
+                  dateFormat="dd/mm/yy"
+                  (onSelect)="onselectend(end)"
+                  ></p-calendar>
+                      </div>
+            </div>
+
+
+
+
+
+
+
+            <div class="col-lg-3 col-md-12 p-0">
+                <div class="submit-btn">
+
+                    <button (click)="search()" type="button"  class="default-btn">Chercher</button>
+
+                </div>
+            </div>
+        </div>
+      </form>
+
     </div>
 </div>
 <!-- End Page Title Area -->
@@ -49,7 +113,7 @@
                     <div class="listings-image">
                         <div class="listings-image-slides">
                           <img [src]="Content.image" alt="image">
-                          <a [routerLink]="['/car/detail']" [queryParams]="{id: Content.id, st:start, se:end}" class="link-btn"></a>
+                          <a [routerLink]="['/car/detail']" [queryParams]="{id: Content.id, st:s, se:e}" class="link-btn"></a>
                            <!--  <owl-carousel-o [options]="customOptions">
                                 <ng-template carouselSlide *ngFor="let Image of Content.images;">
                                     <div class="single-image">

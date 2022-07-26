@@ -34,29 +34,19 @@ export class DetailComponent implements OnInit {
       this.res=params['id'];
       console.log(this.res);
       this.s= params['st'];
-      console.log(this.s);
-    console.log(typeof this.s);
-       this.e= params['se'];
-       console.log(this.e);
-       if (this.s && this.e)
-       {
-     let start:any ;
-    let end:any ;
-      start = this.datePipe.transform(this.s, 'MM/dd/yyyy h:m:s');
-      console.log(start);
-      console.log(typeof start);
-      end = this.datePipe.transform(this.e, 'MM/dd/yyyy h:m:s');
-        this.startdate = new Date (start) ;
-         this.enddate = new Date (end) ;
-    }
+      this.e= params['se'];
+
     }) ;
+
+      this.startdate = new Date (this.s) ;
+      this.enddate = new Date (this.e) ;
     this.get(this.res);
     this.rangeDates = [ this.startdate, this.enddate];
 
 
     this.user = this.token.getUser().user.id ;
     this.minDate = new Date();
-  //  this.minDate =  this.minDate.toLocaleString('en-GB', { timeZone: 'UTC' }) ;
+    //  this.minDate =  this.minDate.toLocaleString('en-GB', { timeZone: 'UTC' }) ;
     console.log(this.rangeDates) ;
     this.minendDate =this.start ;
 
@@ -66,20 +56,23 @@ export class DetailComponent implements OnInit {
 onselectstart(date)
 {
  // this.startdate = this.start.toLocaleString('en-GB', { timeZone: 'UTC' }) ;
-
-
+    let id ;
+ this.route.queryParams.subscribe(params => {
+  id=params['id'];});
  // console.log(this.start.toLocaleString('en-GB', { timeZone: 'UTC' })) ;
- let start = date[0].toLocaleString('en-GB', { timeZone: 'UTC' }) ;
- let end = date[1].toLocaleString('en-GB', { timeZone: 'UTC' }) ;
-  console.log(start  ) ;
-  console.log(end ) ;
+ this.startdate = date[0].toLocaleString('en-GB', { timeZone: 'UTC' }) ;
+this.enddate = date[1].toLocaleString('en-GB', { timeZone: 'UTC' }) ;
+ //this.startdate = new Date (date[0]) ;
+ //this.enddate = new Date (date[1]) ;
+ //this.router.navigate(['/car/detail'],{queryParams : {'st':this.start , 'se':this.end , 'searchid':id }});
+
+
    //this.start = this.date.toLocaleString('en-GB', { timeZone: 'UTC' }) ; this.start = ''+this.start ;
 }
 
 onselectend(date)
 {
   this.enddate  = this.end.toLocaleString('en-GB', { timeZone: 'UTC' }) ;
-
   console.log(this.end.toLocaleString('en-GB', { timeZone: 'UTC' }))
   //this.end = this.date.toLocaleString('en-GB', { timeZone: 'UTC' }) ; this.end = ''+this.end ;
 

@@ -72,7 +72,6 @@ import { CopyrightsComponent } from './components/pages/dashboard/copyrights/cop
 import { StatsComponent } from './components/pages/dashboard/stats/stats.component';
 import { RecentActivitiesComponent } from './components/pages/dashboard/recent-activities/recent-activities.component';
 import { DashboardMessagesComponent } from './components/pages/dashboard/dashboard-messages/dashboard-messages.component';
-import { DashboardBookingsComponent } from './components/pages/dashboard/dashboard-bookings/dashboard-bookings.component';
 import { DashboardWalletComponent } from './components/pages/dashboard/dashboard-wallet/dashboard-wallet.component';
 import { DashboardReviewsComponent } from './components/pages/dashboard/dashboard-reviews/dashboard-reviews.component';
 import { DashboardInvoiceComponent } from './components/pages/dashboard/dashboard-invoice/dashboard-invoice.component';
@@ -139,6 +138,13 @@ import { ChipModule } from 'primeng/chip';
 import {CheckboxModule} from 'primeng/checkbox';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {RadioButtonModule} from 'primeng/radiobutton';
+import { SercurityDepositComponent } from './components/pages/host/sercurity-deposit/sercurity-deposit.component';
+ import { CreateNewDisputeComponentComponent } from './components/pages/host/create-new-dispute-component/create-new-dispute-component.component';
+import { CreateNewCheckoutAmountComponent } from './components/pages/host/create-new-checkout-amount/create-new-checkout-amount.component';
+import { CashoutComponent } from './components/pages/host/cashout/cashout.component';
+import { DisputesComponent } from './components/pages/host/disputes/disputes.component';
+import { DashboardBookingsComponent } from './components/pages/host/dashboard-bookings/dashboard-bookings.component';
+import { BsModalService } from 'ngx-bootstrap/modal';
 
     @NgModule({
   declarations: [
@@ -234,6 +240,11 @@ import {RadioButtonModule} from 'primeng/radiobutton';
     Steps2Component,
     Steps3Component,
     BookComponent,
+    SercurityDepositComponent,
+    CreateNewDisputeComponentComponent,
+    CreateNewCheckoutAmountComponent ,
+    CashoutComponent,
+    DisputesComponent
 
   ],
   imports: [
@@ -260,7 +271,7 @@ import {RadioButtonModule} from 'primeng/radiobutton';
     ToastModule,
     DropdownModule,PrimeNgFileUploadModule,StepsModule,CardModule,
     InputTextModule,
-    ChipModule,CheckboxModule,InputNumberModule,RadioButtonModule
+    ChipModule,CheckboxModule,InputNumberModule,RadioButtonModule,
 
 
 
@@ -276,7 +287,7 @@ import {RadioButtonModule} from 'primeng/radiobutton';
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
       multi: true
-    }],
+    } , BsModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -3,16 +3,15 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 
-const baseUrl = "http://127.0.0.1:8000/api/" ;
-// const baseUrl = "https://tera3.dev.smartegy.ca/backend/public/api/" ;
-const model = "https://tera3.dev.smartegy.ca/backend/public/api/makes" ;
-const Active = "https://tera3.dev.smartegy.ca/backend/public/api/users/isActive" ;
-const adresse = "https://tera3.dev.smartegy.ca/backend/public/api/update" ;
-const state = "https://tera3.dev.smartegy.ca/backend/public/api/provinces" ;
+const baseUrl =   "https://terarentals.com/backend/public/api/" ;
+const model   =   "https://terarentals.com/backend/public/api/makes" ;
+const Active  =   "https://terarentals.com/backend/public/api/users/isActive" ;
+const adresse =   "https://terarentals.com/backend/public/api/update" ;
+const state   =   "https://terarentals.com/backend/public/api/provinces" ;
+const url     =   "https://terarentals.com/backend/public/api/users" ;
 
+//const url = "http://127.0.0.1:8000/api/users" ;
 
-const url = "http://127.0.0.1:8000/api/users" ;
-// const url = "https://tera3.dev.smartegy.ca/backend/public/api/users" ;
 
 @Injectable({
   providedIn: 'root'
@@ -108,5 +107,39 @@ export class UserService {
   updatecard(data)
   {
     return this.http.put(baseUrl+"cards",data) ;
+  }
+
+
+  openDispute(data){
+    return this.http.post(baseUrl+"open_dispute",data);
+  }
+
+  checkoutAmount(data){
+    return this.http.post(baseUrl+"cashout",data);
+  }
+
+  customizeFields(data){
+    return this.http.post(baseUrl+"security_deposit_and_client_fee",data);
+  }
+
+  getAllDisputes(){
+    return this.http.get(baseUrl+"get_all_disputes") ;
+  }
+
+  giveBackDeposit(user_id){
+    return this.http.post(baseUrl+"give_back_deposit",{user_id:user_id});
+  }
+
+  collectDeposit(user_id){
+    return this.http.post(baseUrl+"collect_deposit",{user_id:user_id});
+  }
+
+  getAllCashoutDemands(user_id)
+  {
+    return this.http.post(baseUrl+"list_cashout",{user_id:user_id});
+  }
+
+  validateCashoutDemands(data){
+    return this.http.post(baseUrl+"validate_cashout",data);
   }
  }

@@ -18,8 +18,8 @@
 
     <!-- Start -->
     <div class="bookings-listings-box">
-        <h3>Booking Requests</h3>
-    
+        <h3>Cashout Demands</h3>
+
         <div class="table-responsive">
             <table class="table">
                 <thead>
@@ -29,35 +29,28 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr *ngFor="let Content of bookingsListingsBox;">
+                <tbody *ngIf="ready">
+                    <tr *ngFor="let cashout of cashouts;">
                         <td class="name">
-                            <img [src]="Content.customerImg" alt="image">
+                            <img src="assets/img/user1.jpg" alt="image">
                             <div class="info">
-                                <span>{{Content.customerName}}</span>
-                                <ul>
-                                    <li><a href="tel:{{Content.customerNumber}}">{{Content.customerNumber}}</a></li>
-                                    <li><a href="mailto:{{Content.customerEmail}}">{{Content.customerEmail}}</a></li>
-                                </ul>
-                                <a href="mailto:{{Content.customerEmail}}" class="default-btn"><i class='bx bx-envelope'></i> Send Message</a>
+                                <span>{{cashout.user?.firstname? cashout.user?.firstname + ' ' + cashout.user?.lastname: 'TEST TEST'}}</span>
                             </div>
                         </td>
 
                         <td class="details">
-                            <h4>{{Content.title}} <span class="bookings-status {{Content.pendingApprovedCanceled}}">{{Content.bookingsStatus}}</span></h4>
-
+                            <h4>Amount: ${{cashout?.amount}} <span class="bookings-status pending">{{cashout?.cashout_status}}</span></h4>
                             <ul>
-                                <li *ngFor="let Info of Content.bookingsInfo">
-                                    <i class='{{Info.icon}}'></i> 
-                                    <span>{{Info.title}}:</span>
-                                    {{Info.text}}
+                                <li>
+                                    <div>Transaction ID: <span>{{cashout?.transaction_id ? cashout?.transaction_id : '--'}}</span></div>
+                                    <div>Order Number: <span>{{cashout?.order_number ? cashout?.order_number : '--'}}</span></div>
                                 </li>
                             </ul>
                         </td>
 
                         <td class="action">
-                            <a href="#" class="default-btn"><i class='bx bx-check-circle'></i> Approve</a>
-                            <a href="#" class="default-btn danger"><i class='bx bx-x-circle'></i> Reject</a>
+                            <a *ngIf="cashout?.cashout_status == 'Pending'" href="javascript:;" (click)="validateCashout(cashout.id)" class="default-btn"><i class='bx bx-check-circle'></i>Validate Cashout</a>
+                            <a *ngIf="cashout?.cashout_status == 'Validated'" href="javascript:;" class="default-btn"><i class='bx bx-check-circle'></i>Validated</a>
                         </td>
                     </tr>
                 </tbody>
@@ -67,7 +60,7 @@
     <!-- End -->
 
     <div class="flex-grow-1"></div>
-    
+
     <app-copyrights></app-copyrights>
 
 </div>

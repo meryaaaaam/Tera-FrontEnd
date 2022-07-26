@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenService } from 'src/app/shared/auth/token.service';
+import { ReservationService } from 'src/app/shared/vehicules/reservation.service';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { CreateNewDisputeComponentComponent } from '../create-new-dispute-component/create-new-dispute-component.component';
+
+
 
 @Component({
     selector: 'app-dashboard-bookings',
@@ -7,9 +13,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardBookingsComponent implements OnInit {
 
-    constructor() { }
+    public listBookings:any;
+    public bookings:any;
+    public ready:boolean = false;
+    public responseMessage:any;
+    private bsModalRef: BsModalRef;
+
+
+    constructor( public reservation :ReservationService, public tokenService: TokenService,private modalService: BsModalService) { }
 
     ngOnInit(): void {
+      this.fetchBookingListing();
+    }
+
+    public fetchBookingListing() {
+      this.reservation.getAllReservations().subscribe(
+        (data:any)=> {this.bookings = data.bookings;
+                  console.log(this.bookings)} ),
+        (error:any) => console.log(error) ;
+
+        this.ready = true;
     }
 
     breadcrumb = [
@@ -161,4 +184,51 @@ export class DashboardBookingsComponent implements OnInit {
         }
     ]
 
+    public changeBookingStatus(bookingId:any, action:any, transactionId:any)
+    {
+      this.reservation.changeBookingStatus(bookingId,action,transactionId).subscribe(
+        (data:any)=> {this.responseMessage = data.message;
+                      alert(this.responseMessage)} ),
+        (error:any) => console.log(error);
+
+      this.fetchBookingListing();
+    }
+
+
+    public validatePayment(amount:any,order_number:any,transaction_id:any) {
+
+      let user = this.tokenService.getUser();
+
+      this.reservation.validatePayment(user.user.id,amount,order_number,transaction_id).subscribe(
+        (data:any)=> {this.responseMessage = data.message;
+                 alert(this.responseMessage)} ),
+        (error:any) => console.log(error);
+
+      this.fetchBookingListing();
+
+    }
+
+    public openDispute() {
+      this.bsModalRef = this.modalService.show(CreateNewDisputeComponentComponent, { ignoreBackdropClick: true });
+      this.bsModalRef.setClass('modal-lg');
+      this.bsModalRef.content.emitData.subscribe((event: GenericEvent) => {
+          if (event.name === 'close') {
+              this.bsModalRef.hide();
+          } else if (event.name === 'close-modal') {
+              this.bsModalRef.hide();
+          } else if (event.name === 'dispute-saved') {
+              this.bsModalRef.hide();
+              this.fetchBookingListing();
+          }
+      });
+
+
+    }
+
 }
+
+export interface GenericEvent {
+  name: string;
+  payload?: any;
+}
+

@@ -15,8 +15,7 @@ import { CheckoutComponent } from './components/pages/checkout/checkout.componen
 import { ComingSoonComponent } from './components/pages/coming-soon/coming-soon.component';
 import { ContactComponent } from './components/pages/contact/contact.component';
 import { DashboardAddListingsComponent } from './components/pages/dashboard/dashboard-add-listings/dashboard-add-listings.component';
-import { DashboardBookingsComponent } from './components/pages/dashboard/dashboard-bookings/dashboard-bookings.component';
-import { DashboardBookmarksComponent } from './components/pages/dashboard/dashboard-bookmarks/dashboard-bookmarks.component';
+ import { DashboardBookmarksComponent } from './components/pages/dashboard/dashboard-bookmarks/dashboard-bookmarks.component';
 import { DashboardInvoiceComponent } from './components/pages/dashboard/dashboard-invoice/dashboard-invoice.component';
 import { DashboardMessagesComponent } from './components/pages/dashboard/dashboard-messages/dashboard-messages.component';
 import { DashboardMyListingsComponent } from './components/pages/dashboard/dashboard-my-listings/dashboard-my-listings.component';
@@ -57,6 +56,10 @@ import { Steps1Component } from './components/Car/reserver/steps1/steps1.compone
 import { Steps2Component } from './components/Car/reserver/steps2/steps2.component';
 import { Steps3Component } from './components/Car/reserver/steps3/steps3.component';
 import { BookComponent } from './components/Car/book/book.component';
+import { SercurityDepositComponent } from './components/pages/host/sercurity-deposit/sercurity-deposit.component';
+import { DashboardBookingsComponent } from './components/pages/host/dashboard-bookings/dashboard-bookings.component';
+import { DisputesComponent } from './components/pages/host/disputes/disputes.component';
+import { CashoutComponent } from './components/pages/host/cashout/cashout.component';
 
 
 const routes: Routes = [
@@ -93,7 +96,6 @@ const routes: Routes = [
     {path: 'single-events', component: EventsDetailsComponent},
     {path: 'dashboard', component: DashboardComponent},
     {path: 'dashboard-messages', component: DashboardMessagesComponent},
-    {path: 'dashboard-bookings', component: DashboardBookingsComponent},
     {path: 'dashboard-wallet', component: DashboardWalletComponent},
     {path: 'dashboard-reviews', component: DashboardReviewsComponent},
     {path: 'dashboard-invoice', component: DashboardInvoiceComponent},
@@ -115,6 +117,11 @@ const routes: Routes = [
     {path: 'user/booking', component: BookingComponent , canActivate: [AuthGuard ] },
     {path: 'user/profile', component: ProfileComponent , canActivate: [AuthGuard ] },
     {path: 'user/messages', component: MessageComponent , canActivate: [AuthGuard ] },
+    {path: 'user/security-deposit', component: SercurityDepositComponent , canActivate: [AuthGuard ] },
+    {path: 'user/dashboard-bookings', component: DashboardBookingsComponent, canActivate: [AuthGuard ]},
+
+    {path: 'user/disputes/list', component: DisputesComponent, canActivate: [AuthGuard ]},
+    {path: 'user/cashout/list', component: CashoutComponent , canActivate: [AuthGuard ]},
 
     {path: 'espace-user', component: HostComponent , canActivate: [AuthGuard ] },
 

@@ -1,0 +1,76 @@
+<app-sidemenu></app-sidemenu>
+
+<!-- Start Main Content Wrapper Area -->
+<div class="main-content d-flex flex-column">
+
+  <app-navbar></app-navbar>
+
+    <!-- Breadcrumb Area -->
+    <div class="breadcrumb-area" *ngFor="let Content of breadcrumb;">
+        <h1>{{Content.title}}</h1>
+        <ol class="breadcrumb">
+            <li class="item"><a routerLink="/">Home</a></li>
+            <li class="item"><a routerLink="dashboard">{{Content.subTitle}}</a></li>
+            <li class="item">{{Content.title}}</li>
+        </ol>
+    </div>
+    <!-- End Breadcrumb Area -->
+
+    <!-- Start -->
+    <div class="bookings-listings-box">
+        <h3>Booking Requests</h3>
+
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Customer</th>
+                        <th>Details</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="ready">
+                    <tr *ngFor="let booking of bookings;">
+                        <td class="name">
+                            <img src="assets/img/user1.jpg" alt="image">
+                            <div class="info">
+                                <span>{{booking.customer_name? booking.customer_name : 'TEST TEST'}}</span>
+                                <ul>
+                                    <li><a href="tel:{{booking?.customer_number}}">{{booking?.customer_number}}</a></li>
+                                    <li><a href="mailto:{{booking?.customer_email}}">{{booking?.customer_email}}</a></li>
+                                </ul>
+                                <a href="mailto:{{booking?.customer_email}}" class="default-btn"><i class='bx bx-envelope'></i> Send Message</a>
+                            </div>
+                        </td>
+
+                        <td class="details">
+                            <h4>{{booking?.booking_title}} <span class="bookings-status pending">{{booking?.booking_status}}</span></h4>
+
+                            <ul>
+                                <li>
+                                    <div>Amount: <span>${{booking?.payment?.amount ? booking?.payment?.amount : '--'}}</span></div>
+                                    <div>TransactionId: <span>{{booking?.payment?.transaction_id ? booking?.payment?.transaction_id : '--'}}</span></div>
+                                </li>
+                            </ul>
+                        </td>
+
+                        <td class="action">
+                            <a *ngIf="booking.booking_status == 'Pending'" href="javascript:;" (click)="changeBookingStatus(booking.id,'Approved',booking?.payment?.transaction_id)" class="default-btn"><i class='bx bx-check-circle'></i> Approve</a>
+                            <a *ngIf="booking.booking_status == 'Pending'" href="javascript:;" (click)="changeBookingStatus(booking.id,'Declined',booking?.payment?.transaction_id)" class="default-btn danger"><i class='bx bx-x-circle'></i> Reject</a>
+                            <a *ngIf="booking.booking_status == 'Approved'" href="javascript:;" (click)="validatePayment(booking.id,'Approved',booking?.payment?.transaction_id)" class="default-btn"><i class='bx bx-check-circle'></i> Validate Payment</a>
+                            <a *ngIf="booking.booking_status == 'Approved'" href="javascript:;" (click)="openDispute(booking?.payment?.amount,booking?.payment?.order_number,booking?.payment?.transaction_id)" class="default-btn danger"><i class='bx bx-x-circle'></i> Dispute</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- End -->
+
+    <div class="flex-grow-1"></div>
+
+    <app-copyrights></app-copyrights>
+
+</div>
+<!-- End Main Content Wrapper Area -->

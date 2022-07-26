@@ -10,66 +10,108 @@ import { VehiculeService } from 'src/app/shared/vehicules/vehicule.service';
   templateUrl: './listing.component.html',
   styleUrls: ['./listing.component.scss']
 })
-export class ListingComponent implements OnInit , AfterContentInit{
+export class ListingComponent implements OnInit {
   results ;
   startdate : any;
   enddate :any  ;
-  start : any ; end : any;
-  from ; to ;
+ // start : any ; end : any;
+    start : Date = new Date(); end : Date = new Date();
+  minDate: any; minEndDate : Date = new Date();
+  min: any ; min2 : any ;
+  maxDate: Date; mytime: Date = new Date();
   datePipe : DatePipe = new DatePipe('en-GB');
-
+  from : any ; to : any ;
+  s :any; e : any ; today: any;
   constructor(public vs : VehiculeService , private router: Router , private route: ActivatedRoute , private res : ReservationService)
   {
   }
   ngOnInit() {
-   /* this.vs.getAll().subscribe(
-      (data) => {this.results = data ; console.log(this.results)}
-
-    );*/
 
 
-
-   this.route.queryParams.subscribe(params => {
-      this.start = params['st'];
-       this.end = params['se'];
-      ;}) ;
-
-   //   console.log( typeof this.start);
-      //console.log(this.start , this.end) ;
-      this.resetOption = [this.options[0]];
-
-     this.from = this.datePipe.transform(this.start, 'dd/MM/yyyy H:m:s');
-
-     this.to = this.datePipe.transform(this.end, 'dd/MM/yyyy H:m:s');
-    console.log(this.from , this.to);
+    let today = new Date(); this.today= new Date(today);
 
 
-     this.get(this.from , this.to) ;
+    this.route.queryParams.subscribe(params => {   this.s= params['st']; this.e= params['se'];
+
+    /* if (this.s && this.e)
+      { let start:any ; let end:any ;
+          start = this.datePipe.transform(this.s, 'MM/dd/yyyy h:m:s');
+          end = this.datePipe.transform(this.e, 'MM/dd/yyyy h:m:s');
+          this.start = new Date (start) ;
+          this.end = new Date (end) ;
+
+      }
+     else
+     {   //  console.log(this.start);
+          this.from=this.start;
+          this.minEndDate.setHours(this.start.getHours() + 3);
+          this.end = this.minEndDate ;
+          this.to=this.minEndDate;
+          // console.log(this.end) ;
+          };}) ;*/
+
+         // this.search();
+       /* this.route.queryParams.subscribe(params => {
+            this.start = params['st'];
+            this.end = params['se'];
+            ;}) ;*/
+
+        //   console.log( typeof this.start);
+
+       });
+        this.resetOption = [this.options[0]];
+
+      this.from = this.datePipe.transform(this.start, 'dd/MM/yyyy H:m:s');
+
+      this.to = this.datePipe.transform(this.end, 'dd/MM/yyyy H:m:s');
+      console.log(this.from , this.to);
+
+
+      this.get() ;
 
 }
 
 
-  ngAfterContentInit()
-  {  this.route.queryParams.subscribe(params => {
-    this.start = params['st'];
-     this.end = params['se'];
-    ;}) ;
 
- //   console.log( typeof this.start);
-    //console.log(this.start , this.end) ;
-    this.resetOption = [this.options[0]];
+onselect(date)
+{
+ // this.startdate = this.start.toLocaleString('en-GB', { timeZone: 'UTC' }) ;
 
-   this.from = this.datePipe.transform(this.start, 'dd/MM/yyyy H:m:s');
+  this.start= date ;
+  console.log(date);
+  console.log(typeof date);
+  this.from = date ;
+  this.minEndDate=new Date(this.start);
 
-   this.to = this.datePipe.transform(this.end, 'dd/MM/yyyy H:m:s');
-  console.log(this.from , this.to);
+  // this.minEndDate = date.setHours(date.getHours() + 3);
+   // this.minEndDate.setHours(this.start.getHours() + 1);
 
-
-   this.get(this.from , this.to) ;
 }
-  get(start , end )
+
+onselectend(date)
+{
+  this.end = date ;
+console.log(this.end) ;
+}
+
+search()
+{
+   this.router.navigate(['/car/list'],{queryParams : {'st':this.start , 'se':this.end }});
+
+   console.log(this.start , this.end) ;
+  this.get()
+}
+
+  get()
   {
-    this.res.GetAvailableReservation(start,end).subscribe(
+
+        this.route.queryParams.subscribe(params => {
+              this.s= params['st'];
+              this.e= params['se'];
+            console.log(this.s , this.e) ;
+        });
+
+    this.res.GetAvailableReservation(this.from , this.to).subscribe(
       data => {
         this.results = data ;
         console.log(this.results);

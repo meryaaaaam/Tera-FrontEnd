@@ -31,26 +31,29 @@ export class BookComponent implements OnInit {
   s:any;
   e : any;
 
+
   constructor( private route: ActivatedRoute,public vs : VehiculeService , public reservation :ReservationService) { }
 
   ngOnInit(): void {
 
 
+
     this.route.queryParams.subscribe(params => {
       this.s = params['st'];
-      console.log(this.s);
-      console.log(typeof this.s);
+
       this.e= params['se'];
       this.searchid = params['searchid'];
-     let  start= this.datePipe.transform(this.s, 'MM/dd/yyyy h:m:s');
-     console.log(start);
-     console.log(typeof start);
-     let  end = this.datePipe.transform(this.e, 'MM/dd/yyyy h:m:s');
+     let  start= this.datePipe.transform(this.s, 'dd/MM/yyyy h:m:s');
+
+     let  end = this.datePipe.transform(this.e, 'dd/MM/yyyy h:m:s');
         this.startdate = start;
         this.enddate = end;
       /*let x= formatDate(this.enddate, 'dd-MM-yyyy H:m', 'en-US')  ;
       console.log(x) ;*/
   });
+
+
+
     this.get(this.searchid) ;
     this.Totalprice(this.searchid,this.startdate,this.enddate) ;
 
