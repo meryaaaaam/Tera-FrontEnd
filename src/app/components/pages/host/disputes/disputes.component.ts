@@ -12,6 +12,7 @@ export class DisputesComponent implements OnInit {
   public disputes:any;
   public ready:boolean = false;
   public responseMessage: any;
+  public user : any ;
 
 
   constructor(private userService: UserService,
@@ -25,7 +26,7 @@ export class DisputesComponent implements OnInit {
   breadcrumb = [
     {
         title: 'Disputes',
-        subTitle: 'Dashboard'
+        subTitle: 'Espace utilisateur'
     }
 ]
 
@@ -37,6 +38,8 @@ export class DisputesComponent implements OnInit {
       (error:any) => console.log(error) ;
 
       this.ready = true;
+
+
   }
 
   public giveBackDeposit() {

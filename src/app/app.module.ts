@@ -146,6 +146,7 @@ import { CashoutComponent } from './components/pages/host/cashout/cashout.compon
 import { DisputesComponent } from './components/pages/host/disputes/disputes.component';
 import { DashboardBookingsComponent } from './components/pages/host/dashboard-bookings/dashboard-bookings.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
+import { WaletComponent } from './components/pages/host/walet/walet.component';
 
     @NgModule({
   declarations: [
@@ -246,7 +247,8 @@ import { BsModalService } from 'ngx-bootstrap/modal';
     CreateNewDisputeComponentComponent,
     CreateNewCheckoutAmountComponent ,
     CashoutComponent,
-    DisputesComponent
+    DisputesComponent,
+    WaletComponent
 
   ],
   imports: [

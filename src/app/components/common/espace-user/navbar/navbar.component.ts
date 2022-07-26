@@ -25,7 +25,15 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
     this.user  =  this.tokenStorage.getUser().user ;
-    this.image = "assets/img/"+this.user.photo ;
+    if (this.user.photo)
+    {
+      this.image = "https://terarentals.com/backend/public/storage/image/"+this.user.photo ;
+
+    }
+    else
+    {
+      this.image = "assets/img/Logo_e.jpg" ;
+    }
     this.get(this.user.id);
   }
 

@@ -13,7 +13,7 @@ export class TokenService {
   private issuer = {
 
 
-    login: 'https://terarentals.com/backend/public/api/auth/login',
+    login:    'https://terarentals.com/backend/public/api/auth/login',
     register: 'https://terarentals.com/backend/public/api/auth/register',
   };
   constructor(private router : Router) {}

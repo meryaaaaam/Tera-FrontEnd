@@ -61,6 +61,7 @@ import { DashboardBookingsComponent } from './components/pages/host/dashboard-bo
 import { DisputesComponent } from './components/pages/host/disputes/disputes.component';
 import { CashoutComponent } from './components/pages/host/cashout/cashout.component';
 import { EditComponent } from './components/Car/edit/edit.component';
+import { WaletComponent } from './components/pages/host/walet/walet.component';
 
 
 const routes: Routes = [
@@ -121,6 +122,7 @@ const routes: Routes = [
     {path: 'user/messages', component: MessageComponent , canActivate: [AuthGuard ] },
     {path: 'user/security-deposit', component: SercurityDepositComponent , canActivate: [AuthGuard ] },
     {path: 'user/dashboard-bookings', component: DashboardBookingsComponent, canActivate: [AuthGuard ]},
+    {path: 'user/wallet', component: WaletComponent, canActivate: [AuthGuard ]},
 
     {path: 'user/disputes/list', component: DisputesComponent, canActivate: [AuthGuard ]},
     {path: 'user/cashout/list', component: CashoutComponent , canActivate: [AuthGuard ]},

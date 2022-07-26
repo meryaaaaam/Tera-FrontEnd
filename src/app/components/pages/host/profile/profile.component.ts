@@ -49,6 +49,14 @@ export class ProfileComponent implements OnInit {
 
   }
 
+  breadcrumb = [
+    {
+        title: 'Espace utilisateur',
+        subTitle: 'Mon profile'
+    }
+
+]
+
   showSuccess( ) {
     this.messageService.add({severity:'success', summary: 'Success', detail: 'profile a été modifié avec succes'});
 }
@@ -68,8 +76,9 @@ showError(detail) {
         this.User = res;
         console.log(this.User);
         if (this.User.photo)
-        {this.image = "http://localhost:8000/storage/image/"+this.User.photo ;  }
-        else {this.image = 'assets/img/Logo_e.jpg'};
+        this.image = "https://terarentals.com/backend/public/storage/image/"+this.User.photo ;
+
+        else {this.image = "assets/img/Logo_e.jpg"};
 
        // console.log(this.User.photo);
     //this.imagename=this.User.photo;
@@ -88,13 +97,7 @@ showError(detail) {
 
   }
 
-  breadcrumb = [
-    {
-        title: 'My Profile',
-        subTitle: 'Dashboard'
-    }
 
-]
 photo1(event)
 {
   console.log(event);
@@ -156,19 +159,19 @@ updatephoto(id)
       );
 
   }
-  
+
 
   cards(x)
   {
     this.vehicule.storeImage(x) .subscribe(response=>{console.log(response);})
   }
-  
+
 
 
   updatepermis()
   {
 
-    
+
     this.user.createcard(this.card) .subscribe(
       response => {
         this.store(this.formData1);
@@ -189,12 +192,12 @@ updatephoto(id)
       () => {  window.location.reload();}
 
       );
-    
+
     console.log(this.card);
 
-    
 
-  
+
+
 
 
 
@@ -206,17 +209,17 @@ updatephoto(id)
              {}
              else {
               this.showSuccess() ;          }
-    
+
           },
           error => {
             console.log(error);
-    
+
           },
           () => {  window.location.reload();}
-    
+
           );*/
-    
-  
+
+
     }
 
 
@@ -250,7 +253,7 @@ updatephoto(id)
       r = res ;
       this.User = r;  console.log(this.User) ; this.showSuccess();
       if (this.filedata)
-      { this.updatephoto(this.id) ;}    
+      { this.updatephoto(this.id) ;}
     },
     error => {
     console.log(error.errors) ; this.showError("Vérifier les champs Obligatoires")},
