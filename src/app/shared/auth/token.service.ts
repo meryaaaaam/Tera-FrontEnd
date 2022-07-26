@@ -1,19 +1,20 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 
-const TOKEN_KEY = 'auth-token';
-const USER_KEY = 'auth-user';
+const TOKEN_KEY =   'auth-token';
+const USER_KEY  =   'auth-user';
+const baseUrl   =   "https://terarentals.com/backend/public/api/" ;
+
 
 @Injectable({
   providedIn: 'root',
 })
 export class TokenService {
   private issuer = {
-  //  login: 'http://127.0.0.1:8000/api/auth/login',
-  //  register: 'http://127.0.0.1:8000/api/auth/register',
 
-    login: 'https://tera3.dev.smartegy.ca/backend/public/api/auth/login',
-    register: 'https://tera3.dev.smartegy.ca/backend/public/api/auth/register',
+
+    login: 'https://terarentals.com/backend/public/api/auth/login',
+    register: 'https://terarentals.com/backend/public/api/auth/register',
   };
   constructor(private router : Router) {}
   handleData(token: any) {
