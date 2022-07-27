@@ -78,6 +78,4 @@ export class VehiculeService {
     return this.http.get(baseUrl+"vehiculeByuser/"+id);
 
   }
-  
-
 }
