@@ -72,6 +72,17 @@ export class BookComponent implements OnInit {
 
   }
 
+  make_reservation(){
+      let r ;
+      let data = {
+        "vehicule":this.searchid , "start" : this.startdate, "end" : this.enddate
+      }
+      this.reservation.Make_reservation(data).subscribe
+      {
+        data =>  r = data ;
+      }
+
+  }
   get(id) {
      let x : any; var date1 ; var date2 ;
      var d = Date.parse("2011-01-26 13:51:50 GMT") / 1000;
@@ -112,6 +123,8 @@ export class BookComponent implements OnInit {
         }),
         (error:any) => console.log(error);
   }
+
+
 
 
   checkValue(event: any) {

@@ -30,6 +30,11 @@ export class ReservationService {
 
   }
 
+  Make_reservation(data )
+  {
+    return this.http.post(baseUrl+"reservations", data  );
+
+  }
 
   getAllReservations()
   {
