@@ -12,7 +12,7 @@
         </div>
     </div>
 </div> -->
-<!-- End Page Title Area --> 
+<!-- End Page Title Area -->
 
 <!-- Start Author Area -->
 <section class="author-area ptb-100">
@@ -22,10 +22,10 @@
                 <div class="author-sidebar">
                     <div class="user-profile">
                         <div class="d-flex align-items-center">
-                            <img src="{{image}}" alt="image">
+                            <img [src]="image" alt="image">
 
                             <div class="title">
-                                <h4>{{User.firstname}}{{User.lastname}}</h4>
+                                <h4>{{User.firstname}} {{User.lastname}}</h4>
                                 <span class="sub-title">Own Company</span>
                                 <div class="rating d-flex align-items-center">
                                     <span class="bx bxs-star checked"></span>
@@ -91,16 +91,21 @@
                 <div class="author-all-listings">
                     <h2>{{User.firstname}}'s cars</h2>
 
+
                     <div class="row">
                         <div class="col-xl-6 col-lg-6 col-md-6" *ngFor="let Content of results | paginate: { itemsPerPage: 4, currentPage: blogGrid }">
                             <div class="single-listings-box">
                                 <div class="listings-image">
                                     <div class="listings-image-slides">
+
                                         <owl-carousel-o [options]="customOptions">
-                                                <div class="single-image">
-                                                    <img [src]= "Content.image" alt="image">
+                                          <ng-template carouselSlide *ngFor="let i of Content.images;">
+
+                                          <div class="single-image">
+                                                    <img src = {{path}}{{i.name}} alt="image">
                                                     <a routerLink="/{{Content.detailsLink}}" class="link-btn"></a>
-                                                </div>
+                                                  </div>
+                                                </ng-template>
                                         </owl-carousel-o>
                                     </div>
                                     <a routerLink="/{{Content.bookmarkLink}}" class="bookmark-save"><i class="flaticon-heart"></i></a>
@@ -108,8 +113,9 @@
                                 </div>
                                 <div class="listings-content">
                                     <ul class="listings-meta">
-                                        <li><i class="flaticon-furniture-and-household"></i>{{Content.model}}</li>
-                                        <li><i class="flaticon-pin"></i> {{Content.location}}</li>
+                                        <li><i class="bx bx-car"></i> {{Content.make}} {{Content.model}} {{Content.type}} {{Content.year}}</li>
+                                        <br>
+                                         <li><i class="flaticon-pin"></i> {{Content.location}}</li>
                                     </ul>
                                     <h3><a routerLink="/{{Content.detailsLink}}">{{Content.title}}</a></h3>
                                   <!-- <span class="status {{Content.extraClass}}"><i class="flaticon-save"></i> {{Content.openORclose}}</span>
@@ -121,7 +127,7 @@
                                         <div class="price">
                                             {{Content.price}}
                                         </div>
-                                    </div>--> 
+                                    </div>-->
                                 </div>
                             </div>
                         </div>

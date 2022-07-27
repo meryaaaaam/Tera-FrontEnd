@@ -6,9 +6,10 @@
 
 <!-- Start Checkout Area -->
 <section class="checkout-area ptb-100">
-    <div class="container">
-      <br>
-        <!--<div class="user-actions">
+  <div class="container">
+    <p-toast></p-toast>
+    <br>
+    <!--<div class="user-actions">
 
             <i class='bx bx-log-in'></i>
             <span>Returning customer?
@@ -16,23 +17,14 @@
             </span>
         </div>-->
 
-        <form>
-            <div class="row  ">
-                <div class="col-lg-7 col-md-12">
-                    <div class="billing-details">
-                        <h3 class="title">Billing Details</h3>
-
-                        <div class="row order">
-                          <h5>Extras</h5>
-
-
-                          <!--<div class="single-category-box">
-
-
-
-
-
-
+    <form>
+      <div class="row  ">
+        <div class="col-lg-7 col-md-12">
+          <div class="billing-details">
+            <h3 class="title">Billing Details</h3>
+            <div class="row order">
+              <h5>Extras</h5>
+              <!--<div class="single-category-box">
                             <h3> Siege pour enfant </h3>
                             <span> 75$</span>
                             <div class="col-lg-12 col-md-6">
@@ -47,161 +39,111 @@
                               <div class="form-group">
                                   <input type="text" name="name" class="form-control" id="name" required placeholder="Your name">
                               </div>
-
                           </div>
-
-
-
-
                         </div>-->
-                        <div class="single-category-box">
-                          <div class="row">
-                            <div class="col-10">  <h3> Siege pour enfant </h3> <span> 75$</span> </div>
-                            <div class="col-2" >
+              <div class="single-category-box">
+                <div class="row">
+                  <div class="col-10">
+                    <h3> Siege pour enfant </h3> <span> 75$</span>
+                  </div>
+                  <div class="col-2">
 
-                              <input pButton pRipple type="checkbox" style=" width:30px ; height:30px;" icon="pi pi-plus" class="p-button-outlined p-button-rounded3" value="75" id="1" (change)="checkValue($event)" />
-
-
-
-                            </div>
-                          </div>
-
-
-                        </div>
-
-
-                        <div class="single-category-box">
-                          <div class="row">
-                            <div class="col-10">  <h3> Frais pour animuax domestiques </h3> <span> 75$</span> </div>
-                            <div class="col-2 justify-content-end" >
-
-                              <input pButton pRipple type="checkbox" style=" width:30px ; height:30px;" icon="pi pi-plus" class="p-button-outlined p-button-rounded3" value="75" id="2" (change)="checkValue($event)" />
-
-
-
-                            </div>
-                          </div>
-
-
-                        </div>
-
-
-
-                        <div class="single-category-box">
-                          <div class="row">
-                            <div class="col-10">  <h3   > plein d'essence prépayé </h3> <span> 75$</span> </div>
-                            <div class="col-2 justify-content-end" >
-
-                                  <input pButton pRipple type="checkbox" style=" width:30px ; height:30px;" icon="pi pi-plus" class="p-button-outlined p-button-rounded3" value="75" id="3" (change)="checkValue($event)" />
-
-
-                            </div>
-                          </div>
-
-
-                        </div>
-
-                        </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                    </div>
+                    <input pButton pRipple type="checkbox" style=" width:30px ; height:30px;" icon="pi pi-plus"
+                      class="p-button-outlined p-button-rounded3" value="75" id="1" (change)="checkValue($event)" />
+                  </div>
                 </div>
+              </div>
+              <div class="single-category-box">
+                <div class="row">
+                  <div class="col-10">
+                    <h3> Frais pour animuax domestiques </h3> <span> 75$</span>
+                  </div>
+                  <div class="col-2 justify-content-end">
 
-                <div class="col-lg-5 col-md-12">
+                    <input pButton pRipple type="checkbox" style=" width:30px ; height:30px;" icon="pi pi-plus"
+                      class="p-button-outlined p-button-rounded3" value="75" id="2" (change)="checkValue($event)" />
+                  </div>
+                </div>
+              </div>
+              <div class="single-category-box">
+                <div class="row">
+                  <div class="col-10">
+                    <h3> plein d'essence prépayé </h3> <span> 75$</span>
+                  </div>
+                  <div class="col-2 justify-content-end">
 
+                    <input pButton pRipple type="checkbox" style=" width:30px ; height:30px;" icon="pi pi-plus"
+                      class="p-button-outlined p-button-rounded3" value="75" id="3" (change)="checkValue($event)" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
-                    <div class="order-details">
-                        <h3 class="title">Your Order</h3>
-                        <div class="row payment-box">
-                          <div class="col-10 payment-method">
+        <div class="col-lg-5 col-md-12">
+          <div class="order-details">
+            <h3 class="title">Your Order</h3>
+            <div class="row payment-box">
+              <div class="col-10 payment-method">
 
-                         <img src="{{res.photo}}"   alt="image" >
-                          </div>
-                          <div class="col-4 user-profile">
-                            <div class="d-flex align-items-center">
-                                <img src="{{image}}" alt="image">
-                               </div>
-                              <!--<div class="title">
+                <img src="{{res?.photo}}" alt="image">
+              </div>
+              <div class="col-4 user-profile">
+                <div class="d-flex align-items-center">
+                  <img src="{{image}}" alt="image">
+                </div>
+                <!--<div class="title">
                                 <h6>James Andy</h6>
 
 
                             </div>-->
-                        </div>
-                        <span class="row pt-2">De {{res.user}}</span>
-                        <div class="row pt-2">
+              </div>
+              <span class="row pt-2">De {{res?.user}}</span>
+              <div class="row pt-2">
 
-                          <div class="col-8">  <h4>{{res.model}} </h4></div>
+                <div class="col-8">
+                  <h4>{{res?.model}} </h4>
+                </div>
 
-                          <!--<div class="rating d-flex  col-4">
+                <!--<div class="rating d-flex  col-4">
                             <span class="rating-count">4.6 </span> <span class="bx bxs-star checked"></span> (45 voyage)
                         </div>-->
-                        </div>
+              </div>
 
-                        <div class="row pt-2">
+              <div class="row pt-2">
 
-                          <div class="col-5" >   {{startdate}}</div>
-                          <div class="col-2" ><i class='bx bxs-right-arrow'></i></div>
-                          <div class="col-5" > {{enddate}}</div>
-                        </div>
-
-
-                      </div>
+                <div class="col-5"> {{startdate}}</div>
+                <div class="col-2"><i class='bx bxs-right-arrow'></i></div>
+                <div class="col-5"> {{enddate}}</div>
+              </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-                        <div class="order-table table-responsive">
-
-                        </div>
-
-                        <div class="row pt-2">
-                            <div class="payment" class="col-8">
-
-                                    <h5>Prix totale</h5>
-                                    <!--<span> {{totalprice}}$</span>-->
-                                    <span *ngIf="result.days!=0">    {{res.Price_D}}$ * {{result.days}}  = {{result.amount}} $</span>
-                                    <span *ngIf="result.days==0">    {{res.Price_H}}$ * {{result.hour}}  = {{result.amount}} $</span>
-
-                            </div>
-
-
-                            <button type="submit" class="default-btn"><i class="flaticon-tick"></i>Place Order</button>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </form>
-    </div>
+
+            <div class="order-table table-responsive">
+
+            </div>
+
+            <div class="row pt-2">
+              <div class="payment" class="col-8">
+
+                <h5>Prix totale</h5>
+                <!--<span> {{totalprice}}$</span>-->
+                <span *ngIf="result?.days!=0"> {{res?.Price_D}}$ * {{result?.days}} = {{result?.amount}} $</span>
+                <span *ngIf="result?.days==0"> {{res?.Price_H}}$ * {{result?.hour}} = {{result?.amount}} $</span>
+                <br>
+                <span *ngIf="Extrass"> Extra : 75$ * {{i}} = {{Extrass}}$ </span>
+
+              </div>
+
+              <button type="submit" class="default-btn"    (click)="Reservation()"><i class="flaticon-tick"></i>Place Order</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
 </section>
 <!-- End Checkout Area -->
-
 <app-footer-style-two></app-footer-style-two>

@@ -172,52 +172,20 @@ updatephoto(id)
   {
 
 
-    this.user.createcard(this.card) .subscribe(
-      response => {
+    this.user.createcard(this.card) .subscribe (
+      response  =>  {
         this.store(this.formData1);
         this.store(this.formData2);
-         this.data= response ;
-         console.log("ok");
-         console.log(this.data);
-       //   if(!this.data)
-         //{}
-        // else {
-         // this.showSuccess() ;          }
+        this.data= response ;
+        console.log("ok");
+        console.log(this.data);  },
 
-      },
-      error => {
-        console.log(error);
-
-      },
-      () => {  window.location.reload();}
+      error   =>    { console.log(error); },
+      ()      =>    {  window.location.reload();}
 
       );
 
     console.log(this.card);
-
-
-
-
-
-
-
-
-      /*  this.vehicule.storeImage(this.formData2) .subscribe(
-          response => {
-             console.log(this.data);
-              if(!this.data)
-             {}
-             else {
-              this.showSuccess() ;          }
-
-          },
-          error => {
-            console.log(error);
-
-          },
-          () => {  window.location.reload();}
-
-          );*/
 
 
     }

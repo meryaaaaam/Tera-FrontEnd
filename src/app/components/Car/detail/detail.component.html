@@ -26,7 +26,7 @@
                             <span>Currently Open</span>
                             08:00 AM - 10:00 PM
                         </li>-->
-                        <li class="location">
+                        <li *ngIf="res.location" class="location">
                             <i class='bx bx-map'></i>
                             <span>Location</span>
                             {{res.location}}
@@ -481,7 +481,7 @@
                   <div class="row pb-3 pt-3">
                     <div class="field col-12 md:col-4">
                       <label for="range" style="color:blueviolet" >Date de Début - Date de Fin</label>
-                      <p-calendar [minDate]="minDate" dateFormat="dd/mm/yy"  [inputStyle]="{'width':'400px'}"
+                      <p-calendar [minDate]="minDate"   [inputStyle]="{'width':'400px'}"
                        [showTime]="true"  [(ngModel)]="rangeDates" name="rangeDates"
                        selectionMode="range" [readonlyInput]="true"
                        inputId="range"(onSelect)="onselectstart(rangeDates)" >

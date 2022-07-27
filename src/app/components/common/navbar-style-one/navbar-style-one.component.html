@@ -26,24 +26,23 @@
                                 <li class="nav-item"><a routerLink="/" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Home </a></li>
 
 
-                                  <li class="nav-item"><a href="javascript:void(0)" class="dropdown-toggle nav-link">Espace User</a>
-                                    <ul class="dropdown-menu">
-                                        <li class="nav-item"><a routerLink="/espace-user" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Dashboard</a></li>
-                                        <li class="nav-item"><a routerLink="/user/messages" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Messages</a></li>
-                                        <li class="nav-item"><a routerLink="/user/booking" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Bookings</a></li>
-                                        <li class="nav-item"><a routerLink="/user/reviews" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Reviews</a></li>
-                                          <li class="nav-item"><a routerLink="/user/profile" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">My Profile</a></li>
-                                    </ul>
-                                </li>
+                                <div *ngIf="!user.id" style="display:flex" >
+                                  <li class="nav-item"><a routerLink="/about" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">A propos</a></li>
+                                  <li class="nav-item"><a routerLink="/contact" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Contact</a></li>
+                                  <li class="nav-item"><a routerLink="/car/list" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Liste des vehicules</a></li>
+                              </div>
 
-                        <li class="nav-item"><a href="javascript:void(0)" class="dropdown-toggle nav-link">Pages</a>
-                            <ul class="dropdown-menu">
-                              <li class="nav-item"><a routerLink="/user/add-car" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Ajouter une voiture</a></li>
+                              <div *ngIf="user.id" style="display:flex; justify-content: space-around;">
 
-                              <li class="nav-item"><a routerLink="/car/list" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Liste des voitures</a></li>
-                              <li class="nav-item"><a routerLink="/car/detail" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">voiture detail</a></li>
-                              </ul>
-                        </li>
+                                <li class="nav-item"><a routerLink="/espace-user" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Dashboard</a></li>
+                                <li class="nav-item"><a routerLink="/user/messages" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Messages</a></li>
+                                <li class="nav-item"><a routerLink="/user/booking" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Bookings</a></li>
+                                 <li class="nav-item"><a routerLink="/user/reviews" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Reviews</a></li>
+                                 <li class="nav-item"><a routerLink="/car/list" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Liste des voitures</a></li>
+
+                      </div>
+
+
                     </ul>
 
                     <div class="others-option d-flex align-items-center">
