@@ -23,6 +23,7 @@ breadcrumb = [
     this.user.getcards().subscribe(
       res => {
         this.cards = res; 
+        console.log("ok");
         console.log(this.cards);
     
   })

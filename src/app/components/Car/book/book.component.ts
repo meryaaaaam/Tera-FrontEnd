@@ -4,6 +4,7 @@ import { MessageService } from 'primeng/api';
 import { TokenService } from 'src/app/shared/auth/token.service';
 import { ReservationService } from 'src/app/shared/vehicules/reservation.service';
 import { VehiculeService } from 'src/app/shared/vehicules/vehicule.service';
+import { UserService } from 'src/app/shared/user/user.service';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -41,6 +42,8 @@ export class BookComponent implements OnInit {
       public reservation: ReservationService,
       public messageService: MessageService,
      private tokenStorage: TokenService,
+     private user : UserService,
+
 
       ) {
 
@@ -111,7 +114,10 @@ export class BookComponent implements OnInit {
 
     )
   }
+ valider()
+ {
 
+ }
 
   Totalprice(vehiculeid, start, end) {
     let result;

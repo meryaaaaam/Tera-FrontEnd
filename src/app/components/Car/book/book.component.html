@@ -80,6 +80,7 @@
             </div>
           </div>
         </div>
+        
 
         <div class="col-lg-5 col-md-12">
           <div class="order-details">
@@ -141,6 +142,52 @@
             </div>
           </div>
         </div>
+        <div class="stepsdemo-content col-lg-7 col-md-12">
+          <p-card>
+              <ng-template pTemplate="title">
+                  Payment Information
+              </ng-template>
+              <ng-template pTemplate="subtitle">
+                  Enter your card details
+              </ng-template>
+              <ng-template pTemplate="content">
+                  <div class="p-fluid formgrid grid">
+                      <div class="field col-12">
+                          <label for="class">Card Holder Name</label>
+                          <input type="text" required pInputText [(ngModel)]="holder_name"> 
+                      </div>
+                      <div class="field col-8">
+                          <label id="number" for="lastname">Number</label>
+                          <p-inputMask inputId="number" mask="9999-9999-9999-9999" [(ngModel)]="card_number"></p-inputMask>
+                      </div>
+                      <div class="field col-2">
+                          <label id="date" for="date">Date</label>
+                          <p-inputMask inputId="date" mask="99/99" [(ngModel)]="card_date"></p-inputMask>
+                      </div>
+                      <div class="field col-2">
+                          <label for="cvv">CVV</label>
+                          <p-inputMask id="cvv" mask="999" [(ngModel)]="cvv"></p-inputMask>
+                      </div>
+                      <div class="field-checkbox col-12">
+                          <p-checkbox id="remember" [binary]="true" ></p-checkbox>
+                          <label for="remember" class="p-checkbox-label">Save credit card information for future</label>
+                      </div>
+                  </div>
+              </ng-template>
+              <ng-template pTemplate="footer">
+                <div class="col-lg-12 col-md-12">
+                  <div class="form-group">
+                      <button type="submit" class="default-btn" (click)="valider()">Valider</button>
+                      <p-toast></p-toast>
+                  </div>
+              </div>
+              </ng-template>
+          </p-card>
+
+         
+      </div>
+      
+      
       </div>
     </form>
   </div>

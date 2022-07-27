@@ -109,7 +109,14 @@ export class UserService {
     return this.http.put(baseUrl+"cards",data) ;
   }
   getcards(){
+    console.log("service ok");
     return this.http.get(baseUrl+"cards");
+  }
+
+  getcard(id)
+  {
+    return this.http.get(baseUrl+"cards/"+id);
+
   }
 
 
