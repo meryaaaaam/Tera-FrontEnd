@@ -15,7 +15,7 @@ import { CheckoutComponent } from './components/pages/checkout/checkout.componen
 import { ComingSoonComponent } from './components/pages/coming-soon/coming-soon.component';
 import { ContactComponent } from './components/pages/contact/contact.component';
 import { DashboardAddListingsComponent } from './components/pages/dashboard/dashboard-add-listings/dashboard-add-listings.component';
- import { DashboardBookmarksComponent } from './components/pages/dashboard/dashboard-bookmarks/dashboard-bookmarks.component';
+import { DashboardBookmarksComponent } from './components/pages/dashboard/dashboard-bookmarks/dashboard-bookmarks.component';
 import { DashboardInvoiceComponent } from './components/pages/dashboard/dashboard-invoice/dashboard-invoice.component';
 import { DashboardMessagesComponent } from './components/pages/dashboard/dashboard-messages/dashboard-messages.component';
 import { DashboardMyListingsComponent } from './components/pages/dashboard/dashboard-my-listings/dashboard-my-listings.component';
@@ -62,6 +62,7 @@ import { DisputesComponent } from './components/pages/host/disputes/disputes.com
 import { CashoutComponent } from './components/pages/host/cashout/cashout.component';
 import { EditComponent } from './components/Car/edit/edit.component';
 import { WaletComponent } from './components/pages/host/walet/walet.component';
+import { PermisComponent} from './components/pages/permis/permis.component';
 
 
 const routes: Routes = [
@@ -83,6 +84,7 @@ const routes: Routes = [
     {path: 'single-products', component: ProductsDetailsComponent},
 
     {path: 'user-profile/:id', component: AuthorProfileComponent},
+    {path: 'permis', component: PermisComponent},
 
 
     {path: 'categories', component: CategoriesComponent},

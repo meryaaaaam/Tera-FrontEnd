@@ -15,7 +15,7 @@ export class FeedbackStyleOneComponent implements OnInit {
 
     sectionTitle = [
         {
-            title: 'Feedback des utilisateur à propos de nous',
+            title: 'Avis des utilisateurs',
             paragraph: ' '
         }
     ]

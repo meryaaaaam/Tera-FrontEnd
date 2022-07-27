@@ -14,21 +14,38 @@
 <!-- Start About Area -->
 <section class="about-area ptb-100">
     <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-6 col-md-12">
-                <div class="about-content" *ngFor="let Content of aboutContent;">
-                    <h2>{{Content.title}}</h2>
-                    <span><strong>{{Content.subTitle}}</strong></span>
-                    <p *ngFor="let Paragraph of Content.paragraph">{{Paragraph.text}}</p>
+        <div class="row">
+            <div class="col-lg-6"></div>
+            <div class="col-lg-6 col-content">
+                <div class="rq-title-container">
+                    <h2 class="rq-title">Pourquoi choisir Tera ?</h2>
+                    <div class="featured-descrition">La solution la plus facile et rapide de location de voiture à Montréal.</div>
                 </div>
-            </div>
 
-            <div class="col-lg-6 col-md-12">
-                <div class="about-image" *ngFor="let Image of aboutImage;">
-                    <img [src]="Image.img" alt="image">
-                    <a href="{{Image.videoLink}}" class="video-btn popup-youtube"><i class='bx bx-play'></i></a>
-                </div>
-            </div>
+                                    <ul class="hightlighted-featured">
+                                                    <li class="highlighted-feature">
+                                <div class="turbo-icon-wrap"><i class="far fa-address-card"></i></div>
+                                <div class="turbo-feature-content">
+                                    <h4>Aucune condition d'âge</h4>
+                                    <p class="content">Profitez de nos services quel que soit votre âge et expérience de conduite.</p>
+                                </div>
+                            </li>
+                                                    <li class="highlighted-feature">
+                                <div class="turbo-icon-wrap"><i class="fas fa-spray-can"></i></div>
+                                <div class="turbo-feature-content">
+                                    <h4>Désinfection totale</h4>
+                                    <p class="content">Les véhicules sont désinfectés avant et après chaque utilisation.</p>
+                                </div>
+                            </li>
+                                                    <li class="highlighted-feature">
+                                <div class="turbo-icon-wrap"><i class="far fa-calendar-times"></i></div>
+                                <div class="turbo-feature-content">
+                                    <h4>Annulation gratuite</h4>
+                                    <p class="content">Annulation sans frais de votre réservation.</p>
+                                </div>
+                            </li>
+                                            </ul>
+                            </div>
         </div>
     </div>
 </section>

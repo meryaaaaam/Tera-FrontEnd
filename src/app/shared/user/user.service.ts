@@ -108,6 +108,9 @@ export class UserService {
   {
     return this.http.put(baseUrl+"cards",data) ;
   }
+  getcards(){
+    return this.http.get(baseUrl+"cards");
+  }
 
 
   openDispute(data){
