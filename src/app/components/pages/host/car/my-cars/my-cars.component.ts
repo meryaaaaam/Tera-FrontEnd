@@ -17,6 +17,7 @@ export class MyCarsComponent implements OnInit {
   reult : any[] ;
   BMW : any ;
   gridListings: number = 1;
+  modalid: any;
   id : any ;
   img : any = "http://localhost:8000/storage/image/" ;
   imgs : any = "http://localhost:8000/storage/image/vehicule/" ;
@@ -37,7 +38,7 @@ export class MyCarsComponent implements OnInit {
     this.car.getVehiculesByUser(this.id).subscribe(
       data=>
       {this.cars = data ;
-        console.log(this.cars) ;
+        console.log(this.cars);
       }
 
 
@@ -72,5 +73,16 @@ export class MyCarsComponent implements OnInit {
   navigate(): void
   {
     this.router.navigate(['/user/add-car']);
+  }
+  delete(id){
+    this.car.delete(id).subscribe(response => {
+   console.log("ok");
+    });
+
+
+
+
+
+
   }
 }
