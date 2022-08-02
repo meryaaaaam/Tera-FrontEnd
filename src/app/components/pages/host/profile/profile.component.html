@@ -21,9 +21,9 @@
         <div class="col-lg-6 col-md-12">
             <div class="my-profile-box">
                 <h3>Profile Details</h3>
+  <p-toast></p-toast>
 
 
-                <p-toast></p-toast>
 
 
                 <div class="row">
@@ -42,7 +42,7 @@
                     </form>
                   </div>
 
-                        <form (ngSubmit)="saveChange()" #myForm="ngForm">
+                        <form (ngSubmit)="saveChange() " #myForm="ngForm">
                         <div class="row">
 
                           <div class="col-xl-12 col-lg-12 col-md-12">

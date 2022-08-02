@@ -5,8 +5,8 @@ import { Observable } from 'rxjs/Observable';
 
 
 //const baseUrl = "https://tera3.dev.smartegy.ca/backend/public/api/" ;
-//const baseUrl        =  "http://127.0.0.1:8000/api/" ;
-const baseUrl        =  "https://terarentals.com/backend/public/api/" ;
+ //const baseUrl        =  "http://127.0.0.1:8000/api/" ;
+ const baseUrl        =  "https://terarentals.com/backend/public/api/" ;
 
 @Injectable({
   providedIn: 'root'
@@ -32,6 +32,11 @@ export class VehiculeService {
       headers: new HttpHeaders({ "Content-Type": "multipart/form-data"})
     }
     return this.http.post(baseUrl+"vehicules", data  );
+  }
+
+  store_Driving_Licence_Image(data)
+  {
+    return this.http.post(baseUrl+"storeImage1", data  );
   }
 
   storeImages(data)

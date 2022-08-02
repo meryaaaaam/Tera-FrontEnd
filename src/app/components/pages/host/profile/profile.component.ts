@@ -30,8 +30,8 @@ export class ProfileComponent implements OnInit {
   isSignedIn!: boolean;
   roles : any ;
   id : any ;
-  formData1 =new FormData();
-  formData2 =new FormData();
+  public formData1 = new FormData();
+  public formData2 = new FormData();
   userForm : FormGroup ;
   image: any;
   filedata:any;
@@ -49,6 +49,8 @@ export class ProfileComponent implements OnInit {
 
   }
 
+
+
   breadcrumb = [
     {
         title: 'Espace utilisateur',
@@ -57,13 +59,6 @@ export class ProfileComponent implements OnInit {
 
 ]
 
-  showSuccess( ) {
-    this.messageService.add({severity:'success', summary: 'Success', detail: 'profile a été modifié avec succes'});
-}
-
-showError(detail) {
-  this.messageService.add({severity:'error', summary: 'Error', detail: detail});
-}
 
   ngOnInit(): void {
 
@@ -77,6 +72,7 @@ showError(detail) {
         console.log(this.User);
         if (this.User.photo)
         this.image = "https://terarentals.com/backend/public/storage/image/"+this.User.photo ;
+        //this.image = "http://127.0.0.1:8000/storage/image/"+this.User.photo ;
 
         else {this.image = "assets/img/Logo_e.jpg"};
 
@@ -98,27 +94,36 @@ showError(detail) {
   }
 
 
+  showSuccess( ) {
+    this.messageService.add({severity:'success', summary: 'Success', detail: 'profile a été modifié avec succes'});
+  }
+
+  showError(detail) {
+  this.messageService.add({severity:'error', summary: 'Error', detail: detail});
+  }
+
+
 photo1(event)
 {
-  console.log(event);
+ // console.log(event);
   this.image=event.target.files[0];
-  console.log(this.image);
+ // console.log(this.image);
   this.formData1.append("img",this.image,this.image.name);
-  console.log(this.formData1);
+ // console.log(this.formData1);
   this.card.Driving_licence_side1=this.image.name;
   this.card.user_id=this.User.id;
-  console.log(this.card);
+ // console.log(this.card);
 }
 
 photo2(event)
 {
-  console.log(event);
+  //console.log(event);
   this.image=event.target.files[0];
-  console.log(this.image);
+  //console.log(this.image);
   this.formData2.append("img",this.image,this.image.name);
-  console.log(this.formData2);
+ // console.log(this.formData2);
   this.card.Driving_licence_side2=this.image.name;
-  console.log(this.card);
+  //console.log(this.card);
 }
 
 fileEvent(e){
@@ -129,69 +134,81 @@ fileEvent(e){
 
 
 
-updatephoto(id)
-{
-
-
-   const formData =new FormData();
-   formData.append("img",this.filedata,this.filedata.name);
-   console.log(formData);
-
-    this.user.uploadphoto(id , formData) .subscribe(
-      response => {
-        let c :any ;
-        // console.log(response);
-         this.data= response ;
-         c=this.data.message ;
-         console.log(this.data);
-          if(!this.data)
-         {this.showError(c) ;}
-         else {
-          this.showSuccess() ;          }
-
-      },
-      error => {
-        console.log(error);
-
-      },
-      () => {  window.location.reload();}
-
-      );
-
-  }
 
 
   cards(x)
   {
+
     this.vehicule.storeImage(x) .subscribe(response=>{console.log(response);})
   }
 
+  store(data)
+      {
+        this.user.storeImage(data).subscribe(
+          (response)=> {
 
+          console.log(response)}) ,
+          (error)=> {this.showError(error.error)}
+      }
 
   updatepermis()
   {
+      let i = false ;
 
-
-    this.user.createcard(this.card) .subscribe (
+    this.user.createcard(this.card).subscribe (
       response  =>  {
         this.store(this.formData1);
         this.store(this.formData2);
         this.data= response ;
-        console.log("ok");
-        console.log(this.data);  },
+        console.log(this.data);
+          i = true ;
+         },
 
-      error   =>    { console.log(error); },
-      ()      =>    {  window.location.reload();}
+      error   =>    { console.log(error); i = false ;},
+      ()      =>    {  ;
+    }
 
       );
+
 
     console.log(this.card);
 
 
     }
 
+    reload()
+    { window.location.reload();}
+
+    updatephoto(id)
+    {
 
 
+       const formData =new FormData();
+       formData.append("img",this.filedata,this.filedata.name);
+       console.log(formData);
+
+        this.user.uploadphoto(id , formData) .subscribe(
+          response => {
+            let c :any ;
+            // console.log(response);
+             this.data= response ;
+             c=this.data.message ;
+             console.log(this.data);
+              if(!this.data)
+             {this.showError(c) ;}
+             else {window.location.reload();
+              this.showSuccess() ;          }
+
+          },
+          error => {
+            console.log(error);
+
+          },
+       //   () => {  window.location.reload();}
+
+          );
+
+      }
 
 
   saveChange()
@@ -204,39 +221,26 @@ updatephoto(id)
   let info = this.User ;
 
 
-  /* this.user.updateAdress(this.id , info).subscribe(
-      res => {
-        r = res ;
-        this.User = r ; console.log(this.User) ;this.showSuccess() ;  window.location.reload(); },
-      error => {
-        if(error.error.message.indexOf("'Column 'address' cannot be null'") )
-        {this.showError("Address required ") ;}
 
-      console.log(error.error.message) }
-
-  )*/
-  //this.User.photo=this.imagename;
   this.user.update(this.id , info).subscribe(
     res => {
       r = res ;
       this.User = r;  console.log(this.User) ; this.showSuccess();
       if (this.filedata)
       { this.updatephoto(this.id) ;}
+
     },
     error => {
     console.log(error.errors) ; this.showError("Vérifier les champs Obligatoires")},
-    () => {  window.location.reload();}
+    //() => {  window.location.reload();}
 
 
 )
  // this.showSuccess() ;
 
 }
-store(data)
-{
-  this.user.storeImage(data).subscribe(
-    (data)=> console.log("Done")) ;
-}
+
+
 
 
 }

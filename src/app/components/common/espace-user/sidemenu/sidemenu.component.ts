@@ -13,20 +13,23 @@ import { UserService } from 'src/app/shared/user/user.service';
 export class SidemenuComponent implements OnInit {
   isSignedIn!: boolean;
   canSee: boolean = false;
-  role:any;
-  id:any;
+  user  :any;
+  role  :any;
+  id    :any;
+  exist : boolean = true ;
   constructor(
     private auth: AuthStateService,
     public router: Router,
     public token: TokenService,
-    public user: UserService
+    public user_service: UserService
   ) {}
   ngOnInit() {
     this.id=this.token.getUser().user.id;
-    console.log(this.id);
-    this.role=this.user.get(this.id);
-    console.log(this.role);
+    console.log(this.token.getUser().user);
+    this.user = this.token.getUser().user ;
+    this.role = this.token.getUser().user.role ;
 
+    console.log(this.user , this.role);
 
   }
   // Signout

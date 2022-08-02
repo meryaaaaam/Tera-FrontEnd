@@ -53,6 +53,8 @@
                   </div>
                 </div>
               </div>
+
+
               <div class="single-category-box">
                 <div class="row">
                   <div class="col-10">
@@ -80,7 +82,7 @@
             </div>
           </div>
         </div>
-        
+
 
         <div class="col-lg-5 col-md-12">
           <div class="order-details">
@@ -134,15 +136,22 @@
                 <span *ngIf="result?.days!=0"> {{res?.Price_D}}$ * {{result?.days}} = {{result?.amount}} $</span>
                 <span *ngIf="result?.days==0"> {{res?.Price_H}}$ * {{result?.hour}} = {{result?.amount}} $</span>
                 <br>
-                <span *ngIf="Extrass"> Extra : 75$ * {{i}} = {{Extrass}}$ </span>
+                <span *ngIf="Extrass"> Extra = {{Extrass}} $<br>
+                      {{i}}
+                      <br>
+                      {{j}}
+                      <br>
+                      {{k}}
+
+                </span>
 
               </div>
 
-              <button type="submit" class="default-btn"    (click)="Reservation()"><i class="flaticon-tick"></i>Place Order</button>
+              <button type="submit" class="default-btn"    (click)="Reservation(); make_reservation()"><i class="flaticon-tick"></i>Place Order</button>
             </div>
           </div>
         </div>
-        <div class="stepsdemo-content col-lg-7 col-md-12">
+        <div class="payment col-lg-7 col-md-12">
           <p-card>
               <ng-template pTemplate="title">
                   Payment Information
@@ -154,7 +163,7 @@
                   <div class="p-fluid formgrid grid">
                       <div class="field col-12">
                           <label for="class">Card Holder Name</label>
-                          <input type="text" required pInputText [(ngModel)]="holder_name"> 
+                          <input type="text" required pInputText [(ngModel)]="holder_name">
                       </div>
                       <div class="field col-8">
                           <label id="number" for="lastname">Number</label>
@@ -177,17 +186,16 @@
               <ng-template pTemplate="footer">
                 <div class="col-lg-12 col-md-12">
                   <div class="form-group">
-                      <button type="submit" class="default-btn" (click)="valider()">Valider</button>
-                      <p-toast></p-toast>
+                       <p-toast></p-toast>
                   </div>
               </div>
               </ng-template>
           </p-card>
 
-         
+
       </div>
-      
-      
+
+
       </div>
     </form>
   </div>

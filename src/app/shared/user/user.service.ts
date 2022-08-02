@@ -3,14 +3,17 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
 
-const baseUrl =   "https://terarentals.com/backend/public/api/" ;
+
 const model   =   "https://terarentals.com/backend/public/api/makes" ;
 const Active  =   "https://terarentals.com/backend/public/api/users/isActive" ;
 const adresse =   "https://terarentals.com/backend/public/api/update" ;
 const state   =   "https://terarentals.com/backend/public/api/provinces" ;
-const url     =   "https://terarentals.com/backend/public/api/users" ;
+ const url     =   "https://terarentals.com/backend/public/api/users" ;
+  const baseUrl =   "https://terarentals.com/backend/public/api/" ;
 
-//const url = "http://127.0.0.1:8000/api/users" ;
+
+//const url =      "http://127.0.0.1:8000/api/users" ;
+//const baseUrl =  "http://127.0.0.1:8000/api/" ;
 
 
 @Injectable({
@@ -25,8 +28,8 @@ export class UserService {
     return this.http.post(baseUrl+"uploadphoto/"+id,data);
   }
 
-  get(id) :  Observable<any> {
-    return this.http.get(`${url}/${id}`);
+  get(id)  {
+    return this.http.get(url+"/"+id);
   }
 
   create(data)  {

@@ -19,8 +19,8 @@ export class MyCarsComponent implements OnInit {
   gridListings: number = 1;
   modalid: any;
   id : any ;
-  img : any = "http://localhost:8000/storage/image/" ;
-  imgs : any = "http://localhost:8000/storage/image/vehicule/" ;
+  img : any = "https://terarentals.com/backend/public/storage/image/" ;
+  imgs : any = "https://terarentals.com/backend/public/storage/image/vehicule/" ;
   breadcrumb = [
     {
         title: 'Mes Vehicule',

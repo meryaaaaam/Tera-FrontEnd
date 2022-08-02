@@ -26,6 +26,8 @@ export class DetailComponent implements OnInit {
   minendDate : any ;
   datePipe   : DatePipe = new DatePipe('en-GB');
   startdate  : any ; enddate : any  ; dateend : any ;
+  start_date : Date = new Date();
+  start_end : Date = new Date();
 
   constructor(public vs : VehiculeService ,
               private route: ActivatedRoute,
@@ -42,9 +44,10 @@ export class DetailComponent implements OnInit {
 
             this.startdate = new Date (this.s) ;
             this.enddate = new Date (this.e) ;
+
             this.get(this.res);
             this.rangeDates = [ this.startdate, this.enddate];
-
+            console.log(this.rangeDates);
 
             this.user = this.token.getUser().user.id ;
             this.minDate = new Date();
@@ -61,16 +64,15 @@ export class DetailComponent implements OnInit {
               let id ;
               this.route.queryParams.subscribe(params => {
               id=params['id'];});
-              this.startdate = date[0].toLocaleString('en-GB', { timeZone: 'UTC' }) ;
-              this.enddate = date[1].toLocaleString('en-GB', { timeZone: 'UTC' }) ;
-
+              //this.startdate = this.datePipe.transform(date[0], 'dd/MM/yyyy H:m:s');
+              //this.enddate = this.datePipe.transform(date[1], 'dd/MM/yyyy H:m:s');
+              //this.rangeDates = [ this.startdate, this.enddate];
+              this.startdate = date[0] ;
+              this.enddate = date[1] ;
+                 // console.log(date[0]) ;
           }
 
-          onselectend(date)
-          {
-            this.enddate  = this.end.toLocaleString('en-GB', { timeZone: 'UTC' }) ;
-            console.log(this.end.toLocaleString('en-GB', { timeZone: 'UTC' }))
-          }
+
 
 
         get(id)
@@ -81,7 +83,11 @@ export class DetailComponent implements OnInit {
 
         reservation()
         {
-          this.router.navigate(['/car/book'],{queryParams : {'st':this.startdate , 'se':this.enddate , 'searchid':this.res.id }});
+              //let start_date = this.datePipe.transform(this.startdate, 'yyyy/MM/dd H:m:s');;
+            //this.start_date = new Date(this.startdate );
+           //  this.enddate = this.enddate.toLocaleString('en-GB', { timeZone: 'UTC' }) ;
+           //  console.log(this.start_date); console.log(this.startdate); console.log(this.enddate);
+            this.router.navigate(['/car/book'],{queryParams : {'st':this.startdate , 'se':this.enddate , 'searchid': this.res.id }});
         }
 
 

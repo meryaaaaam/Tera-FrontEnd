@@ -32,7 +32,7 @@
                 <tbody>
                     <tr *ngFor="let card of cards;">
                         <td class="name">
-                            <img src="assets/img/user1.jpg" alt="image">
+                            <img [src]="card.image" alt="image">
                             <div class="info">
                                 <span>{{card.user}}</span>
                                 <ul>
@@ -45,12 +45,12 @@
 
                         <td class="details">
 
-                            <ul>
-                                <li>
+                            <ul class="row">
+                                <li class="col-6">
                                     <img src="{{card.Driving_licence_side1}}" alt="image">
 
                                 </li>
-                                <li>
+                                <li class="col-6">
                                     <img src="{{card.Driving_licence_side2}}" alt="image">
 
                                 </li>
