@@ -17,19 +17,25 @@ export class SidemenuComponent implements OnInit {
   role  :any;
   id    :any;
   exist : boolean = true ;
+  isAdmin: any;
   constructor(
     private auth: AuthStateService,
     public router: Router,
     public token: TokenService,
-    public user_service: UserService
+    public userservice: UserService
   ) {}
   ngOnInit() {
     this.id=this.token.getUser().user.id;
-    console.log(this.token.getUser().user);
-    this.user = this.token.getUser().user ;
-    this.role = this.token.getUser().user.role ;
+    console.log(this.id);
+    this.userservice.get(this.id).subscribe(res => {
+      this.user = res;
+      console.log(this.user);
+      this.role = this.user.role ;
+      console.log(this.role);
+      this.isAdmin= this.role=='Admin';
+      console.log(this.isAdmin);
+    });
 
-    console.log(this.user , this.role);
 
   }
   // Signout
