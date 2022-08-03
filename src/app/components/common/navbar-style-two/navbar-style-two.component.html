@@ -219,17 +219,19 @@
                         </div>
 
                         <form [formGroup]="registerForm" (ngSubmit)="signup()" >
-                            <div class="form-group">
 
-                              <div class="form-group">
-                                <input type="text" placeholder="Username" class="form-control"formControlName="username">
-                            </div>
+
+                            <div class="form-group">
                                 <input type="text" placeholder="Prénom" class="form-control" formControlName="firstname">
                             </div>
 
                             <div class="form-group">
                               <input type="text" placeholder="Nom" class="form-control" formControlName="lastname">
                           </div>
+
+                        <div class="form-group">
+                            <input type="email" placeholder="Email" class="form-control" formControlName="email">
+                        </div>
 
                           <div class="form-group">
                             <input type="text" placeholder="N° Tél." class="form-control" formControlName="phone">
@@ -243,10 +245,10 @@
                       <input type="date" placeholder="Date de naissance" class="form-control" formControlName="date_nais">
                   </div>
 
+                  <div class="form-group">
+                    <input type="text" placeholder="Username" class="form-control"formControlName="username">
+                </div>
 
-                            <div class="form-group">
-                                <input type="email" placeholder="Email" class="form-control" formControlName="email">
-                            </div>
                             <div class="form-group">
                                 <input type="password" placeholder="Password" class="form-control" formControlName="password">
                             </div>
