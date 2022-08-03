@@ -255,8 +255,11 @@
                             <div class="form-group">
                                 <input type="password" placeholder="Confirm Password" class="form-control" formControlName="password_confirmation">
                             </div>
-                            <button type="submit" data-bs-dismiss="modal">Inscription</button>
-                        </form>
+                            <input type="checkbox" (change)="onchange($event)">j'ai lu et j'accepte <a href="https://oldtera.dev.smartegy.ca/wp-content/uploads/2022/01/Conditions-generales-location.pdf?fbclid=IwAR0cvuYqu3G_WGBltUEa-3VRu6ONt6YlTkRS0GE7V1kxjPFCKMbiyC1JloA" target="_blank">
+                                les conditions générales d'utilisation de ce site</a> 
+                                <button  *ngIf="!disabled"type="submit" data-bs-dismiss="modal">Inscription</button>
+                                <button  *ngIf="disabled"type="submit" data-bs-dismiss="modal" disabled>Inscription</button>
+                            </form>
                        <!-- <span class="already-account">Already have an account?
                           <a href="/auth/login">Login Now</a>
                         </span>-->

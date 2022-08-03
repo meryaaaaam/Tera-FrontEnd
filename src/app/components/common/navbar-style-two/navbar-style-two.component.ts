@@ -17,6 +17,7 @@ export class NavbarStyleTwoComponent implements OnInit {
   user : User = new User() ;
   loginForm: FormGroup;
   errors:any = null;
+  disabled: boolean = true;
 
   registerForm: FormGroup;
   isLoggedIn = false;
@@ -157,6 +158,15 @@ export class NavbarStyleTwoComponent implements OnInit {
     this.tokenStorage.signOut();
    // this.router.navigate(['/']);
 
+  }
+  onchange(event)
+  {
+    if (event.target.checked) {
+      this.disabled=false;
+    }
+    else{
+      this.disabled=true;
+    }
   }
 
 
