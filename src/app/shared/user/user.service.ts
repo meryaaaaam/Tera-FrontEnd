@@ -159,5 +159,11 @@ export class UserService {
   {
     return this.http.post(baseUrl+"storeImage1", data );
   }
+  changepasswd(data)
+  {
+    console.log("ok");
+    console.log(data);
+    return this.http.post(baseUrl+"passwd", data);
+  }
 
  }

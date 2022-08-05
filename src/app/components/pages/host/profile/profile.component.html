@@ -298,27 +298,27 @@
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
                                 <label>Current Password</label>
-                                <input type="password" class="form-control" >
+                                <input type="password" [(ngModel)]="password_current" class="form-control" >
                             </div>
                         </div>
 
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
                                 <label>New Password</label>
-                                <input type="password" class="form-control">
+                                <input type="password" [(ngModel)]="new_password" class="form-control">
                             </div>
                         </div>
 
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
                                 <label>Confirm New Password</label>
-                                <input type="password" class="form-control">
+                                <input type="password" [(ngModel)]="new_confirm_password" class="form-control">
                             </div>
                         </div>
 
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
-                                <button type="submit">Change Password</button>
+                                <button type="submit" (click)="change()">Change Password</button>
                             </div>
                         </div>
                     </div>

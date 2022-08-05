@@ -23,6 +23,9 @@ export class ProfileComponent implements OnInit {
   submitted : boolean ;
   isLoggedIn = false;
   isLoginFailed = false;
+  password_current:any;
+  new_password:any;
+  new_confirm_password:any;
   //User : User = new User;
   User : any  ;
   Info: User = new User;
@@ -240,7 +243,27 @@ fileEvent(e){
 
 }
 
+change()
+{
+  let data = {
+    password_current:this.password_current,
+    new_password:this.new_password,
+    new_confirm_password:this.new_confirm_password,
+}
+
+let data2=Object.create(data);
+
+this.user.changepasswd(data2).subscribe(
+  res => {
+console.log(res);
+  },
+  error => {
+  console.log(error.errors) ; }
+
+
+)
 
 
 
+}
 }
