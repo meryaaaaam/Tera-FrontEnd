@@ -82,6 +82,7 @@ export class TokenService {
     public saveToken(token: string) {
       window.sessionStorage.removeItem(TOKEN_KEY);
       window.sessionStorage.setItem(TOKEN_KEY, token);
+      localStorage.setItem('auth_token', token);
     }
 
 

@@ -258,8 +258,8 @@ showError(detail) {
     }
 
 
-       this.data = this.CarForm.value ;
-      let f = this.uploadedFiles ;
+    this.data = this.CarForm.value ;
+    let f = this.uploadedFiles ;
       let o = this.options  ;
       this.data.galleries = f ;
       this.data.photo = this.filedata.name;

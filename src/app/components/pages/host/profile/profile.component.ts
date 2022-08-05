@@ -24,6 +24,7 @@ export class ProfileComponent implements OnInit {
   isLoggedIn = false;
   isLoginFailed = false;
   password_current:any;
+  passwordForm: FormGroup;
   new_password:any;
   new_confirm_password:any;
   //User : User = new User;
@@ -32,6 +33,7 @@ export class ProfileComponent implements OnInit {
   card: Card= new Card;
   isSignedIn!: boolean;
   roles : any ;
+  userr:any;
   id : any ;
   public formData1 = new FormData();
   public formData2 = new FormData();
@@ -39,7 +41,6 @@ export class ProfileComponent implements OnInit {
   image: any;
   filedata:any;
   data : any ;
-
   constructor(public authService: AuthService ,
               private tokenStorage: TokenService ,
               private auth: AuthStateService,
@@ -49,7 +50,11 @@ export class ProfileComponent implements OnInit {
               public fb: FormBuilder,
               ) {
 
-
+                this.passwordForm = this.fb.group({
+                  password_current: [''],
+                  new_password: [''],
+                  new_confirm_password: [''],
+                });
   }
 
 
@@ -265,5 +270,23 @@ console.log(res);
 
 
 
+}
+change2()
+{
+
+    let data = this.passwordForm.value ;
+    console.log(data);
+    this.user.changepasswd(data).subscribe(
+      res => {
+    console.log(res);
+      },
+      error => {
+      console.log(error.errors) ; }
+    
+    
+    )
+
+ 
+   
 }
 }
