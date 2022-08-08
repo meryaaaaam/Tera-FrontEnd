@@ -40,6 +40,10 @@ export class ReservationService {
   {
     return this.http.get(baseUrl+"get_all_bookings");
   }
+  getBookingsByUser(id)
+  {
+    return this.http.get(baseUrl+"get_bookings/"+id);
+  }
 
   getDisplayBalance(user_id)
   {

@@ -20,7 +20,6 @@
     <div class="bookings-listings-box">
         <h3>Booking Requests</h3>
 
-
         <div class="table-responsive">
             <table class="table">
                 <thead>
@@ -30,22 +29,22 @@
                         <th>Action</th>
                     </tr>
                 </thead>
-                <tbody *ngIf="ready">
+                <tbody>
                     <tr *ngFor="let booking of bookings;">
                         <td class="name">
                             <img src="assets/img/user1.jpg" alt="image">
                             <div class="info">
-                                <span>{{booking.customer_name? booking.customer_name : 'TEST TEST'}}</span>
+                                <span>{{booking.customer_name}}</span>
                                 <ul>
-                                    <li><a href="tel:{{booking?.customer_number}}">{{booking?.customer_number}}</a></li>
-                                    <li><a href="mailto:{{booking?.customer_email}}">{{booking?.customer_email}}</a></li>
+                                    <li><a href="tel:{{booking?.customer_number}}">{{booking.customer_number}}</a></li>
+                                    <li><a href="mailto:{{booking?.customer_email}}">{{booking.customer_email}}</a></li>
                                 </ul>
                                 <a href="mailto:{{booking?.customer_email}}" class="default-btn"><i class='bx bx-envelope'></i> Send Message</a>
                             </div>
                         </td>
 
                         <td class="details">
-                            <h4>{{booking?.booking_title}} <span class="bookings-status pending">{{booking?.booking_status}}</span></h4>
+                            <h4>{{booking.booking_title}} <span class="bookings-status pending">{{booking.booking_status}}</span></h4>
 
                             <ul>
                                 <li>
