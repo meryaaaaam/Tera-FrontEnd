@@ -4,16 +4,17 @@ import { Observable } from 'rxjs/Observable';
 
 
 
-//const model   =   "https://7rentals.com/backend/public/api/makes" ;
-//const Active  =   "https://7rentals.com/backend/public/api/users/isActive" ;
-//const adresse =   "https://7rentals.com/backend/public/api/update" ;
-//const state   =   "https://7rentals.com/backend/public/api/provinces" ;
- const url     =   "  https://7rentals.com/backend/public/api/users" ;
-   const baseUrl =   "https://7rentals.com/backend/public/api/" ;
+
+const model   =   "https://terarentals.com/backend/public/api/makes" ;
+const Active  =   "https://terarentals.com/backend/public/api/users/isActive" ;
+const adresse =   "https://terarentals.com/backend/public/api/update" ;
+const state   =   "https://terarentals.com/backend/public/api/provinces" ;
+ //const url     =   "https://terarentals.com/backend/public/api/users" ;
+  //const baseUrl =   "https://terarentals.com/backend/public/api/" ;
 
 
-//const url =      "http://127.0.0.1:8000/api/users" ;
-//const baseUrl =  "http://127.0.0.1:8000/api/" ;
+const url =      "http://127.0.0.1:8000/api/users" ;
+const baseUrl =  "http://127.0.0.1:8000/api/" ;
 
 
 @Injectable({

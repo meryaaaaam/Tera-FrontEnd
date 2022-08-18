@@ -100,6 +100,12 @@ import { UserDashboardComponent } from './components/pages/host/user-dashboard/u
 import { ProfileComponent } from './components/pages/host/profile/profile.component';
 import { MessageComponent } from './components/pages/host/message/message.component';
 
+
+import {ScrollTopModule} from 'primeng/scrolltop';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
+import {ConfirmDialog, ConfirmDialogModule} from 'primeng/confirmdialog';
+
 //import {MaterialExampleModule} from '../material.module';
 //import {DateRangePickerComparisonExample} from './date-range-picker-comparison-example';
 //import {MatNativeDateModule} from '@angular/material/core';
@@ -147,6 +153,7 @@ import { DashboardBookingsComponent } from './components/pages/host/dashboard-bo
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { WaletComponent } from './components/pages/host/walet/walet.component';
 import { PermisComponent } from './components/pages/permis/permis.component';
+import { ConfirmationService } from 'primeng/api';
 
     @NgModule({
   declarations: [
@@ -274,8 +281,7 @@ import { PermisComponent } from './components/pages/permis/permis.component';
     DropdownModule,PrimeNgFileUploadModule,StepsModule,CardModule,
     InputTextModule,
     ChipModule,CheckboxModule,InputNumberModule,RadioButtonModule,
-
-
+    MessagesModule,MessageModule,ScrollTopModule,ConfirmDialogModule
 
 
 
@@ -285,6 +291,7 @@ import { PermisComponent } from './components/pages/permis/permis.component';
 
   ],
   providers:  [
+
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
