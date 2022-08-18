@@ -20,7 +20,7 @@
     <div class="row">
         <div class="col-lg-6 col-md-12">
             <div class="my-profile-box">
-                <h3>Profile Details</h3>
+                <h3>Détails du profil</h3>
   <p-toast></p-toast>
 
 
@@ -47,7 +47,7 @@
 
                           <div class="col-xl-12 col-lg-12 col-md-12">
                             <div class="form-group">
-                                <label>Username *</label>
+                                <label>Nom d'utilisateur *</label>
                                 <input type="Text" class="form-control"  name="username" ng-minlength="3" [(ngModel)]="User.username">
                             <small *ngIf="User.username.length < 3" id="username2-help" class="p-error block">Username is not available.</small>
 
@@ -213,32 +213,32 @@
 
         <div class="col-lg-6 col-md-12">
             <div class="my-profile-box">
-                <h3>Verification des données</h3>
+                <h3>Permis du véhicule</h3>
 
                 <form (ngSubmit)="updatepermis()">
                     <div class="row">
-                                <label>photo front</label>
+                                <label>Recto du permis</label>
                                 <div class="col-8">
-                                    <p>ajouter une photo claire de vous avec votre permis </p>  </div>
+                                    <p>ajouter une photo claire de votre permis </p>  </div>
                                     <div class="col-4">
                                         <br><br>
                                 <div class="form-group profile-box ">
                                     <div class="file-upload">
                                         <input type="file" name="photo2" id="file2" class="inputfile" (change)="photo1($event)"/>
-                                        <label for="file2">Upload Photo</label>
+                                        <label for="file2">Ajouter une photo</label>
                                     </div>
                                 </div>
                                 </div>
 
-                                <label>photo back</label>
+                                <label>Verso du permis</label>
                                 <div class="col-8">
-                                    <p>ajouter une photo claire de vous avec votre permis </p></div>
+                                    <p>ajouter une photo claire de votre permis </p></div>
                                     <div class="col-4">
                                         <br><br>
                                     <div class="form-group profile-box">
                                         <div class="file-upload">
                                             <input type="file" name="photo3" id="file3" class="inputfile" (change)="photo2($event)"/>
-                                            <label for="file3"> Upload Photo</label>
+                                            <label for="file3">Ajouter une photo</label>
                                         </div>
                                     </div>
                                     </div>

@@ -5,16 +5,16 @@ import { Observable } from 'rxjs/Observable';
 
 
 
-const model   =   "https://terarentals.com/backend/public/api/makes" ;
-const Active  =   "https://terarentals.com/backend/public/api/users/isActive" ;
-const adresse =   "https://terarentals.com/backend/public/api/update" ;
-const state   =   "https://terarentals.com/backend/public/api/provinces" ;
- //const url     =   "https://terarentals.com/backend/public/api/users" ;
-  //const baseUrl =   "https://terarentals.com/backend/public/api/" ;
+const model   =   "https://7rentals.com/backend/public/api/makes" ;
+const Active  =   "https://7rentals.com/backend/public/api/users/isActive" ;
+const adresse =   "https://7rentals.com/backend/public/api/update" ;
+const state   =   "https://7rentals.com/backend/public/api/provinces" ;
+const url     =   "https://7rentals.com/backend/public/api/users" ;
+const baseUrl =   "https://7rentals.com/backend/public/api/" ;
 
 
-const url =      "http://127.0.0.1:8000/api/users" ;
-const baseUrl =  "http://127.0.0.1:8000/api/" ;
+//const url =      "http://127.0.0.1:8000/api/users" ;
+//const baseUrl =  "http://127.0.0.1:8000/api/" ;
 
 
 @Injectable({
@@ -37,9 +37,7 @@ export class UserService {
     return this.http.post(url, data);
   }
 
-  // create(data) : Observable<any>  {
-  //   return this.http.post(baseUrl, data , httpOptions);
-  // }
+
 
   update(id, data) {
     return this.http.put(`${url}/${id}`, data);
@@ -60,31 +58,27 @@ export class UserService {
   getAllListUser()
   {
     return this.http.get(baseUrl+"/list/users") ;
-  //  return this.http.get("https://tera3.dev.smartegy.ca/backend/public/api/list/users") ;
-  }
+   }
 
 
 
   getAllActifUsers()
   {
     return this.http.get(baseUrl+"list/users/actifs") ;
-   // return this.http.get(" https://tera3.dev.smartegy.ca/backend/public/api/list/users/actifs") ;
-  }
+   }
 
 
 
   getAllPredingUsers()
   {
     return this.http.get(baseUrl+"list/users/preding") ;
-  //  return this.http.get(" https://tera3.dev.smartegy.ca/backend/public/api/list/users/preding") ;
-  }
+   }
 
   isActive(id,data)
   {
     return this.http.put(baseUrl+"isActive/"+id, data)
 
-   // return this.http.put(`${Active}/${id}`, data);
-  }
+   }
 
 
   updateAdress(id,data)
@@ -94,15 +88,12 @@ export class UserService {
       headers:headers
     });
 
-   // return this.http.put(`${adresse}/${id}`, data);
-  }
+   }
 
   getAllStates()
   {
     return this.http.get(baseUrl+"provinces") ;
-   // return this.http.get(state) ;
 
-   // return this.http.put(`${baseUrl}/${id}`, data);
   }
   createcard(data)
   {
