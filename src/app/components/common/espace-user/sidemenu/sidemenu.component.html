@@ -66,7 +66,7 @@
               Mes Vehicules
           </li>
           <li class="nav-item" routerLinkActive="active mm-active">
-              <a href="user/list" class="nav-link" aria-expanded="false">
+              <a routerLink="/user/list" class="nav-link" aria-expanded="false">
                 <!--<span class="icon"><i class='bx bx-layer'></i></span>-->
                 <span class="icon"><i class='bx bxs-car'></i></span>
                   <span class="menu-title">Mes Vehicules</span>
@@ -91,7 +91,7 @@
               </a>
           </li>
 
-          <li class="nav-item" routerLinkActive="active mm-active">
+          <li *ngIf="isAdmin" class="nav-item" routerLinkActive="active mm-active">
             <a routerLink="/permis" class="nav-link">
                 <span class="icon"><i class='bx bxs-user-circle'></i></span>
                 <span class="menu-title">vérification de compte</span>

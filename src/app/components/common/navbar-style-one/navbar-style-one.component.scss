@@ -951,6 +951,9 @@
                                 background-color: var(--whiteColor) !important;
                                 padding-top: 9px;
                             }
+                            .has-danger {
+                              border: 1px solid #ef1212 !important;
+                            }
                         }
                         button {
                             display: block;
@@ -1087,6 +1090,7 @@
                                 background-color: var(--whiteColor) !important;
                                 padding-top: 9px;
                             }
+                            .has-danger { border: 1px solid #e01c1c !important;}
                         }
                         button {
                             display: block;

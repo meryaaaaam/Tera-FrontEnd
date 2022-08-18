@@ -552,14 +552,14 @@
                         <div class="d-flex align-items-center">
                             <img src={{res.user_photo}} alt="image">
                             <div class="title">
-                                <h4><a href="#">{{res.user}}</a></h4>
+                                <h4><a href="/user-profile/{{res.user_id}}">{{res.user}}</a></h4>
                                 <span>{{res.nb}} voyages</span>
                             </div>
                         </div>
                         <div class="author-profile">
                             <div class="row align-items-center">
                                 <div class="col-lg-5 col-md-5">
-                                    <a routerLink="/user-profile/{{user}}" class="view-profile">View Profile</a>
+                                    <a routerLink="/user-profile/{{res.user_id}}" class="view-profile">View Profile</a>
                                 </div>
 
                                 <!-- social media

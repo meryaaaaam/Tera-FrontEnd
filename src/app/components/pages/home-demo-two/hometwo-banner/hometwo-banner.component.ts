@@ -55,27 +55,27 @@ this.maxDate.setMonth(this.maxDate.getMonth() + 7);
             popularSearchList: [
                 {
                     title: 'BMW',
-                    link: 'grid-listings-left-sidebar'
+                    link: 'car/list'
                 },
                 {
                     title: 'Audi',
-                    link: 'grid-listings-left-sidebar'
+                    link: 'car/list'
                 },
                 {
                     title: 'Mercedes-Benz',
-                    link: 'grid-listings-left-sidebar'
+                    link: 'car/list'
                 },
                 {
                     title: 'Tesla',
-                    link: 'grid-listings-left-sidebar'
+                    link: 'car/list'
                 },
                 {
                     title: 'Toyota',
-                    link: 'grid-listings-left-sidebar'
+                    link: 'car/list'
                 },
                 {
                     title: 'Porsche',
-                    link: 'grid-listings-left-sidebar'
+                    link: 'car/list'
                 }
             ]
         }

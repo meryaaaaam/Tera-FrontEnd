@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 
 const TOKEN_KEY =   'auth-token';
 const USER_KEY  =   'auth-user';
-//const baseUrl   =   "https://terarentals.com/backend/public/api/" ;
-const baseUrl = "http://127.0.0.1:8000/api/" ;
+const baseUrl   =   "https://7rentals.com/backend/public/api/" ;
+//const baseUrl = "http://127.0.0.1:8000/api/" ;
 
 
 @Injectable({
@@ -14,11 +14,11 @@ export class TokenService {
   private issuer = {
 
 
-   // login:    'https://terarentals.com/backend/public/api/auth/login',
-    login:  'http://127.0.0.1:8000/api/auth/login' ,
+    login:    'https://7rentals.com/backend/public/api/auth/login',
+   // login:  'http://127.0.0.1:8000/api/auth/login' ,
 
-    //register: 'https://terarentals.com/backend/public/api/auth/register',
-    register: 'http://127.0.0.1:8000/api/auth/register' ,
+   register: 'https://7rentals.com/backend/public/api/auth/register',
+   // register: 'http://127.0.0.1:8000/api/auth/register' ,
   };
   constructor(private router : Router) {}
   handleData(token: any) {

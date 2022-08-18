@@ -17,8 +17,8 @@ export class AuthorProfileComponent implements OnInit {
     User      : any  ;
     results   : any;
     image     :any;
-    path      = "https://terarentals.com/backend/public/storage/image/vehicule/" ;
-    path2     = "https://terarentals.com/backend/public/storage/image/" ;
+    path      = "https://7rentals.com/backend/public/storage/image/vehicule/" ;
+    path2     = "https://7rentals.com/backend/public/storage/image/" ;
 
     constructor( private route: ActivatedRoute,
                  public token : TokenService ,
@@ -33,7 +33,7 @@ export class AuthorProfileComponent implements OnInit {
             this.User = res;
            console.log(this.User);
            if (this.User.photo)
-           { this.image = "https://terarentals.com/backend/public/storage/image/"+this.User.photo ;  }
+           { this.image = "https://7rentals.com/backend/public/storage/image/"+this.User.photo ;  }
            else {this.image = "assets/img/Logo_e.jpg" };
           },
           (error) => {console.log(error.errors) ;}

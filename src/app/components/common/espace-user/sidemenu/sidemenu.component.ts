@@ -33,6 +33,7 @@ export class SidemenuComponent implements OnInit {
       this.role = this.user.role ;
       console.log(this.role);
       this.isAdmin= this.role=='Admin';
+      this.isAdmin= this.role=='Admin'?true:false;
       console.log(this.isAdmin);
     });
 

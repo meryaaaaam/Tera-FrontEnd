@@ -2,8 +2,8 @@
   <div class="row m-0 align-items-center">
 
 
-      <div class="col-lg-3 col-md-6 p-0">
-          <div class="form-group">
+      <div class="col-lg-3 col-md-12 p-0">
+          <div class="form-group align-items-center">
               <label><i class="flaticon-pin"></i></label>
               <input type="text" class="form-control" placeholder="Location">
           </div>
@@ -11,47 +11,27 @@
 
       <div class="col-lg-3 col-md-12 p-0">
         <div class="form-group">
-
-
-
-
               <p-calendar [inputStyle]="{'border':'0px'}"
                [(ngModel)]="start" [showTime]="true"
                  [touchUI]="false"
                  name="start"
                  [minDate]="today"
-                 (onSelect)="onselect(start)"
-                 >
-                <!--<ng-template pTemplate="date" let-date>
-                    <span [ngStyle]="{textDecoration: (date.day < 21 && date.day > 10) ? 'line-through' : 'inherit'}">{{date.day}}</span>
-                </ng-template>-->
+                 (onSelect)="onselect(start)" >
+
             </p-calendar>
-
-
-
-            <!--<input type="Date" bsDaterangepicker class="form-control"  >-->
-
         </div>
     </div>
 
-      <div class="col-lg-3 col-md-6 p-0"  >
-          <div class="form-group  ">
+      <div class="col-lg-3 col-md-12 p-0"  >
+          <div class="form-group">
             <p-calendar [inputStyle]="{'border':'0px'}"
             [(ngModel)]="end" [showTime]="true" name="end"
             inputId="time" [showIcon]="false"
             [minDate]="minEndDate"
             (onSelect)="onselectend(end)"
-            ></p-calendar>
-                </div>
+            ></p-calendar>  </div>
       </div>
-
-
-
-
-
-
-
-      <div class="col-lg-3 col-md-12 p-0">
+    <div class="col-lg-3 col-md-12 p-0">
           <div class="submit-btn">
 
               <button (click)="search()" type="button"  class="default-btn">Chercher</button>
@@ -59,4 +39,46 @@
           </div>
       </div>
   </div>
+
+
+  <div class="row m-0 align-items-center responsive">
+
+
+    <div class="col-lg-3 col-md-3 p-0">
+        <div class="form-group align-items-center">
+            <label><i class="flaticon-pin"></i></label>
+            <input type="text" class="form-control" placeholder="Location">
+        </div>
+    </div>
+
+    <div class="col-lg-3 col-md-3 p-0">
+      <div class="form-group">
+            <p-calendar [inputStyle]="{'border':'0px'}"
+             [(ngModel)]="start" [showTime]="true"
+               [touchUI]="false"
+               name="start"
+               [minDate]="today"
+               (onSelect)="onselect(start)" >
+
+          </p-calendar>
+      </div>
+  </div>
+
+    <div class="col-lg-3 col-md-3 p-0"  >
+        <div class="form-group">
+          <p-calendar [inputStyle]="{'border':'0px'}"
+          [(ngModel)]="end" [showTime]="true" name="end"
+          inputId="time" [showIcon]="false"
+          [minDate]="minEndDate"
+          (onSelect)="onselectend(end)"
+          ></p-calendar>  </div>
+    </div>
+  <div class="col-lg-3 col-md-12 p-0">
+        <div class="submit-btn">
+
+            <button (click)="search()" type="button"  class="default-btn">Chercher</button>
+
+        </div>
+    </div>
+</div>
 </form>

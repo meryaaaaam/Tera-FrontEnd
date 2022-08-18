@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { User } from 'src/app/models/user';
@@ -24,6 +24,16 @@ export class NavbarStyleTwoComponent implements OnInit {
   isLoginFailed = false;
   role : any ;
 
+  firstname: FormControl;
+  lastname: FormControl;
+  username: FormControl;
+  phone: FormControl;
+  email: FormControl;
+  birthdate: FormControl;
+  password: FormControl;
+  condition: FormControl;
+  submitted: boolean = false ;
+
 
   constructor(
     public router: Router,
@@ -39,20 +49,11 @@ export class NavbarStyleTwoComponent implements OnInit {
       password: [],
     });
 
-    this.registerForm = this.fb.group({
-      username: [''],
-      firstname: [''],
-      lastname: [''],
-      email: [''],
-      phone: [''],
-      date_nais: [''],
-      password: [''],
-      password_confirmation: [''],
-      role: 'user',
-    });
+
   }
   ngOnInit() {
-
+    this.createRegisterForm();
+    this.createFormControl();
     this.user  =  this.tokenStorage.getUser().user ;
 
     if (this.tokenStorage.getTokens() ) {
@@ -60,6 +61,33 @@ export class NavbarStyleTwoComponent implements OnInit {
       this.role = this.tokenStorage.getUser().role;  }
     else { this.router.navigate(['/']);}
 
+
+    }
+
+
+    createRegisterForm()
+    {
+      this.registerForm = this.fb.group({
+      username: this.username,
+      firstname: this.firstname,
+      lastname: this.lastname,
+      email: this.email,
+      phone: this.phone,
+      date_nais: this.birthdate,
+      password: this.password,
+      password_confirmation: [''],
+      role: 'user',
+      condition : false ,
+    });}
+
+    createFormControl()
+    {
+      this.firstname = new FormControl('', Validators.required);
+      this.username = new FormControl('', Validators.required);
+      this.lastname = new FormControl('', Validators.required);
+      this.email = new FormControl('', [ Validators.required, Validators.email, Validators.pattern("[^ @]*@[^ @]*")  ]);
+      this.password = new FormControl('', [ Validators.required, Validators.minLength(8)  ]);
+      this.condition = new FormControl('false', [ Validators.requiredTrue  ]);
 
     }
 
@@ -106,7 +134,11 @@ export class NavbarStyleTwoComponent implements OnInit {
   signup() {
 
 
-    this.authService.register(this.registerForm.value).subscribe(
+    this.submitted = true ;
+    console.log(this.registerForm.valid) ;
+
+    if(this.registerForm.valid)
+   { this.authService.register(this.registerForm.value).subscribe(
       (result) => {
         console.log(result);
         this.showSuccess('Votre Compte a été créer avec success');
@@ -135,9 +167,13 @@ export class NavbarStyleTwoComponent implements OnInit {
       (error) => {
 
         this.errors = error.error; console.log(this.errors) ;
-        this.showError('Vérifier les champs saisit - '+ this.errors);
+      //  this.showError('Vérifier les champs saisit - '+ this.errors);
       },
-    );
+    );}
+    else
+    {
+      this.showError('Vérifier les champs obligatoires ');
+    }
 
 
 
@@ -159,6 +195,7 @@ export class NavbarStyleTwoComponent implements OnInit {
    // this.router.navigate(['/']);
 
   }
+
   onchange(event)
   {
     if (event.target.checked) {

@@ -943,15 +943,27 @@
                       }
                   }
                   form {
-                      .form-group {
-                          margin-bottom: 15px;
+                    .has-danger     {
 
-                          .form-control {
+
+                      .form-control {
+                        border: 1px solid #e01c1c !important;
+                        border-radius: 5px;
+                        background-color: var(--whiteColor) !important;
+                        padding-top: 12px;}
+
+                    }
+                      .form-group {
+                          margin-bottom: 20px;
+
+                          input {
                               border: 1px solid #d5d5d5 !important;
                               border-radius: 5px;
                               background-color: var(--whiteColor) !important;
-                              padding-top: 9px;
+                              padding-top: 12px;
                           }
+                          .has-danger { border: 1px solid #e01c1c !important;}
+
                       }
                       button {
                           display: block;
@@ -1079,15 +1091,27 @@
                       }
                   }
                   form {
-                      .form-group {
-                          margin-bottom: 15px;
+                    .has-danger     {
 
-                          .form-control {
+
+                      .form-control {
+                        border: 1px solid #e01c1c !important;
+                        border-radius: 5px;
+                        background-color: var(--whiteColor) !important;
+                        padding-top: 12px;}
+
+                    }
+                      .form-group {
+                          margin-bottom: 20px;
+
+                          input {
                               border: 1px solid #d5d5d5 !important;
                               border-radius: 5px;
                               background-color: var(--whiteColor) !important;
-                              padding-top: 9px;
+                              padding-top: 12px;
                           }
+                        //  .has-danger { border: 1px solid #e01c1c !important;}
+
                       }
                       button {
                           display: block;

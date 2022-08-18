@@ -51,10 +51,7 @@ import { VerticalListingsLeftSidebarComponent } from './components/pages/vertica
 import { VerticalListingsRightSidebarComponent } from './components/pages/vertical-listings-right-sidebar/vertical-listings-right-sidebar.component';
 import { AuthGuard } from './services/guard/authguard.guard';
 import { TestComponent } from './test/test.component';
-import { ReserverComponent } from './components/Car/reserver/reserver.component';
-import { Steps1Component } from './components/Car/reserver/steps1/steps1.component';
-import { Steps2Component } from './components/Car/reserver/steps2/steps2.component';
-import { Steps3Component } from './components/Car/reserver/steps3/steps3.component';
+
 import { BookComponent } from './components/Car/book/book.component';
 import { SercurityDepositComponent } from './components/pages/host/sercurity-deposit/sercurity-deposit.component';
 import { DashboardBookingsComponent } from './components/pages/host/dashboard-bookings/dashboard-bookings.component';
@@ -139,20 +136,9 @@ const routes: Routes = [
     {path: 'espace-user', component: HostComponent},
     {path: 'espace-user', component: HostComponent},*/
 
-    // Here add new pages component
 
-    {
-      path: "car/rent",
-      component: ReserverComponent,
 
-      children: [
-        { path: "", redirectTo: "car/rent", pathMatch: "full" },
-        { path: "step1", component: Steps1Component },
-        { path: "step2", component: Steps2Component },
-        { path: "step3", component: Steps3Component },
 
-      ],
-    },
 
 
     /*{

@@ -38,6 +38,7 @@ export class BookComponent implements OnInit {
   public j : any  ;
   public k : any  ;
   s : any ; e:any ;
+  complete : boolean = false ;
 
   constructor(
     private route: ActivatedRoute,
@@ -78,33 +79,77 @@ export class BookComponent implements OnInit {
 
   }
 
-  make_reservation(){
+    make_reservation(){
+    var r ;
+    let start = new Date() ;
+    let end = new Date() ;
     this.route.queryParams.subscribe(params => {
-      this.s = params['st'];
+                        this.s = params['st'];
+                        this.e= params['se'];
+                        this.searchid = params['searchid'];
+                        let  start= this.datePipe.transform(this.s, 'dd/MM/yyyy HH:m:s');
+                        let  end = this.datePipe.transform(this.e, 'dd/MM/yyyy HH:m:s');
+                        this.startdate = start;
+                        this.enddate = end;
+                      });
 
-      this.e= params['se'];
-      this.searchid = params['searchid'];
-     let  start= this.datePipe.transform(this.s, 'dd/MM/yyyy HH:m:s');
+    let data = {  "vehicule":this.searchid ,
+                  "start" : this.startdate,
+                  "end" : this.enddate }
+    console.log(data);
 
-     let  end = this.datePipe.transform(this.e, 'dd/MM/yyyy HH:m:s');
+     this.reservation.Make_reservation(data)
+    .subscribe({
+      next:   data =>  { r = data ;
+                        console.log(r);
+                        if (r == "This car not available for now")
+                        {
+                          this.showError("This car not available for now");
+                          this.complete = false ;
+                        }
+                        else
+                        {
+                                                        this.Reservation();
+                                                          this.showSuccess("Booking request send successfully").then(
+                                                            result=>{ this.router.navigate(['/car/list'],{queryParams : {'st':start , 'se':end }})
+                                                          }
 
-        this.startdate = start;
-        this.enddate = end;
+                                                          )
 
-      /*let x= formatDate(this.enddate, 'dd-MM-yyyy H:m', 'en-US')  ;
-      console.log(x) ;*/
-  });
-      let r ;
-      let data = {
-        "vehicule":this.searchid , "start" : this.startdate, "end" : this.enddate
-      }
-      console.log(data);
-      this.reservation.Make_reservation(data).subscribe
-      (
-        data =>  {r = data ; console.log(r)}
-      )
+                                                          ;
+                                                         this.complete = true ;
 
-  }
+
+
+
+
+                        }
+                               //  this.router.navigate(['/car/list'],{queryParams : {'st':start , 'se':end }});
+
+                 },
+      error:   error => {},
+
+
+      //complete: () => console.log('[complete] Not called')
+    }  );
+console.log(this.complete) ;
+if(this.complete)
+{
+  console.log('--Done ! ')
+}
+
+
+
+
+              //   );
+    //.finally( ()=>this.router.navigate(['/car/list'],{queryParams : {'st':start , 'se':end }})  )
+
+   }
+
+reservations()
+{
+ }
+
   get(id) {
      let x : any; var date1 ; var date2 ;
      var d = Date.parse("2011-01-26 13:51:50 GMT") / 1000;
@@ -190,37 +235,67 @@ export class BookComponent implements OnInit {
   }
 
 
-  Reservation() {
+      Reservation() {
 
-      let start = new Date() ;
-      let end = new Date() ;
-    this.data=
-    {
-      "booking_cost": this.result.amount ,//?this.res.Price_H:this.res.Price_D,
-      "number_of_days":this.totalDaysofReservation,
-      "car_model": this.res.model,
-      "user_id": this.tokenStorage.getUser().user.id,
-      "extra":this.Extrass
-    }
+    let start = new Date() ;
+    let end = new Date() ;
+    console.log("amout",this.result.amount)
+    console.log("Prix_H",this.res.Price_H)
+    this.data= { "booking_cost": this.result.amount ,//?this.res.Price_H:this.res.Price_D,
+                "number_of_days":this.totalDaysofReservation,
+                "car_model": this.res.model,
+                "user_id": this.tokenStorage.getUser().user.id,
+                "extra":this.Extrass
+              }
 
-            {this.reservation.bookingCreate(this.data).subscribe(
-          (res:any)=>
-          {
-            console.log(res)
-            this.showSuccess("Booking request send successfully");
-            this.router.navigate(['/car/list'],{queryParams : {'st':start , 'se':end }});
-          },
-          (error) => {
-
-          },
-        );}
+   this.reservation.bookingCreate(this.data).subscribe(
+              (res:any)=>   { console.log(res)
+                              //this.showSuccess("Booking request send successfully");
+                               //  this.router.navigate(['/car/list'],{queryParams : {'st':start , 'se':end }});
+                             },
+              (error) => {  console.log(error.error)  },
+        );
 
   }
-      showSuccess(detail) {
+
+
+  /*Reservation() {
+    // console.log(this.Extrass);
+    let start = new Date() ;
+    let end = new Date() ;
+     this.data=
+     {
+       "booking_cost": this.res.amount ,//?this.res.Price_H:this.res.Price_D,
+       "number_of_days":this.totalDaysofReservation,
+       "car_model": this.res.model,
+       "user_id": this.tokenStorage.getUser().user.id,
+       "extra":this.Extrass
+     }
+     console.log(this.data) ;
+             {this.reservation.bookingCreate(this.data).subscribe(
+           (res:any)=>
+           {
+             console.log(res)
+             this.showSuccess("Booking request send successfully");
+           },
+           (error) => {
+
+           },
+         );}
+
+   }*/
+      async showSuccess(detail) {
+
+       let promise = new Promise((resolve,reject)=>{
+        setTimeout( ()=> resolve("done!"),3000),
         this.messageService.add({severity:'success', summary: 'Success', detail: detail});
+       });
+     return await  promise ;
+
+      // let result = await promise ;
     }
 
-    showError(detail) {
-      this.messageService.add({severity:'error', summary: 'Error', detail: detail});
+   async showError(detail) {
+     await this.messageService.add({severity:'error', summary: 'Error', detail: detail});
     }
 }

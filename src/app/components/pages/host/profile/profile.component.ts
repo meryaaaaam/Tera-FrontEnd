@@ -79,7 +79,7 @@ export class ProfileComponent implements OnInit {
         this.User = res;
         console.log(this.User);
         if (this.User.photo)
-        this.image = "https://terarentals.com/backend/public/storage/image/"+this.User.photo ;
+        this.image = "https://7rentals.com/backend/public/storage/image/"+this.User.photo ;
         //this.image = "http://127.0.0.1:8000/storage/image/"+this.User.photo ;
 
         else {this.image = "assets/img/Logo_e.jpg"};
@@ -282,11 +282,11 @@ change2()
       },
       error => {
       console.log(error.errors) ; }
-    
-    
+
+
     )
 
- 
-   
+
+
 }
 }
