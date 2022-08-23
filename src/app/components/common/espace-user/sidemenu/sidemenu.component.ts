@@ -26,15 +26,15 @@ export class SidemenuComponent implements OnInit {
   ) {}
   ngOnInit() {
     this.id=this.token.getUser().user.id;
-    console.log(this.id);
+    //console.log(this.id);
     this.userservice.get(this.id).subscribe(res => {
       this.user = res;
-      console.log(this.user);
+     // console.log(this.user);
       this.role = this.user.role ;
-      console.log(this.role);
+     // console.log(this.role);
       this.isAdmin= this.role=='Admin';
       this.isAdmin= this.role=='Admin'?true:false;
-      console.log(this.isAdmin);
+    //  console.log(this.isAdmin);
     });
 
 

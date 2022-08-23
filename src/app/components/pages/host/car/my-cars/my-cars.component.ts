@@ -13,6 +13,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
 export class MyCarsComponent implements OnInit {
 
   Car : any ;
+  is_empty : boolean ;
   cars : any ;
   reult : any[] ;
   BMW : any ;
@@ -36,14 +37,10 @@ export class MyCarsComponent implements OnInit {
 
 
     this.car.getVehiculesByUser(this.id).subscribe(
-      data=>
-      {this.cars = data ;
-        console.log(this.cars);
-      }
-
-
-
-      );
+      data=>  {this.cars = data ;
+                this.is_empty = this.cars?false:true ;
+                console.log(this.is_empty);
+                console.log(this.cars); });
 
 
      /* this.car.getAllBMW().subscribe(cars=>

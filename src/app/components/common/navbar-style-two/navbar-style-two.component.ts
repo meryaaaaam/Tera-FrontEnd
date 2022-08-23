@@ -100,36 +100,57 @@ export class NavbarStyleTwoComponent implements OnInit {
   }
 
     // Handle response
-    responseHandler(data:any) {
-      // this.token.handleData(data.access_token);
-       this.tokenStorage.saveToken(data.access_token);
+   async responseHandler(data:any) {
+
+    let promise = new Promise((resolve,reject)=>{
+      setTimeout( ()=> resolve("done!"),3000),
+      this.tokenStorage.saveToken(data.access_token);
        this.tokenStorage.saveUser(data);
        this.isLoginFailed = false;
        this.isLoggedIn = true;
        this.role = this.tokenStorage.getUser().roles;
+     });
+   return await  promise ;
+      // this.token.handleData(data.access_token);
+
      }
 
 
   login() {
-    this.authService.signin(this.loginForm.value).subscribe(
-      (result) => {
-        this.responseHandler(result);
-        this.showSuccess('Bienvenue');
-        this.authState.setAuthState(true);
-        this.router.navigateByUrl('user/profile');
+    const mail = this.loginForm.value.email ;
+    let ResultLogin  ;
 
-      },
-      (error) => {
-        this.errors = error.error; console.log(this.errors)
-        this.showError('Vérifier les champs saisit - '+ this.errors.message);
-      },
-      () => {
-        this.loginForm.reset();
-       // this.router.navigate(['user/profile']);
+    this.authService.EmailVerification(mail).subscribe(
+      data => { console.log(data) ;
+               //this.showSuccess(data.message);
+               if (data.status == 1)
+                  {this.authService.signin(this.loginForm.value).subscribe(
+                        (result) => {  ResultLogin = result ;
+                                       console.log(result);
+                                       this.responseHandler(result).then(
+                                          result =>  {
+                                            this.authState.setAuthState(true);
+                                            this.router.navigateByUrl('user/profile');
+                                            this.loginForm.reset();
+
+                                                   //this.showSuccess('Bienvenue');
+                                                   //this.router.navigateByUrl('user/profile');
+                                           });
+
+                                    },
+                         (error) => {  this.errors = error.error; console.log(this.errors)
+                                       this.showError('Vérifier les champs saisit - '+ this.errors.message);
+                                    },  )
+
+                  }
+                  else  {this.router.navigateByUrl('auth/login');}
+            },
+      error => console.log(error)   );
 
 
-      }
-    );
+
+
+
   }
   signup() {
 
@@ -140,13 +161,13 @@ export class NavbarStyleTwoComponent implements OnInit {
     if(this.registerForm.valid)
    { this.authService.register(this.registerForm.value).subscribe(
       (result) => {
-        console.log(result);
+       // console.log(result);
         this.showSuccess('Votre Compte a été créer avec success');
         //this.router.navigate(['/']);
 
         this.loginForm.value.email = this.registerForm.value.email ;
         this.loginForm.value.password = this.registerForm.value.password ;
-        console.log(this.loginForm.value);
+       // console.log(this.loginForm.value);
 
         this.authService.signin(this.loginForm.value).subscribe(
           (result) => {

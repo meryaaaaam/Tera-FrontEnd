@@ -13,6 +13,7 @@ export class User {
   city : string|any ;
   state : string|any ;
   code : string|any ;
+  photo : string|any ;
 
 
 

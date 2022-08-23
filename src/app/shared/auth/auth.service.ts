@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
  //import { Password } from 'src/app/models/user/password';
 // User interface
 export class User {
@@ -30,7 +30,7 @@ export class AuthService {
   // Access user profile
   profileUser(): Observable<any> {
 
-    return this.http.get(baseUrl+'user-profile');
+    return this.http.get(baseUrl+'auth/user-profile');
   }
 
   GetUser(id) {
@@ -46,5 +46,22 @@ export class AuthService {
   roles(): Observable<any> {
     return this.http.get(baseUrl+'auth/roles');}
 
+  refresh(): Observable<any> {
+      return this.http.get(baseUrl+'auth/refresh');}
+
+  EmailVerification(mail): Observable<any> {
+    let tokenInLocal = localStorage.getItem('auth_token');
+    let tokenInSession = sessionStorage.getItem('auth-token');
+    let data = {email : mail}
+    /*if (!tokenInLocal|| ! tokenInSession) {
+      console.log('Authorization token not found');
+    }
+    const httpHeaders = new HttpHeaders({
+   //   'Content-Type': 'application/json',
+      'Authorization': `bearer ${tokenInLocal}`,
+    });*/
+
+    return this.http.post('http://127.0.0.1:8000/api/email/verification-notification', data);}
+    //return this.http.get(baseUrl+'auth/email/verification-notification');}
 
 }

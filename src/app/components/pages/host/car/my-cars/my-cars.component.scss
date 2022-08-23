@@ -2,7 +2,28 @@
 //@import "../../home-demo-one/homeone-listings/homeone-listings.component.scss";
 
 @import "../../../home-demo-one/homeone-listings/homeone-listings.component.scss";
+.error-content {
+  text-align: center;
 
+  h3 {
+      font-size: 35px;
+      margin: {
+          bottom: 20px;
+          top: 45px;
+      };
+  }
+  p {
+      max-width: 550px;
+      margin: {
+          left: auto;
+          right: auto;
+          bottom: 0;
+      };
+  }
+  .default-btn {
+      margin-top: 30px;
+  }
+}
 .no-content-area{
   padding: {
    // right: 30px;

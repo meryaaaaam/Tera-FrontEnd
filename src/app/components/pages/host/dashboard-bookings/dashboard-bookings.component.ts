@@ -28,7 +28,7 @@ export class DashboardBookingsComponent implements OnInit {
         console.log(this.id);
         this.reservation.getBookingsByUser(this.id).subscribe(
             (data:any)=> {
-                console.log("ok");
+
                 this.bookings = data.bookings;
                       console.log(this.bookings)} )
     }

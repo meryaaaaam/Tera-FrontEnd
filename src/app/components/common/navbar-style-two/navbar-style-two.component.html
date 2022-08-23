@@ -16,16 +16,14 @@
                 <a class="navbar-brand" routerLink="/"><img src="assets/img/black-logo.png" alt="logo"></a>
 
                 <div class="collapse navbar-collapse mean-menu">
-                    <form class="navbar-search-box">
+                    <!--<form class="navbar-search-box">
                         <label><i class="flaticon-search"></i></label>
                         <input type="text" class="input-search" placeholder="What are you looking for?">
-                    </form>
+                    </form>-->
 
                     <ul class="navbar-nav">
 
                       <li class="nav-item"><a routerLink="/" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Accueil </a></li>
-
-
                         <div *ngIf="!user.id" style="display:flex" >
                             <li class="nav-item"><a routerLink="/about" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">A propos</a></li>
                             <li class="nav-item"><a routerLink="/contact" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Contact</a></li>
@@ -154,7 +152,7 @@
                         <div class="option-item">
                             <form class="navbar-search-box">
                                 <label><i class="flaticon-search"></i></label>
-                                <input type="text" class="input-search" placeholder="What are you looking for?">
+                                <!--<input type="text" class="input-search" placeholder="What are you looking for?">-->
                             </form>
                         </div>
 

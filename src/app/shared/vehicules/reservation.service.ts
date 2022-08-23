@@ -11,9 +11,9 @@ import { Observable } from 'rxjs/Observable';
  const BookingbaseUrl = "http://127.0.0.1:8000/api/booking_payemnt" ;
 */
 
- const baseUrl        = "https://terarentals.com/backend/public/api/" ;
-const DepositbaseUrl = "https://terarentals.com/backend/public/api/submit_security_deposit" ;
-const BookingbaseUrl = "https://terarentals.com/backend/public/api/booking_payemnt" ;
+ const baseUrl        = "https://7rentals.com/backend/public/api/" ;
+const DepositbaseUrl  = "https://7rentals.com/backend/public/api/submit_security_deposit" ;
+const BookingbaseUrl  = "https://7rentals.com/backend/public/api/booking_payemnt" ;
 
 
 @Injectable({

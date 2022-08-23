@@ -18,21 +18,25 @@ import { ImagesService } from 'src/app/shared/gallery/images.service';
   providers: [MessageService]
 })
 export class ProfileComponent implements OnInit {
-  URL: string = "assets/img/";
-  imagename: string;
-  submitted : boolean ;
-  isLoggedIn = false;
-  isLoginFailed = false;
-  password_current:any;
-  passwordForm: FormGroup;
-  new_password:any;
-  new_confirm_password:any;
+
+
+  UserForm              : FormGroup;
+  URL                   : string      = "assets/img/";
+  imagename             : string;
+  submitted             : boolean ;
+  isLoggedIn            : boolean     = false;
+  isLoginFailed         : boolean    = false;
+  password_current      : any;
+  passwordForm          : FormGroup;
+  new_password          : any;
+  new_confirm_password  : any;
   //User : User = new User;
-  User : any  ;
+  User : User = new User ;
+
   Info: User = new User;
   card: Card= new Card;
   isSignedIn!: boolean;
-  roles : any ;
+  roles ?: any ;
   userr:any;
   id : any ;
   public formData1 = new FormData();
@@ -40,7 +44,11 @@ export class ProfileComponent implements OnInit {
   userForm : FormGroup ;
   image: any;
   filedata:any;
-  data : any ;
+  data    : any ;
+  Result  : any ;
+  userInfo: User = new User ;
+
+
   constructor(public authService: AuthService ,
               private tokenStorage: TokenService ,
               private auth: AuthStateService,
@@ -71,44 +79,80 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
 
 
-    if (this.tokenStorage.getTokens() ) {
+    if (this.tokenStorage.getTokens() )
+    {
       this.id = this.tokenStorage.getUser().user.id;
       this.isLoggedIn = true;
+      this.getauthuserinfo();
       //this.roles = this.tokenStorage.getUser().roles;
-       this.user.get(this.id).subscribe(res => {
-        this.User = res;
-        console.log(this.User);
-        if (this.User.photo)
-        this.image = "https://7rentals.com/backend/public/storage/image/"+this.User.photo ;
-        //this.image = "http://127.0.0.1:8000/storage/image/"+this.User.photo ;
 
-        else {this.image = "assets/img/Logo_e.jpg"};
 
-       // console.log(this.User.photo);
-    //this.imagename=this.User.photo;
-
-      },
-      (error) => {console.log(error.errors) ; this.isLoggedIn = false;}
-      );
 
     }
 
-    console.log(this.card);
-
-
-
-
 
   }
 
+  getauthuserinfo()
+  {
+    this.user.get(this.id).subscribe(
+      (res) => {     this.Result = res;
 
-  showSuccess( ) {
-    this.messageService.add({severity:'success', summary: 'Success', detail: 'profile a été modifié avec succes'});
+                    // this.User = res;
+                    this.createUserForm() ;
+                   // console.log(this.userInfo) ;
+                    //console.log(this.User);
+                    this.image = this.Result.photo?"https://7rentals.com/backend/public/storage/image/"+this.User.photo:"assets/img/Logo_e.jpg";
+
+
+               }),
+    (error) => {console.log(error.errors) ; this.isLoggedIn = false;}
   }
 
-  showError(detail) {
-  this.messageService.add({severity:'error', summary: 'Error', detail: detail});
-  }
+  createUserForm()
+  {
+
+    this.User = {
+      id : this.Result.id,
+      username: this.Result.username,
+      firstname: this.Result.firstname,
+      lastname: this.Result.lastname,
+      email: this.Result.email,
+      phone: this.Result.phone,
+      date_nais: this.Result.date_nais,
+      address  : this.Result.address,
+      city  : this.Result.city,
+      code  : this.Result.code,
+      state  : this.Result.state,
+      link  : this.Result.link,
+      bio  : this.Result.bio,
+      addresse : this.Result.addresse,
+      photo : this.Result.photo ,
+      }
+      this.userInfo = {
+        id : this.User.id,
+        username: this.User.username,
+        firstname: this.User.firstname,
+        lastname: this.User.lastname,
+        email: this.User.email,
+        phone: this.User.phone,
+        date_nais: this.User.date_nais,
+        address  : this.User.address,
+        city  : this.User.city,
+        code  : this.User.code,
+        state  : this.User.state,
+        link  : this.User.link,
+        bio  : this.User.bio,
+        addresse : this.User.addresse,
+        photo : this.User.photo
+        }
+
+  ;}
+
+
+
+
+
 
 
 photo1(event)
@@ -196,16 +240,14 @@ fileEvent(e){
        console.log(formData);
 
         this.user.uploadphoto(id , formData) .subscribe(
-          response => {
-            let c :any ;
-            // console.log(response);
-             this.data= response ;
-             c=this.data.message ;
-             console.log(this.data);
-              if(!this.data)
-             {this.showError(c) ;}
-             else {window.location.reload();
-              this.showSuccess() ;          }
+          response => {   let c :any ;
+                          this.data= response ;
+                          c = this.data.message ;
+                          console.log(this.data);
+                          if(!this.data)
+                          {this.showError(c) ;}
+                          else {this.getauthuserinfo(); window.location.reload();
+                                  }
 
           },
           error => {
@@ -219,34 +261,39 @@ fileEvent(e){
       }
 
 
-  saveChange()
-{
+      saveChange()
+    {
 
 
- this.submitted = true;
-  let r ;
-  this.id = this.tokenStorage.getUser().user.id;
-  let info = this.User ;
+      this.submitted = true;
+      let r ;
+      this.id = this.tokenStorage.getUser().user.id;
+      let info = this.User ;
 
 
 
-  this.user.update(this.id , info).subscribe(
-    res => {
-      r = res ;
-      this.User = r;  console.log(this.User) ; this.showSuccess();
-      if (this.filedata)
-      { this.updatephoto(this.id) ;}
+      this.user.update(this.id , info).subscribe(
+        res   => {  r = res ;
+                  this.User = r;
+                 // this.responseHandler(this.User);
+                 // console.log(this.User) ;
+                  if (this.filedata) { this.updatephoto(this.id) ;}
+                  this.showSuccess("Profile modifée avec succes").then(
+                    result => { this.getauthuserinfo();  }
+                  );
+                  },
 
-    },
-    error => {
-    console.log(error.errors) ; this.showError("Vérifier les champs Obligatoires")},
-    //() => {  window.location.reload();}
+        error =>  {  console.log(error.errors) ;
+                  this.showError("Vérifier les champs Obligatoires")
+                  },
+
+        //() => {  window.location.reload();}
 
 
-)
- // this.showSuccess() ;
+    )
+    // this.showSuccess() ;
 
-}
+    }
 
 change()
 {
@@ -289,4 +336,38 @@ change2()
 
 
 }
+
+
+
+async showSuccess(detail) {
+
+  let promise = new Promise((resolve,reject)=>{
+  setTimeout( ()=> resolve("done!"),3000),
+  this.messageService.add({severity:'success', summary: 'Success', detail: detail});
+  });
+return await  promise ;
+
+}
+
+
+async showError(detail) {
+
+  let promise = new Promise((resolve,reject)=>{
+  setTimeout( ()=> resolve("done!"),3000),
+  this.messageService.add({severity:'error', summary: 'Error', detail: detail});
+  });
+return await  promise ;
+
+}
+
+
+responseHandler(data:any) {
+  // this.token.handleData(data.access_token);
+
+   this.tokenStorage.saveUser(data);
+   this.isLoginFailed = false;
+   this.isLoggedIn = true;
+
+ }
+
 }

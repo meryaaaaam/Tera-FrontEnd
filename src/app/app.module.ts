@@ -154,6 +154,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { WaletComponent } from './components/pages/host/walet/walet.component';
 import { PermisComponent } from './components/pages/permis/permis.component';
 import { ConfirmationService } from 'primeng/api';
+import { LoginComponent } from './components/pages/Auth/login/login.component';
 
     @NgModule({
   declarations: [
@@ -253,7 +254,8 @@ import { ConfirmationService } from 'primeng/api';
     CashoutComponent,
     DisputesComponent,
     WaletComponent,
-    PermisComponent
+    PermisComponent,
+    LoginComponent
 
   ],
   imports: [

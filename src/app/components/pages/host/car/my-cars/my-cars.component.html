@@ -100,16 +100,28 @@
         </div>
     </div>
 
-    <section class="no-content-area" *ngIf="!cars">
+    <!--<section class="no-content-area" *ngIf="!cars">
       <div class="row">
         <img src="assets/img/No Content.png"></div>
         <div class="row">
         <div class="col-4"> </div>
-      <div class="col-4"> <button pButton type="button" label="Ajouter Vehicule" (click)="navigate()" class="p-button-outlined p-button-rounded button"></button></div>
+      <div class="col-4">
+        <button pButton type="button" label="Ajouter Vehicule" (click)="navigate()" class="p-button-outlined p-button-rounded button"></button></div>
 
       <div class="col-4"> </div>
         </div>
-    </section>
+    </section>-->
+
+    <section class="error-area bg-f9f9f9 ptb-100" *ngIf="!cars">
+      <div class="container">
+          <div class="error-content"  >
+
+              <h3>NO CARS FOUND !</h3>
+
+              <a routerLink="/" class="default-btn" (click)="navigate()">Ajouter Véhiucle </a>
+          </div>
+      </div>
+  </section>
     <div class="flex-grow-1"></div>
 
     <app-copyrights></app-copyrights>

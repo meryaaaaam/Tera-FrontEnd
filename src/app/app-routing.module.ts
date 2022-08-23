@@ -60,6 +60,7 @@ import { CashoutComponent } from './components/pages/host/cashout/cashout.compon
 import { EditComponent } from './components/Car/edit/edit.component';
 import { WaletComponent } from './components/pages/host/walet/walet.component';
 import { PermisComponent} from './components/pages/permis/permis.component';
+import { LoginComponent } from './components/pages/Auth/login/login.component';
 
 
 const routes: Routes = [
@@ -129,6 +130,10 @@ const routes: Routes = [
     {path: 'espace-user', component: HostComponent , canActivate: [AuthGuard ] },
 
 
+    {path: 'test', component: TestComponent},
+
+
+    {path: 'auth/login', component: LoginComponent},
     {path: 'test', component: TestComponent},
 
     /*{path: 'espace-user', component: HostComponent},

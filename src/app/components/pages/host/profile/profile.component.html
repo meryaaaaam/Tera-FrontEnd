@@ -9,7 +9,7 @@
     <div class="breadcrumb-area" *ngFor="let Content of breadcrumb;">
         <h1>{{Content.title}}</h1>
         <ol class="breadcrumb">
-            <li class="item"><a routerLink="/">Accueil</a></li>
+            <li class="item"><a routerLink="/">Home</a></li>
             <li class="item">Espace utilisateur</li>
             <li class="item">Mon profile</li>
         </ol>
@@ -42,14 +42,14 @@
                     </form>
                   </div>
 
-                        <form (ngSubmit)="saveChange() " #myForm="ngForm">
+                        <form (ngSubmit)="saveChange() " >
                         <div class="row">
 
                           <div class="col-xl-12 col-lg-12 col-md-12">
                             <div class="form-group">
                                 <label>Nom d'utilisateur *</label>
-                                <input type="Text" class="form-control"  name="username" ng-minlength="3" [(ngModel)]="User.username">
-                            <small *ngIf="User.username.length < 3" id="username2-help" class="p-error block">Username is not available.</small>
+                                <input type="Text" class="form-control"  name="User.username" ng-minlength="3" [(ngModel)]="User.username">
+                            <small *ngIf="User.username?.length < 3" id="username2-help" class="p-error block">Saisissez votre nom d'utilisateur.</small>
 
                             </div>
                         </div>
@@ -58,17 +58,17 @@
                         <div class="col-xl-6 col-lg-12 col-md-12">
                           <div class="form-group">
                               <label>Nom *</label>
-                              <input type="Text" class="form-control"  name="lastname" ng-minlength="3" [(ngModel)]="User.lastname" required>
-                            <small *ngIf="User.lastname.length < 3" id="username2-help" class="p-error block">Lastname is not available.</small>
+                              <input type="Text" class="form-control"  name="User.lastname" ng-minlength="3" [(ngModel)]="User.lastname" required>
+                            <small *ngIf="User.lastname?.length < 3" id="username2-help" class="p-error block">Saisissez votre nom.</small>
 
                           </div>
                       </div>
 
                       <div class="col-xl-6 col-lg-12 col-md-12">
                         <div class="form-group">
-                            <label>Prénom *</label>
-                            <input type="Text" class="form-control" name="firstname" ng-minlength="3" [(ngModel)]="User.firstname" required>
-                            <small *ngIf="User.firstname.length < 3" id="username2-help" class="p-error block">Firstname is not available.</small>
+                            <label>Prenom *</label>
+                            <input type="Text" class="form-control" name="User.firstname" ng-minlength="3" [(ngModel)]="User.firstname" required>
+                            <small *ngIf="User.firstname?.length < 3" id="username2-help" class="p-error block">Saisissez votre prénom.</small>
                         </div>
                     </div>
 
@@ -76,15 +76,17 @@
                         <div class="col-xl-6 col-lg-12 col-md-12">
                             <div class="form-group">
                                 <label>Email *</label>
-                                <input type="email" class="form-control" name="email"  [(ngModel)]="User.email" required>
+                                <input type="email" class="form-control" name="User.email"  [(ngModel)]="User.email" required>
+                                <small *ngIf="User.email?.length < 3" id="username2-help" class="p-error block">Saisissez un courriel.</small>
+
                             </div>
                         </div>
 
                         <div class="col-xl-6 col-lg-12 col-md-12">
                             <div class="form-group">
                                 <label>Numéro du Téléphone * </label>
-                                <input type="text" class="form-control"  name="phone" ng-minlength="8" [(ngModel)]="User.phone" required>
-                            <small *ngIf="User.phone.length < 8" id="username2-help" class="p-error block">Number is not available.</small>
+                                <input type="text" class="form-control"  name="User.phone" ng-minlength="8" [(ngModel)]="User.phone" required>
+                            <small *ngIf="User.phone?.length < 8" id="username2-help" class="p-error block">Saisissez votre numéro de téléphone.</small>
 
                             </div>
                         </div>
@@ -93,7 +95,7 @@
                             <div class="form-group">
                                 <label>Adresse *</label>
                                 <input type="text" class="form-control"  [(ngModel)]="User.address" ng-minlength="5" name="address" required >
-                            <small *ngIf="User.address.length < 5" id="username2-help" class="p-error block">Address is not available.</small>
+                            <small *ngIf="User.address?.length < 5" id="username2-help" class="p-error block">Le champs adresse est obligatoire .</small>
 
 
                               </div>
@@ -104,8 +106,8 @@
                         <div class="col-xl-6 col-lg-6 col-md-6">
                           <div class="form-group">
                               <label>Ville *</label>
-                              <input type="text" class="form-control" required   name="city" ng-minlength="3" [(ngModel)]="User.city" required>
-                            <small *ngIf="User.city.length < 3" id="username2-help" class="p-error block">City is not available.</small>
+                              <input type="text" class="form-control" required   name="User.city" ng-minlength="3" [(ngModel)]="User.city" required>
+                            <small *ngIf="User.city?.length < 3" id="username2-help" class="p-error block">Le champs ville est obligatoire .</small>
 
 
 
@@ -115,8 +117,8 @@
                       <div class="col-xl-6 col-lg-6 col-md-6">
                         <div class="form-group">
                             <label>Code *</label>
-                            <input type="text" class="form-control"  required  name="code" ng-minlength="3" [(ngModel)]="User.code" required>
-                            <small *ngIf="User.code.length < 3" id="username2-help" class="p-error block">Code is not available.</small>
+                            <input type="text" class="form-control"  required  name="User.code" ng-minlength="3" [(ngModel)]="User.code" required>
+                            <small *ngIf="User.code?.length < 3" id="username2-help" class="p-error block">Le champs code est obligatoire .</small>
 
 
 
@@ -126,9 +128,9 @@
 
                     <div class="col-xl-6 col-lg-6 col-md-6">
                       <div class="form-group">
-                          <label>Province *</label>
-                          <input type="text" class="form-control"  required  name="state" ng-minlength="3" [(ngModel)]="User.state" required>
-                          <small *ngIf="User.state.length < 3" id="username2-help" class="p-error block">State is not available.</small>
+                          <label>province *</label>
+                          <input type="text" class="form-control"  required  name="User.state" ng-minlength="3" [(ngModel)]="User.state" required>
+                          <small *ngIf="User.state?.length < 3" id="username2-help" class="p-error block">Le champs province est obligatoire .</small>
 
 
 
@@ -140,15 +142,17 @@
                           <div class="form-group">
                               <label>Date de Naissance *</label>
 
-                              <input type="date"  class="form-control" required name="date_nais" ng-minlength="3" [(ngModel)]="User.date_nais" required>
-                          </div>
+                              <input type="date"  class="form-control" required name="User.date_nais" ng-minlength="3" [(ngModel)]="User.date_nais" required>
+                              <small *ngIf="!User.date_nais" id="username2-help" class="p-error block">Saisissez votre date de naissance.</small>
+
+                            </div>
                       </div>
 
                         <div class="col-xl-6 col-lg-12 col-md-12">
                             <div class="form-group">
-                                <label>Site web</label>
+                                <label>Website</label>
                                 <input type="text" class="form-control"    name="link" ng-minlength="3" [(ngModel)]="User.link" required>
-                            <small *ngIf="User.link.length < 3"  id="username2-help" class="p-error block">Link is not available.</small>
+                            <small *ngIf="User.link?.length < 3"  id="username2-help" class="p-error block">Saisissez un lien valide.</small>
 
                             </div>
                         </div>
@@ -156,7 +160,7 @@
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
                                 <label>Bio</label>
-                                <textarea cols="30" rows="6" placeholder="Short description about you..." class="form-control"  name="bio" [(ngModel)]="User.bio" required></textarea>
+                                <textarea cols="30" rows="6" placeholder="Short description about you..." class="form-control"  name="User.bio" [(ngModel)]="User.bio" required></textarea>
                             </div>
                         </div>
 
@@ -190,7 +194,7 @@
 
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
-                                <button type="submit" [disabled]="!myForm.valid">Sauvegarder les modifications</button>
+                                <button type="submit"  >Save Change</button>
                                 <p-toast></p-toast>
                             </div>
                         </div>
@@ -213,11 +217,11 @@
 
         <div class="col-lg-6 col-md-12">
             <div class="my-profile-box">
-                <h3>Permis du véhicule</h3>
+                <h3>Verification des données</h3>
 
                 <form (ngSubmit)="updatepermis()">
                     <div class="row">
-                                <label>Recto du permis</label>
+                                <label>photo front</label>
                                 <div class="col-8">
                                     <p>ajouter une photo claire de votre permis </p>  </div>
                                     <div class="col-4">
@@ -225,20 +229,20 @@
                                 <div class="form-group profile-box ">
                                     <div class="file-upload">
                                         <input type="file" name="photo2" id="file2" class="inputfile" (change)="photo1($event)"/>
-                                        <label for="file2">Ajouter une photo</label>
+                                        <label for="file2">Ajouter une  Photo</label>
                                     </div>
                                 </div>
                                 </div>
 
-                                <label>Verso du permis</label>
+                                <label>photo back</label>
                                 <div class="col-8">
-                                    <p>ajouter une photo claire de votre permis </p></div>
+                                    <p>ajouter une photo claire de vous avec votre permis </p></div>
                                     <div class="col-4">
                                         <br><br>
                                     <div class="form-group profile-box">
                                         <div class="file-upload">
                                             <input type="file" name="photo3" id="file3" class="inputfile" (change)="photo2($event)"/>
-                                            <label for="file3">Ajouter une photo</label>
+                                            <label for="file3"> Upload Photo</label>
                                         </div>
                                     </div>
                                     </div>
@@ -283,7 +287,7 @@
 
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
-                                <button type="submit">Ajouter Permis </button>
+                                <button type="submit">valider</button>
                             </div>
                         </div>
                     </div>
@@ -291,35 +295,34 @@
             </div>
 
             <div class="my-profile-box">
-                <h3>Changer Mot du passe</h3>
+                <h3>Change Password</h3>
 
                 <form [formGroup]="passwordForm" (ngSubmit)="change2()">
                     <div class="row">
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
-
-                                <label>Mot de passe actuel</label>
+                                <label>Current Password</label>
                                 <input type="password" formControlName="password_current" class="form-control" >
                             </div>
                         </div>
 
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
-                                <label>Nouveau mot de passe</label>
+                                <label>New Password</label>
                                 <input type="password" formControlName="new_password" class="form-control">
                             </div>
                         </div>
 
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
-                                <label>Confirmer le nouveau mot de passe</label>
+                                <label>Confirm New Password</label>
                                 <input type="password" formControlName="new_confirm_password" class="form-control">
                             </div>
                         </div>
 
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
-                                <button type="submit">Changer mot de passe</button>
+                                <button type="submit">Change Password</button>
                             </div>
                         </div>
                     </div>
