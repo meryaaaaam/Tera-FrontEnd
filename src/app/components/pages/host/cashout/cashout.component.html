@@ -17,11 +17,11 @@
     <!-- End Breadcrumb Area -->
 
     <!-- Start -->
-    <div class="bookings-listings-box">
+     <!--<div class="bookings-listings-box">
         <h3>Cashout Demands</h3>
 
         <div class="table-responsive">
-            <table class="table">
+           <table class="table">
                 <thead>
                     <tr>
                         <th>Customer</th>
@@ -32,14 +32,14 @@
                 <tbody *ngIf="ready">
                     <tr *ngFor="let cashout of cashouts;">
                         <td class="name">
-                            <img src="assets/img/user1.jpg" alt="image">
+                            <img src={{img}}{{cashout.user?.photo}} alt="image">
                             <div class="info">
                                 <span>{{cashout.user?.firstname? cashout.user?.firstname + ' ' + cashout.user?.lastname: 'TEST TEST'}}</span>
                             </div>
                         </td>
 
                         <td class="details">
-                            <h4>Amount: ${{cashout?.amount}} <span class="bookings-status pending">{{cashout?.cashout_status}}</span></h4>
+                            <h4>Amount: {{cashout?.amount}} $<span class="bookings-status pending">{{cashout?.cashout_status}}</span></h4>
                             <ul>
                                 <li>
                                     <div>Transaction ID: <span>{{cashout?.transaction_id ? cashout?.transaction_id : '--'}}</span></div>
@@ -54,10 +54,67 @@
                         </td>
                     </tr>
                 </tbody>
-            </table>
-        </div>
-    </div>
+            </table>-->
+
+
+
+            <div class="table-responsive card">
+
+              <p-table [value]="cashouts" (sortFunction)="customSort($event)" [customSort]="true"
+                 [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]"
+                 [loading]="loading" styleClass="p-datatable-gridlines"
+                 [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
+                  <ng-template pTemplate="header">
+                      <tr>
+                          <!--<th pSortableColumn="code">Code  </th>-->
+                          <th pSortableColumn="name">Customer Name  </th>
+                          <th pSortableColumn="category">Transaction  </th>
+                          <th pSortableColumn="price">Amount  </th>
+                          <th pSortableColumn="quantity">Order id   </th>
+                          <th pSortableColumn="status">Order status </th>
+                          <th pSortableColumn="action">Action </th>
+                      </tr>
+                  </ng-template>
+                  <ng-template pTemplate="body" let-cashout>
+                      <tr>
+                          <!--<td>{{cashout.id}}</td>-->
+                          <td>
+                            <img src={{img}}{{cashout.user?.photo}} width="32" style="vertical-align: middle" />
+                            {{cashout.user?.firstname? cashout.user?.firstname + ' ' + cashout.user?.lastname: 'TEST TEST'}}
+                           </td>
+                          <td>{{cashout?.transaction_id ? cashout?.transaction_id : '--'}}</td>
+                          <td>{{cashout?.amount | currency: 'USD'}}</td>
+                          <td>{{cashout?.order_number ? cashout?.order_number : '--'}}</td>
+                          <td> <span class="bookings-status approved">{{cashout?.cashout_status}}</span>  </td>
+                          <td class="action">
+                            <a *ngIf="cashout?.cashout_status == 'Pending'" href="javascript:;" (click)="validateCashout(cashout.id)" class="default-btn"><i class='bx bx-check-circle'></i>Validate Cashout</a>
+                            <a *ngIf="cashout?.cashout_status == 'Validated'" href="javascript:;" class="default-btn"><i class='bx bx-check-circle'></i>Validated</a>
+                        </td>
+                      </tr>
+                  </ng-template>
+                  <ng-template pTemplate="emptymessage">
+                    <tr>
+                        <td colspan="7">No customers found.</td>
+                    </tr>
+                </ng-template>
+              </p-table>
+          </div>
+
+
+
+
+
+
+
+
+
+
+       <!-- </div>
+    </div>-->
     <!-- End -->
+
+
+
 
     <div class="flex-grow-1"></div>
 

@@ -26,7 +26,7 @@
 
 
 
-                <div class="row">
+                <!--<div class="row">
                   <form #f="ngForm" >
                   <div class="col-lg-12 col-md-12">
                       <div class="form-group profile-box">
@@ -38,13 +38,34 @@
                           </div>
 
                       </div></div>
-                      <!--<button type="submit" class="inputfile" (click)="updatephoto()">Save Change</button>-->
+                      <!--<button type="submit" class="inputfile" (click)="updatephoto()">Save Change</button>
                     </form>
-                  </div>
+                  </div>-->
 
                         <form (ngSubmit)="saveChange() " >
                         <div class="row">
 
+                          <div class="row">
+                            <div class="form-group profile-box ">
+                                <img class="profile-box-img justify-content-center" src="{{image}}" alt="image">
+
+                              <div class="col-12 file-upload" *ngIf="!isLoading">
+                                <input type="file" name="file" id="file" name="logo" id="file"class="inputfile" (change)="fileEvent($event)"/>
+                                <label for="file"><i class='bx bx-upload'></i> Téléverser photo de profile</label>
+                             </div>
+                             <div class="col-12 file-upload" *ngIf="isLoading">
+                              <button type="submit" [disabled]="isLoading" >
+                                <img *ngIf="isLoading" style="width : 24px" src="./assets/img/gif/loading.gif" />
+                                Téléverser photo de profile </button>
+                             </div>
+                            </div>
+
+
+
+                                <!--<p-progressBar [value]="value"></p-progressBar>-->
+
+
+                        </div>
                           <div class="col-xl-12 col-lg-12 col-md-12">
                             <div class="form-group">
                                 <label>Nom d'utilisateur *</label>
@@ -152,7 +173,6 @@
                             <div class="form-group">
                                 <label>Website</label>
                                 <input type="text" class="form-control"    name="link" ng-minlength="3" [(ngModel)]="User.link" required>
-                            <small *ngIf="User.link?.length < 3"  id="username2-help" class="p-error block">Saisissez un lien valide.</small>
 
                             </div>
                         </div>
@@ -194,7 +214,9 @@
 
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
-                                <button type="submit"  >Save Change</button>
+                                <button type="submit" [disabled]="isLoading" >
+                                  <img *ngIf="isLoading" style="width : 24px" src="./assets/img/gif/loading.gif" />
+                                  Sauvegarder les modifications </button>
                                 <p-toast></p-toast>
                             </div>
                         </div>
@@ -217,77 +239,40 @@
 
         <div class="col-lg-6 col-md-12">
             <div class="my-profile-box">
-                <h3>Verification des données</h3>
+                <h3>Verification des données </h3>
 
                 <form (ngSubmit)="updatepermis()">
                     <div class="row">
-                                <label>photo front</label>
-                                <div class="col-8">
-                                    <p>ajouter une photo claire de votre permis </p>  </div>
-                                    <div class="col-4">
-                                        <br><br>
-                                <div class="form-group profile-box ">
+                                <label>Recto permis</label>
+                                <div class="col-12">
+                                    <p>ajouter une photo claire de votre permis - recto </p>   <br><br>  </div>
+                                    <div class="col-12">
+
+                                <div class="form-group drivingL-box ">
                                     <div class="file-upload">
                                         <input type="file" name="photo2" id="file2" class="inputfile" (change)="photo1($event)"/>
-                                        <label for="file2">Ajouter une  Photo</label>
+                                        <label for="file2">Ajouter recto de Permis </label>
                                     </div>
                                 </div>
                                 </div>
 
-                                <label>photo back</label>
-                                <div class="col-8">
-                                    <p>ajouter une photo claire de vous avec votre permis </p></div>
-                                    <div class="col-4">
-                                        <br><br>
-                                    <div class="form-group profile-box">
+                                <label>Verso permis</label>
+                                <div class="col-12">
+                                    <p>ajouter une photo claire de vous avec votre permis - verso</p>  <br><br></div>
+                                    <div class="col-12">
+
+                                    <div class="form-group drivingL-box">
                                         <div class="file-upload">
                                             <input type="file" name="photo3" id="file3" class="inputfile" (change)="photo2($event)"/>
-                                            <label for="file3"> Upload Photo</label>
+                                            <label for="file3"> Ajouter verso de Permis</label>
                                         </div>
                                     </div>
                                     </div>
-
-                                  <!--     <h3>methode de paiement</h3>
-                                        <div class="col-xl-6 col-lg-12 col-md-12">
-                                        <div class="form-group">
-                                            <label for="class">Card Holder Name</label>
-                                            <input type="text" required pInputText >
-                                        </div>
-                                        </div>
-
-                                        <div class="col-xl-6 col-lg-12 col-md-12">
-                                       <div class="form-group">
-                                            <label id="number" for="lastname">Number</label>
-                                            <p-inputMask inputId="number" mask="9999-9999-9999-9999" ></p-inputMask>
-                                        </div>
-                                        </div>
-
-
-
-                                          <div class="col-xl-6 col-lg-12 col-md-12">
-                                       <div class="form-group">
-                                            <label id="date" for="date">Date</label>
-                                            <p-inputMask inputId="date" mask="99/99" ></p-inputMask>
-                                        </div>
-                                        </div>
-
-
-
-                                          <div class="col-xl-6 col-lg-12 col-md-12">
-                                       <div class="form-group">
-                                            <label for="cvv">CVV</label>
-                                            <p-inputMask id="cvv" mask="999" ></p-inputMask>
-                                        </div>
-                                        </div>  -->
-
-
-
-
 
 
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
-                                <button type="submit">valider</button>
+                                <button type="submit">Ajouter photos</button>
                             </div>
                         </div>
                     </div>
@@ -295,37 +280,58 @@
             </div>
 
             <div class="my-profile-box">
-                <h3>Change Password</h3>
+                <h3>Changer Mot de passe</h3>
 
                 <form [formGroup]="passwordForm" (ngSubmit)="change2()">
-                    <div class="row">
+
+                    <!--<div class="row">-->
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
-                                <label>Current Password</label>
-                                <input type="password" formControlName="password_current" class="form-control" >
+                                <label>Mot de passe actuel</label>
+                                <!--<input type="password" formControlName="password_current" class="form-control" >-->
+                                <span class="p-fluid">
+                                <p-password formControlName="password_current"
+                                [toggleMask]="true" autoWidth="false"
+                                [inputStyle]="{'font-size': '16px'}"
+                                styleClass="p-password p-component p-inputwrapper p-input-icon-right"
+                                ></p-password>
+                                </span>
                             </div>
                         </div>
 
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
-                                <label>New Password</label>
-                                <input type="password" formControlName="new_password" class="form-control">
+                                <label>Nouveau mot de passe</label>
+                                <!--<input type="password" formControlName="new_password" class="form-control">-->
+                                <span class="p-fluid">
+                                <p-password formControlName="new_password" [toggleMask]="true"
+                                [inputStyle]="{'font-size': '16px'}"
+                                styleClass="p-password p-component p-inputwrapper p-input-icon-right"
+                                ></p-password>
+                               </span>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-12 col-md-12">
+                            <div class="form-group ui-fluid">
+                                <label>Confirmer le nouveau mot de passe</label>
+                                <!--<input type="password" formControlName="new_confirm_password" class="form-control">-->
+                                <span class="p-fluid">
+                                <p-password formControlName="new_confirm_password"   [toggleMask]="true"
+                                styleClass="p-password p-component p-inputwrapper p-input-icon-right "
+                                [inputStyle]="{'font-size': '16px'}"
+                                ></p-password>
+                                </span>
+
                             </div>
                         </div>
 
                         <div class="col-lg-12 col-md-12">
                             <div class="form-group">
-                                <label>Confirm New Password</label>
-                                <input type="password" formControlName="new_confirm_password" class="form-control">
+                                <button type="submit">Changer mot de passe</button>
                             </div>
                         </div>
-
-                        <div class="col-lg-12 col-md-12">
-                            <div class="form-group">
-                                <button type="submit">Change Password</button>
-                            </div>
-                        </div>
-                    </div>
+                    <!--</div>-->
                 </form>
             </div>
         </div>

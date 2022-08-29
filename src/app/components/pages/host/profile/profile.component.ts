@@ -30,6 +30,7 @@ export class ProfileComponent implements OnInit {
   passwordForm          : FormGroup;
   new_password          : any;
   new_confirm_password  : any;
+  value: number = 0;
   //User : User = new User;
   User : User = new User ;
 
@@ -47,6 +48,7 @@ export class ProfileComponent implements OnInit {
   data    : any ;
   Result  : any ;
   userInfo: User = new User ;
+  isLoading : boolean = false ;
 
 
   constructor(public authService: AuthService ,
@@ -90,23 +92,31 @@ export class ProfileComponent implements OnInit {
 
     }
 
+    let interval = setInterval(() => {
+      this.value = this.value + Math.floor(Math.random() * 10) + 1;
+      if (this.value >= 100) {
+          this.value = 100;
+        //  this.messageService.add({severity: 'info', summary: 'Success', detail: 'Process Completed'});
+          clearInterval(interval);
+      }
+  }, 400);
 
   }
 
-  getauthuserinfo()
+    async getauthuserinfo()
   {
-    this.user.get(this.id).subscribe(
-      (res) => {     this.Result = res;
+    let promise = new Promise((resolve,reject)=>{
+      setTimeout( ()=> resolve("done!"),3000),
+      this.user.get(this.id).subscribe(
+                      (res)   => {  this.Result = res;
+                                    this.createUserForm() ;
+                                    this.image = this.Result.photo?"https://7rentals.com/backend/public/storage/image/"+this.User.photo:"assets/img/Logo_e.jpg";
+                               }),
+                      (error) => {console.log(error.errors) ; this.isLoggedIn = false;}
+                  });
+   return await  promise ;
 
-                    // this.User = res;
-                    this.createUserForm() ;
-                   // console.log(this.userInfo) ;
-                    //console.log(this.User);
-                    this.image = this.Result.photo?"https://7rentals.com/backend/public/storage/image/"+this.User.photo:"assets/img/Logo_e.jpg";
 
-
-               }),
-    (error) => {console.log(error.errors) ; this.isLoggedIn = false;}
   }
 
   createUserForm()
@@ -182,6 +192,11 @@ fileEvent(e){
   console.log('ok');
   this.filedata = e.target.files[0];
   console.log(this.filedata);
+  this.updatephoto(this.id).then(
+                                result=>{this.getauthuserinfo().then(
+                                                                      result=>{ this.isLoading = false ;}
+                                                                    );  }
+                                ) ;
 }
 
 
@@ -231,32 +246,42 @@ fileEvent(e){
     reload()
     { window.location.reload();}
 
-    updatephoto(id)
-    {
+    toggleLoading = () => {
+      this.isLoading = true;
+
+      //Faking an API call
+      setTimeout(() => {
+        this.isLoading = false;
+      }, 3000);
+    };
+
+   async updatephoto(id)
+    {  this.isLoading = true ;
+      const formData =new FormData();
+      let promise = new Promise((resolve,reject)=>{
+                setTimeout( ()=> resolve("done!"),3000),
+                                  formData.append("img",this.filedata,this.filedata.name);
+                                  console.log(formData);
+                                  this.user.uploadphoto(id , formData) .subscribe(
+                                      response => {   let c :any ;
+                                                      this.data= response ;
+                                                      c = this.data.message ;
+                                                      console.log(this.data);
+                                                      /*if(!this.data)
+                                                      {this.showError(c) ;}
+                                                      else {
+                                                              }*/
+
+                                                   },
+                                      error     => { console.log(error);
+
+                                    },
+
+         );
+     });
+     return await  promise ;
 
 
-       const formData =new FormData();
-       formData.append("img",this.filedata,this.filedata.name);
-       console.log(formData);
-
-        this.user.uploadphoto(id , formData) .subscribe(
-          response => {   let c :any ;
-                          this.data= response ;
-                          c = this.data.message ;
-                          console.log(this.data);
-                          if(!this.data)
-                          {this.showError(c) ;}
-                          else {this.getauthuserinfo(); window.location.reload();
-                                  }
-
-          },
-          error => {
-            console.log(error);
-
-          },
-       //   () => {  window.location.reload();}
-
-          );
 
       }
 
@@ -266,6 +291,7 @@ fileEvent(e){
 
 
       this.submitted = true;
+      this.isLoading = true;
       let r ;
       this.id = this.tokenStorage.getUser().user.id;
       let info = this.User ;
@@ -275,23 +301,18 @@ fileEvent(e){
       this.user.update(this.id , info).subscribe(
         res   => {  r = res ;
                   this.User = r;
-                 // this.responseHandler(this.User);
-                 // console.log(this.User) ;
-                  if (this.filedata) { this.updatephoto(this.id) ;}
                   this.showSuccess("Profile modifée avec succes").then(
-                    result => { this.getauthuserinfo();  }
+                    result => { this.getauthuserinfo().then(
+                        result=> { this.isLoading = false;}
+                    );  }
                   );
                   },
 
         error =>  {  console.log(error.errors) ;
                   this.showError("Vérifier les champs Obligatoires")
                   },
-
-        //() => {  window.location.reload();}
-
-
     )
-    // this.showSuccess() ;
+
 
     }
 

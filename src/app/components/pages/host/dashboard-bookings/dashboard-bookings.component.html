@@ -16,7 +16,7 @@
     </div>
     <!-- End Breadcrumb Area -->
 
-    <!-- Start -->
+    <!-- Start
     <div class="bookings-listings-box">
         <h3>Booking Requests</h3>
 
@@ -30,9 +30,9 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor="let booking of bookings;">
+                    <tr *ngFor="let booking of bookings | paginate: { itemsPerPage: 6, currentPage: gridListings };">
                         <td class="name">
-                            <img src="assets/img/user1.jpg" alt="image">
+                            <img src={{img}}{{booking.user.photo}} alt="image">
                             <div class="info">
                                 <span>{{booking.customer_name}}</span>
                                 <ul>
@@ -61,11 +61,74 @@
                             <a *ngIf="booking.booking_status == 'Approved'" href="javascript:;" (click)="openDispute(booking?.payment?.amount,booking?.payment?.order_number,booking?.payment?.transaction_id)" class="default-btn danger"><i class='bx bx-x-circle'></i> Dispute</a>
                         </td>
                     </tr>
+
                 </tbody>
+
             </table>
+
         </div>
+        <div class="col-xl-12 col-lg-12 col-md-12">
+          <div class="pagination-area text-center">
+              <pagination-controls (pageChange)="gridListings = $event"></pagination-controls>
+          </div>
+      </div>
     </div>
-    <!-- End -->
+     End -->
+
+    <div class="table-responsive card">
+
+      <p-table [value]="bookings"  [customSort]="true"
+         [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]"
+         [loading]="loading" styleClass="p-datatable-gridlines"
+         [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
+          <ng-template pTemplate="header">
+              <tr>
+                  <!--<th pSortableColumn="code">Code  </th>-->
+                  <th pSortableColumn="name">Client </th>
+                  <th pSortableColumn="name">Info Vehicule   </th>
+                  <th pSortableColumn="category">Transaction  </th>
+                  <th pSortableColumn="price">Montant  </th>
+                  <th pSortableColumn="quantity">Reservation id   </th>
+                  <th pSortableColumn="status">status </th>
+                  <th pSortableColumn="action">Action </th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-booking>
+              <tr>
+                  <!--<td>{{cashout.id}}</td>-->
+                  <td>
+                    <img src={{img}}{{booking.user?.photo}} width="32" style="vertical-align: middle" />
+                    {{booking.user?.firstname? booking.user?.firstname + ' ' + booking.user?.lastname: 'TEST TEST'}}
+                    <ul>
+                      <li><a href="tel:{{booking?.customer_number}}">{{booking.customer_number}}</a></li>
+                      <li><a href="mailto:{{booking?.customer_email}}">{{booking.customer_email}}</a></li>
+                  </ul>
+                  <a href="mailto:{{booking?.customer_email}}" class="default-btn"><i class='bx bx-envelope'></i> Envoyer un message</a>
+                   </td>
+                  <td>{{booking.booking_title}}</td>
+                  <td>{{booking?.payment?.transaction_id ? booking?.payment?.transaction_id : '--'}}</td>
+                  <td>{{booking?.payment?.amount ? booking?.payment?.amount : '--'| currency: 'USD'}}</td>
+                  <td>{{booking?.order_number ? booking?.order_number : '--'}}</td>
+                  <td>
+                    <span *ngIf="booking.booking_status == 'Pending'" class="bookings-status pending">{{booking.booking_status}}</span>
+                    <span *ngIf="booking.booking_status == 'Approved'" class="bookings-status approved">{{booking.booking_status}}</span>
+
+                  </td>
+                  <td class="action">
+                    <a *ngIf="booking.booking_status == 'Pending'" href="javascript:;" (click)="changeBookingStatus(booking.id,'Approved',booking?.payment?.transaction_id)" class="default-btn"><i class='bx bx-check-circle'></i> Accepter</a>
+                    <a *ngIf="booking.booking_status == 'Pending'" href="javascript:;" (click)="changeBookingStatus(booking.id,'Declined',booking?.payment?.transaction_id)" class="default-btn danger"><i class='bx bx-x-circle'></i> Rejeter</a>
+                    <a *ngIf="booking.booking_status == 'Approved'" href="javascript:;" (click)="validatePayment(booking.id,'Approved',booking?.payment?.transaction_id)" class="default-btn"><i class='bx bx-check-circle'></i> Validater</a>
+                    <a *ngIf="booking.booking_status == 'Approved'" href="javascript:;" (click)="openDispute(booking?.payment?.amount,booking?.payment?.order_number,booking?.payment?.transaction_id)" class="default-btn danger"><i class='bx bx-x-circle'></i> Contestation</a>
+                </td>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="7">No customers found.</td>
+            </tr>
+        </ng-template>
+      </p-table>
+  </div>
 
     <div class="flex-grow-1"></div>
 

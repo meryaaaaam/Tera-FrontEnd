@@ -245,7 +245,9 @@ reservations()
                 "number_of_days":this.totalDaysofReservation,
                 "car_model": this.res.model,
                 "user_id": this.tokenStorage.getUser().user.id,
-                "extra":this.Extrass
+                "extra":this.Extrass,
+                "car_id":this.res.id,
+            //    "host_id":this.res.user_id,
               }
 
    this.reservation.bookingCreate(this.data).subscribe(

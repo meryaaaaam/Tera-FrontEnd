@@ -153,9 +153,12 @@ export class UserService {
   }
   changepasswd(data)
   {
-    console.log("ok");
-    console.log(data);
-    return this.http.post(baseUrl+"passwd", data);
+     return this.http.post(baseUrl+"passwd", data);
+  }
+
+  change_user_status(data)
+  {
+    return this.http.put(baseUrl+"Change_user_status",data);
   }
 
  }

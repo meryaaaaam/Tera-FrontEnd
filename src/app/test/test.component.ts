@@ -7,6 +7,12 @@ import { AuthStateService } from '../shared/auth/auth-state.service';
 import { AuthService } from '../shared/auth/auth.service';
 import { TokenService } from '../shared/auth/token.service';
 
+export class country {
+
+ name: any;
+ code: any;
+ flag: any;
+}
 @Component({
   selector: 'app-test',
   templateUrl: './test.component.html',
@@ -14,19 +20,25 @@ import { TokenService } from '../shared/auth/token.service';
   providers: [MessageService]
 })
 export class TestComponent implements OnInit {
+ public  City = [ { name : "France" , code :"+33" , flag : "assets/img/flag/france.png" } ,
+                  { name : "Canada" , code :"+1"  , flag : "assets/img/flag/canada.png" }
+          ];
   user       : User = new User() ;
   loginForm  : FormGroup;
   errors     :any = null;
   disabled   : boolean = true;
   role       : any ;
   phone_mask : any ;
-  value6       : any ;
+  value6     : any ;
+  countries  : any[];
+  selectedCountry: country = new country;
+
 
 
   registerForm: FormGroup;
   isLoggedIn = false;
   isLoginFailed = false;
-
+  value3: string;
   firstname: FormControl;
   lastname: FormControl;
   username: FormControl;
@@ -34,6 +46,7 @@ export class TestComponent implements OnInit {
   email: FormControl;
   birthdate: FormControl;
   password: FormControl;
+  codephone :  country = new country;;
   submitted: boolean = false ;
 
 
@@ -74,6 +87,7 @@ export class TestComponent implements OnInit {
     phone: this.phone,
     date_nais: this.birthdate,
     password: this.password,
+    code_phone: this.codephone,
     password_confirmation: [''],
     role: 'user',
   });}
@@ -85,8 +99,7 @@ export class TestComponent implements OnInit {
     this.lastname = new FormControl('', Validators.required);
     this.email = new FormControl('', [ Validators.required,  Validators.pattern("[^ @]*@[^ @]*")  ]);
     this.password = new FormControl('', [ Validators.required, Validators.minLength(8)  ]);
-
-  }
+      }
   showSuccess( detail) {
       this.messageService.add({severity:'success', summary: 'Success', detail: detail});
   }

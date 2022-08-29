@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators,FormControl } from '@angular/forms';
 import { MessageService } from 'primeng/api';
 import { Car } from 'src/app/models/car';
 import { Image } from 'src/app/models/image';
@@ -18,33 +18,34 @@ import { OptionsService } from 'src/app/shared/vehicules/options.service';
   providers: [MessageService]
 })
 export class AddComponent implements OnInit {
-  model_id : any ;
-  id :any;
-  val: number;
-  value : Date ;
-  car!: any ;
-  models!:any  ;
-  makes!:any  ;
-  opts: any;
-  CarForm: FormGroup;
-  errors:any = null;
-  data : any ;
-  Model : Model = new Model ;
-  Make : Make = new Make ;
-  selectedModel : any ;
-  selectedMake : any ;
-  m : any ;
-  ok: boolean = true;
-  mk : any ;
-  user : any;
-  choices:any = [];
-  selectedoptions:any =[];
-  files: File[] = [];
-  uploadedFiles: any[] = [];
-  uploadedF: any[] = [];
-  Files: any[] = [];
-  Image: Image= new Image;
-  options : any[] ;
+  model_id        : any ;
+  id              : any;
+  val             : number;
+  value           : Date ;
+  car!            : any ;
+  models!         : any  ;
+  makes!          : any  ;
+  opts            : any;
+  CarForm         : FormGroup;
+  errors          : any      = null;
+  data            : any ;
+  Model           : Model    = new Model ;
+  Make            : Make     = new Make ;
+  selectedModel   : any ;
+  selectedMake    : any ;
+  m               : any ;
+  ok              : boolean  = true;
+  mk              : any ;
+  user            : any;
+  choices         : any      = [];
+  selectedoptions : any      = [];
+  files           : File[]   = [];
+  uploadedFiles   : any[]    = [];
+  uploadedF       : any[]    = [];
+  Files           : any[]    = [];
+  Image           : Image    = new Image;
+  options         : any[] ;
+  vehicule        : Car = new Car ;
 
 
 
@@ -56,7 +57,7 @@ export class AddComponent implements OnInit {
               public messageService: MessageService,
     ) {
       this.CarForm = this.fb.group({
-        km: [''],
+        km: new FormControl('',[Validators.required]),
         options: this.options,
         matricule: [''],
         Price_H: [''],
@@ -91,44 +92,64 @@ export class AddComponent implements OnInit {
           console.log(this.opts);},
         (error) => { console.log(error.error) ; },
       );
+      this.createVehiculeForm();
 
 
 
                  }
 
-                 public portes = [
-                  {nombre:"2"},
-                  {nombre:"3"},
-                  {nombre:"4"},
-                  {nombre:"5"},
-                    ];
+    public portes = [
+    {nombre:"2"},
+    {nombre:"3"},
+    {nombre:"4"},
+    {nombre:"5"},
+      ];
 
-                  public carburant = [
-                    {label:"Essence"},
-                    {label:"Diesel"},
-                    {label:"Hybride"},
-                    {label:"Électrique"},
-                   ];
-
-
-                  public siege = [
-                    {nombre:"2"},
-                    {nombre:"3"},
-                    {nombre:"4"},
-                    {nombre:"5"},
-                    {nombre:"6"},
-                    {nombre:"8"},
-                   ];
+    public carburant = [
+      {label:"Essence"},
+      {label:"Diesel"},
+      {label:"Hybride"},
+      {label:"Électrique"},
+      ];
 
 
+    public siege = [
+      {nombre:"2"},
+      {nombre:"3"},
+      {nombre:"4"},
+      {nombre:"5"},
+      {nombre:"6"},
+      {nombre:"8"},
+      ];
 
-                   public transmission = [
-                    {label:"Manuelle"},
-                    {label:"Automatique"},
-
-                   ];
 
 
+      public transmission = [
+      {label:"Manuelle"},
+      {label:"Automatique"},
+
+      ];
+
+  createVehiculeForm()
+  {
+    this.car = {
+        km: this.CarForm.value.km,
+        options: this.CarForm.value.options,
+        matricule: this.CarForm.value.matricule,
+        Price_H: this.CarForm.value.Price_H,
+        Price_D: this.CarForm.value.Price_D,
+        location: this.CarForm.value.location,
+        model: this.CarForm.value.model_id,
+        portes: this.CarForm.value.portes,
+        carburant: this.CarForm.value.carburant,
+        transmission: this.CarForm.value.transmission,
+        siege: this.CarForm.value.siege,
+        description: this.CarForm.value.description,
+
+        photo: this.CarForm.value.photo,
+        galleries:this.CarForm.value.galleries ,
+      }
+  }
   onchange(event){
 
    // console.log(event);
@@ -171,6 +192,7 @@ filedata:any;
 
 fileEvent(e){
   this.filedata = e.target.files[0];
+ // this.filename = e.target.files[0].name;
   console.log(this.filedata);
 }
 
@@ -313,5 +335,10 @@ showError(detail) {
     {
       this.cars.storeImages(data).subscribe(
         (data)=> console.log("Done")) ;
+    }
+
+    onFileChanged(event)
+    {
+
     }
 }

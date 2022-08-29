@@ -1,5 +1,21 @@
 
 
+:host ::ng-deep .p-password input {
+  width: 15rem
+}
+:host ::ng-deep .p-dropdown {
+  width: 14rem;
+}
+
+.country-item-value {
+  img.flag {
+      width: 17px;
+  }
+}
+
+p-skeleton {
+  width: 100%;
+}
 
   .has-success {
     input {border: 1px solid #e01c1c !important;}

@@ -1,13 +1,23 @@
 @import "../../dashboard/dashboard.component.scss";
 
-input.ng-dirty.ng-invalid {
-  color: red
+
+.button:disabled {
+  opacity: 0.5;
 }
-
-
 .form-group {
   margin-bottom: 1rem;
-
+  ::ng-deep .p-password input {
+    width: 100%
+  }
+  :host ::ng-deep .p-dropdown {
+    width: 14rem;
+  }
+  ::ng-deep .p-input-icon-right > .p-inputtext {
+    padding-right: 2.5rem;
+  }
+  input.ng-dirty.ng-invalid {
+    color: red
+  }
 }
 
 label {
@@ -19,6 +29,7 @@ select {
   width: 100%;
   padding: .5rem;
 }
+
 
 .my-profile-box {
     margin-bottom: 30px;
@@ -112,16 +123,25 @@ select {
         }
     }
     .profile-box {
-        max-width: 300px;
-        position: relative;
+        max-width: 500px;
+        //position: absolute;
         border-radius: 5px;
 
-        img {
+
+        .profile-box-img {
             border-radius: 5px;
+            margin-bottom: 10px;
+            max-width: 500px;
+            min-width: 150px;
+            width: 250px;
+            height:auto;
+            min-height: min-content;
+            max-height: max-content;
+
         }
         .file-upload {
             display: inline-block;
-            position: absolute;
+           // position: absolute;
             left: 15px;
             bottom: 15px;
 
@@ -130,8 +150,8 @@ select {
                 height: 0.1px;
                 opacity: 0;
                 overflow: hidden;
-                position: absolute;
-                z-index: -1;
+               // position: absolute;
+                 z-index: -1;
             }
             .inputfile + label {
                 color: var(--blackColor);
@@ -162,8 +182,90 @@ select {
             .inputfile + label {
                 cursor: pointer;
             }
+            button{
+              border-radius: 30px;
+              transition: var(--transition);
+              position: relative;
+              padding: 10px 25px 9px 48px;
+              img { width:24px}}
         }
+
+        .file-loading{
+          margin-bottom: 30px;
+
+
+         }
+
     }
+
+
+    .drivingL-box {
+      max-width: 500px;
+      position: absolute;
+      border-radius: 5px;
+
+
+      .profile-box-img {
+          border-radius: 5px;
+          margin-bottom: 10px;
+          max-width: 500px;
+          min-width: 150px;
+          width: 250px;
+          height:auto;
+          min-height: min-content;
+          max-height: max-content;
+
+      }
+      .file-upload {
+          display: inline-block;
+          position: absolute;
+          left: 15px;
+          bottom: 15px;
+
+          .inputfile {
+              width: 0.1px;
+              height: 0.1px;
+              opacity: 0;
+              overflow: hidden;
+              position: absolute;
+               z-index: -1;
+          }
+          .inputfile + label {
+              color: var(--blackColor);
+              background-color: var(--whiteColor);
+              display: inline-block;
+              margin-bottom: 0;
+              transition: var(--transition);
+              padding: 10px 25px 9px 48px;
+              position: relative;
+              border-radius: 30px;
+              font: {
+                  size: var(--fontSize);
+                  weight: 600;
+              };
+          }
+          i {
+              position: absolute;
+              left: 25px;
+              top: 50%;
+              transform: translateY(-50%);
+              font-size: 16.5px;
+              margin-top: -.5px;
+          }
+          .inputfile:focus + label, .inputfile + label:hover {
+              background-color: var(--mainColor);
+              color: var(--whiteColor);
+          }
+          .inputfile + label {
+              cursor: pointer;
+          }
+
+      }
+
+
+
+  }
+
 }
 
 /* Max width 767px */

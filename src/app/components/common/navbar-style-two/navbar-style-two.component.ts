@@ -7,6 +7,11 @@ import { AuthStateService } from 'src/app/shared/auth/auth-state.service';
 import { AuthService } from 'src/app/shared/auth/auth.service';
 import { TokenService } from 'src/app/shared/auth/token.service';
 
+export class country {
+  name: any;
+  code: any;
+  flag: any;
+ }
 @Component({
   selector: 'app-navbar-style-two',
   templateUrl: './navbar-style-two.component.html',
@@ -14,6 +19,9 @@ import { TokenService } from 'src/app/shared/auth/token.service';
   providers: [MessageService]
 })
 export class NavbarStyleTwoComponent implements OnInit {
+  public  City = [ { name : "France" , code :"+33" , flag : "assets/img/flag/france.png" } ,
+                  { name : "Canada" , code :"+1"  , flag : "assets/img/flag/canada.png" }
+                 ];
   user : User = new User() ;
   loginForm: FormGroup;
   errors:any = null;
@@ -33,7 +41,7 @@ export class NavbarStyleTwoComponent implements OnInit {
   password: FormControl;
   condition: FormControl;
   submitted: boolean = false ;
-
+  selectedCountry: country = new country;
 
   constructor(
     public router: Router,
@@ -120,11 +128,12 @@ export class NavbarStyleTwoComponent implements OnInit {
     const mail = this.loginForm.value.email ;
     let ResultLogin  ;
 
-    this.authService.EmailVerification(mail).subscribe(
+   /* this.authService.EmailVerification(mail).subscribe(
       data => { console.log(data) ;
                //this.showSuccess(data.message);
                if (data.status == 1)
-                  {this.authService.signin(this.loginForm.value).subscribe(
+                  {*/
+                    this.authService.signin(this.loginForm.value).subscribe(
                         (result) => {  ResultLogin = result ;
                                        console.log(result);
                                        this.responseHandler(result).then(
@@ -142,11 +151,11 @@ export class NavbarStyleTwoComponent implements OnInit {
                                        this.showError('Vérifier les champs saisit - '+ this.errors.message);
                                     },  )
 
-                  }
+                 /* }
                   else  {this.router.navigateByUrl('auth/login');}
             },
       error => console.log(error)   );
-
+*/
 
 
 

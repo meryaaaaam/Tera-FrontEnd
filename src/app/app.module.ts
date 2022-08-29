@@ -100,7 +100,7 @@ import { UserDashboardComponent } from './components/pages/host/user-dashboard/u
 import { ProfileComponent } from './components/pages/host/profile/profile.component';
 import { MessageComponent } from './components/pages/host/message/message.component';
 
-
+import { PasswordModule } from "primeng/password";
 import {ScrollTopModule} from 'primeng/scrolltop';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
@@ -145,16 +145,19 @@ import {CheckboxModule} from 'primeng/checkbox';
 import {InputNumberModule} from 'primeng/inputnumber';
 import {RadioButtonModule} from 'primeng/radiobutton';
 import { SercurityDepositComponent } from './components/pages/host/sercurity-deposit/sercurity-deposit.component';
- import { CreateNewDisputeComponentComponent } from './components/pages/host/create-new-dispute-component/create-new-dispute-component.component';
+import { CreateNewDisputeComponentComponent } from './components/pages/host/create-new-dispute-component/create-new-dispute-component.component';
 import { CreateNewCheckoutAmountComponent } from './components/pages/host/create-new-checkout-amount/create-new-checkout-amount.component';
 import { CashoutComponent } from './components/pages/host/cashout/cashout.component';
 import { DisputesComponent } from './components/pages/host/disputes/disputes.component';
 import { DashboardBookingsComponent } from './components/pages/host/dashboard-bookings/dashboard-bookings.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { WaletComponent } from './components/pages/host/walet/walet.component';
-import { PermisComponent } from './components/pages/permis/permis.component';
+import { PermisComponent } from './components/pages/host/permis/permis.component';
 import { ConfirmationService } from 'primeng/api';
 import { LoginComponent } from './components/pages/Auth/login/login.component';
+import {ProgressBarModule} from 'primeng/progressbar';
+import {TableModule} from 'primeng/table';
+
 
     @NgModule({
   declarations: [
@@ -283,9 +286,10 @@ import { LoginComponent } from './components/pages/Auth/login/login.component';
     DropdownModule,PrimeNgFileUploadModule,StepsModule,CardModule,
     InputTextModule,
     ChipModule,CheckboxModule,InputNumberModule,RadioButtonModule,
-    MessagesModule,MessageModule,ScrollTopModule,ConfirmDialogModule
-
-
+    MessagesModule,MessageModule,ScrollTopModule,ConfirmDialogModule,
+    PasswordModule,
+    ProgressBarModule,
+    TableModule
 
 
 

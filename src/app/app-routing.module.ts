@@ -59,7 +59,7 @@ import { DisputesComponent } from './components/pages/host/disputes/disputes.com
 import { CashoutComponent } from './components/pages/host/cashout/cashout.component';
 import { EditComponent } from './components/Car/edit/edit.component';
 import { WaletComponent } from './components/pages/host/walet/walet.component';
-import { PermisComponent} from './components/pages/permis/permis.component';
+import { PermisComponent} from './components/pages/host/permis/permis.component';
 import { LoginComponent } from './components/pages/Auth/login/login.component';
 
 

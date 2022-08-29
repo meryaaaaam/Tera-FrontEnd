@@ -26,21 +26,23 @@
 
           <div class="col-lg-6 col-md-6">
             <div class="form-group">
-                <label><i class='bx bx-briefcase-alt'></i> Matricule</label>
-                <input type="text" class="form-control" formControlName="matricule" placeholder="matricule">
+                <label><i class='bx bx-briefcase-alt'></i> Matricule*</label>
+                <input type="text" class="form-control" formControlName="matricule"  >
+                <small *ngIf="car.matricule?.length < 0" id="username2-help" class="p-error block">Saisissez votre nom d'utilisateur.</small>
+
             </div>
         </div>
 
             <div class="col-lg-6 col-md-6">
                 <div class="form-group">
-                    <label><i class='bx bx-briefcase-alt'></i> Kilométre</label>
+                    <label><i class='bx bx-briefcase-alt'></i> Kilométre*</label>
                     <input type="number" class="form-control" formControlName="km" placeholder="Km">
                 </div>
             </div>
 
             <div class="col-lg-6 col-md-6">
               <div class="form-group">
-                <label><i class='bx bx-briefcase-alt'></i> Portes</label>
+                <label><i class='bx bx-briefcase-alt'></i> Portes*</label>
                   <select  formControlName="portes" >
                     <option [ngValue]="null" disabled  > Selectionner portes </option>
                     <option *ngFor="let m of portes" selected  value={{m.nombre}} >{{ m.nombre }}</option>
@@ -54,7 +56,7 @@
 
             <div class="col-lg-6 col-md-6">
               <div class="form-group">
-                <label><i class='bx bx-briefcase-alt'></i> Siege</label>
+                <label><i class='bx bx-briefcase-alt'></i> Siege*</label>
                   <select  formControlName="siege" >
                     <option [ngValue]="null" disabled  > Selectionner siege </option>
                     <option *ngFor="let m of siege" selected value={{m.nombre}} >{{ m.nombre }}</option>
@@ -66,7 +68,7 @@
 
             <div class="col-lg-6 col-md-6">
               <div class="form-group">
-                <label><i class='bx bx-briefcase-alt'></i> Carburant</label>
+                <label><i class='bx bx-briefcase-alt'></i> Carburant*</label>
                   <select  formControlName="carburant" >
                     <option [ngValue]="null" disabled  > Selectionner carburant </option>
                     <option *ngFor="let m of carburant" selected    value={{m.label}}  >{{ m.label }}</option>
@@ -77,7 +79,7 @@
 
             <div class="col-lg-6 col-md-6">
               <div class="form-group">
-                <label><i class='bx bx-briefcase-alt'></i> Transmission</label>
+                <label><i class='bx bx-briefcase-alt'></i> Transmission*</label>
                   <select formControlName="transmission"  >
                     <option [ngValue]="null" disabled  > Selectionner transmission </option>
                     <option *ngFor="let m of transmission" selected value={{m.label}}>{{ m.label }}</option>
@@ -89,7 +91,7 @@
 
             <div class="col-lg-6 col-md-6">
               <div class="form-group">
-                  <label><i class='bx bx-duplicate'></i> Marque voiture </label>
+                  <label><i class='bx bx-duplicate'></i> Marque voiture*</label>
                   <select (change)="selectMake($event)">
                       <option>Selectionner Marque</option>
                       <option  *ngFor="let m of makes" value={{m.id}} name="Make"> {{m.name}}</option>
@@ -101,7 +103,7 @@
 
             <div class="col-lg-6 col-md-6">
                 <div class="form-group">
-                    <label><i class='bx bx-duplicate'></i> Model de voiture </label>
+                    <label><i class='bx bx-duplicate'></i> Model de voiture* </label>
                     <select formControlName="model_id" (change)="select($event)">
                         <option>Select Model</option>
                         <option  *ngFor="let m of models" value={{m.id}} name="Model"> {{m.name}}</option>
@@ -116,7 +118,7 @@
 
             <div class="col-lg-6 col-md-6">
                 <div class="form-group">
-                    <label><i class='bx bxs-key'></i> Type:</label>
+                    <label><i class='bx bxs-key'></i> Type*</label>
                     <input   disabled type="text" class="form-control" [(ngModel)]="Model.type" value= {{Model.type}}>
                 </div>
             </div>
@@ -124,7 +126,7 @@
 
             <div class="col-lg-6 col-md-6">
               <div class="form-group">
-                  <label><i class='bx bxs-key'></i> Année:</label>
+                  <label><i class='bx bxs-key'></i> Année*</label>
                   <input disabled type="text" class="form-control" [(ngModel)]="Model.year" value= {{Model.year}} >
               </div>
           </div>
@@ -142,7 +144,7 @@
 
             <div class="col-lg-12 col-md-12">
                 <div class="form-group">
-                    <label><i class='bx bx-menu-alt-left'></i> Address:</label>
+                    <label><i class='bx bx-menu-alt-left'></i> Address*</label>
                     <input type="text" formControlName="location" class="form-control" placeholder="e.g. 55 County Laois">
                 </div>
             </div>
@@ -157,6 +159,7 @@
           <form #f="ngForm" >
             <div class="col-lg-12 col-md-12">
                 <div class="form-group profile-box">
+
 
                     <div class="file-upload">
 
@@ -176,13 +179,15 @@
           2.Clicker sur upload pour charger les images <br>-->
 
       <p-fileUpload name="galleries[]" url="https://7rentals.com/backend/public/api/gallerie" (onUpload)="onUpload($event)"
-              multiple="multiple" accept="image/*" maxFileSize="10000000"
-
-              >
+              multiple="multiple" accept="image/*" maxFileSize="10000000">
               <ng-template pTemplate="content">
                   <ul *ngIf="Files.length">
                       <li *ngFor="let file of Files">{{file.name}} - {{file.size}} bytes</li>
                   </ul>
+                  <ul *ngIf="Files.length == 0">
+                    <small  id="username2-help" class="p-error block">Séléctionner une ou plusieur image puis cliquer sur upload</small>
+
+                </ul>
               </ng-template>
       </p-fileUpload>
         </div>
@@ -296,3 +301,6 @@
 
 </div>
 <!-- End Main Content Wrapper Area -->
+
+
+

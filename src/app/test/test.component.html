@@ -1,4 +1,4 @@
-<form [formGroup]="registerForm" (ngSubmit)="signup()" >
+<!--<form [formGroup]="registerForm" (ngSubmit)="signup()" >
 
 
   <div class="form-group"  [ngClass]="{'has-danger': (registerForm.controls.firstname.invalid && submitted) || (registerForm.controls.firstname.invalid && (registerForm.controls.firstname.dirty || registerForm.controls.firstname.touched)),
@@ -32,13 +32,41 @@
   </div>
 </div>
 
-<div class="form-group" [ngClass]="{'has-danger': (registerForm.controls.phone.invalid && submitted ) || registerForm.controls.phone.invalid && (registerForm.controls.phone.dirty || registerForm.controls.phone.touched),
+<div class="form-group row" [ngClass]="{'has-danger': (registerForm.controls.phone.invalid && submitted ) || registerForm.controls.phone.invalid && (registerForm.controls.phone.dirty || registerForm.controls.phone.touched),
 'has-success': registerForm.controls.phone.valid && (registerForm.controls.phone.dirty || registerForm.controls.phone.touched)  }" >
+<div class="col-3">
+  <p-dropdown [options]="City"
+  autoWidth="true"
+  [style]="{ 'hight':'45px'  }"
+  [(ngModel)]="selectedCountry"
+  [ngModelOptions]="{standalone: true}"
+  name="selectedCountry"
+  optionLabel="code"
+  [showClear]="true"
+  placeholder="Select a Country">
+  <ng-template pTemplate="selectedItem">
+  <div class="country-item country-item-value" *ngIf="selectedCountry">
+  <img [src]="selectedCountry.flag"   style="width: 17px;" />
+  {{selectedCountry.code}}
+  </div>
+  </ng-template>
+  <ng-template let-City pTemplate="code">
+  <div class="country-item">
+  <img [src]="City.flag"  style="width: 17px;"  />
+  {{City.code}}
+  </div>
+  </ng-template>
+  </p-dropdown>
+</div>
+<div class="col-1"></div>
+<div class="col-8">
+
 
   <input type="text" placeholder="N° Tél." class="form-control" formControlName="phone"  required>
   <div *ngIf="(registerForm.controls.phone.invalid && submitted ) || registerForm.controls.phone.invalid && (registerForm.controls.phone.dirty || registerForm.controls.phone.touched)" class="p-error block">
     Saisissez votre N° de Tél.
   </div>
+</div>
 </div>
 
 
@@ -95,6 +123,37 @@
     <input type="checkbox" (change)="onchange($event)">   j'ai lu et j'accepte <a href="https://oldtera.dev.smartegy.ca/wp-content/uploads/2022/01/Conditions-generales-location.pdf?fbclid=IwAR0cvuYqu3G_WGBltUEa-3VRu6ONt6YlTkRS0GE7V1kxjPFCKMbiyC1JloA" target="_blank">
       les conditions générales d'utilisation de ce site</a>
   </div>
+
+
+
       <button  *ngIf="!disabled"type="submit" data-bs-dismiss="modal">Inscription</button>
       <button  *ngIf="disabled"type="submit" data-bs-dismiss="modal" disabled>Inscription</button>
   </form>
+
+  <h5>Advanced with Templating, Filtering and Clear Icon</h5>
+
+
+  <p-dropdown [options]="City"
+  [(ngModel)]="selectedCountry"
+  name="selectedCountry"
+  optionLabel="code"
+  [showClear]="true"
+  placeholder="Select a Country">
+  <ng-template pTemplate="selectedItem">
+  <div class="country-item country-item-value" *ngIf="selectedCountry">
+  <img [src]="selectedCountry.flag"   style="width: 17px;" />
+  {{selectedCountry.code}}
+  </div>
+  </ng-template>
+  <ng-template let-City pTemplate="code">
+  <div class="country-item">
+  <img [src]="City.flag"  style="width: 17px;"  />
+  {{City.code}}
+  </div>
+  </ng-template>
+  </p-dropdown>
+
+
+  {{selectedCountry|json}}
+-->
+<p-password [(ngModel)]="value3" [toggleMask]="true"></p-password>

@@ -49,6 +49,11 @@ export class ReservationService {
     return this.http.get(baseUrl+"get_bookings/"+id);
   }
 
+  getBookingsRequest(id)
+  {
+    return this.http.get(baseUrl+"get_bookings_requests/"+id);
+  }
+
   getDisplayBalance(user_id)
   {
     return this.http.post(baseUrl+"display_balance",{user_id: user_id});

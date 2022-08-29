@@ -1,5 +1,61 @@
 @import "../../../pages/dashboard/dashboard.component.scss";
 
+.bookings-status {
+  border-radius: 30px;
+  color: var(--whiteColor);
+  padding: 3px 10px 3.5px;
+  position: relative;
+  background-color: var(--mainColor);
+  top: -2px;
+  margin-left: 2px;
+  font: {
+      weight: 500;
+      size: 12px;
+  };
+  &.approved {
+      background-color: #64bc36;
+  }
+  &.canceled {
+      background-color: red;
+  }
+}
+.action {
+  .default-btn {
+      border-radius: 30px;
+      box-shadow: unset;
+      background-color: #eeeeee;
+      font-size: 13px;
+      border: none;
+      position: relative;
+      margin-right: 15px;
+      padding: {
+          top: 8px;
+          bottom: 8px;
+          left: 40px;
+          right: 20px;
+      };
+      &:hover {
+          background-color: var(--mainColor);
+          color: var(--whiteColor);
+      }
+      i {
+          position: absolute;
+          left: 20px;
+          top: 50%;
+          transform: translateY(-50%);
+          font-size: 15px;
+      }
+      &.danger {
+          margin-right: 0;
+
+          &:hover {
+              background-color: red;
+              color: var(--whiteColor);
+          }
+      }
+  }
+}
+
 .bookings-listings-box {
     margin-bottom: 30px;
     background-color: var(--whiteColor);

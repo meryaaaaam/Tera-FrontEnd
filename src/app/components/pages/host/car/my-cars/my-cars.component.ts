@@ -43,12 +43,7 @@ export class MyCarsComponent implements OnInit {
                 console.log(this.cars); });
 
 
-     /* this.car.getAllBMW().subscribe(cars=>
-        {console.log(cars);
-        this.BMW = cars ;
-        }
-        );*/
-       // this.img = "http://localhost:8000/storage/image/"+this.cars.image ;
+
   }
 
   customOptions: OwlOptions = {

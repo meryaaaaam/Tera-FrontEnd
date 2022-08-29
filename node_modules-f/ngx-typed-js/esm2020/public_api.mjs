@@ -1,0 +1,6 @@
+/*
+ * Public API Surface of ngx-typed-js
+ */
+export * from './lib/ngx-typed-js.component';
+export * from './lib/ngx-typed-js.module';
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoicHVibGljX2FwaS5qcyIsInNvdXJjZVJvb3QiOiIiLCJzb3VyY2VzIjpbIi4uLy4uLy4uL3Byb2plY3RzL25neC10eXBlZC1qcy9zcmMvcHVibGljX2FwaS50cyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTs7R0FFRztBQUVILGNBQWMsOEJBQThCLENBQUM7QUFDN0MsY0FBYywyQkFBMkIsQ0FBQyIsInNvdXJjZXNDb250ZW50IjpbIi8qXG4gKiBQdWJsaWMgQVBJIFN1cmZhY2Ugb2Ygbmd4LXR5cGVkLWpzXG4gKi9cblxuZXhwb3J0ICogZnJvbSAnLi9saWIvbmd4LXR5cGVkLWpzLmNvbXBvbmVudCc7XG5leHBvcnQgKiBmcm9tICcuL2xpYi9uZ3gtdHlwZWQtanMubW9kdWxlJztcbiJdfQ==
