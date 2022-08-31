@@ -22,16 +22,16 @@
             <div class="visitor-reviews-box">
                 <h3>Visitor Reviews</h3>
 
-                <div class="user-review" *ngFor="let userReview of visitorReviews;">
-                    <img [src]="userReview.userImage" class="user" alt="image">
+                <div class="user-review" *ngFor="let userReview of reviews;">
+                    <img [src]="userReview.customer_photo" class="user" alt="image">
                     <div class="review-rating">
                         <div class="review-stars">
-                            <i class='{{Star.icon}}' *ngFor="let Star of userReview.rating"></i>
+                            <i class='{{Star.icon}}' *ngFor="let Star of userReview.rate"></i>
                         </div>
                         <span class="d-inline-block">{{userReview.userName}} <span>on <a routerLink="/{{userReview.detailsLink}}">{{userReview.listingsName}}</a></span></span>
                     </div>
                     <span class="date"><i class='bx bx-calendar'></i> {{userReview.date}}</span>
-                    <p>{{userReview.text}}</p>
+                    <p>{{userReview.comment}}</p>
                     <div class="review-image">
                         <div class="row">
                             <div class="col-lg-3 col-md-3 col-sm-4 col-6" *ngFor="let Image of userReview.reviewImage">

@@ -29,7 +29,7 @@
                                 <div *ngIf="!user.id" style="display:flex" >
                                   <li class="nav-item"><a routerLink="/about" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">A propos</a></li>
                                   <li class="nav-item"><a routerLink="/contact" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Contact</a></li>
-                                  <li class="nav-item"><a routerLink="/car/list" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Liste des vehicules</a></li>
+                                  <li class="nav-item"><a routerLink="/car/list" class="nav-link"  [queryParams]="{st:start, se:end}" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Liste des vehicules</a></li>
                               </div>
 
                               <div *ngIf="user.id" style="display:flex; justify-content: space-around;">
@@ -38,7 +38,7 @@
                                 <li class="nav-item"><a routerLink="/user/messages" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Messages</a></li>
                                 <li class="nav-item"><a routerLink="/user/booking" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Bookings</a></li>
                                  <li class="nav-item"><a routerLink="/user/reviews" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Reviews</a></li>
-                                 <li class="nav-item"><a routerLink="/car/list" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Liste des voitures</a></li>
+                                 <li class="nav-item"><a routerLink="/car/list"  [queryParams]="{st:start, se:end}" class="nav-link" routerLinkActive="active"[routerLinkActiveOptions]="{exact: true}">Liste des voitures</a></li>
 
                       </div>
 

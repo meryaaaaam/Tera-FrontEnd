@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { TokenService } from 'src/app/shared/auth/token.service';
+import { UserService } from 'src/app/shared/user/user.service';
 
 @Component({
   selector: 'app-reviews',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ReviewsComponent implements OnInit {
 
-  constructor() { }
+  public reviews : any ;
+  constructor(private us : UserService ,
+              private token : TokenService
+
+    ) { }
 
   ngOnInit(): void {
+    let id = this.token.getUser().user.id ;
+    this.getReviews(id) ;
   }
 
 
@@ -19,6 +27,18 @@ export class ReviewsComponent implements OnInit {
         subTitle: 'Dashboard'
     }
 ]
+
+
+    getReviews(id)
+    {
+      let reviews ;
+      this.us.Fetch_Host_reviews(id).subscribe(
+        data=>{
+                reviews = data ;
+                this.reviews = reviews.reviews ;
+                console.log(data); }
+      )
+    }
 visitorReviews = [
     {
         userImage: 'assets/img/user4.jpg',

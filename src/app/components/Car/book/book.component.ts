@@ -95,7 +95,10 @@ export class BookComponent implements OnInit {
 
     let data = {  "vehicule":this.searchid ,
                   "start" : this.startdate,
-                  "end" : this.enddate }
+                  "end" : this.enddate ,
+                  "booking_title" : this.res.model,
+                  "customer_id" : this.tokenStorage.getUser().user.id ,
+                }
     console.log(data);
 
      this.reservation.Make_reservation(data)

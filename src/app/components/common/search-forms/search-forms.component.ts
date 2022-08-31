@@ -48,9 +48,7 @@ export class SearchFormsComponent implements OnInit {
 
   onselect(date)
 {
- // this.startdate = this.start.toLocaleString('en-GB', { timeZone: 'UTC' }) ;
- // let from = this.start.toLocaleString('en-GB', { timeZone: 'UTC' }) ;
- // let end = this.end.toLocaleString('en-GB', { timeZone: 'UTC' }) ;
+
   this.start= date ;
   console.log(date);
   console.log(typeof date);

@@ -126,7 +126,7 @@
                             <owl-carousel-o [options]="customOptions">
                                 <ng-template carouselSlide *ngFor="let Image of res.galleries;">
                                     <div class="single-image-box">
-                                      <img [src]="Image.path" alt="image">
+                                      <img [src]="Image?.path" alt="image">
                                     </div>
                                 </ng-template>
                             </owl-carousel-o>
@@ -136,14 +136,14 @@
                              <owl-carousel-o [options]="res.gallerie">
                                  <ng-template carouselSlide *ngFor="let Image of res.galleries;">
                                      <div class="single-image-box">
-                                       <img [src]="Image.path" alt="image">
+                                       <img [src]="Image?.path" alt="image">
                                      </div>
                                  </ng-template>
                              </owl-carousel-o>
                          </div>
                     </div>
 
-                    <!--<h3>Review</h3>
+                    <h3>Review</h3>
                     <div class="listings-review">
                         <div class="rating d-flex align-items-center">
                             <span class="bx bxs-star checked"></span>
@@ -239,19 +239,22 @@
                     <div class="write-a-review">
                         <h4>Tell people what you think.</h4>
                         <p>Help others by sharing your experience with this business.</p>
-                        <a routerLink="/single-listings" class="default-btn">Write A Review</a>
+                        <!--<a name="review" class="default-btn">Write A Review</a>-->
+
+
                     </div>
-                    <div id="review">
+                    <div id="review" >
                         <div class="listings-review-comments">
-                            <div class="user-review">
+                            <div class="user-review" *ngFor="let item of review">
                                 <div class="row m-0">
                                     <div class="col-lg-4 col-md-4 p-0">
                                         <div class="user">
                                             <div class="d-flex">
-                                                <img [src]="res.user_photo" alt="image">
+                                                <img [src]="item.customer_photo" alt="image">
                                                 <div class="title">
-                                                    <h4>res.user</h4>
-                                                    <span>{{res.location}}</span>
+                                                    <h4>{{item.customer_name}}</h4>
+                                                    <span>{{item?.location}}</span>
+
                                                 </div>
                                             </div>
                                         </div>
@@ -259,13 +262,10 @@
                                     <div class="col-lg-8 col-md-8 p-0">
                                         <div class="comments">
                                             <div class="rating">
-                                                <span class="bx bxs-star checked"></span>
-                                                <span class="bx bxs-star checked"></span>
-                                                <span class="bx bxs-star checked"></span>
-                                                <span class="bx bxs-star checked"></span>
-                                                <span class="bx bxs-star checked"></span>
+                                                <span class="bx bxs-star checked"  *ngFor="let item of counter(item.rate); let i = index"></span>
+                                                <span class="bx bxs-star" *ngFor="let item of counter(5-item.rate); let i = index"></span>
                                             </div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo maecenas accumsan lacus vel facilisis.</p>
+                                            <p>{{item.comment}}</p>
                                             <div class="row m-0">
                                                 <div class="col-lg-8 col-md-8 col-8 col-sm-8 p-0">
                                                     <ul class="like-unlike">
@@ -281,106 +281,32 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="user-review">
-                                <div class="row m-0">
-                                    <div class="col-lg-4 col-md-4 p-0">
-                                        <div class="user">
-                                            <div class="d-flex">
-                                                <img src="assets/img/user2.jpg" alt="image">
-                                                <div class="title">
-                                                    <h4>Sarah Taylor</h4>
-                                                    <span>New York, USA</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 p-0">
-                                        <div class="comments">
-                                            <div class="rating">
-                                                <span class="bx bxs-star checked"></span>
-                                                <span class="bx bxs-star checked"></span>
-                                                <span class="bx bxs-star checked"></span>
-                                                <span class="bx bxs-star checked"></span>
-                                                <span class="bx bxs-star checked"></span>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo maecenas accumsan lacus vel facilisis.</p>
-                                            <div class="row m-0">
-                                                <div class="col-lg-8 col-md-8 col-8 col-sm-8 p-0">
-                                                    <ul class="like-unlike">
-                                                        <li><a routerLink="/single-listings">Like</a></li>
-                                                        <li><a routerLink="/single-listings">Unlike</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-lg-4 col-md-4 col-4 col-sm-4 p-0 text-right">
-                                                    <a routerLink="/single-listings">Comment</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="user-review">
-                                <div class="row m-0">
-                                    <div class="col-lg-4 col-md-4 p-0">
-                                        <div class="user">
-                                            <div class="d-flex">
-                                                <img src="assets/img/user3.jpg" alt="image">
-                                                <div class="title">
-                                                    <h4>Jason Smith</h4>
-                                                    <span>New York, USA</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-8 col-md-8 p-0">
-                                        <div class="comments">
-                                            <div class="rating">
-                                                <span class="bx bxs-star checked"></span>
-                                                <span class="bx bxs-star checked"></span>
-                                                <span class="bx bxs-star checked"></span>
-                                                <span class="bx bxs-star checked"></span>
-                                                <span class="bx bxs-star checked"></span>
-                                            </div>
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo maecenas accumsan lacus vel facilisis.</p>
-                                            <div class="row m-0">
-                                                <div class="col-lg-8 col-md-8 col-8 col-sm-8 p-0">
-                                                    <ul class="like-unlike">
-                                                        <li><a routerLink="/single-listings">Like</a></li>
-                                                        <li><a routerLink="/single-listings">Unlike</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="col-lg-4 col-md-4 col-4 col-sm-4 p-0 text-right">
-                                                    <a routerLink="/single-listings">Comment</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                     <div id="add-review">
                         <div class="review-form-wrapper">
-                            <h3>Add A Review</h3>
-                            <p class="comment-notes">Your email address will not be published. Required fields are marked <span>*</span></p>
-                            <form>
+                            <h3>Ajouter un commentaire</h3>
+                            <p class="comment-notes">
+                              Vous autorisez à laisser un message uniquement si vous avez passé une réservation <span></span></p>
+                            <form (ngSubmit)="save_rate()">
                                 <div class="row">
                                     <div class="col-lg-12 col-md-12">
                                         <div class="sub-ratings">
-                                            <div class="row">
+                                             <div class="row">
                                                 <div class="col-lg-4 col-md-4 col-6 col-sm-6">
                                                     <div class="add-sub-rating">
-                                                        <h4>Cleanliness</h4>
+                                                        <!--<h4>Cleanliness</h4>-->
                                                         <div class="cleanliness-rating">
-                                                            <input type="radio" id="cleanlinessStar5" name="cleanliness-rating" value="5" /><label for="cleanlinessStar5"></label>
-                                                            <input type="radio" id="cleanlinessStar4" name="cleanliness-rating" value="4" /><label for="cleanlinessStar4"></label>
-                                                            <input type="radio" id="cleanlinessStar3" name="cleanliness-rating" value="3" /><label for="cleanlinessStar3"></label>
-                                                            <input type="radio" id="cleanlinessStar2" name="cleanliness-rating" value="2" /><label for="cleanlinessStar2"></label>
-                                                            <input type="radio" id="cleanlinessStar1" name="cleanliness-rating" value="1" /><label for="cleanlinessStar1"></label>
+                                                            <input type="radio" id="cleanlinessStar5" name="cleanliness-rating  " value="5"  (input)="rating($event.target.value)"> <label for="cleanlinessStar5"></label>
+                                                            <input type="radio" id="cleanlinessStar4" name="cleanliness-rating  " value="4"  (input)="rating($event.target.value)" /><label for="cleanlinessStar4"></label>
+                                                            <input type="radio" id="cleanlinessStar3" name="cleanliness-rating  " value="3"  (input)="rating($event.target.value)"/><label for="cleanlinessStar3"></label>
+                                                            <input type="radio" id="cleanlinessStar2" name="cleanliness-rating  " value="2"  (input)="rating($event.target.value)"/><label for="cleanlinessStar2"></label>
+                                                            <input type="radio" id="cleanlinessStar1" name="cleanliness-rating  " value="1"  (input)="rating($event.target.value)" /><label for="cleanlinessStar1"></label>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <div class="col-lg-4 col-md-4 col-6 col-sm-6">
+                                                <!--<div class="col-lg-4 col-md-4 col-6 col-sm-6">
                                                     <div class="add-sub-rating">
                                                         <h4>Accuracy</h4>
                                                         <div class="accuracy-rating">
@@ -439,11 +365,11 @@
                                                             <input type="radio" id="valueStar1" name="value-rating" value="1" /><label for="valueStar1"></label>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div>-->
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-6">
+                                    <!--<div class="col-lg-6 col-md-6">
                                         <div class="form-group">
                                             <input type="text" class="form-control" placeholder="Name *">
                                         </div>
@@ -452,25 +378,35 @@
                                         <div class="form-group">
                                             <input type="email" class="form-control" placeholder="Email *">
                                         </div>
-                                    </div>
+                                    </div>-->
                                     <div class="col-lg-12 col-md-12">
                                         <div class="form-group">
-                                            <textarea placeholder="Your review" class="form-control" cols="30" rows="6"></textarea>
+                                            <textarea placeholder="Ajouter un commentaire" class="form-control" [(ngModel)]="message" name="message" cols="30" rows="6"></textarea>
                                         </div>
                                     </div>
-                                    <div class="col-lg-12 col-md-12">
+                                    <!--<div class="col-lg-12 col-md-12">
                                         <p class="comment-form-cookies-consent">
                                             <input type="checkbox" id="test1">
                                             <label for="test1">Save my name, email, and website in this browser for the next time I comment.</label>
                                         </p>
-                                    </div>
+                                    </div>-->
                                     <div class="col-lg-12 col-md-12">
-                                        <button type="submit">Submit</button>
+
+
+                                        <div *ngIf="user; then thenBlock else elseBlock"></div>
+                                        <ng-template #thenBlock>
+                                          <button type="submit">Submit</button>
+                                        </ng-template>
+                                        <ng-template #elseBlock>
+                                          <a href="#" data-bs-toggle="modal" data-bs-target="#loginRegisterModal" class="default-btn">  Submit<span></span></a>
+
+                                          <p>You must <a href="#" data-bs-toggle="modal" data-bs-target="#loginRegisterModal">login</a> before register event.</p>
+                                        </ng-template>
                                     </div>
                                 </div>
                             </form>
                         </div>
-                    </div>-->
+                    </div>
 
                 </div>
             </div>

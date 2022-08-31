@@ -161,4 +161,26 @@ export class UserService {
     return this.http.put(baseUrl+"Change_user_status",data);
   }
 
+
+  getAllReveiew(id)
+  {
+    let url = "http://127.0.0.1:8000/api/reviews";
+    return this.http.get(`${url}/${id}`);
+
+  }
+
+  add_review(data)
+  {
+    let url = "http://127.0.0.1:8000/api/reviews";
+    return this.http.post(url, data);
+
+  }
+
+
+  Fetch_Host_reviews(id)
+  {
+    let url = "http://127.0.0.1:8000/api/host/reviews/";
+    return this.http.get(url+id);
+  }
+
  }

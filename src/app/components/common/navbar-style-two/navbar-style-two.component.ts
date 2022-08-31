@@ -1,3 +1,4 @@
+import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -42,7 +43,12 @@ export class NavbarStyleTwoComponent implements OnInit {
   condition: FormControl;
   submitted: boolean = false ;
   selectedCountry: country = new country;
-
+  s :  Date = new Date();
+  e : any ;
+  from: any;
+  to: any;
+  datePipe : DatePipe = new DatePipe('en-GB');
+  start : Date = new Date(); end : Date = new Date();
   constructor(
     public router: Router,
     public fb: FormBuilder,
@@ -69,6 +75,8 @@ export class NavbarStyleTwoComponent implements OnInit {
       this.role = this.tokenStorage.getUser().role;  }
     else { this.router.navigate(['/']);}
 
+    this.end.setHours(this.start.getHours() + 3);
+    this.end.setDate(this.start.getDate() + 1);
 
     }
 

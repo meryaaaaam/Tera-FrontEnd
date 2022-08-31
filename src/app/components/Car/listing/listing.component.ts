@@ -37,7 +37,9 @@ export class ListingComponent implements OnInit {
     this.resetOption = [this.options[0]];
     this.from = this.datePipe.transform(this.start, 'dd/MM/yyyy H:m:s');
     this.to = this.datePipe.transform(this.end, 'dd/MM/yyyy H:m:s');
-    console.log(this.from , this.to);
+    this.end.setHours(this.start.getHours() + 3);
+    this.end.setDate(this.start.getDate() + 1);
+    console.log(this.from , this.end);
     this.get() ;
 
    }
@@ -77,7 +79,7 @@ export class ListingComponent implements OnInit {
 
           this.from = this.datePipe.transform(this.s, 'dd/MM/yyyy H:m:s');
           this.to = this.datePipe.transform(this.e, 'dd/MM/yyyy H:m:s');
-          console.log("time",this.from , this.to) ;
+       //   console.log("time",this.from , this.to) ;
 
             this.res.GetAvailableReservation(this.from , this.to).subscribe(
               data => { this.results = data ; console.log(this.results); } )

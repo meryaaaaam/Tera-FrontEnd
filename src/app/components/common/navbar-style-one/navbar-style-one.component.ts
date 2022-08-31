@@ -25,8 +25,15 @@ export class NavbarStyleOneComponent implements OnInit {
   role : any ;
   startdate : any ; enddate : any  ; dateend : any ;
   res : any ;
-  s :any;
-  e : any;   datePipe : DatePipe = new DatePipe('en-GB');
+
+  e :Date = new Date();
+  start : Date = new Date(); end : Date = new Date();
+  datePipe : DatePipe = new DatePipe('en-GB');
+  s :  Date = new Date();
+
+  from: any;
+  to: any;
+
   constructor(
     public router: Router,
     public fb: FormBuilder,
@@ -65,27 +72,26 @@ export class NavbarStyleOneComponent implements OnInit {
     else { this.router.navigate(['/']);}
 
 
-
-    this.route.queryParams.subscribe(params => {
-      this.res=params['id'];
-      console.log(this.res);
-      this.s= params['st'];
-      console.log(this.s);
-    console.log(typeof this.s);
-       this.e= params['se'];
-       console.log(this.e);
-       if (this.s && this.e)
-       {
-     let start:any ;
+    let start:any ;
     let end:any ;
-      start = this.datePipe.transform(this.s, 'MM/dd/yyyy h:m:s');
-      console.log(start);
-      console.log(typeof start);
-      end = this.datePipe.transform(this.e, 'MM/dd/yyyy h:m:s');
-        this.startdate = new Date (start) ;
-         this.enddate = new Date (end) ;
-    }
+    this.route.queryParams.subscribe(params => {
+                     this.res=params['id'];
+                     this.s= params['st'];
+                     this.e= params['se'];
+
+       if (this.s && this.e)
+       {    start = this.datePipe.transform(this.s, 'MM/dd/yyyy h:m:s');
+            end = this.datePipe.transform(this.e, 'MM/dd/yyyy h:m:s');
+            this.startdate = new Date (start) ;
+            this.enddate = new Date (end) ;
+       }
     }) ;
+
+
+      console.log(this.start) ;
+      this.end.setHours(this.start.getHours() + 3);
+      this.end.setDate(this.start.getDate() + 1);
+      console.log(this.end) ;
 
     }
 
@@ -107,11 +113,19 @@ export class NavbarStyleOneComponent implements OnInit {
        this.e= params['se'];});
     this.authService.signin(this.loginForm.value).subscribe(
       (result) => {
-        this.responseHandler(result);
-        this.showSuccess('youre loged in');
-        if(this.res)
-       { this.router.navigate(['/car/book'],{queryParams : {'st':this.s , 'se':this.e , 'searchid':this.res }});}
-        else {window.location.reload();}
+        this.responseHandler(result).then(
+          result=>{this.showSuccess('youre loged in');
+          this.authState.setAuthState(true);
+          this.loginForm.reset();
+          window.location.reload();
+        }
+          );
+        //.showSuccess('youre loged in');
+       /* if(this.res)
+       { this.router.navigate(['/car/detail'],{queryParams : {'st':this.s , 'se':this.e , 'id':this.res }});}
+        else {*/
+        //  window.location.reload();
+       // }
 
       },
       (error) => {
@@ -148,13 +162,18 @@ export class NavbarStyleOneComponent implements OnInit {
     );
   }
   // Handle response
-  responseHandler(data:any) {
+ async responseHandler(data:any) {
    // this.token.handleData(data.access_token);
-    this.tokenStorage.saveToken(data.access_token);
-    this.tokenStorage.saveUser(data);
-    this.isLoginFailed = false;
-    this.isLoggedIn = true;
-    this.role = this.tokenStorage.getUser().roles;
+
+    let promise = new Promise((resolve,reject)=>{
+      setTimeout( ()=> resolve("done!"),3000),
+      this.tokenStorage.saveToken(data.access_token);
+       this.tokenStorage.saveUser(data);
+       this.isLoginFailed = false;
+       this.isLoggedIn = true;
+       this.role = this.tokenStorage.getUser().roles;
+     });
+   return await  promise ;
   }
 
 
