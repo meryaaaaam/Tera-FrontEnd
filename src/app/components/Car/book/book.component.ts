@@ -112,15 +112,15 @@ export class BookComponent implements OnInit {
                         }
                         else
                         {
-                                                        this.Reservation();
-                                                          this.showSuccess("Booking request send successfully").then(
-                                                            result=>{ this.router.navigate(['/car/list'],{queryParams : {'st':start , 'se':end }})
-                                                          }
+                            this.Reservation(r.id);
+                              this.showSuccess("Booking request send successfully").then(
+                                result=>{ this.router.navigate(['/car/list'],{queryParams : {'st':start , 'se':end }})
+                              }
 
-                                                          )
+                              )
 
-                                                          ;
-                                                         this.complete = true ;
+                              ;
+                              this.complete = true ;
 
 
 
@@ -238,18 +238,13 @@ reservations()
   }
 
 
-      Reservation() {
+      Reservation(id) {
 
     let start = new Date() ;
     let end = new Date() ;
     console.log("amout",this.result.amount)
     console.log("Prix_H",this.res.Price_H)
-    this.data= { "booking_cost": this.result.amount ,//?this.res.Price_H:this.res.Price_D,
-                "number_of_days":this.totalDaysofReservation,
-                "car_model": this.res.model,
-                "user_id": this.tokenStorage.getUser().user.id,
-                "extra":this.Extrass,
-                "car_id":this.res.id,
+    this.data= { "reservation_id":id
             //    "host_id":this.res.user_id,
               }
 

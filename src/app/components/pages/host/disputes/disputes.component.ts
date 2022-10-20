@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TokenService } from 'src/app/shared/auth/token.service';
 import { UserService } from 'src/app/shared/user/user.service';
+import { ReservationService } from 'src/app/shared/vehicules/reservation.service';
 
 @Component({
   selector: 'app-disputes',
@@ -10,12 +11,13 @@ import { UserService } from 'src/app/shared/user/user.service';
 export class DisputesComponent implements OnInit {
 
   public disputes:any;
-  public ready:boolean = false;
+  public loading:boolean = true;
   public responseMessage: any;
   public user : any ;
+  public  img : any = "https://7rentals.com/backend/public/storage/image/" ;
 
 
-  constructor(private userService: UserService,
+  constructor(private userService: UserService,private reservation: ReservationService,
     private tokenService: TokenService) { }
 
   ngOnInit(): void {
@@ -32,33 +34,35 @@ export class DisputesComponent implements OnInit {
 
 
   public fetchDisputesListing() {
-    this.userService.getAllDisputes().subscribe(
+    this.reservation.getAllDisputes().subscribe(
       (data:any)=> {this.disputes = data.disputes;
+                    if(this.disputes)
+                    { this.loading=false ;}
                 console.log(this.disputes)} ),
       (error:any) => console.log(error) ;
 
-      this.ready = true;
+      //this.ready = true;
 
 
   }
 
-  public giveBackDeposit() {
+  public giveBackDeposit(id) {
 
     let user = this.tokenService.getUser();
 
-    this.userService.giveBackDeposit(user.user.id).subscribe(
+    this.userService.giveBackDeposit(id).subscribe(
       (data:any)=> {this.responseMessage = data.message;
-                    alert(this.responseMessage)} ),
+                    alert(this.responseMessage) ; this.fetchDisputesListing();} ),
       (error:any) => console.log(error);
   }
 
-  public collectDeposit() {
+  public collectDeposit(id ) {
 
     let user = this.tokenService.getUser();
-
-    this.userService.collectDeposit(user.user.id).subscribe(
+    let data = {'reservation_id': id  }
+    this.userService.collectDeposit(data).subscribe(
       (data:any)=> {this.responseMessage = data.message;
-                    alert(this.responseMessage)} ),
+                    alert(this.responseMessage) ; this.fetchDisputesListing();} ),
       (error:any) => console.log(error);
   }
 

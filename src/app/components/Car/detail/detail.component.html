@@ -145,18 +145,26 @@
 
                     <h3>Review</h3>
                     <div class="listings-review">
-                        <div class="rating d-flex align-items-center">
-                            <span class="bx bxs-star checked"></span>
-                            <span class="bx bxs-star checked"></span>
-                            <span class="bx bxs-star checked"></span>
-                            <span class="bx bxs-star checked"></span>
-                            <span class="bx bxs-star checked"></span>
 
-                            <span class="overall-rating">5.0</span>
-                            <span class="rating-count">(5 reviews)</span>
+
+                        <!--<a name="review" class="default-btn">Write A Review</a>-->
+
+
+
+                        <div class="rating d-flex align-items-center">
+                             <i class='bx bxs-star checked' *ngFor="let item of counter(res.rate); let i = index" ></i>
+                              <i class='bx bxs-star' *ngFor="let item of counterop(res.rate); let i = index" ></i>
+
+
+                            <span class="overall-rating">{{res.rate}}</span>
+                            <span class="rating-count">({{res.nb_review}} reviews)</span>
+
                         </div>
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6">
+                        <div class="row write-a-review">
+                          <h4>Tell people what you think.</h4>
+                          <p>Help others by sharing your experience with this business.</p>
+                        </div>
+                          <!--  <div class="col-lg-6 col-md-6">
                                 <div class="row m-0">
                                     <div class="side">
                                         <div>Cleanliness</div>
@@ -234,15 +242,15 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
-                    <div class="write-a-review">
+                    <!--<div class="write-a-review">
                         <h4>Tell people what you think.</h4>
                         <p>Help others by sharing your experience with this business.</p>
-                        <!--<a name="review" class="default-btn">Write A Review</a>-->
+                        <a name="review" class="default-btn">Write A Review</a>
 
 
-                    </div>
+                    </div>-->
                     <div id="review" >
                         <div class="listings-review-comments">
                             <div class="user-review" *ngFor="let item of review">
@@ -266,7 +274,7 @@
                                                 <span class="bx bxs-star" *ngFor="let item of counter(5-item.rate); let i = index"></span>
                                             </div>
                                             <p>{{item.comment}}</p>
-                                            <div class="row m-0">
+                                            <!--<div class="row m-0">
                                                 <div class="col-lg-8 col-md-8 col-8 col-sm-8 p-0">
                                                     <ul class="like-unlike">
                                                         <li><a routerLink="/single-listings">Like</a></li>
@@ -276,7 +284,7 @@
                                                 <div class="col-lg-4 col-md-4 col-4 col-sm-4 p-0 text-right">
                                                     <a routerLink="/single-listings">Comment</a>
                                                 </div>
-                                            </div>
+                                            </div>-->
                                         </div>
                                     </div>
                                 </div>

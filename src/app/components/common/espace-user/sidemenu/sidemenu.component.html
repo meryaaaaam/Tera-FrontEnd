@@ -29,6 +29,14 @@
                   <span class="badge">3</span>
               </a>
           </li>
+
+          <li class="nav-item" routerLinkActive="active mm-active">
+            <a routerLink="/user/reviews" class="nav-link">
+                <span class="icon"><i class='bx bx-star'></i></span>
+                <span class="menu-title">Reviews</span>
+            </a>
+        </li>
+
            <li *ngIf="isAdmin"class="nav-item" routerLinkActive="active mm-active">
             <a routerLink="/user/security-deposit" class="nav-link">
                 <span class="icon"><i class='bx bx-money'></i></span>
@@ -37,12 +45,28 @@
         </li>
 
 
+        <li class="nav-item" routerLinkActive="active mm-active">
+          <a routerLink="/user/dashboard-bookings-list" class="nav-link">
+              <span class="icon"><i class='bx bx-copy'></i></span>
+              <span class="menu-title">Bookings List</span>
+          </a>
+      </li>
+
           <li class="nav-item" routerLinkActive="active mm-active">
             <a routerLink="/user/dashboard-bookings" class="nav-link">
                 <span class="icon"><i class='bx bx-copy'></i></span>
-                <span class="menu-title">Bookings</span>
+                <span class="menu-title">Bookings Request</span>
             </a>
         </li>
+
+
+
+        <li class="nav-item" routerLinkActive="active mm-active">
+          <a routerLink="/user/dashboard-approved-bookings" class="nav-link">
+              <span class="icon"><i class='bx bx-copy'></i></span>
+              <span class="menu-title">Approved Bookings</span>
+          </a>
+      </li>
          <li *ngIf="isAdmin" class="nav-item" routerLinkActive="active mm-active">
           <a routerLink="/user/disputes/list" class="nav-link">
               <span class="icon"><i class='bx bx-copy'></i></span>
@@ -51,7 +75,7 @@
         </li>
         <li class="nav-item" routerLinkActive="active mm-active">
           <a routerLink="/user/cashout/list" class="nav-link">
-              <span class="icon"><i class='bx bx-copy'></i></span>
+              <span class="icon"><i class='bx bx-credit-card-alt'></i></span>
               <span class="menu-title">Cashout Demands</span>
           </a>
         </li>

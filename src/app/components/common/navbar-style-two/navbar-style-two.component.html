@@ -314,7 +314,7 @@
                               <input type="password" placeholder="Password" class="form-control" formControlName="password"  required>
 
                               <div *ngIf="(registerForm.controls.password.invalid && submitted ) || registerForm.controls.password.invalid && (registerForm.controls.password.dirty || registerForm.controls.password.touched)" class="p-error block">
-                                Saisissez votre mots de passe.
+                                Saisissez votre mot de passe.
                               </div>
                           </div>
                           <div class="form-group" [ngClass]="{'has-danger': (registerForm.value.password !== registerForm.value.password_confirmation) && (registerForm.controls.password_confirmation.dirty || registerForm.controls.password_confirmation.touched) ||   (registerForm.controls.password_confirmation.invalid && submitted )}">

@@ -47,7 +47,7 @@ export class CashoutComponent implements OnInit {
 
     let user = this.tokenService.getUser();
 
-    this.userService.getAllCashoutDemands(user.user.id).subscribe(
+    this.userService.getAllCashoutDemands().subscribe(
       (data:any)=> {this.cashouts = data.cashoutPayments; this.ready = true; this.loading = false;
                 console.log(this.cashouts)} ),
       (error:any) => console.log(error) ;

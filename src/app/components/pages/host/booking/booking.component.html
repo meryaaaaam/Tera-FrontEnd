@@ -1,9 +1,9 @@
-<app-dashboard-sidemenu></app-dashboard-sidemenu>
+<app-sidemenu></app-sidemenu>
 
 <!-- Start Main Content Wrapper Area -->
 <div class="main-content d-flex flex-column">
 
-    <app-dashboard-navbar></app-dashboard-navbar>
+  <app-navbar></app-navbar>
 
     <!-- Breadcrumb Area -->
     <div class="breadcrumb-area" *ngFor="let Content of breadcrumb;">
@@ -16,55 +16,66 @@
     </div>
     <!-- End Breadcrumb Area -->
 
-    <!-- Start -->
-    <div class="bookings-listings-box">
-        <h3>Booking Requests</h3>
+    <div class="table-responsive card">
 
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Customer</th>
-                        <th>Details</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let Content of bookingsListingsBox;">
-                        <td class="name">
-                            <img [src]="Content.customerImg" alt="image">
-                            <div class="info">
-                                <span>{{Content.customerName}}</span>
-                                <ul>
-                                    <li><a href="tel:{{Content.customerNumber}}">{{Content.customerNumber}}</a></li>
-                                    <li><a href="mailto:{{Content.customerEmail}}">{{Content.customerEmail}}</a></li>
-                                </ul>
-                                <a href="mailto:{{Content.customerEmail}}" class="default-btn"><i class='bx bx-envelope'></i> Send Message</a>
-                            </div>
-                        </td>
+      <p-table [value]="bookings"  [customSort]="true"
+         [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]"
+         [loading]="loading" styleClass="p-datatable-gridlines"
+         [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
+          <ng-template pTemplate="header">
+              <tr>
+                  <!--<th pSortableColumn="code">Code  </th>-->
+                  <th pSortableColumn="name">Client </th>
+                  <th pSortableColumn="name">Info Vehicule   </th>
+                  <th pSortableColumn="category">Transaction  </th>
+                  <th pSortableColumn="price">Montant  </th>
+                  <th pSortableColumn="quantity">Reservation id   </th>
+                  <th pSortableColumn="status">status </th>
+                  <th pSortableColumn="action">Action </th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-booking>
+              <tr>
+                  <!--<td>{{cashout.id}}</td>-->
+                  <td>
+                    <img src={{img}}{{booking.customer_photo}} width="32" style="vertical-align: middle" />
+                    {{booking.customer_name}}
+                    <ul>
+                      <li><a href="tel:{{booking?.customer_number}}">{{booking.customer_number}}</a></li>
+                      <li><a href="mailto:{{booking?.customer_email}}">{{booking.customer_email}}</a></li>
+                  </ul>
+                  <a href="mailto:{{booking?.customer_email}}" class="default-btn"><i class='bx bx-envelope'></i> Envoyer un message</a>
+                   </td>
+                  <td>{{booking.booking_title}}</td>
+                  <td>{{booking?.payment?.transaction_id ? booking?.payment?.transaction_id : '--'}}</td>
+                  <td>{{booking?.amount ? booking?.amount : '--'| currency: 'USD'}}</td>
+                  <td>{{booking?.id  }}</td>
+                  <td>
+                    <span *ngIf="booking.booking_status == 'Pending'" class="bookings-status pending">{{booking.booking_status}}</span>
+                    <span *ngIf="booking.booking_status == 'Approved'" class="bookings-status approved">{{booking.booking_status}}</span>
 
-                        <td class="details">
-                            <h4>{{Content.title}} <span class="bookings-status {{Content.pendingApprovedCanceled}}">{{Content.bookingsStatus}}</span></h4>
+                  </td>
+                  <td class="action">
+                    <!--<a *ngIf="booking.booking_status == 'Pending'" href="javascript:;" (click)="changeBookingStatus(booking.id,'Approved',booking?.payment?.transaction_id)" class="default-btn"><i class='bx bx-check-circle'></i> Accepter</a>
+                    <a *ngIf="booking.booking_status == 'Pending'" href="javascript:;" (click)="changeBookingStatus(booking.id,'Declined',booking?.payment?.transaction_id)" class="default-btn danger"><i class='bx bx-x-circle'></i> Rejeter</a>
+                    <a *ngIf="booking.booking_status == 'Approved'" href="javascript:;" (click)="validatePayment(booking.id)" class="default-btn"><i class='bx bx-check-circle'></i> Validater</a>
+                    <a *ngIf="booking.booking_status == 'Approved'" href="javascript:;" (click)="openDispute(booking?.payment?.amount,booking?.payment?.order_number,booking?.payment?.transaction_id)" class="default-btn danger"><i class='bx bx-x-circle'></i> Contestation</a>-->
+                    <a *ngIf="booking.booking_status == 'Approved'" href="javascript:;" (click)="changeBookingStatus(booking.id,'Validated')" class="default-btn"><i class='bx bx-check-circle'></i> Valider</a>
+                    <a *ngIf="booking.booking_status == 'Approved'" href="javascript:;" (click)="openDispute(booking.id)" class="default-btn danger"><i class='bx bx-x-circle'></i> Contestation</a>
 
-                            <ul>
-                                <li *ngFor="let Info of Content.bookingsInfo">
-                                    <i class='{{Info.icon}}'></i>
-                                    <span>{{Info.title}}:</span>
-                                    {{Info.text}}
-                                </li>
-                            </ul>
-                        </td>
+                    <!--<a *ngIf="booking.booking_status == 'Approved'" href="javascript:;" (click)="validatePayment(booking.id)" class="default-btn"><i class='bx bx-check-circle'></i> Validater</a>
+                    -->
 
-                        <td class="action">
-                            <a href="#" class="default-btn"><i class='bx bx-check-circle'></i> Approve</a>
-                            <a href="#" class="default-btn danger"><i class='bx bx-x-circle'></i> Reject</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <!-- End -->
+                  </td>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="7">No Booking Request Found.</td>
+            </tr>
+        </ng-template>
+      </p-table>
+  </div>
 
     <div class="flex-grow-1"></div>
 

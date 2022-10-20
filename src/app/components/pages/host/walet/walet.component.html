@@ -18,45 +18,29 @@
 
     <!-- Start -->
     <div class="row">
-        <div class="col-lg-4 col-md-6 col-sm-6">
+        <div class="col-lg-7 col-md-7 col-sm-7">
             <div class="stats-card-box">
                 <div class="icon-box">
                     <i class='bx bxs-badge-dollar'></i>
                 </div>
-                <span class="sub-title">Total Balance <strong class="wallet-currency">USD</strong></span>
-                <h3>{{client_data?.balance}}</h3>
-                <span>
-                  <a href="javascript:;" (click)="AskForCheckout()" class="default-btn"><i class='bx bx-check-circle'></i>Checkout</a>
-                </span>
+                <div class="row">
+                  <div class="col-lg-6 col-md-6 col-sm-6">
+
+                    <span class="sub-title">Total Balance <strong class="wallet-currency">USD</strong></span>
+                    <h3>{{client_data?.balance}}</h3>
+
+                  </div>
+                  <div class="col-lg-6 col-md-6 col-sm-6 justify-content-center">
+                    <span><a href="javascript:;" (click)="AskForCheckout()" class="default-btn"><i class='bx bx-check-circle'></i>Chashout</a>
+                    </span>
+                  </div>
+
+
+                </div>
             </div>
         </div>
-    </div>
-    <!-- End -->
-
-    <!-- Start -->
-    <div class="row">
-        <div class="col-lg-6 col-md-12" >
-            <div class="earnings-box">
-                <h3>Transactions</h3>
-                <ul>
-                    <li *ngFor="let trnsc of client_data?.transactions">
-                        <div class="icon">
-                            <i class='bx bx-cart'></i>
-                        </div>
-                        <ul>
-                            <li>Date: {{trnsc.created_at | date:'medium' }}</li>
-                            <li>Order: # {{trnsc.order_number}}</li>
-                            <li class="price">$ {{trnsc.amount}}</li>
-                        </ul>
-
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!-- End -->
-    <!-- Start -->
-      <div class="col-lg-6 col-md-12" >
+        <div class="col-lg-1 col-md-1 col-sm-1"></div>
+        <!--<div class="col-lg-6 col-md-6" >
           <div class="earnings-box">
               <h3>Customizable Fields</h3>
               <ul>
@@ -82,16 +66,96 @@
                       <div class="row">
                         <div class="col text-right mt-3">
                             <div class="btn-group-sm" role="group">
-                                    <button type="button" class="shadow-0 btn btn-success ml-2" [disabled]="!this.createNewCheckoutAmountForm.valid"
-                                    (click)="save()"><i class="fal fa-spinner fa-spin"></i> Save</button>
+                                    <button type="button" class="shadow-0 default-btn ml-2" [disabled]="!this.createNewCheckoutAmountForm.valid"
+                                    (click)="save()">
+                                    <i class='bx bx-check-circle'></i>
+                                     Enregistrer</button>
                             </div>
                         </div>
                     </div>
                   </li>
               </ul>
           </div>
+      </div>-->
+    </div>
+    <!-- End -->
+
+     <div class="row">
+      <div class="col-lg-8 col-md-8">
+          <div class="earnings-box">
+              <h3>List de transaction <!--<span class="comission-taken">Fee: 10%</span>--></h3>
+
+              <ul>
+                  <li *ngFor="let trnsc of transactions | paginate: { itemsPerPage: 3, currentPage: gridListings }">
+                      <div class="icon">
+                        <!--<i class='bx bx-money' ></i>-->
+                         <img src="assets/icon/earning.png" width="25px" alt="icon">
+
+                      </div>
+                      <ul>
+                          <!--<li class="price">Net Earning: <strong>{{trnsc.amount}}</strong></li>-->
+
+                          <li>Date:  {{trnsc.created_at | date:'shortDate' }}</li>
+                          <!--<li>Titre :  {{ trnsc.booking_title }}</li>-->
+                          <li>Transaction : # {{trnsc.transaction_id}}</li>
+                          <li class="price">+ $ <strong>{{trnsc.amount}}</strong></li>
+                          <!--<li>Status:  {{trnsc.payment_status}}</li>-->
+                          <!--<li class="fee-price">Fee: $20.00</li>-->
+                          <!--<li class="price">$ {{trnsc.amount}}</li>-->
+                          <li>  <span>{{trnsc.booking_title}}</span> </li>
+                      </ul>
+
+                  </li>
+
+              </ul>
+
+              <div class="col-xl-12 col-lg-12 col-md-12 pb-5">
+                <div class="pagination-area text-center">
+                    <pagination-controls (pageChange)="gridListings = $event"></pagination-controls>
+                </div>
+            </div>
+          </div>
       </div>
+
+
+      <div class="col-lg-4 col-md-4">
+        <div class="earnings-box">
+            <h3>Cashout History <span class="comission-taken">Fee: 0.1%</span></h3>
+
+            <ul>
+                <li *ngFor="let trnsc of cashout_data | paginate: { itemsPerPage: 3, currentPage: cashout }">
+                    <div class="icon">
+                        <!--<i class='bx bx-wallet'></i>-->
+                        <img src="assets/icon/cash-out.png" width="27px" alt="icon">
+                    </div>
+                    <ul>
+
+                        <li>Period: {{trnsc.created_at | date:'shortDate' }}</li>
+                        <li class="unpaid"> -  ${{trnsc.amount}} </li>
+                        <!--<li><span>{{trnsc.amount}}</span></li>-->
+                        <!--<li><span>{{trnsc.host_fee}}</span></li>-->
+                    </ul>
+
+                </li>
+
+            </ul>
+             <div class="col-xl-12 col-lg-12 col-md-12 pb-5">
+              <div class="pagination-area text-center">
+                  <pagination-controls (pageChange)="cashout = $event"></pagination-controls>
+              </div>
+          </div>
+        </div>
+    </div>
+    </div>
   <!-- End -->
+
+
+
+
+
+
+
+
 
     <div class="flex-grow-1"></div>
 

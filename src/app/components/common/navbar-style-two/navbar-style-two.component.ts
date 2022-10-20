@@ -68,7 +68,7 @@ export class NavbarStyleTwoComponent implements OnInit {
   ngOnInit() {
     this.createRegisterForm();
     this.createFormControl();
-    this.user  =  this.tokenStorage.getUser().user ;
+    this.user  =  this.tokenStorage.getUser().user?this.tokenStorage.getUser().user:"" ;
 
     if (this.tokenStorage.getTokens() ) {
       this.isLoggedIn = true;

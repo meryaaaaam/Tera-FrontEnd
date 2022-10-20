@@ -123,8 +123,18 @@
 
                         <div class="d-flex align-items-center justify-content-between">
                             <div class="rating">
-                              <i class='bx bxs-star'  ></i> <i class='bx bxs-star'  ></i> <i class='bx bxs-star'  ></i> <i class='bx bxs-star'  ></i> <i class='bx bxs-star'  ></i>
-                              <span class="count">({{Content.nb}})</span>
+                              <i class='bx bxs-star checked' *ngFor="let item of counter(Content.rate); let i = index" ></i>
+                              <i class='bx bxs-star' *ngFor="let item of counterop(Content.rate); let i = index" ></i>
+                              <!--<i class='bx bxs-star checked'  ></i>
+                              <i class='bx bxs-star checked'  ></i>
+                              <i class='bx bxs-star'  ></i>
+                              <i class='bx bxs-star'  ></i>-->
+
+
+                                <!--<span class="bx bxs-star checked"  *ngFor="let item of counter(Content.rate); let i = index"></span>
+                                <span class="bx bxs-star" *ngFor="let item of counter(5-Content.rate); let i = index"></span>
+                                -->
+                              <span class="count">({{Content.review}})</span>
                             </div>
                             <div class="price">
                                 {{Content.Price_D}}$/Jour - {{Content.Price_H}}$/ Heure

@@ -17,7 +17,7 @@
 
     <!-- Start -->
 
-    <section class="listing-area" *ngIf="cars">
+    <section class="listing-area" *ngIf="cars.length!==0">
         <div class="row">
             <div class="col-xl-4 col-lg-6 col-md-6" *ngFor="let Content of cars  | paginate: { itemsPerPage: 6, currentPage: gridListings }">
                 <div class="single-listings-box">
@@ -53,10 +53,11 @@
                         <h3><a routerLink="/{{Content.id}}">{{Content.make}} {{Content.model}} {{Content.year}} </a></h3>
                         <!--<span class="status {{Content.extraClass}}"><i class="flaticon-save"></i> </span>-->
                         <div class="d-flex align-items-center justify-content-between">
-                            <!--<div class="rating">
-                                <i class='bx bxs-star'  ></i> <i class='bx bxs-star'  ></i> <i class='bx bxs-star'  ></i> <i class='bx bxs-star'  ></i> <i class='bx bxs-star'  ></i>
-                                <span class="count">(5)</span>
-                            </div>-->
+                            <div class="rating">
+                              <i class='bx bxs-star checked' *ngFor="let item of counter(Content.rate); let i = index" ></i>
+                              <i class='bx bxs-star' *ngFor="let item of counterop(Content.rate); let i = index" ></i>
+                                <span class="count">({{Content.nb_review}})</span>
+                            </div>
                             <div class="price">
                                 {{Content.Price_H}}$/Heure {{Content.Price_D}}$/Jour
                             </div>
@@ -112,7 +113,7 @@
         </div>
     </section>-->
 
-    <section class="error-area bg-f9f9f9 ptb-100" *ngIf="!cars">
+    <section class="error-area bg-f9f9f9 ptb-100" *ngIf="cars.length==0">
       <div class="container">
           <div class="error-content"  >
 

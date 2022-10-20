@@ -62,6 +62,17 @@ export class MyCarsComponent implements OnInit {
         ]
     }
 
+    counter(i: number) {
+      let o = Math.ceil(i);
+      return new Array(o);
+     }
+     counterop(i:number)
+     {
+      let o = Math.ceil(i);
+      return new Array(5-o);
+     }
+
+
   navigate(): void
   {
     this.router.navigate(['/user/add-car']);

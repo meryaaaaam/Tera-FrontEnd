@@ -5,8 +5,8 @@ import { Observable } from 'rxjs/Observable';
 
 
 
- // const baseUrl          =  "http://127.0.0.1:8000/api/" ;
-  const baseUrl            =  "https://7rentals.com/backend/public/api/" ;
+  const baseUrl          =  "http://127.0.0.1:8000/api/" ;
+  //const baseUrl            =  "https://7rentals.com/backend/public/api/" ;
 
 
 
@@ -22,6 +22,13 @@ export class VehiculeService {
 
   get(id) {
     return this.http.get(`${baseUrl+"vehicules"}/${id}`);
+  }
+
+  getGallerie(id) {
+    return this.http.get(`${baseUrl+"gallerie"}/${id}`);
+  }
+  deleteGallerie(id) {
+    return this.http.delete(`${baseUrl+"gallerie"}/${id}`);
   }
 
   getAll() {
@@ -46,6 +53,11 @@ export class VehiculeService {
     return this.http.post(baseUrl+"storeImages", data  );
   }
 
+
+  storeNewImages(id,data)
+  {
+    return this.http.post(baseUrl+"update/galleries/"+id, data  );
+  }
   storeImage(data)
   {
     return this.http.post(baseUrl+"storeImage", data  );
@@ -61,6 +73,10 @@ export class VehiculeService {
     return this.http.delete(baseUrl+"vehicules/"+id);
   }
 
+  updatedphoto(id, data)
+  {
+    return this.http.post(baseUrl+"updatephoto/"+id, data) ;
+  }
 
 
   getAllMakes()

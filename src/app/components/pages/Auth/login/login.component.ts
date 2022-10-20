@@ -18,15 +18,15 @@ export class LoginComponent implements OnInit {
   focus1;
   msgs1;
   isSelected    : boolean    = true ;
-  loginForm     : FormGroup;
+
   isLoggedIn    : boolean    = false;
   isLoginFailed : boolean    = false;
   role          : any ;
   errors        : any        = null;
   isLoading     : boolean    = false;
   submitted     : boolean    = false;
+  loginForm     : FormGroup;
   email         : FormControl;
-
   password      : FormControl;
 
 

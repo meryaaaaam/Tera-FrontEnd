@@ -35,10 +35,21 @@ export class ReviewsComponent implements OnInit {
       this.us.Fetch_Host_reviews(id).subscribe(
         data=>{
                 reviews = data ;
-                this.reviews = reviews.reviews ;
+                this.reviews = reviews ;
                 console.log(data); }
       )
     }
+
+    counter(i: number) {
+      let o = Math.ceil(i);
+      return new Array(o);
+     }
+     counterop(i:number)
+     {
+      let o = Math.ceil(i);
+      return new Array(5-o);
+     }
+
 visitorReviews = [
     {
         userImage: 'assets/img/user4.jpg',

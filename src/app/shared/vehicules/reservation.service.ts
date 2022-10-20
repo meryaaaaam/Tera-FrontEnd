@@ -5,16 +5,16 @@ import { Observable } from 'rxjs/Observable';
 
 
 
- /* const baseUrl = "https://tera3.dev.smartegy.ca/backend/public/api/" ;
  const baseUrl        = "http://127.0.0.1:8000/api/" ;
  const DepositbaseUrl = "http://127.0.0.1:8000/api/submit_security_deposit" ;
  const BookingbaseUrl = "http://127.0.0.1:8000/api/booking_payemnt" ;
+
+
+
+  /*const baseUrl        =  "https://7rentals.com/backend/public/api/" ;
+  const DepositbaseUrl  = "https://7rentals.com/backend/public/api/submit_security_deposit" ;
+  const BookingbaseUrl  = "https://7rentals.com/backend/public/api/booking_payemnt" ;
 */
-
- const baseUrl        = "https://7rentals.com/backend/public/api/" ;
-const DepositbaseUrl  = "https://7rentals.com/backend/public/api/submit_security_deposit" ;
-const BookingbaseUrl  = "https://7rentals.com/backend/public/api/booking_payemnt" ;
-
 
 @Injectable({
   providedIn: 'root'
@@ -44,6 +44,12 @@ export class ReservationService {
   {
     return this.http.get(baseUrl+"get_all_bookings");
   }
+
+  getAllDisputes()
+  {
+    return this.http.get(baseUrl+"get_all_disputes");
+  }
+
   getBookingsByUser(id)
   {
     return this.http.get(baseUrl+"get_bookings/"+id);
@@ -54,17 +60,29 @@ export class ReservationService {
     return this.http.get(baseUrl+"get_bookings_requests/"+id);
   }
 
+  get_host_approved_bookings(id)
+  {
+    return this.http.get(baseUrl+"get_host_approved_bookings/"+id);
+  }
+
+  getApprovedBookings()
+  {
+    return this.http.get(baseUrl+"get_approved_bookings");
+  }
+
+
   getDisplayBalance(user_id)
   {
     return this.http.post(baseUrl+"display_balance",{user_id: user_id});
   }
 
-  changeBookingStatus(booking_id, action, transaction_id){
-    return this.http.post(baseUrl+"change_booking_status",{booking_id:booking_id, action:action, transaction_id:transaction_id});
+  changeBookingStatus(booking_id, action ){
+    return this.http.post(baseUrl+"change_booking_status",{booking_id:booking_id, action:action });
   }
 
-  validatePayment(user_id,amount, order_number, transaction_id){
-    return this.http.post(baseUrl+"validate_payment",{user_id:user_id,amount:amount, order_number:order_number, transaction_id:transaction_id});
+  validatePayment(id){
+    let data = {"reservation_id":id} ;
+    return this.http.post(baseUrl+"validate_payment",id);
   }
   create(data)  {
     const HttpUploadOptions = {
@@ -78,5 +96,16 @@ export class ReservationService {
     }
     return this.http.post(BookingbaseUrl+"", data);
   }
+
+  get_transaction(id)
+  {
+    return this.http.get(baseUrl+"get_list_transactions",  {params: {host_id: id }});
+  }
+
+  get_list_cashout(id)
+  {
+    return this.http.get(baseUrl+"cashout_history",  {params: {user_id: id }});
+  }
+
 
 }

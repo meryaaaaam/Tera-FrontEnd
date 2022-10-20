@@ -9,12 +9,12 @@ const model   =   "https://7rentals.com/backend/public/api/makes" ;
 const Active  =   "https://7rentals.com/backend/public/api/users/isActive" ;
 const adresse =   "https://7rentals.com/backend/public/api/update" ;
 const state   =   "https://7rentals.com/backend/public/api/provinces" ;
-const url     =   "https://7rentals.com/backend/public/api/users" ;
-const baseUrl =   "https://7rentals.com/backend/public/api/" ;
+//const url     =   "https://7rentals.com/backend/public/api/users" ;
+//const baseUrl =   "https://7rentals.com/backend/public/api/" ;
 
 
-//const url =      "http://127.0.0.1:8000/api/users" ;
-//const baseUrl =  "http://127.0.0.1:8000/api/" ;
+const url =      "http://127.0.0.1:8000/api/users" ;
+const baseUrl =  "http://127.0.0.1:8000/api/" ;
 
 
 @Injectable({
@@ -131,17 +131,18 @@ export class UserService {
     return this.http.get(baseUrl+"get_all_disputes") ;
   }
 
-  giveBackDeposit(user_id){
-    return this.http.post(baseUrl+"give_back_deposit",{user_id:user_id});
+  giveBackDeposit(id){
+    return this.http.post(baseUrl+"releast_security_deposit",{reservation_id:id});
+    //return this.http.post(baseUrl+"give_back_deposit",{user_id:user_id});
   }
 
-  collectDeposit(user_id){
-    return this.http.post(baseUrl+"collect_deposit",{user_id:user_id});
+  collectDeposit(data){
+    return this.http.post(baseUrl+"collect_deposit",data);
   }
 
-  getAllCashoutDemands(user_id)
+  getAllCashoutDemands()
   {
-    return this.http.post(baseUrl+"list_cashout",{user_id:user_id});
+    return this.http.get(baseUrl+"list_cashout");
   }
 
   validateCashoutDemands(data){
@@ -165,14 +166,14 @@ export class UserService {
   getAllReveiew(id)
   {
     let url = "http://127.0.0.1:8000/api/reviews";
-    return this.http.get(`${url}/${id}`);
+    return this.http.get(`${baseUrl+"reviews"}/${id}`);
 
   }
 
   add_review(data)
   {
     let url = "http://127.0.0.1:8000/api/reviews";
-    return this.http.post(url, data);
+    return this.http.post(baseUrl+"reviews", data);
 
   }
 
@@ -180,7 +181,7 @@ export class UserService {
   Fetch_Host_reviews(id)
   {
     let url = "http://127.0.0.1:8000/api/host/reviews/";
-    return this.http.get(url+id);
+    return this.http.get(baseUrl+"host/reviews/"+id);
   }
 
  }

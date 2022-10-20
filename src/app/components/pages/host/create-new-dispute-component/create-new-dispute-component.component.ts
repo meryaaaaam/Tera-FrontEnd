@@ -28,18 +28,20 @@ export class CreateNewDisputeComponentComponent implements OnInit {
   public async save() {
       try {
         const dispute: any = this.createDisputeForm.value;
-
+        console.log(dispute) ;
         this.usersService.openDispute(dispute).subscribe(
           (data:any)=> {this.responseMessage = data.message;
                    alert(this.responseMessage)} ),
           (error:any) => console.log(error);
           this.disputeSaved();
+
       } catch (error) {
 
       }
   }
 
   public disputeSaved() {
+      sessionStorage.removeItem("reservation_id");
       this.emitData.emit({ name: 'dispute-saved' });
   }
 
@@ -53,12 +55,15 @@ export class CreateNewDisputeComponentComponent implements OnInit {
 
   private initForm() {
 
-    let user = this.tokenService.getUser();
+    let user = this.tokenService.getUser()?this.tokenService.getUser():"";
+    let id = sessionStorage.getItem("reservation_id");
 
       this.createDisputeForm = this.formBuilder.group({
-          user_id: [user.user.id, [Validators.required]],
-          host_name: ['', [Validators.required]],
-          client_name: ['', [Validators.required]],
+        //  user_id: ['', [Validators.required]],
+          reservation_id: [id, [Validators.required]],
+          host_name: [user.user.firstname+""+user.user.lastname, [Validators.required]],
+          host_id: [user.user.id, [Validators.required]],
+        //  client_name: ['', [Validators.required]],
           description: ['', []],
       });
   }

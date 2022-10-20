@@ -105,6 +105,7 @@ import {ScrollTopModule} from 'primeng/scrolltop';
 import {MessagesModule} from 'primeng/messages';
 import {MessageModule} from 'primeng/message';
 import {ConfirmDialog, ConfirmDialogModule} from 'primeng/confirmdialog';
+import {PaginatorModule} from 'primeng/paginator';
 
 //import {MaterialExampleModule} from '../material.module';
 //import {DateRangePickerComparisonExample} from './date-range-picker-comparison-example';
@@ -157,6 +158,9 @@ import { ConfirmationService } from 'primeng/api';
 import { LoginComponent } from './components/pages/Auth/login/login.component';
 import {ProgressBarModule} from 'primeng/progressbar';
 import {TableModule} from 'primeng/table';
+import { DashboardBookingsListComponent } from './components/pages/host/dashboard-bookings-list/dashboard-bookings-list.component';
+import {GalleriaModule} from 'primeng/galleria';
+
 
 
     @NgModule({
@@ -258,7 +262,8 @@ import {TableModule} from 'primeng/table';
     DisputesComponent,
     WaletComponent,
     PermisComponent,
-    LoginComponent
+    LoginComponent,
+    DashboardBookingsListComponent
 
   ],
   imports: [
@@ -289,7 +294,7 @@ import {TableModule} from 'primeng/table';
     MessagesModule,MessageModule,ScrollTopModule,ConfirmDialogModule,
     PasswordModule,
     ProgressBarModule,
-    TableModule
+    TableModule ,GalleriaModule , PaginatorModule
 
 
 

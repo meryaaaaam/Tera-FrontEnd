@@ -45,7 +45,15 @@ export class ListingComponent implements OnInit {
    }
 
 
-
+   counter(i: number) {
+    let o = Math.ceil(i);
+    return new Array(o);
+   }
+   counterop(i:number)
+   {
+    let o = Math.ceil(i);
+    return new Array(5-o);
+   }
     onselect(date)
     {
       this.start= date ;

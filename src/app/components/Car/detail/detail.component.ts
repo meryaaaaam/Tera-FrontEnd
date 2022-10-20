@@ -123,7 +123,13 @@ export class DetailComponent implements OnInit {
     }
 
     counter(i: number) {
-        return new Array(i);
+      let o = Math.ceil(i);
+        return new Array(o);
+    }
+    counterop(i:number)
+    {
+     let o = Math.ceil(i);
+     return new Array(5-o);
     }
     rating (stars : number )
     {

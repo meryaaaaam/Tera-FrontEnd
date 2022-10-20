@@ -14,11 +14,17 @@ import { CreateNewCheckoutAmountComponent } from '../create-new-checkout-amount/
 export class WaletComponent implements OnInit {
 
 
+  public cashout_data:any;
   public client_data:any;
+  public transactions : any ;
+  public id : any ;
   public ready:boolean = false;
   private bsModalRef: BsModalRef;
   public createNewCheckoutAmountForm: FormGroup;
   public responseMessage: any;
+  gridListings: number = 1;
+  cashout: number = 1;
+
 
   constructor(public reservation :ReservationService,
     private tokenService: TokenService,
@@ -30,6 +36,7 @@ export class WaletComponent implements OnInit {
     ngOnInit(): void {
       this.initForm();
       this.fetchDashboardAndCheckoutListing();
+      this.get_transaction() ;
     }
 
     breadcrumb = [
@@ -46,6 +53,11 @@ export class WaletComponent implements OnInit {
       (data:any)=> {this.client_data = data.client_data;
                 console.log(this.client_data)} ),
       (error:any) => console.log(error);
+
+      this.reservation.get_list_cashout(user.user.id).subscribe(
+        (data:any)=> {this.cashout_data = data.cashoutPayments;
+                  console.log(this.cashout_data)} ),
+        (error:any) => console.log(error);
 
       this.ready = true;
   }
@@ -77,6 +89,17 @@ export class WaletComponent implements OnInit {
     } catch (error) {
 
     }
+  }
+
+  public get_transaction()
+  {
+    this.id = this.tokenService.getUser().user.id;
+    this.reservation.get_transaction(this.id).subscribe(
+      (data:any)=> {this.transactions = data.transactions;
+                    console.log(this.transactions) ;
+              // alert(this.responseMessage)
+            }  ),
+      (error:any) => console.log(error);
   }
 
   private initForm() {

@@ -16,49 +16,95 @@
     </div>
     <!-- End Breadcrumb Area -->
 
-    <!-- Start -->
-    <div class="bookings-listings-box">
-        <h3>All Disputes</h3>
+    <div class="table-responsive card">
 
-        <div class="table-responsive">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>Customer</th>
-                        <th>Details</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                <tbody *ngIf="ready">
-                    <tr *ngFor="let dispute of disputes;">
-                        <td class="name">
-                            <img src="assets/img/user1.jpg" alt="image">
-                            <div class="info">
-                                <span>{{dispute.client_name? dispute.client_name : 'TEST TEST'}}</span>
-                            </div>
-                        </td>
+      <p-table [value]="disputes"  [customSort]="true"
+         [rows]="10" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10,25,50]"
+         [loading]="loading" styleClass="p-datatable-gridlines"
+         [paginator]="true" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
+          <ng-template pTemplate="header">
+              <tr>
+                  <!--<th pSortableColumn="code">Code  </th>-->
+                  <!--<th pSortableColumn="name">Client </th>-->
+                  <th pSortableColumn="name">Hôte  </th>
+                  <!--<th pSortableColumn="name">Info Vehicule   </th>-->
+                  <th pSortableColumn="category">Détails de réservation  </th>
+                  <th pSortableColumn="price">Description  </th>
+                  <!--<th pSortableColumn="quantity">Reservation id   </th>-->
+                  <!--<th pSortableColumn="status">status </th>-->
+                  <th pSortableColumn="action">Action </th>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-booking>
+              <tr>
+                  <!--<td>{{cashout.id}}</td>-->
+                  <!--<td class="name">
+                    <img *ngIf="booking.customer_photo" src={{img}}{{booking.customer_photo}} width="52" style="vertical-align: middle" />
+                    <img *ngIf="!booking.customer_photo" src="assets/img/logo/nopics.jpg" width="52" style="vertical-align: middle" />
+                    {{booking.customer_name}}
+                    <ul>
+                      <li><a href="tel:{{booking?.customer_number}}">{{booking.customer_number}}</a></li>
+                      <li><a href="mailto:{{booking?.customer_email}}">{{booking.customer_email}}</a></li>
+                  </ul>
+                   <a href="mailto:{{booking?.customer_email}}" class="default-btn"><i class='bx bx-envelope'></i> Envoyer un message</a>
+                   </td>-->
+                  <td >
+                    <img [alt]="booking.host_name" src={{img}}{{booking.host_photo}} width="52" style="vertical-align: middle ;" />
+                     {{booking.host_name}} <br>
+                     <ul>
+                      <li><a href="tel:{{booking?.host_number}}">{{booking.customer_number}}</a></li>
+                      <li><a href="mailto:{{booking?.host_email}}">{{booking.customer_email}}</a></li>
+                  </ul>
+                    <a href="mailto:{{booking?.host_email}}" class="default-btn"><i class='bx bx-envelope'></i> Envoyer un message</a>
 
-                        <td class="details">
-                            <h4>Host Name: {{dispute?.host_name}}</h4>
+                  </td>
 
-                            <ul>
-                                <li>
-                                    <div>Desciption: <span>{{dispute?.description ? dispute?.description : '--'}}</span></div>
-                                    <div>Date: <span>{{dispute?.created_at | date:'medium'}}</span></div>
-                                </li>
-                            </ul>
-                        </td>
+                  <td class="info">
+                      <strong>Véhicule :</strong> {{booking.booking_title}}
+                      <br>
+                      {{booking?.start_date | date:'medium'}}
+                     <i class='bx bxs-right-arrow'></i>
+                     {{booking?.end_date | date:'medium'}}
+                     <br>
+                    <strong>Montant :</strong> {{booking?.amount | currency: 'USD'}} <br>
+                    <strong>Période :</strong> {{booking?.period}} <br>
+                    <strong>Client  :     </strong>
+                    <img *ngIf="booking.customer_photo" src={{img}}{{booking.customer_photo}} width="42" style="vertical-align: middle" />
+                    <img *ngIf="!booking.customer_photo" src="assets/img/logo/nopics.jpg" width="42" style="vertical-align: middle" />
+                    {{booking.customer_name}}
+                    <ul>
+                      <li><a href="tel:{{booking?.customer_number}}">{{booking.customer_number}}</a></li>
+                      <li><a href="mailto:{{booking?.customer_email}}">{{booking.customer_email}}</a></li>
+                  </ul>
+                  </td>
+                  <td class="info">{{booking?.description  }}</td>
+                  <!--<td>{{booking?.id  }}</td>-->
+                  <!--<td>
+                    <span *ngIf="booking.booking_status == 'Pending'" class="bookings-status pending">{{booking.booking_status}}</span>
+                    <span *ngIf="booking.booking_status == 'Approved'" class="bookings-status approved">{{booking.booking_status}}</span>
+                    <span *ngIf="booking.booking_status == 'Demande Dispute'" class="bookings-status Dispute">{{booking.booking_status}}</span>
+                    <span *ngIf="booking.booking_status == 'Declined'" class="bookings-status Declined">{{booking.booking_status}}</span>
+                    <span *ngIf="booking.booking_status == 'Done'" class="bookings-status Done">{{booking.booking_status}}</span>
 
-                        <td class="action">
-                            <a href="javascript:;" (click)="giveBackDeposit()" class="default-btn"><i class='bx bx-check-circle'></i> Give Back Deposit</a>
-                            <a href="javascript:;" (click)="collectDeposit()" class="default-btn danger"><i class='bx bx-x-circle'></i> Collect Deposit</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
-    <!-- End -->
+                  </td>-->
+                  <td class="action">
+
+                   <a *ngIf="booking.booking_status == 'Demande Dispute'" href="javascript:;" (click)="giveBackDeposit(booking.booking_id)" class="default-btn"><i class='bx bx-check-circle'></i> Give Back Deposit</a>
+                   <br>
+                   <a *ngIf="booking.booking_status == 'Demande Dispute'" href="javascript:;" (click)="collectDeposit(booking.booking_id)" class="default-btn danger"><i class='bx bx-x-circle'></i> Collect Deposit</a>
+                    <span *ngIf="booking.booking_status == 'Deposit Returned Back'" class="bookings-status pending">{{booking.booking_status}}</span>
+                   <span *ngIf="booking.booking_status == 'Deposit Collected'" class="bookings-status Dispute">{{booking.booking_status}}</span>
+
+                  </td>
+              </tr>
+          </ng-template>
+          <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="7">No Booking Request Found.</td>
+            </tr>
+        </ng-template>
+      </p-table>
+  </div>
 
     <div class="flex-grow-1"></div>
 

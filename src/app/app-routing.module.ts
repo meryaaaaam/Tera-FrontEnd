@@ -61,6 +61,7 @@ import { EditComponent } from './components/Car/edit/edit.component';
 import { WaletComponent } from './components/pages/host/walet/walet.component';
 import { PermisComponent} from './components/pages/host/permis/permis.component';
 import { LoginComponent } from './components/pages/Auth/login/login.component';
+import { DashboardBookingsListComponent } from './components/pages/host/dashboard-bookings-list/dashboard-bookings-list.component';
 
 
 const routes: Routes = [
@@ -104,7 +105,7 @@ const routes: Routes = [
    // {path: 'dashboard-my-profile', component: DashboardMyProfileComponent},
     {path: 'dashboard-add-listings', component: DashboardAddListingsComponent},
     {path: 'dashboard-bookmarks', component: DashboardBookmarksComponent},
-   // {path: 'dashboard-my-listings', component: DashboardMyListingsComponent},
+   // {path: 'dashboard-approved-bookings', component: BookingComponent},
   //  {path: 'dashboard-my-listings', component: DashboardMyListingsComponent},
 
 
@@ -117,12 +118,15 @@ const routes: Routes = [
     {path: 'user/list', component: MyCarsComponent  , canActivate: [AuthGuard ] },
     {path: 'user/update-car', component: EditComponent  , canActivate: [AuthGuard ] },
     {path: 'user/reviews', component: ReviewsComponent  , canActivate: [AuthGuard ] },
-    {path: 'user/booking', component: BookingComponent , canActivate: [AuthGuard ] },
+    //{path: 'user/booking', component: BookingComponent , canActivate: [AuthGuard ] },
     {path: 'user/profile', component: ProfileComponent , canActivate: [AuthGuard ] },
     {path: 'user/messages', component: MessageComponent , canActivate: [AuthGuard ] },
     {path: 'user/security-deposit', component: SercurityDepositComponent , canActivate: [AuthGuard ] },
     {path: 'user/dashboard-bookings', component: DashboardBookingsComponent, canActivate: [AuthGuard ]},
     {path: 'user/wallet', component: WaletComponent, canActivate: [AuthGuard ]},
+    {path: 'user/dashboard-approved-bookings', component: BookingComponent, canActivate: [AuthGuard ]},
+    {path: 'user/dashboard-bookings-list', component: DashboardBookingsListComponent, canActivate: [AuthGuard ]},
+
 
     {path: 'user/disputes/list', component: DisputesComponent, canActivate: [AuthGuard ]},
     {path: 'user/cashout/list', component: CashoutComponent , canActivate: [AuthGuard ]},

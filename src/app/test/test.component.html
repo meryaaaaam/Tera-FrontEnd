@@ -1,159 +1,28 @@
-<!--<form [formGroup]="registerForm" (ngSubmit)="signup()" >
+<div class="content-section implementation">
+<div class="card">
+<h5>Custom Contents</h5>
+<p-galleria [(value)]="images" [(visible)]="displayCustom" [(activeIndex)]="activeIndex"
+        [responsiveOptions]="responsiveOptions"
+        [containerStyle]="{'max-width': '850px'}" [numVisible]="7" [circular]="true" [fullScreen]="true"
+        [showItemNavigators]="true"
+    [showThumbnails]="false" [baseZIndex]="100000">
+    <ng-template pTemplate="item" let-item>
+        <img src={{link}}{{item.path}} style="width: 100%; display: block;"/>
+    </ng-template>
+    <ng-template pTemplate="thumbnail" let-item>
+        <div class="grid grid-nogutter justify-content-center">
+            <img src={{link}}{{item.path}} style="display: block;"/>
+        </div>
+    </ng-template>
+</p-galleria>
+<div *ngIf="images" class="row" style="max-width: 400px;">
+    <div *ngFor="let image of images; let index = index;" class="col-4" key="index">
+      <button pButton type="button" class="p-button-raised p-button-rounded p-button-danger delete-btn" iconPos="right" icon="pi pi-trash" (click)="deleteimage(image)"></button>
+        <img src={{link}}{{image.path}} [alt]="image.alt" style="cursor: pointer" (click)="imageClick(index)"/>
 
-
-  <div class="form-group"  [ngClass]="{'has-danger': (registerForm.controls.firstname.invalid && submitted) || (registerForm.controls.firstname.invalid && (registerForm.controls.firstname.dirty || registerForm.controls.firstname.touched)),
-                                     'has-success': registerForm.controls.firstname.valid && (registerForm.controls.firstname.dirty || registerForm.controls.firstname.touched)  }" >
-      <input type="text" placeholder="Prénom" class="form-control" formControlName="firstname" required>
-      <div *ngIf="(registerForm.controls.firstname.invalid && submitted) || registerForm.controls.firstname.invalid && (registerForm.controls.firstname.dirty || registerForm.controls.firstname.touched)" class="p-error block">
-        Saisissez votre prénom.
-      </div>
-  </div>
-
-
-
-  <div class="form-group" [ngClass]="{'has-danger': (registerForm.controls.lastname.invalid && submitted) || registerForm.controls.lastname.invalid && (registerForm.controls.lastname.dirty || registerForm.controls.lastname.touched),
-  'has-success': registerForm.controls.lastname.valid && (registerForm.controls.lastname.dirty || registerForm.controls.lastname.touched)  }" >
-    <input type="text" placeholder="Nom" class="form-control" formControlName="lastname"   required>
-    <div *ngIf=" (registerForm.controls.lastname.invalid && submitted) || registerForm.controls.lastname.invalid && (registerForm.controls.lastname.dirty || registerForm.controls.lastname.touched)" class="p-error block">
-      Saisissez votre nom.
+        <br>
     </div>
 </div>
-
-<div class="form-group"[ngClass]="{'has-danger':
-                                                (registerForm.controls.email.invalid && submitted ) ||
-                                                ( registerForm.controls.email.invalid &&
-                                                 (registerForm.controls.email.dirty || registerForm.controls.email.touched)),
-
-                                   'has-success': registerForm.controls.email.valid && (registerForm.controls.email.dirty || registerForm.controls.email.touched)  }" >
-  <input type="email" placeholder="Email" class="form-control" formControlName="email"   required>
-
-  <div *ngIf="(registerForm.controls.email.invalid && submitted ) || (registerForm.controls.email.invalid && (registerForm.controls.email.dirty || registerForm.controls.email.touched))" class="p-error block">
-    Saisissez votre courriel.
-  </div>
-</div>
-
-<div class="form-group row" [ngClass]="{'has-danger': (registerForm.controls.phone.invalid && submitted ) || registerForm.controls.phone.invalid && (registerForm.controls.phone.dirty || registerForm.controls.phone.touched),
-'has-success': registerForm.controls.phone.valid && (registerForm.controls.phone.dirty || registerForm.controls.phone.touched)  }" >
-<div class="col-3">
-  <p-dropdown [options]="City"
-  autoWidth="true"
-  [style]="{ 'hight':'45px'  }"
-  [(ngModel)]="selectedCountry"
-  [ngModelOptions]="{standalone: true}"
-  name="selectedCountry"
-  optionLabel="code"
-  [showClear]="true"
-  placeholder="Select a Country">
-  <ng-template pTemplate="selectedItem">
-  <div class="country-item country-item-value" *ngIf="selectedCountry">
-  <img [src]="selectedCountry.flag"   style="width: 17px;" />
-  {{selectedCountry.code}}
-  </div>
-  </ng-template>
-  <ng-template let-City pTemplate="code">
-  <div class="country-item">
-  <img [src]="City.flag"  style="width: 17px;"  />
-  {{City.code}}
-  </div>
-  </ng-template>
-  </p-dropdown>
-</div>
-<div class="col-1"></div>
-<div class="col-8">
-
-
-  <input type="text" placeholder="N° Tél." class="form-control" formControlName="phone"  required>
-  <div *ngIf="(registerForm.controls.phone.invalid && submitted ) || registerForm.controls.phone.invalid && (registerForm.controls.phone.dirty || registerForm.controls.phone.touched)" class="p-error block">
-    Saisissez votre N° de Tél.
-  </div>
 </div>
 </div>
-
-
-
-
-
-<div class="form-group" [ngClass]="{'has-danger': (registerForm.controls.date_nais.invalid && submitted ) ||  registerForm.controls.date_nais.invalid && (registerForm.controls.date_nais.dirty || registerForm.controls.date_nais.touched),
-                                     'has-success': registerForm.controls.date_nais.valid && (registerForm.controls.date_nais.dirty || registerForm.controls.date_nais.touched)  }" >
-
-<input type="date" placeholder="Date de naissance" class="form-control" formControlName="date_nais"   required>
-<div *ngIf="(registerForm.controls.date_nais.invalid && submitted ) || registerForm.controls.date_nais.invalid && (registerForm.controls.date_nais.dirty || registerForm.controls.date_nais.touched)" class="p-error block">
-  Entrez votre date de naissance.
-</div>
-</div>
-
-<div class="form-group" [ngClass]="{'has-danger': (registerForm.controls.username.invalid && submitted ) || registerForm.controls.username.invalid && (registerForm.controls.username.dirty || registerForm.controls.username.touched),
-                                     'has-success': registerForm.controls.username.valid && (registerForm.controls.username.dirty || registerForm.controls.username.touched)  }" >
-
-<input type="text" placeholder="Username" class="form-control"formControlName="username"  required>
-<div *ngIf="(registerForm.controls.username.invalid && submitted ) || registerForm.controls.username.invalid && (registerForm.controls.username.dirty || registerForm.controls.username.touched)" class="p-error block">
-  Saisissez votre nom d'utilisateur.
-</div>
-</div>
-
-  <div class="form-group"  [ngClass]="{'has-danger': (registerForm.controls.password.invalid && submitted ) || registerForm.controls.password.invalid && (registerForm.controls.password.dirty || registerForm.controls.password.touched),
-  'has-success': (registerForm.controls.password.invalid && submitted ) || registerForm.controls.password.valid && (registerForm.controls.password.dirty || registerForm.controls.password.touched)  }" >
-
-      <input type="password" placeholder="Password" class="form-control" formControlName="password"  required>
-
-      <div *ngIf="(registerForm.controls.password.invalid && submitted ) || registerForm.controls.password.invalid && (registerForm.controls.password.dirty || registerForm.controls.password.touched)" class="p-error block">
-        Saisissez votre mots de passe.
-      </div>
-  </div>
-  <div class="form-group" [ngClass]="{'has-danger': (registerForm.value.password !== registerForm.value.password_confirmation) && (registerForm.controls.password_confirmation.dirty || registerForm.controls.password_confirmation.touched) ||   (registerForm.controls.password_confirmation.invalid && submitted )}">
-      <input type="password" placeholder="Confirm Password" class="form-control" formControlName="password_confirmation"  required>
-
-      <div *ngIf=" (registerForm.controls.password_confirmation.invalid && submitted ) || registerForm.controls.password_confirmation.invalid && (registerForm.controls.password_confirmation.dirty || registerForm.controls.password_confirmation.touched)" class="p-error block">
-        Confirmez votre mots de passe.
-
-      </div>
-
-      <div  *ngIf="(registerForm.value.password !== registerForm.value.password_confirmation) && (registerForm.controls.password_confirmation.dirty || registerForm.controls.password_confirmation.touched)" id="username2-help" class="p-error block">
-        Ces mots de passe ne correspondent pas. Veuillez réessayer.</div>
-
-
-    </div>
-
-
-
-
-
-
-  <div class="pt-4 pb-3">
-    <input type="checkbox" (change)="onchange($event)">   j'ai lu et j'accepte <a href="https://oldtera.dev.smartegy.ca/wp-content/uploads/2022/01/Conditions-generales-location.pdf?fbclid=IwAR0cvuYqu3G_WGBltUEa-3VRu6ONt6YlTkRS0GE7V1kxjPFCKMbiyC1JloA" target="_blank">
-      les conditions générales d'utilisation de ce site</a>
-  </div>
-
-
-
-      <button  *ngIf="!disabled"type="submit" data-bs-dismiss="modal">Inscription</button>
-      <button  *ngIf="disabled"type="submit" data-bs-dismiss="modal" disabled>Inscription</button>
-  </form>
-
-  <h5>Advanced with Templating, Filtering and Clear Icon</h5>
-
-
-  <p-dropdown [options]="City"
-  [(ngModel)]="selectedCountry"
-  name="selectedCountry"
-  optionLabel="code"
-  [showClear]="true"
-  placeholder="Select a Country">
-  <ng-template pTemplate="selectedItem">
-  <div class="country-item country-item-value" *ngIf="selectedCountry">
-  <img [src]="selectedCountry.flag"   style="width: 17px;" />
-  {{selectedCountry.code}}
-  </div>
-  </ng-template>
-  <ng-template let-City pTemplate="code">
-  <div class="country-item">
-  <img [src]="City.flag"  style="width: 17px;"  />
-  {{City.code}}
-  </div>
-  </ng-template>
-  </p-dropdown>
-
-
-  {{selectedCountry|json}}
--->
-<p-password [(ngModel)]="value3" [toggleMask]="true"></p-password>
+<p-confirmDialog [style]="{width: '50vw'}" [baseZIndex]="10000" rejectButtonStyleClass="p-button-text"></p-confirmDialog>

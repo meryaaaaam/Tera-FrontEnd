@@ -216,11 +216,19 @@
             }
         }
         .rating {
-            i {
+           /* i {
                 color: #efc02f;
                 font-size: 14px;
                 line-height: 1;
-            }
+            }*/
+            .bx {
+              color: #cecfd2;
+              font-size: var(--fontSize);
+              margin-right: 2px;
+
+              &.checked {
+                  color:  var(--mainColor);
+              }}
             .count {
                 display: inline-block;
                 margin-left: 3px;

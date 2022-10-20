@@ -56,9 +56,9 @@ export class DashboardBookingsComponent implements OnInit {
     ]
 
 
-    public changeBookingStatus(bookingId:any, action:any, transactionId:any)
+    public changeBookingStatus(bookingId:any, action:any )
     {
-      this.reservation.changeBookingStatus(bookingId,action,transactionId).subscribe(
+      this.reservation.changeBookingStatus(bookingId,action ).subscribe(
         (data:any)=> {this.responseMessage = data.message;this.loading=true ;
                       alert(this.responseMessage)} ),
         (error:any) => console.log(error);
@@ -67,11 +67,11 @@ export class DashboardBookingsComponent implements OnInit {
     }
 
 
-    public validatePayment(amount:any,order_number:any,transaction_id:any) {
+    public validatePayment(id) {
 
       let user = this.tokenService.getUser();
-
-      this.reservation.validatePayment(user.user.id,amount,order_number,transaction_id).subscribe(
+      let reservation_id = {"reservation_id":id} ;
+      this.reservation.validatePayment(reservation_id).subscribe(
         (data:any)=> {this.responseMessage = data.message;this.loading=true ;
                  alert(this.responseMessage)} ),
         (error:any) => console.log(error);
@@ -80,7 +80,9 @@ export class DashboardBookingsComponent implements OnInit {
 
     }
 
-    public openDispute() {
+    public openDispute(id) {
+      window.sessionStorage.setItem("reservation_id", JSON.stringify(id));
+
       this.bsModalRef = this.modalService.show(CreateNewDisputeComponentComponent, { ignoreBackdropClick: true });
       this.bsModalRef.setClass('modal-lg');
       this.bsModalRef.content.emitData.subscribe((event: GenericEvent) => {

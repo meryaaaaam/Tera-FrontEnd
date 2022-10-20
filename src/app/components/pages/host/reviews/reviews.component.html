@@ -17,39 +17,44 @@
     <!-- End Breadcrumb Area -->
 
     <!-- Start -->
-    <div class="row">
-        <div class="col-lg-6 col-md-12">
+   <div class="row">
+        <div class="">
+          <!--<div class="col-lg-6 col-md-12">-->
             <div class="visitor-reviews-box">
                 <h3>Visitor Reviews</h3>
 
                 <div class="user-review" *ngFor="let userReview of reviews;">
+
                     <img [src]="userReview.customer_photo" class="user" alt="image">
                     <div class="review-rating">
                         <div class="review-stars">
-                            <i class='{{Star.icon}}' *ngFor="let Star of userReview.rate"></i>
-                        </div>
-                        <span class="d-inline-block">{{userReview.userName}} <span>on <a routerLink="/{{userReview.detailsLink}}">{{userReview.listingsName}}</a></span></span>
+                            <!--<i class='{{Star.icon}}' *ngFor="let Star of userReview.rate"></i>-->
+
+                              <i class='bx bxs-star checked' *ngFor="let item of counter(userReview.rate); let i = index" ></i>
+                              <i class='bx bxs-star' *ngFor="let item of counterop(userReview.rate); let i = index" ></i>
+
+                        <span class="d-inline-block">{{userReview.customer_name}} <span>on <a routerLink="/{{userReview.id}}">{{userReview.model}}</a></span></span>
                     </div>
-                    <span class="date"><i class='bx bx-calendar'></i> {{userReview.date}}</span>
-                    <p>{{userReview.comment}}</p>
+                    <span class="date"><i class='bx bx-calendar'></i> {{userReview.reviews_date}}</span>
+                    <p>{{userReview.reviews_comment}}</p>
                     <div class="review-image">
                         <div class="row">
-                            <div class="col-lg-3 col-md-3 col-sm-4 col-6" *ngFor="let Image of userReview.reviewImage">
+                            <div class="col-lg-3 col-md-3 col-sm-4 col-6" *ngFor="let Image of userReview.gallery">
                                 <a class="popup-btn" href="{{Image.img}}">
-                                    <img [src]="Image.img" alt="image">
+                                    <img [src]="Image" alt="image">
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div class="btn-box">
-                      <!--  <a routerLink="/user/reviews" class="default-btn"><i class='bx bx-reply'></i> Reply</a>
-                        <a routerLink="/user/reviews" class="default-btn danger"><i class='bx bx-trash'></i> Delete</a>-->
-                    </div>
+                    <!--<div class="btn-box">
+                       <a routerLink="/user/reviews" class="default-btn"><i class='bx bx-reply'></i> Reply</a>
+                        <a routerLink="/user/reviews" class="default-btn danger"><i class='bx bx-trash'></i> Delete</a>
+                    </div>-->
                 </div>
             </div>
         </div>
 
-        <div class="col-lg-6 col-md-12">
+         <!--<div class="col-lg-6 col-md-12">
             <div class="visitor-reviews-box">
                 <h3>Your Reviews</h3>
 
@@ -64,12 +69,12 @@
                     <span class="date"><i class='bx bx-calendar'></i> {{userReview.date}}</span>
                     <p>{{userReview.text}}</p>
                     <div class="btn-box">
-                       <!-- <a href="#" class="default-btn"><i class='bx bx-edit'></i> Edit</a>-->
+                         <a href="#" class="default-btn"><i class='bx bx-edit'></i> Edit</a>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
     <!-- End -->
 
     <div class="flex-grow-1"></div>

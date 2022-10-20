@@ -1,6 +1,42 @@
 @import "../../../pages/dashboard/dashboard.component.scss";
 @import "../stats/stats.component.scss";
 
+.default-btn {
+  border-radius: 30px;
+  box-shadow: unset;
+  background-color: #eeeeee;
+  font-size: 13px;
+  border: none;
+ // width: 100%;
+  position: relative;
+  margin-right: 15px;
+  padding: {
+      top: 8px;
+      bottom: 8px;
+      left: 40px;
+      right: 20px;
+  };
+  &:hover {
+      background-color: var(--mainColor);
+      color: var(--whiteColor);
+  }
+  i {
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 15px;
+  }
+  &.danger {
+      margin-right: 0;
+
+      &:hover {
+          background-color: red;
+          color: var(--whiteColor);
+      }
+  }
+}
+
 .earnings-box {
     margin-bottom: 30px;
     background-color: var(--whiteColor);
